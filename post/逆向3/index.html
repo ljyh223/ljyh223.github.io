@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="所需工具\n逍遥模拟器 lamda jadx frida 一双手 抓包 软件有root检测和代理检测，这里不讲绕过。代理不要挂。 安装lamda：\nset HTTPS_PROXY=127.0.0.1:7890 git clone https://github.com/rev1si0n/lamda.git rev1si0n/lamda: ⚡️ Android reverse engineering &amp; automation framework | 史上最强安卓抓包/逆向/HOOK &amp; 云手机/远程桌面/自动化辅助框架，你的工作从未如此简单快捷。\n下载lamda-server-x86_64.tar.gz 以及busybox-x86_64\n先把模拟器的root打开\n# 在你下载好的目录打开终端 adb push lamda-server-x86_64.tar.gz /data/local/tmp adb push busybox-x86_64 /data/local/tmp adb shell # 以下命令都是在adb shell中执行的 su chmod 755 /data/local/tmp/busybox-x86_64 cd /data /data/local/tmp/busybox-x86_64 tar -xzf /data/local/tmp/lamda-server-x86_64.tar.gz rm /data/local/tmp/lamda-server-x864.tar.gz rm /data/local/tmp/busybox-x86_64 启动lamda\n继续上一步结尾\ncd /data/local/tmp/server/bin sh launch.sh 启动完成 ctrl+D退出终端\n在你的lamda目录里打开终端\ncd tools python startmitm.">
+<title>逆向3</title>
+
+<link rel='canonical' href='http://localhost:1313/post/%E9%80%86%E5%90%913/'>
+
+<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="逆向3">
+<meta property='og:description' content="所需工具\n逍遥模拟器 lamda jadx frida 一双手 抓包 软件有root检测和代理检测，这里不讲绕过。代理不要挂。 安装lamda：\nset HTTPS_PROXY=127.0.0.1:7890 git clone https://github.com/rev1si0n/lamda.git rev1si0n/lamda: ⚡️ Android reverse engineering &amp; automation framework | 史上最强安卓抓包/逆向/HOOK &amp; 云手机/远程桌面/自动化辅助框架，你的工作从未如此简单快捷。\n下载lamda-server-x86_64.tar.gz 以及busybox-x86_64\n先把模拟器的root打开\n# 在你下载好的目录打开终端 adb push lamda-server-x86_64.tar.gz /data/local/tmp adb push busybox-x86_64 /data/local/tmp adb shell # 以下命令都是在adb shell中执行的 su chmod 755 /data/local/tmp/busybox-x86_64 cd /data /data/local/tmp/busybox-x86_64 tar -xzf /data/local/tmp/lamda-server-x86_64.tar.gz rm /data/local/tmp/lamda-server-x864.tar.gz rm /data/local/tmp/busybox-x86_64 启动lamda\n继续上一步结尾\ncd /data/local/tmp/server/bin sh launch.sh 启动完成 ctrl+D退出终端\n在你的lamda目录里打开终端\ncd tools python startmitm.">
+<meta property='og:url' content='http://localhost:1313/post/%E9%80%86%E5%90%913/'>
+<meta property='og:site_name' content='ljyh'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='re' /><meta property='article:published_time' content='2023-12-16T17:27:06&#43;00:00'/><meta property='article:modified_time' content='2023-12-16T17:27:06&#43;00:00'/>
+<meta name="twitter:title" content="逆向3">
+<meta name="twitter:description" content="所需工具\n逍遥模拟器 lamda jadx frida 一双手 抓包 软件有root检测和代理检测，这里不讲绕过。代理不要挂。 安装lamda：\nset HTTPS_PROXY=127.0.0.1:7890 git clone https://github.com/rev1si0n/lamda.git rev1si0n/lamda: ⚡️ Android reverse engineering &amp; automation framework | 史上最强安卓抓包/逆向/HOOK &amp; 云手机/远程桌面/自动化辅助框架，你的工作从未如此简单快捷。\n下载lamda-server-x86_64.tar.gz 以及busybox-x86_64\n先把模拟器的root打开\n# 在你下载好的目录打开终端 adb push lamda-server-x86_64.tar.gz /data/local/tmp adb push busybox-x86_64 /data/local/tmp adb shell # 以下命令都是在adb shell中执行的 su chmod 755 /data/local/tmp/busybox-x86_64 cd /data /data/local/tmp/busybox-x86_64 tar -xzf /data/local/tmp/lamda-server-x86_64.tar.gz rm /data/local/tmp/lamda-server-x864.tar.gz rm /data/local/tmp/busybox-x86_64 启动lamda\n继续上一步结尾\ncd /data/local/tmp/server/bin sh launch.sh 启动完成 ctrl+D退出终端\n在你的lamda目录里打开终端\ncd tools python startmitm.">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="https://p2.music.126.net/pwpTt5raiqkgGPcqX05HQw==/109951163292374223.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ljyh</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/zh-cn/" >中文</option>
+                                
+                                    <option value="http://localhost:1313/" selected></option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#抓包">抓包</a></li>
+    <li><a href="#逆向">逆向</a>
+      <ul>
+        <li><a href="#x-jsl-api-auth">X-JSL-API-AUTH</a></li>
+        <li><a href="#x-token">X-TOKEN</a></li>
+        <li><a href="#data">DATA</a></li>
+      </ul>
+    </li>
+    <li><a href="#邀请好友">邀请好友</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/%E9%80%86%E5%90%913/">逆向3</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 16, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>所需工具</p>
+<ul>
+<li>逍遥模拟器</li>
+<li>lamda</li>
+<li>jadx</li>
+<li>frida</li>
+<li>一双手</li>
+</ul>
+<!-- raw HTML omitted -->
+<h2 id="抓包">抓包</h2>
+<p>软件有root检测和代理检测，这里不讲绕过。代理不要挂。
+安装lamda：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>set HTTPS_PROXY<span style="color:#f92672">=</span>127.0.0.1:7890
+</span></span><span style="display:flex;"><span>git clone https://github.com/rev1si0n/lamda.git
+</span></span></code></pre></div><p><a class="link" href="https://github.com/rev1si0n/lamda"  target="_blank" rel="noopener"
+    >rev1si0n/lamda: ⚡️ Android reverse engineering &amp; automation framework | 史上最强安卓抓包/逆向/HOOK &amp; 云手机/远程桌面/自动化辅助框架，你的工作从未如此简单快捷。</a></p>
+<p>下载<a class="link" href="https://github.com/rev1si0n/lamda/releases/download/v7.15/lamda-server-x86_64.tar.gz"  target="_blank" rel="noopener"
+    >lamda-server-x86_64.tar.gz</a>
+以及<a class="link" href="https://github.com/rev1si0n/lamda/releases/download/v7.15/busybox-x86_64"  target="_blank" rel="noopener"
+    >busybox-x86_64</a></p>
+<p>先把模拟器的root打开</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 在你下载好的目录打开终端</span>
+</span></span><span style="display:flex;"><span>adb push lamda-server-x86_64.tar.gz /data/local/tmp
+</span></span><span style="display:flex;"><span>adb push busybox-x86_64 /data/local/tmp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>adb shell
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 以下命令都是在adb shell中执行的</span>
+</span></span><span style="display:flex;"><span>su
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">755</span> /data/local/tmp/busybox-x86_64
+</span></span><span style="display:flex;"><span>cd /data
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/data/local/tmp/busybox-x86_64 tar -xzf /data/local/tmp/lamda-server-x86_64.tar.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rm /data/local/tmp/lamda-server-x864.tar.gz
+</span></span><span style="display:flex;"><span>rm /data/local/tmp/busybox-x86_64
+</span></span></code></pre></div><p>启动lamda</p>
+<p>继续上一步结尾</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd /data/local/tmp/server/bin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sh launch.sh
+</span></span></code></pre></div><p>启动完成
+<img src="https://s2.loli.net/2023/12/16/jJ9hTNZny7HrCav.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Pasted image 20231216130555"
+	
+	
+></p>
+<p>ctrl+D退出终端</p>
+<p>在你的lamda目录里打开终端</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd tools
+</span></span><span style="display:flex;"><span>python startmitm.py localhost
+</span></span></code></pre></div><p>启动app，记得关掉root再启动，已经可以抓包了</p>
+<h2 id="逆向">逆向</h2>
+<p>看看抓包</p>
+<p><img src="https://s2.loli.net/2023/12/16/m5exCBdvhaMfJ9b.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Pasted image 20231216152407"
+	
+	
+></p>
+<p>一眼盯帧，是有加密，那么，开始逆向吧
+工具<a class="link" href="https://github.com/skylot/jadx/releases/download/v1.4.7/jadx-1.4.7.zip"  target="_blank" rel="noopener"
+    >jadx</a>，把apk拖进去</p>
+<h3 id="x-jsl-api-auth">X-JSL-API-AUTH</h3>
+<p>搜索大法好啊，ctrl+shift+F，直接找关键字 <code>X-JSL-API-AUTH</code></p>
+<p>只有一处</p>
+<p><img src="https://s2.loli.net/2023/12/16/ojSsMTYN6ZmBGvc.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Pasted image 20231216152631"
+	
+	
+></p>
+<p>有，直接跟进去，<code>v.a.a</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String a <span style="color:#f92672">=</span> v.<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">a</span>(Z.<span style="color:#a6e22e">h</span>().<span style="color:#a6e22e">u</span>().<span style="color:#a6e22e">getPath</span>());
+</span></span></code></pre></div><p>看到MD5关键字</p>
+<p><img src="https://s2.loli.net/2023/12/16/12yr3eRphiCbIMQ.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Pasted image 20231216154541"
+	
+	
+></p>
+<p>参数基本一目了然</p>
+<p><img src="https://s2.loli.net/2023/12/16/HE4UBbcZV6rsNo5.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Pasted image 20231216154729"
+	
+	
+></p>
+<p>唯一有一个key参数，来自so层，右键这个函数，生成frida hook代码，
+<img src="https://s2.loli.net/2023/12/16/ZPzAcib9eDV4d3L.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Pasted image 20231216154806"
+	
+	
+>
+frida hook不在此展开，多次hook易得key横不变，为 <code>l8N2iooyp07M9IWa</code></p>
+<p>易得脚本</p>
+<h3 id="x-token">X-TOKEN</h3>
+<p>搜索，只有一个，按x，交叉引用，诶，找不到
+<img src="https://s2.loli.net/2023/12/16/1E8IevbfodFDUB4.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Pasted image 20231216161614"
+	
+	
+></p>
+<p>但是，我们继续在上面能找到 <code>f.a(com.niming.weipa.b.a.A, com.niming.weipa.utils.b.b(String.valueOf(jSONObject)));</code> 一句</p>
+<p><code>com.niming.weipa.b.a.A</code>就是 <code>X-TOKEN</code>，后面是在加密那坨hashmap
+看看加密，<code>AES/ECB/PKCS7Padding</code>，key还是同一个<code>l8N2iooyp07M9IWa</code>
+<img src="https://s2.loli.net/2023/12/16/rcjHOe4xqElhZIm.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Pasted image 20231216162203"
+	
+	
+></p>
+<h3 id="data">DATA</h3>
+<p>直接去搜索data的话，肯定会有很多结果，注意到json中有一个handshake参数，大概是恒固定的，去搜索一下<code>v20200429</code></p>
+<p>只有一个结果，直接定位到加密</p>
+<p><img src="https://s2.loli.net/2023/12/16/STCM3GaPe6DBY7o.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Pasted image 20231216162944"
+	
+	
+></p>
+<p>发现是使用的是和上面相同的加密方法
+<img src="https://s2.loli.net/2023/12/16/sWT9xHJMfGtNYC2.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Pasted image 20231216163029"
+	
+	
+></p>
+<p>hook一下这个加密方法，看看都加密是些什么东西</p>
+<p>右键这个方法，复制frida 方法，这里不再展开</p>
+<h2 id="邀请好友">邀请好友</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> hashlib <span style="color:#f92672">import</span> md5
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Cipher <span style="color:#f92672">import</span> AES
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.Padding <span style="color:#f92672">import</span> pad, unpad
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> base64<span style="color:#f92672">,</span>json
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> random
+</span></span><span style="display:flex;"><span>MODE <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>MODE_ECB
+</span></span><span style="display:flex;"><span>PAD_STYLE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;pkcs7&#39;</span>
+</span></span><span style="display:flex;"><span>ENCODING <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;UTF-8&#39;</span>
+</span></span><span style="display:flex;"><span>key<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;l8N2iooyp07M9IWa&#39;</span>
+</span></span><span style="display:flex;"><span>url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://apichlove.com&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">encrypt</span>(plaintext: str, key: str) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>    key_bytes <span style="color:#f92672">=</span> key<span style="color:#f92672">.</span>encode(ENCODING)
+</span></span><span style="display:flex;"><span>    cipher <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>new(key_bytes, MODE)
+</span></span><span style="display:flex;"><span>    plaintext_bytes <span style="color:#f92672">=</span> plaintext<span style="color:#f92672">.</span>encode(ENCODING)
+</span></span><span style="display:flex;"><span>    plaintext_bytes_padded <span style="color:#f92672">=</span> pad(plaintext_bytes, AES<span style="color:#f92672">.</span>block_size, PAD_STYLE)
+</span></span><span style="display:flex;"><span>    ciphertext_bytes <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span>encrypt(plaintext_bytes_padded)
+</span></span><span style="display:flex;"><span>    ciphertext_base64_bytes <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64encode(ciphertext_bytes) 
+</span></span><span style="display:flex;"><span>    ciphertext <span style="color:#f92672">=</span> ciphertext_base64_bytes<span style="color:#f92672">.</span>decode(ENCODING)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ciphertext
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decrypt</span>(ciphertext: str, key: str) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>    key_bytes <span style="color:#f92672">=</span> key<span style="color:#f92672">.</span>encode(ENCODING)
+</span></span><span style="display:flex;"><span>    decrypter <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>new(key_bytes, MODE)
+</span></span><span style="display:flex;"><span>    ciphertext_base64_bytes <span style="color:#f92672">=</span> ciphertext<span style="color:#f92672">.</span>encode(ENCODING)
+</span></span><span style="display:flex;"><span>    ciphertext_bytes <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64decode(ciphertext_base64_bytes)
+</span></span><span style="display:flex;"><span>    plaintext_bytes_padded <span style="color:#f92672">=</span> decrypter<span style="color:#f92672">.</span>decrypt(ciphertext_bytes)
+</span></span><span style="display:flex;"><span>    plaintext_bytes <span style="color:#f92672">=</span> unpad(plaintext_bytes_padded, AES<span style="color:#f92672">.</span>block_size, PAD_STYLE)
+</span></span><span style="display:flex;"><span>    plaintext <span style="color:#f92672">=</span> plaintext_bytes<span style="color:#f92672">.</span>decode(ENCODING)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> plaintext
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">x_t</span>(url):
+</span></span><span style="display:flex;"><span>    a <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    b <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># url = &#39;app/api/auth/login/device&#39;</span>
+</span></span><span style="display:flex;"><span>    v1 <span style="color:#f92672">=</span> str(int(time<span style="color:#f92672">.</span>time()))
+</span></span><span style="display:flex;"><span>    v2 <span style="color:#f92672">=</span> md5(v1<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest()[:<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>    a<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#39;md5&#39;</span>)
+</span></span><span style="display:flex;"><span>    a<span style="color:#f92672">.</span>append(key)
+</span></span><span style="display:flex;"><span>    a<span style="color:#f92672">.</span>append(v1)
+</span></span><span style="display:flex;"><span>    a<span style="color:#f92672">.</span>append(v2)
+</span></span><span style="display:flex;"><span>    a<span style="color:#f92672">.</span>append(url)
+</span></span><span style="display:flex;"><span>    v3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;|&#39;</span><span style="color:#f92672">.</span>join(a)
+</span></span><span style="display:flex;"><span>    v3 <span style="color:#f92672">=</span> md5(v3<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest()
+</span></span><span style="display:flex;"><span>    b<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#39;md5&#39;</span>)
+</span></span><span style="display:flex;"><span>    b<span style="color:#f92672">.</span>append(v1)
+</span></span><span style="display:flex;"><span>    b<span style="color:#f92672">.</span>append(v2)
+</span></span><span style="display:flex;"><span>    b<span style="color:#f92672">.</span>append(v3)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;|&#39;</span><span style="color:#f92672">.</span>join(b)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">getRandom</span>(randomlength<span style="color:#f92672">=</span><span style="color:#ae81ff">16</span>):
+</span></span><span style="display:flex;"><span>    digits<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;0123456789&#39;</span>
+</span></span><span style="display:flex;"><span>    ascii_letters<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;abcdefghigklmnopqrstuvwxyz&#39;</span>
+</span></span><span style="display:flex;"><span>    str_list <span style="color:#f92672">=</span>[random<span style="color:#f92672">.</span>choice(digits <span style="color:#f92672">+</span>ascii_letters) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(randomlength)]
+</span></span><span style="display:flex;"><span>    random_str <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(str_list)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> random_str
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Token</span>():
+</span></span><span style="display:flex;"><span>    device_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;b2ad30fc-0301-3d50-a97f-&#39;</span><span style="color:#f92672">+</span>getRandom(<span style="color:#ae81ff">12</span>)
+</span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>dumps({<span style="color:#e6db74">&#34;channel&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;code&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;device_no&#34;</span>: device_id,<span style="color:#e6db74">&#34;device_type&#34;</span>: <span style="color:#e6db74">&#34;A&#34;</span>, <span style="color:#e6db74">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;1.0.0&#34;</span>})
+</span></span><span style="display:flex;"><span>    data<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;data&#39;</span>:encrypt(data,key),<span style="color:#e6db74">&#39;handshake&#39;</span>:<span style="color:#e6db74">&#39;v20200429&#39;</span>}
+</span></span><span style="display:flex;"><span>    header <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;X-JSL-API-AUTH&#39;</span>: x_t(<span style="color:#e6db74">&#39;/app/api/auth/login/device&#39;</span>)}
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>post(url<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;/app/api/auth/login/device&#39;</span>, json<span style="color:#f92672">=</span>data, headers<span style="color:#f92672">=</span>header)<span style="color:#f92672">.</span>json()
+</span></span><span style="display:flex;"><span>    msg<span style="color:#f92672">=</span>decrypt(result[<span style="color:#e6db74">&#39;data&#39;</span>],key)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># print(msg)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> json<span style="color:#f92672">.</span>loads(msg)[<span style="color:#e6db74">&#39;auth&#39;</span>][<span style="color:#e6db74">&#39;token&#39;</span>],device_id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">x_token</span>(device_id,token):
+</span></span><span style="display:flex;"><span>    Json<span style="color:#f92672">=</span>json<span style="color:#f92672">.</span>dumps({<span style="color:#e6db74">&#34;device_no&#34;</span>:device_id,<span style="color:#e6db74">&#34;device_type&#34;</span>:<span style="color:#e6db74">&#34;A&#34;</span>,<span style="color:#e6db74">&#34;token&#34;</span>:token,<span style="color:#e6db74">&#34;version&#34;</span>:<span style="color:#e6db74">&#34;1.0.0&#34;</span>})
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> encrypt(Json,key)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parent</span>(code):
+</span></span><span style="display:flex;"><span>    token,device_id<span style="color:#f92672">=</span>Token()
+</span></span><span style="display:flex;"><span>    data<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;data&#39;</span>:encrypt(json<span style="color:#f92672">.</span>dumps({<span style="color:#e6db74">&#39;code&#39;</span>:code}),key),<span style="color:#e6db74">&#39;handshake&#39;</span>:<span style="color:#e6db74">&#39;v20200429&#39;</span>}
+</span></span><span style="display:flex;"><span>    header<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;X-JSL-API-AUTH&#39;</span>:x_t(<span style="color:#e6db74">&#39;/app/api/user/bindcode&#39;</span>),<span style="color:#e6db74">&#39;X-TOKEN&#39;</span>:x_token(device_id<span style="color:#f92672">=</span>device_id,token<span style="color:#f92672">=</span>token)}
+</span></span><span style="display:flex;"><span>    result<span style="color:#f92672">=</span>requests<span style="color:#f92672">.</span>post(url<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;/app/api/user/bindcode&#39;</span>,json<span style="color:#f92672">=</span>data,headers<span style="color:#f92672">=</span>header)<span style="color:#f92672">.</span>json()
+</span></span><span style="display:flex;"><span>    print(result)
+</span></span><span style="display:flex;"><span>    print(decrypt(result[<span style="color:#e6db74">&#39;data&#39;</span>],key))
+</span></span><span style="display:flex;"><span>    header[<span style="color:#e6db74">&#39;X-JSL-API-AUTH&#39;</span>]<span style="color:#f92672">=</span>x_t(<span style="color:#e6db74">&#39;/app/api/user/info&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 你的X-TOKEN</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># header[&#39;X-TOKEN&#39;]=&#39;4LJnAngoza8TZIz2otKTe52PhqbrW8GULUYVUu87AjDKzXQWPzNCDiHTohcbTWRcJ5V+mdgxrLVskUbLae90njTJJk4bG8tqYcgDX/fhwwG0VkkB11CY0wLhlxPfSkfMSlqmArvVTbrJ7UiydzotGh9nUHVrBqxMbDy9+iuhq9pFmucuV1SRKd/1pGxDNI0UX9nA5mpYMfYih0N/vR3A6+AdHQASRqBpeXSfMj3M7fHY/5W4fj0esNHkw93KjsnWM2FJWdNCYrkZC3tHWipUqKTk7zvbx20zaWo/c78VuePh8OeiCV2Htt9ah8+MNvAu+o6TERNF13aavGJkxeptaZs/+PFbBa397NVD4zQ28QDhkuOthPwHbpvOL/cWm9rjoL7TH7BdKGqjbYzHTvUnpWHQtJhGTPXRdNdSklDv4UDW/nsKTVVcv1LQAU1Oo5EnMwfZF2wmTtIRMRTPIi9zYFVhTYlJeFroe2fWrl8H9afzxz+fP+tm5aGSa7Ll0RBitPmN364On3xaWrRIiYGvfYsqckb6+BRQyDMXI+nHUMOAR2EcT6U3BMUCN5VJnkX8atWL76jdqPlFZzS9zyo5yaeiNLnQzVYm9wxNPuzb9ZMgvRQ4TnXfBGE5t8BiE4jAPJczvQhvWseHNy3M3wCd5b7CavKAVznoovCoLaqJpRX+bOWnttUWMLqdYxBnweL3&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># result=requests.post(url+&#39;/app/api/user/info&#39;,data=&#39;{&#34;handshake&#34;:&#34;v20200429&#34;}&#39;,headers=header).json()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># print(json.loads(decrypt(result[&#39;data&#39;],key))[&#39;vip_expired&#39;])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 邀请码</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">5</span>):
+</span></span><span style="display:flex;"><span>    parent(<span style="color:#e6db74">&#39;RWK6IF&#39;</span>)
+</span></span></code></pre></div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/re/">Re</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">flutter 逆向小计</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">某H视频-mls</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">某洗衣小程序</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 ljyh
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.24.1">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Android on ljyh</title>
+        <link>http://localhost:1313/tags/android/</link>
+        <description>Recent content in Android on ljyh</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 03 Sep 2023 22:50:37 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/android/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>flutter</title>
+        <link>http://localhost:1313/post/flutter/</link>
+        <pubDate>Sun, 03 Sep 2023 22:50:37 +0000</pubDate>
+        
+        <guid>http://localhost:1313/post/flutter/</guid>
+        <description>&lt;h2 id=&#34;起因&#34;&gt;起因&lt;/h2&gt;
+&lt;p&gt;放假在家闲的皮爆，有空学习写了个（其实在很久之前就有打算了）
+因为网易云音乐下载有很多但是加密的，虽然可以解密，但是也不方便管理，所以就有了这个软件，可以嵌入元数据（mp3和flac），包括歌词封面等。同步网易云歌单，可以删除本地文件&lt;/p&gt;
+&lt;h2 id=&#34;开发&#34;&gt;开发&lt;/h2&gt;
+&lt;p&gt;至于学习flutter，最开始知道flutter是因为逆向系列了解到的，听说写ui很方便，之前也有用过java开发。java的语法还也不是很喜欢。
+网易云的api 参考: &lt;a class=&#34;link&#34; href=&#34;https://github.com/Binaryify/NeteaseCloudMusicApi&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;NeteaseCloudMusicApi&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;学习编程语言我不是很喜欢看视频来，慢得很，需要什么直接去搜代码就行了。
+先看看官方的文档，demo，自己需要什么功能直接百度
+虽然可能了解不深刻，但是跟着视频写代码更烦人&lt;/p&gt;
+&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
+&lt;p&gt;设置里面要先设置cookie，只需要cookie中的MUSIC_U的部分，以及保存路径，这个保存路径是歌单的保存路径，如果下载的话会根据歌单名为文件夹保存在下级。&lt;/p&gt;
+&lt;p&gt;元数据默认嵌入所有&lt;/p&gt;
+&lt;p&gt;先根据歌单id获取歌曲，若要下载需要收藏歌单，下载完成会检测本地歌单中多余歌曲并徐闻是否删除。&lt;/p&gt;
+&lt;p&gt;似乎就这点鸟功能&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>某H视频-mls</title>
+        <link>http://localhost:1313/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</link>
+        <pubDate>Sat, 07 Jan 2023 13:15:37 +0000</pubDate>
+        
+        <guid>http://localhost:1313/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</guid>
+        <description>&lt;h2 id=&#34;分析流程&#34;&gt;分析流程&lt;/h2&gt;
+&lt;p&gt;这个软件呢，其实分析主要就是想要看他拉人获得vip的操作&lt;/p&gt;
+&lt;p&gt;抓包可以找到一个api&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-apl&#34; data-lang=&#34;apl&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;api&lt;span style=&#34;color:#a6e22e&#34;&gt;/&lt;/span&gt;user&lt;span style=&#34;color:#a6e22e&#34;&gt;/&lt;/span&gt;traveler
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这之前token还没有得到，参数&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;deviceId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;device&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;dev&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;随机&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;字符&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;code&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;&lt;/span&gt;{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;p&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;PDTVPD&amp;#34;&lt;/span&gt;}&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;这个code参数其实开始我也不知道是啥，走了一遍拉人的流程，发现app给我们的邀请链接有p参数，就是邀请码&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-apl&#34; data-lang=&#34;apl&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;https:&lt;span style=&#34;color:#a6e22e&#34;&gt;//&lt;/span&gt;z6mhir31k&lt;span style=&#34;color:#a6e22e&#34;&gt;.&lt;/span&gt;xyz&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;p&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;PDTVPD
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在进到网页中点击下载软件会将邀请码复制到我们的粘贴板上&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;p&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;PDTVPD&amp;#34;&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;当你进入app时，读取粘贴板的第一条数据&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; String &lt;span style=&#34;color:#a6e22e&#34;&gt;u&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ClipData v0 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; FragmentAnim.&lt;span style=&#34;color:#a6e22e&#34;&gt;f&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getSystemService&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;clipboard&amp;#34;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;getPrimaryClip&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        String v1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(v0 &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; v0.&lt;span style=&#34;color:#a6e22e&#34;&gt;getItemCount&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; 0) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            CharSequence v0_1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v0.&lt;span style=&#34;color:#a6e22e&#34;&gt;getItemAt&lt;/span&gt;(0).&lt;span style=&#34;color:#a6e22e&#34;&gt;getText&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(TextUtils.&lt;span style=&#34;color:#a6e22e&#34;&gt;isEmpty&lt;/span&gt;(v0_1)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; v1;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; v0_1.&lt;span style=&#34;color:#a6e22e&#34;&gt;toString&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; v1;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;deviceid&#34;&gt;deviceId&lt;/h3&gt;
+&lt;p&gt;顺着上去就发现了deviceId的生成&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;final&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;C&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        String v0_2;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        String v3_1;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        String v1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;everb&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        String v2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(a.&lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;exists&lt;/span&gt;()) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                ObjectInputStream v0_1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ObjectInputStream(&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; FileInputStream(a.&lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                Object v3 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v0_1.&lt;span style=&#34;color:#a6e22e&#34;&gt;readObject&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    v0_1.&lt;span style=&#34;color:#a6e22e&#34;&gt;close&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#66d9ef&#34;&gt;goto&lt;/span&gt; label_21;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt;(Exception v0) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt;(Exception v0) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                v3_1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v2;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Log.&lt;span style=&#34;color:#a6e22e&#34;&gt;d&lt;/span&gt;(v1, v0.&lt;span style=&#34;color:#a6e22e&#34;&gt;toString&lt;/span&gt;());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            v3_1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v2;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    label_21:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(v3_1 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Log.&lt;span style=&#34;color:#a6e22e&#34;&gt;d&lt;/span&gt;(v1, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;data == null&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            v3_1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v2;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(TextUtils.&lt;span style=&#34;color:#a6e22e&#34;&gt;isEmpty&lt;/span&gt;(((CharSequence)v3_1))) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            v0_2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; String.&lt;span style=&#34;color:#a6e22e&#34;&gt;valueOf&lt;/span&gt;(System.&lt;span style=&#34;color:#a6e22e&#34;&gt;currentTimeMillis&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; UUID.&lt;span style=&#34;color:#a6e22e&#34;&gt;randomUUID&lt;/span&gt;().&lt;span style=&#34;color:#a6e22e&#34;&gt;getLeastSignificantBits&lt;/span&gt;());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;byte&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; v0_4 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; MessageDigest.&lt;span style=&#34;color:#a6e22e&#34;&gt;getInstance&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MD5&amp;#34;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;digest&lt;/span&gt;(v0_2.&lt;span style=&#34;color:#a6e22e&#34;&gt;getBytes&lt;/span&gt;());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                StringBuilder v1_1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; StringBuilder();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; v5;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(v5 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0; v5 &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; v0_4.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;; &lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;v5) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    String v6 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Integer.&lt;span style=&#34;color:#a6e22e&#34;&gt;toHexString&lt;/span&gt;(v0_4&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;v5&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt; 0xFF);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(v6.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; 2) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                        v1_1.&lt;span style=&#34;color:#a6e22e&#34;&gt;append&lt;/span&gt;(0);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    v1_1.&lt;span style=&#34;color:#a6e22e&#34;&gt;append&lt;/span&gt;(v6);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                v3_1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v1_1.&lt;span style=&#34;color:#a6e22e&#34;&gt;toString&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;他会打开是个名为.CAD的文件，把deviceid写进去,如果像要看一遍生成新device，记得删除这个文件&lt;/p&gt;
+&lt;p&gt;但是我却没有搞懂这个deviceID的鉴别方法，你自己随便改一两位他都不会返回，看不懂&lt;/p&gt;
+&lt;p&gt;下面是用python模拟生成的deviceid&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; uuid&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;hashlib&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;unpack
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;t &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; int(time&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;time()&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1000&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;uuid_bytes &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; uuid&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;uuid1()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;bytes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;leastbit &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; struct&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;unpack(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;gt;q&amp;#39;&lt;/span&gt;, uuid_bytes[&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;:])[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(leastbit)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;v4 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; hashlib&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;md5(str(t&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;leastbit)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;encode())&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;digest()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;v2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; []
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; v4:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    v1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; hex(i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0xFF&lt;/span&gt;)[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;:]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; len(v1) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        v1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;v1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    v2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(v1)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;device &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join(v2)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这个几把最低64位真的搞得烦，没见过&lt;/p&gt;
+&lt;p&gt;里面其实还有个chcode不知道是啥&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; JSONObject &lt;span style=&#34;color:#a6e22e&#34;&gt;c&lt;/span&gt;(String arg5, String arg6) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;deviceId&amp;#34;&lt;/span&gt;, arg5);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Random v5 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Random();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        StringBuffer v0 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; StringBuffer();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; v1;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(v1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0; v1 &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; 3; &lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;v1) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            v0.&lt;span style=&#34;color:#a6e22e&#34;&gt;append&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&amp;#34;&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;charAt&lt;/span&gt;(v5.&lt;span style=&#34;color:#a6e22e&#34;&gt;nextInt&lt;/span&gt;(62)));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dev&amp;#34;&lt;/span&gt;, v0.&lt;span style=&#34;color:#a6e22e&#34;&gt;toString&lt;/span&gt;());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(arg6 &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;code&amp;#34;&lt;/span&gt;, arg6);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            arg5 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; FragmentAnim.&lt;span style=&#34;color:#a6e22e&#34;&gt;f&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getPackageManager&lt;/span&gt;().&lt;span style=&#34;color:#a6e22e&#34;&gt;getApplicationInfo&lt;/span&gt;(FragmentAnim.&lt;span style=&#34;color:#a6e22e&#34;&gt;f&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getPackageName&lt;/span&gt;(), 0x80).&lt;span style=&#34;color:#a6e22e&#34;&gt;metaData&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getString&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;UMENG_CHANNEL&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt;(PackageManager$NameNotFoundException ) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            arg5 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        StringBuilder v6 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; StringBuilder();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        v6.&lt;span style=&#34;color:#a6e22e&#34;&gt;append&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;--------------&amp;gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        v6.&lt;span style=&#34;color:#a6e22e&#34;&gt;append&lt;/span&gt;(arg5);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        String v0_1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;渠道号：&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Log.&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;(v0_1, v6.&lt;span style=&#34;color:#a6e22e&#34;&gt;toString&lt;/span&gt;());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;TextUtils.&lt;span style=&#34;color:#a6e22e&#34;&gt;isEmpty&lt;/span&gt;(((CharSequence)arg5)) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;arg5.&lt;span style=&#34;color:#a6e22e&#34;&gt;equals&lt;/span&gt;(FragmentAnim.&lt;span style=&#34;color:#a6e22e&#34;&gt;A&lt;/span&gt;())) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;chCode&amp;#34;&lt;/span&gt;, arg5);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Log.&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;(v0_1, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;chCode--------------&amp;gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; arg5);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; b.&lt;span style=&#34;color:#a6e22e&#34;&gt;b&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;header&#34;&gt;header&lt;/h3&gt;
+&lt;p&gt;在上面那个api中header中的s和t&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; time&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;hashlin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;t&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;str(int(time&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;time()&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1000&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;s&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;hsahlib&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;md5(t[&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;encode())&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;hesdigest()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;到最后我发现妈的这软件好像也不加头，我的vip啊，也有可能是我哪里遗漏了些什么&lt;/p&gt;
+&lt;p&gt;注意ua,没带或者ua有问题都不会返回token，我在网上找的爬虫ua就不行，用模拟器自己生成的ua就行&lt;/p&gt;
+&lt;p&gt;个人里面那个填写invitecode的地方好像也是摆设&lt;/p&gt;
+&lt;h3 id=&#34;encdata&#34;&gt;encData&lt;/h3&gt;
+&lt;p&gt;在后面返回数据里encData是有加密的，aes/cbc/pkcs7,key和iv都是一样的&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;JhbGciOiJIUzI1Ni
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;m3u8解密&#34;&gt;m3u8解密&lt;/h3&gt;
+&lt;p&gt;m3u8文件解密，得到的m3u8文件里的key是假的&lt;/p&gt;
+&lt;p&gt;看了几个关于m3u8的类&lt;/p&gt;
+&lt;p&gt;会找到getkeyPath这个方法&lt;/p&gt;
+&lt;p&gt;key是在本地文件kdbc/kb里，把key copy出来&lt;/p&gt;
+&lt;p&gt;配合N_m3u8DL-CLI可以下载m3u8文件&lt;/p&gt;
+&lt;p&gt;打印N_m3u8DL-CLI的命令,视频存放在Videos目录&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;download&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;1570&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# 143811&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# 24323&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    t &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; str(int(time&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;time()&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1000&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    header &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;deviceid&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ac6819db96c1892587d63f353bd9a51c&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;t&amp;#39;&lt;/span&gt;: t,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s&amp;#39;&lt;/span&gt;: hashlib&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;md5(t[&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;encode())&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;hexdigest(),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;authorization&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMzMzNjQwNyIsImlzcyI6IiIsImlhdCI6MTY3MTI3NTY5NCwibmJmIjoxNjcxMjc1Njk0LCJleHAiOjE4Mjg5NTU2OTR9.766BQyjE6ZO5ZPC5Y6J0i5BZKmezUk7CXYo-cStNp_w&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; requests&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://mhapp.vxxsred.xyz/api/video/getVideoById?videoId=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;id&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;, headers&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;header)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;json()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# print(res)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    data &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; res[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;encData&amp;#39;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    data &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; AES_decrypt(data, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;JhbGciOiJIUzI1Ni&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;JhbGciOiJIUzI1Ni&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(data)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    data &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; json&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;loads(data)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(data[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;videoUrl&amp;#39;&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#34;https://nwretbns.yongchengge.cn/&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          data[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;videoUrl&amp;#39;&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#34; --workDir &amp;#34;C:\Users\xx\Videos&amp;#34; --useKeyFile &amp;#34;C:\Users\xx\Desktop\N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG\key\kb&amp;#34;&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# https://videossy.tsk12.top/lfb/5c/5h/8n/rv/fb43cc643014465380e4c222aa60fb30.m3u8/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# lfb/5c/5h/8n/rv/fb43cc643014465380e4c222aa60fb30.m3u8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# &amp;#34;https://nwretbns.yongchengge.cn/lfb/5c/5h/8n/rv/fb43cc643014465380e4c222aa60fb30.m3u8&amp;#34; --workDir &amp;#34;E:\tools\other\N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG&amp;#34; --useKeyFile &amp;#34;C:\Users\jinchuan\Desktop\N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG\key\kb&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# https://nwretbns.yongchengge.cn/lfb/5c/5h/8n/rv/fb43cc643014465380e4c222aa60fb30.m3u8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        </item>
+        
+    </channel>
+</rss>
