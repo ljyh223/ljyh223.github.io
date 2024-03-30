@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="某个淘金社区，登陆有md5加密\n用blutter 解析一下，找到hash_update的地址，放到frida的脚本中，在console的下面加一句\nconsole.log(&#39;hexdump&#39;+hexdump(args[0])) 打印出来4个uint32List，虽然看不懂，但是我们打印了hex\n多看几次知道有随机的东西，在多看几次就知道应该是时间戳末尾在控制，反复测试得到所有出现过的字符，易得脚本\nimport requests import hashlib import time def get_data(p): A=[&#39;gcw7eeh5&#39;,&#39;eegc15nnccccoqh5r7&#39;,&#39;15gcnncc&#39;,&#39;h5ccccgc15nnee/i&#39;,&#39;15gcnnq4oq/ih5oqccccee&#39;,&#39;15cc/ir7oqnnq4oqh5&#39;,&#39;nncc/i&#39;,&#39;h515r7q4oqcc&#39;,&#39;oqoqnnr7q4/i&#39;,&#39;h5nn&#39;] B=[&#39;eeoqh5&#39;,&#39;&#39;,&#39;h5ccoqeer7&#39;,&#39;oqr7&#39;,&#39;r7&#39;,&#39;oqccgc&#39;,&#39;oqccgcoqh515r7oqq4&#39;,&#39;oqgcoqnn/i&#39;,&#39;h515oqcc&#39;,&#39;oq&#39;] C=[&#39;&#39;,&#39;&#39;,&#39;/iq4&#39;,&#39;q4&#39;,&#39;op&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;gc&#39;,&#39;2115oqr7q4/ioqccgc&#39;] # 16位时间戳 t=str(int(time.time()*1000000)) k=int(t[-1]) # B164D0C43EDB3BAD89D1A073EBE9691D # 为固定值，可能跟随app版本所迭代 #一下情况特殊出现，需要对换位置 if k==8 or k==5: message= &#39;action=sendcode&amp;phone={}&amp;verifytoken={}&amp;verifycodes={}{}B164D0C43EDB3BAD89D1A073EBE9691D..{}W1W2W3W4W5W6W7W8W901020304050607..{}{}&#39;.format(p,&#39;{system::verifytoken}&#39;,&#39;{system::verifytoken}&#39;,A[k],B[k],C[k],t) else: message= &#39;action=sendcode&amp;phone={}&amp;verifytoken={}&amp;verifycodes={}{}W1W2W3W4W5W6W7W8W901020304050607..{}B164D0C43EDB3BAD89D1A073EBE9691D..{}{}&#39;.format(p,&#39;{system::verifytoken}&#39;,&#39;{system::verifytoken}&#39;,A[k],B[k],C[k],t) # print(message) return {&#39;action&#39;:&#39;sendcode&#39;,&#39;phone&#39;:p,&#39;verifytoken&#39;:hashlib.md5(message.encode()).hexdigest(),&#39;verifycodes&#39;:t} data=get_data(&#39;19999994444&#39;) resp=requests.get(&#39;http://bbs.taojingdaohang.cn/index.php&#39;,params=data) print(resp.text) 测试正常发送短信">
 <title>flutter 逆向小计</title>
 
-<link rel='canonical' href='http://localhost:1313/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/'>
+<link rel='canonical' href='https://example.org/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="flutter 逆向小计">
 <meta property='og:description' content="某个淘金社区，登陆有md5加密\n用blutter 解析一下，找到hash_update的地址，放到frida的脚本中，在console的下面加一句\nconsole.log(&#39;hexdump&#39;+hexdump(args[0])) 打印出来4个uint32List，虽然看不懂，但是我们打印了hex\n多看几次知道有随机的东西，在多看几次就知道应该是时间戳末尾在控制，反复测试得到所有出现过的字符，易得脚本\nimport requests import hashlib import time def get_data(p): A=[&#39;gcw7eeh5&#39;,&#39;eegc15nnccccoqh5r7&#39;,&#39;15gcnncc&#39;,&#39;h5ccccgc15nnee/i&#39;,&#39;15gcnnq4oq/ih5oqccccee&#39;,&#39;15cc/ir7oqnnq4oqh5&#39;,&#39;nncc/i&#39;,&#39;h515r7q4oqcc&#39;,&#39;oqoqnnr7q4/i&#39;,&#39;h5nn&#39;] B=[&#39;eeoqh5&#39;,&#39;&#39;,&#39;h5ccoqeer7&#39;,&#39;oqr7&#39;,&#39;r7&#39;,&#39;oqccgc&#39;,&#39;oqccgcoqh515r7oqq4&#39;,&#39;oqgcoqnn/i&#39;,&#39;h515oqcc&#39;,&#39;oq&#39;] C=[&#39;&#39;,&#39;&#39;,&#39;/iq4&#39;,&#39;q4&#39;,&#39;op&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;gc&#39;,&#39;2115oqr7q4/ioqccgc&#39;] # 16位时间戳 t=str(int(time.time()*1000000)) k=int(t[-1]) # B164D0C43EDB3BAD89D1A073EBE9691D # 为固定值，可能跟随app版本所迭代 #一下情况特殊出现，需要对换位置 if k==8 or k==5: message= &#39;action=sendcode&amp;phone={}&amp;verifytoken={}&amp;verifycodes={}{}B164D0C43EDB3BAD89D1A073EBE9691D..{}W1W2W3W4W5W6W7W8W901020304050607..{}{}&#39;.format(p,&#39;{system::verifytoken}&#39;,&#39;{system::verifytoken}&#39;,A[k],B[k],C[k],t) else: message= &#39;action=sendcode&amp;phone={}&amp;verifytoken={}&amp;verifycodes={}{}W1W2W3W4W5W6W7W8W901020304050607..{}B164D0C43EDB3BAD89D1A073EBE9691D..{}{}&#39;.format(p,&#39;{system::verifytoken}&#39;,&#39;{system::verifytoken}&#39;,A[k],B[k],C[k],t) # print(message) return {&#39;action&#39;:&#39;sendcode&#39;,&#39;phone&#39;:p,&#39;verifytoken&#39;:hashlib.md5(message.encode()).hexdigest(),&#39;verifycodes&#39;:t} data=get_data(&#39;19999994444&#39;) resp=requests.get(&#39;http://bbs.taojingdaohang.cn/index.php&#39;,params=data) print(resp.text) 测试正常发送短信">
-<meta property='og:url' content='http://localhost:1313/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/'>
+<meta property='og:url' content='https://example.org/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/'>
 <meta property='og:site_name' content='ljyh'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='re' /><meta property='article:tag' content='flutter' /><meta property='article:published_time' content='2023-10-23T22:59:16&#43;00:00'/><meta property='article:modified_time' content='2023-10-23T22:59:16&#43;00:00'/>
 <meta name="twitter:title" content="flutter 逆向小计">
@@ -128,9 +128,9 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >中文</option>
+                                    <option value="https://example.org/zh-cn/" >中文</option>
                                 
-                                    <option value="http://localhost:1313/" selected></option>
+                                    <option value="https://example.org/" selected></option>
                                 
                             </select>
                         </li>

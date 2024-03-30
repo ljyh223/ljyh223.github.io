@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="拿到水卡第二天就起了注意，明明冲了100，插到机子上没钱，后来了解到，还有一个机子专门用来充水卡，尽管水卡卬和饭卡用的是同一张，或许可能水卡单独一个扇区。\n用mct读卡看到10扇区数据能用默认密钥解开\nE95E 5707 00A1 0013 0000000000FF AAE6 E9，第2位到第15位互异 5E，第6位取反 5707，金额，小端序 A1，ff-金额的两部分（ff-0x57-0x7） 13，可能是上次余下 AA， E6，第2位到第15位之和取反 写入数据生成脚本\nimport re # 你的想要写入money # 如20y，就写2000，13.14，就写1314 m=1653 m_hex=hex(m) s_m_hex=[m_hex[:-2],&#39;0x&#39;+m_hex[-2:]] _3=s_m_hex[0][2:].rjust(2,&#39;0&#39;) _4=&#39;0x&#39;+m_hex[-2:] _6=0xff-int(s_m_hex[0],16)-int(s_m_hex[1],16) _2=~_6&amp;0xff # 以下这两位随扈随便整 # 可能是查看次数和上次余留 _8=8 _15=0x8a h=&#39;{0} {1} {2} 00 {3} 00 {4} 00 00 00 00 00 FF {5}&#39;.format(f&#39;{_2:x}&#39;,_4[2:],_3,hex(_6)[2:].rjust(2,&#39;0&#39;),hex(_8)[2:].rjust(2,&#39;0&#39;),hex(_15)[2:].rjust(2,&#39;0&#39;)) s=0 _16=~sum([int(i,16) for i in h.split(&#39; &#39;)]) &amp; 0xff _1=0 for i in h.split(&#39; &#39;): _1^=int(i,16) h=&#39;{} {} {}&#39;.format(hex(_1)[2:].rjust(2,&#39;0&#39;),h,hex(_16)[2:].rjust(2,&#39;0&#39;)) print(h) print(h.replace(&#34; &#34;,&#34;&#34;)) 已测，不行">
 <title>Water calorie</title>
 
-<link rel='canonical' href='http://localhost:1313/post/water-calorie/'>
+<link rel='canonical' href='https://example.org/post/water-calorie/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="Water calorie">
 <meta property='og:description' content="拿到水卡第二天就起了注意，明明冲了100，插到机子上没钱，后来了解到，还有一个机子专门用来充水卡，尽管水卡卬和饭卡用的是同一张，或许可能水卡单独一个扇区。\n用mct读卡看到10扇区数据能用默认密钥解开\nE95E 5707 00A1 0013 0000000000FF AAE6 E9，第2位到第15位互异 5E，第6位取反 5707，金额，小端序 A1，ff-金额的两部分（ff-0x57-0x7） 13，可能是上次余下 AA， E6，第2位到第15位之和取反 写入数据生成脚本\nimport re # 你的想要写入money # 如20y，就写2000，13.14，就写1314 m=1653 m_hex=hex(m) s_m_hex=[m_hex[:-2],&#39;0x&#39;+m_hex[-2:]] _3=s_m_hex[0][2:].rjust(2,&#39;0&#39;) _4=&#39;0x&#39;+m_hex[-2:] _6=0xff-int(s_m_hex[0],16)-int(s_m_hex[1],16) _2=~_6&amp;0xff # 以下这两位随扈随便整 # 可能是查看次数和上次余留 _8=8 _15=0x8a h=&#39;{0} {1} {2} 00 {3} 00 {4} 00 00 00 00 00 FF {5}&#39;.format(f&#39;{_2:x}&#39;,_4[2:],_3,hex(_6)[2:].rjust(2,&#39;0&#39;),hex(_8)[2:].rjust(2,&#39;0&#39;),hex(_15)[2:].rjust(2,&#39;0&#39;)) s=0 _16=~sum([int(i,16) for i in h.split(&#39; &#39;)]) &amp; 0xff _1=0 for i in h.split(&#39; &#39;): _1^=int(i,16) h=&#39;{} {} {}&#39;.format(hex(_1)[2:].rjust(2,&#39;0&#39;),h,hex(_16)[2:].rjust(2,&#39;0&#39;)) print(h) print(h.replace(&#34; &#34;,&#34;&#34;)) 已测，不行">
-<meta property='og:url' content='http://localhost:1313/post/water-calorie/'>
+<meta property='og:url' content='https://example.org/post/water-calorie/'>
 <meta property='og:site_name' content='ljyh'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='card' /><meta property='article:published_time' content='2024-01-09T20:43:24&#43;00:00'/><meta property='article:modified_time' content='2024-01-09T20:43:24&#43;00:00'/>
 <meta name="twitter:title" content="Water calorie">
@@ -128,9 +128,9 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >中文</option>
+                                    <option value="https://example.org/zh-cn/" >中文</option>
                                 
-                                    <option value="http://localhost:1313/" selected></option>
+                                    <option value="https://example.org/" selected></option>
                                 
                             </select>
                         </li>

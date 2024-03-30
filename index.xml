@@ -2,16 +2,103 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>ljyh</title>
-        <link>http://localhost:1313/</link>
+        <link>https://example.org/</link>
         <description>Recent content on ljyh</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 09 Jan 2024 20:43:24 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 29 Mar 2024 20:55:59 +0800</lastBuildDate><atom:link href="https://example.org/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Bika Anime</title>
+        <link>https://example.org/post/bika-anime/</link>
+        <pubDate>Fri, 29 Mar 2024 20:55:59 +0800</pubDate>
+        
+        <guid>https://example.org/post/bika-anime/</guid>
+        <description>&lt;p&gt;bika 动漫,dddd&lt;/p&gt;
+&lt;p&gt;flutter 以前用过，但是没有arm64的so，所以就放弃了，今天一个朋发给我，发现居然后arm64的，那就别挂我不客气。&lt;/p&gt;
+&lt;p&gt;blutter 启动，dart 2.19 解析出来了&lt;/p&gt;
+&lt;p&gt;主要是事看pp.txt和 addNames.py 这两个文件，找关键字，看有地址的，一般这种软件加密都是aes，所以直接搜索，然后挨个挨个frida hook，&lt;/p&gt;
+&lt;p&gt;blutter 会生成一个blutter_frida.js, 添加一句话&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;fn_addr&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0x7e1018&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;Interceptor&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;attach&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;libapp&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;fn_addr&lt;/span&gt;), {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;onEnter&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; () {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#a6e22e&#34;&gt;init&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;context&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;objPtr&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;getArg&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;context&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;tptr&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;cls&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;values&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;getTaggedObjectValue&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;objPtr&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;cls&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;tptr&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;toString&lt;/span&gt;().&lt;span style=&#34;color:#a6e22e&#34;&gt;slice&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; =`&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;JSON&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;stringify&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;values&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		    &lt;span style=&#34;color:#75715e&#34;&gt;//就是添这句话,找关键字就行了,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;hexdump ==&amp;gt; &amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;hexdump&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;objPtr&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    });
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;多hook 几次基本拿下，然后就是猜，deviceId忙猜随机生成，拿uuid做md5取前16位，直接传上去，发现可以，最后就是喜闻乐见得绑定邀请码获得VIP，直接就是稳稳得拿下。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; requests&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; time&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; json&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; uuid &lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;hashlib
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; Crypto.Cipher &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; AES
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; Crypto.Util.Padding &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; pad
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;code&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;YMMTK&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cipher &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; AES&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;new(&lt;span style=&#34;color:#e6db74&#34;&gt;b&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;525202f9149e061d&amp;#39;&lt;/span&gt;, AES&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;MODE_ECB)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_header&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;user-agent&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Mozilla/5.0 (Linux; U; Android 2.1; en-us; Nexus One Build/ERD62) AppleDart/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;version&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;1.0&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;devicetype&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;android&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;time&amp;#39;&lt;/span&gt;: str(int(time&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;time()&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1000&lt;/span&gt;)),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;host&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;api.bkrezwvjkc.com&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;content-type&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;application/x-www-form-urlencoded&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;remove_pkcs7_padding&lt;/span&gt;(data: bytes, block_size: int &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;16&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; len(data) &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; block_size &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;raise&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ValueError&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Data length is not a multiple of the block size&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    padding_length &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; data[&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; padding_length &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; block_size &lt;span style=&#34;color:#f92672&#34;&gt;or&lt;/span&gt; padding_length &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;raise&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ValueError&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Invalid padding detected&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    padding &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; data[&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;padding_length:]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; any(byte &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; padding_length &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; byte &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; padding):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;raise&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ValueError&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Inconsistent padding detected&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; data[:&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;padding_length]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;en&lt;/span&gt;(map):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    plaintext_bytes_padded &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pad(json&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dumps(map)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;encode(), AES&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;block_size)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; cipher&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;encrypt(plaintext_bytes_padded)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;hex()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;de&lt;/span&gt;(s):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    a&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;cipher&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;decrypt(s)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    a&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;remove_pkcs7_padding(a)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; json&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;loads(a&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;decode()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\r&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\\\\&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;device_id&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    random_uuid &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; uuid&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;uuid4()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    uuid_str &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; str(random_uuid)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; hashlib&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;md5(uuid_str&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;encode())&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;hexdigest()[:&lt;span style=&#34;color:#ae81ff&#34;&gt;16&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_token&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    dviceId&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;device_id()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    map&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;token&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;deviceId&amp;#34;&lt;/span&gt;:dviceId,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;:{&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;app_code&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ch2&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;clipboard_text&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;channel_code&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;channel://zwkab1bk&amp;#34;&lt;/span&gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    result&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;requests&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;post(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;http://api.bkrezwvjkc.com/cxapi/system/info&amp;#39;&lt;/span&gt;,headers&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;get_header(),data&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;en(map))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    json_str&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;de(result&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;content)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(json_str)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; json_str[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;data&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;token&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;token&amp;#39;&lt;/span&gt;], json_str[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;data&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;token&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;user_id&amp;#39;&lt;/span&gt;], dviceId
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;bind&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    token, uid, device_id&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;get_token()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    map&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;token&amp;#39;&lt;/span&gt;:token&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;_&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;uid,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;deviceId&amp;#39;&lt;/span&gt;:device_id,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;data&amp;#39;&lt;/span&gt;:{&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;code&amp;#39;&lt;/span&gt;:code}}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; requests&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;post(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;http://api.bkrezwvjkc.com/cxapi/user/bindParent&amp;#39;&lt;/span&gt;, headers&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;get_header(), data&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;en(map))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    json_str&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;de(response&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;content)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(json_str)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bind()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        </item>
+        <item>
         <title>Water calorie</title>
-        <link>http://localhost:1313/post/water-calorie/</link>
+        <link>https://example.org/post/water-calorie/</link>
         <pubDate>Tue, 09 Jan 2024 20:43:24 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/water-calorie/</guid>
+        <guid>https://example.org/post/water-calorie/</guid>
         <description>&lt;p&gt;拿到水卡第二天就起了注意，明明冲了100，插到机子上没钱，后来了解到，还有一个机子专门用来充水卡，尽管水卡卬和饭卡用的是同一张，或许可能水卡单独一个扇区。&lt;/p&gt;
 &lt;p&gt;用mct读卡看到10扇区数据能用默认密钥解开&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hex&#34; data-lang=&#34;hex&#34;&gt;E95E 5707 00A1 0013 0000000000FF AAE6
@@ -61,10 +148,10 @@
         </item>
         <item>
         <title>政治</title>
-        <link>http://localhost:1313/post/%E6%94%BF%E6%B2%BB/</link>
+        <link>https://example.org/post/%E6%94%BF%E6%B2%BB/</link>
         <pubDate>Fri, 05 Jan 2024 19:28:19 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/%E6%94%BF%E6%B2%BB/</guid>
+        <guid>https://example.org/post/%E6%94%BF%E6%B2%BB/</guid>
         <description>&lt;h1 id=&#34;政治16&#34;&gt;政治16&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&#34;https://api.nguaduot.cn/netbian/random&#34;
 	
@@ -245,10 +332,10 @@
         </item>
         <item>
         <title>C语言87</title>
-        <link>http://localhost:1313/post/c%E8%AF%AD%E8%A8%8087/</link>
+        <link>https://example.org/post/c%E8%AF%AD%E8%A8%8087/</link>
         <pubDate>Wed, 03 Jan 2024 14:43:23 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/c%E8%AF%AD%E8%A8%8087/</guid>
+        <guid>https://example.org/post/c%E8%AF%AD%E8%A8%8087/</guid>
         <description>&lt;p&gt;&lt;img src=&#34;https://api.nguaduot.cn/qingbz/random&#34;
 	
 	
@@ -937,10 +1024,10 @@
         </item>
         <item>
         <title>我的2023</title>
-        <link>http://localhost:1313/post/%E6%88%91%E7%9A%842023/</link>
+        <link>https://example.org/post/%E6%88%91%E7%9A%842023/</link>
         <pubDate>Mon, 01 Jan 2024 12:59:26 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/%E6%88%91%E7%9A%842023/</guid>
+        <guid>https://example.org/post/%E6%88%91%E7%9A%842023/</guid>
         <description>&lt;p&gt;2023年初设下的目标&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;考上公办&lt;/li&gt;
@@ -971,10 +1058,10 @@
         </item>
         <item>
         <title>你好-ljyh</title>
-        <link>http://localhost:1313/post/%E4%BD%A0%E5%A5%BD-ljyh/</link>
+        <link>https://example.org/post/%E4%BD%A0%E5%A5%BD-ljyh/</link>
         <pubDate>Mon, 18 Dec 2023 21:19:36 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/%E4%BD%A0%E5%A5%BD-ljyh/</guid>
+        <guid>https://example.org/post/%E4%BD%A0%E5%A5%BD-ljyh/</guid>
         <description>&lt;h2 id=&#34;你好-ljyh&#34;&gt;你好 ljyh&lt;/h2&gt;
 &lt;p&gt;近来安好&lt;/p&gt;
 &lt;p&gt;已进入冬了，你找到温暖了吗？
@@ -993,10 +1080,10 @@
         </item>
         <item>
         <title>逆向3</title>
-        <link>http://localhost:1313/post/%E9%80%86%E5%90%913/</link>
+        <link>https://example.org/post/%E9%80%86%E5%90%913/</link>
         <pubDate>Sat, 16 Dec 2023 17:27:06 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/%E9%80%86%E5%90%913/</guid>
+        <guid>https://example.org/post/%E9%80%86%E5%90%913/</guid>
         <description>&lt;p&gt;所需工具&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;逍遥模拟器&lt;/li&gt;
@@ -1260,10 +1347,10 @@ frida hook不在此展开，多次hook易得key横不变，为 &lt;code&gt;l8N2i
         </item>
         <item>
         <title>我要去比赛了</title>
-        <link>http://localhost:1313/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</link>
+        <link>https://example.org/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</link>
         <pubDate>Thu, 23 Nov 2023 20:34:41 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</guid>
+        <guid>https://example.org/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</guid>
         <description>&lt;p&gt;如题，去达州，臭傻逼移动开发，抄你妈还内网，让不让人玩了。但是学校公费，嘻嘻嘻，但是明天就要去了，只能抱抱佛脚了。&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;h2 id=&#34;更新&#34;&gt;更新&lt;/h2&gt;
@@ -1305,10 +1392,10 @@ frida hook不在此展开，多次hook易得key横不变，为 &lt;code&gt;l8N2i
         </item>
         <item>
         <title>畅通英语-全书-高清图片链接</title>
-        <link>http://localhost:1313/post/%E7%95%85%E9%80%9A%E8%8B%B1%E8%AF%AD-%E5%85%A8%E4%B9%A6-%E9%AB%98%E6%B8%85%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5/</link>
+        <link>https://example.org/post/%E7%95%85%E9%80%9A%E8%8B%B1%E8%AF%AD-%E5%85%A8%E4%B9%A6-%E9%AB%98%E6%B8%85%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5/</link>
         <pubDate>Sun, 12 Nov 2023 23:32:41 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/%E7%95%85%E9%80%9A%E8%8B%B1%E8%AF%AD-%E5%85%A8%E4%B9%A6-%E9%AB%98%E6%B8%85%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5/</guid>
+        <guid>https://example.org/post/%E7%95%85%E9%80%9A%E8%8B%B1%E8%AF%AD-%E5%85%A8%E4%B9%A6-%E9%AB%98%E6%B8%85%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5/</guid>
         <description>&lt;h3 id=&#34;1-window-on-the-world&#34;&gt;1 Window on the world&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_6a4a6879d044476e5e8b8dca3b2d3d3e.jpg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_6a4a6879d044476e5e8b8dca3b2d3d3e.jpg&lt;/a&gt;
@@ -1634,10 +1721,10 @@ frida hook不在此展开，多次hook易得key横不变，为 &lt;code&gt;l8N2i
         </item>
         <item>
         <title>c 作业2</title>
-        <link>http://localhost:1313/post/c-%E4%BD%9C%E4%B8%9A2/</link>
+        <link>https://example.org/post/c-%E4%BD%9C%E4%B8%9A2/</link>
         <pubDate>Sun, 12 Nov 2023 14:22:18 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/c-%E4%BD%9C%E4%B8%9A2/</guid>
+        <guid>https://example.org/post/c-%E4%BD%9C%E4%B8%9A2/</guid>
         <description>&lt;h3 id=&#34;题2&#34;&gt;题2&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.imagehub.cc/image/1nyZO0&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;&lt;img src=&#34;https://s1.imagehub.cc/images/2023/11/12/203c2a0f5047ce501301a4f75960fe87.png&#34;
@@ -1739,10 +1826,10 @@ frida hook不在此展开，多次hook易得key横不变，为 &lt;code&gt;l8N2i
         </item>
         <item>
         <title>某图库</title>
-        <link>http://localhost:1313/post/%E6%9F%90%E5%9B%BE%E5%BA%93/</link>
+        <link>https://example.org/post/%E6%9F%90%E5%9B%BE%E5%BA%93/</link>
         <pubDate>Tue, 24 Oct 2023 18:18:30 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/%E6%9F%90%E5%9B%BE%E5%BA%93/</guid>
+        <guid>https://example.org/post/%E6%9F%90%E5%9B%BE%E5%BA%93/</guid>
         <description>&lt;p&gt;一点点加密，随便还找了一个oss直连&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; random
@@ -1807,10 +1894,10 @@ frida hook不在此展开，多次hook易得key横不变，为 &lt;code&gt;l8N2i
         </item>
         <item>
         <title>c语言作业23/10/10</title>
-        <link>http://localhost:1313/post/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</link>
+        <link>https://example.org/post/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</link>
         <pubDate>Mon, 23 Oct 2023 23:04:34 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</guid>
+        <guid>https://example.org/post/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</guid>
         <description>&lt;h3 id=&#34;编程题7&#34;&gt;编程题7&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;  &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  
@@ -2003,10 +2090,10 @@ frida hook不在此展开，多次hook易得key横不变，为 &lt;code&gt;l8N2i
         </item>
         <item>
         <title>flutter 逆向小计</title>
-        <link>http://localhost:1313/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</link>
+        <link>https://example.org/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</link>
         <pubDate>Mon, 23 Oct 2023 22:59:16 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</guid>
+        <guid>https://example.org/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</guid>
         <description>&lt;p&gt;某个淘金社区，登陆有md5加密&lt;/p&gt;
 &lt;p&gt;用blutter 解析一下，找到hash_update的地址，放到frida的脚本中，在console的下面加一句&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;hexdump&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;hexdump&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;args&lt;/span&gt;[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]))
@@ -2054,10 +2141,10 @@ frida hook不在此展开，多次hook易得key横不变，为 &lt;code&gt;l8N2i
         </item>
         <item>
         <title>c donut</title>
-        <link>http://localhost:1313/post/c-donut/</link>
+        <link>https://example.org/post/c-donut/</link>
         <pubDate>Mon, 23 Oct 2023 22:57:09 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/c-donut/</guid>
+        <guid>https://example.org/post/c-donut/</guid>
         <description>&lt;p&gt;C语言旋转甜甜圈&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
@@ -2174,10 +2261,10 @@ frida hook不在此展开，多次hook易得key横不变，为 &lt;code&gt;l8N2i
         </item>
         <item>
         <title>某刷课</title>
-        <link>http://localhost:1313/post/%E6%9F%90%E5%88%B7%E8%AF%BE/</link>
+        <link>https://example.org/post/%E6%9F%90%E5%88%B7%E8%AF%BE/</link>
         <pubDate>Mon, 23 Oct 2023 22:55:18 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/%E6%9F%90%E5%88%B7%E8%AF%BE/</guid>
+        <guid>https://example.org/post/%E6%9F%90%E5%88%B7%E8%AF%BE/</guid>
         <description>&lt;p&gt;无任何难度，android rsa，第二次加入了人脸识别，幌子，直接用实名的人脸绕过&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; Crypto.PublicKey &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; RSA
@@ -2311,10 +2398,10 @@ frida hook不在此展开，多次hook易得key横不变，为 &lt;code&gt;l8N2i
         </item>
         <item>
         <title>rust</title>
-        <link>http://localhost:1313/post/rust/</link>
+        <link>https://example.org/post/rust/</link>
         <pubDate>Mon, 23 Oct 2023 20:50:37 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/rust/</guid>
+        <guid>https://example.org/post/rust/</guid>
         <description>&lt;h3 id=&#34;string&#34;&gt;String&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;()
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
@@ -2426,10 +2513,10 @@ frida hook不在此展开，多次hook易得key横不变，为 &lt;code&gt;l8N2i
         </item>
         <item>
         <title>python Notes</title>
-        <link>http://localhost:1313/post/python-notes/</link>
+        <link>https://example.org/post/python-notes/</link>
         <pubDate>Sun, 22 Oct 2023 23:26:58 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/python-notes/</guid>
+        <guid>https://example.org/post/python-notes/</guid>
         <description>&lt;h2 id=&#34;清华源&#34;&gt;清华源&lt;/h2&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pip install -i https://pypi.tuna.tsinghua.edu.cn/simple model
 
@@ -2631,10 +2718,10 @@ def rc4_excrypt(plain, box):
         </item>
         <item>
         <title>flutter</title>
-        <link>http://localhost:1313/post/flutter/</link>
+        <link>https://example.org/post/flutter/</link>
         <pubDate>Sun, 03 Sep 2023 22:50:37 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/flutter/</guid>
+        <guid>https://example.org/post/flutter/</guid>
         <description>&lt;h2 id=&#34;起因&#34;&gt;起因&lt;/h2&gt;
 &lt;p&gt;放假在家闲的皮爆，有空学习写了个（其实在很久之前就有打算了）
 因为网易云音乐下载有很多但是加密的，虽然可以解密，但是也不方便管理，所以就有了这个软件，可以嵌入元数据（mp3和flac），包括歌词封面等。同步网易云歌单，可以删除本地文件&lt;/p&gt;
@@ -2654,10 +2741,10 @@ def rc4_excrypt(plain, box):
         </item>
         <item>
         <title>某H视频-mls</title>
-        <link>http://localhost:1313/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</link>
+        <link>https://example.org/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</link>
         <pubDate>Sat, 07 Jan 2023 13:15:37 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</guid>
+        <guid>https://example.org/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</guid>
         <description>&lt;h2 id=&#34;分析流程&#34;&gt;分析流程&lt;/h2&gt;
 &lt;p&gt;这个软件呢，其实分析主要就是想要看他拉人获得vip的操作&lt;/p&gt;
 &lt;p&gt;抓包可以找到一个api&lt;/p&gt;
@@ -2834,10 +2921,10 @@ def rc4_excrypt(plain, box):
         </item>
         <item>
         <title>某洗衣小程序</title>
-        <link>http://localhost:1313/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
+        <link>https://example.org/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
         <pubDate>Sat, 07 Jan 2023 13:15:37 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</guid>
+        <guid>https://example.org/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</guid>
         <description>&lt;h1 id=&#34;小程序逆向&#34;&gt;小程序逆向&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -3557,10 +3644,10 @@ def rc4_excrypt(plain, box):
         </item>
         <item>
         <title>diary</title>
-        <link>http://localhost:1313/post/diary/</link>
+        <link>https://example.org/post/diary/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/diary/</guid>
+        <guid>https://example.org/post/diary/</guid>
         <description>&lt;h2 id=&#34;首记&#34;&gt;首记&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;https://api.dujin.org/pic/fengjing&#34;
 	

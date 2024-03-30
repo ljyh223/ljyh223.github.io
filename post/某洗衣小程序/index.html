@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="小程序逆向 抓包\n电脑版微信最新版抓不了包，用3.7.6一下的\n微信在登陆时，右上角把代理填上\n把AppData\\Roaming\\Tencent\\WeChat\\XPlugin\\Plugins里面的东西删了，不影响使用\n解密\n下载aen516954023/wxappUnpacker: 微信小程序本地应用包逆向工具 (github.com)\n解密wxapkg文件，在C:\\Users\\xxx\\Documents\\WeChat Files\\Applet\n在解密的时候出现各种几把问题，均可参考百度，google等\n可能因为解密不出来wml和wss不能动态调试很难受\nwxapkg文件解包\n其他的单独解\n逆向\n因为没有拿到wml和wss，所以只能静态分析\n还好比较简单\n\u200b\t因为不能调试，不知道最后一个sign传的什么参数，是做的md5\nimport requests import execjs phone=&#39;17628818007&#39; url=&#39;https://www.sharewash.cn/saywash/WashCallApi/common/user/requestVerifyCode.api&#39; data={&#39;phoneNumber&#39;:phone,&#39;ssid&#39;:&#39;&#39;,&#39;tokenId&#39;:&#39;&#39;,&#39;sign&#39;:&#39;&#39;} with open(&#39;../js/2.js&#39;,&#39;r&#39;,encoding=&#39;utf-8&#39;) as fp: js1=fp.read() ssid=execjs.compile(js1).call(&#39;getTime&#39;) data[&#39;ssid&#39;]=ssid data[&#39;sign&#39;]=execjs.compile(js1).call(&#39;getsign&#39;,ssid,phone) print(data) function getsign() { var i, g = arguments; i = { &#39;phoneNumber&#39;: &#39;17628818007&#39;, &#39;ssid&#39;: &#39;&#39;, &#39;tokenId&#39;: &#39;&#39; } return i.ssid = getTime(), i.tokenId = false || &#34;&#34;, i.sign = sign(i) } function r(r) { var a = new Array(), n = r.">
 <title>某洗衣小程序</title>
 
-<link rel='canonical' href='http://localhost:1313/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/'>
+<link rel='canonical' href='https://example.org/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="某洗衣小程序">
 <meta property='og:description' content="小程序逆向 抓包\n电脑版微信最新版抓不了包，用3.7.6一下的\n微信在登陆时，右上角把代理填上\n把AppData\\Roaming\\Tencent\\WeChat\\XPlugin\\Plugins里面的东西删了，不影响使用\n解密\n下载aen516954023/wxappUnpacker: 微信小程序本地应用包逆向工具 (github.com)\n解密wxapkg文件，在C:\\Users\\xxx\\Documents\\WeChat Files\\Applet\n在解密的时候出现各种几把问题，均可参考百度，google等\n可能因为解密不出来wml和wss不能动态调试很难受\nwxapkg文件解包\n其他的单独解\n逆向\n因为没有拿到wml和wss，所以只能静态分析\n还好比较简单\n\u200b\t因为不能调试，不知道最后一个sign传的什么参数，是做的md5\nimport requests import execjs phone=&#39;17628818007&#39; url=&#39;https://www.sharewash.cn/saywash/WashCallApi/common/user/requestVerifyCode.api&#39; data={&#39;phoneNumber&#39;:phone,&#39;ssid&#39;:&#39;&#39;,&#39;tokenId&#39;:&#39;&#39;,&#39;sign&#39;:&#39;&#39;} with open(&#39;../js/2.js&#39;,&#39;r&#39;,encoding=&#39;utf-8&#39;) as fp: js1=fp.read() ssid=execjs.compile(js1).call(&#39;getTime&#39;) data[&#39;ssid&#39;]=ssid data[&#39;sign&#39;]=execjs.compile(js1).call(&#39;getsign&#39;,ssid,phone) print(data) function getsign() { var i, g = arguments; i = { &#39;phoneNumber&#39;: &#39;17628818007&#39;, &#39;ssid&#39;: &#39;&#39;, &#39;tokenId&#39;: &#39;&#39; } return i.ssid = getTime(), i.tokenId = false || &#34;&#34;, i.sign = sign(i) } function r(r) { var a = new Array(), n = r.">
-<meta property='og:url' content='http://localhost:1313/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/'>
+<meta property='og:url' content='https://example.org/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/'>
 <meta property='og:site_name' content='ljyh'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='re' /><meta property='article:tag' content='miniapp' /><meta property='article:published_time' content='2023-01-07T13:15:37&#43;00:00'/><meta property='article:modified_time' content='2023-01-07T13:15:37&#43;00:00'/>
 <meta name="twitter:title" content="某洗衣小程序">
@@ -128,9 +128,9 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >中文</option>
+                                    <option value="https://example.org/zh-cn/" >中文</option>
                                 
-                                    <option value="http://localhost:1313/" selected></option>
+                                    <option value="https://example.org/" selected></option>
                                 
                             </select>
                         </li>

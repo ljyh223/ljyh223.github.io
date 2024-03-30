@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Android on ljyh</title>
-        <link>http://localhost:1313/tags/android/</link>
+        <link>https://example.org/tags/android/</link>
         <description>Recent content in Android on ljyh</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sun, 03 Sep 2023 22:50:37 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/android/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 03 Sep 2023 22:50:37 +0000</lastBuildDate><atom:link href="https://example.org/tags/android/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>flutter</title>
-        <link>http://localhost:1313/post/flutter/</link>
+        <link>https://example.org/post/flutter/</link>
         <pubDate>Sun, 03 Sep 2023 22:50:37 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/flutter/</guid>
+        <guid>https://example.org/post/flutter/</guid>
         <description>&lt;h2 id=&#34;起因&#34;&gt;起因&lt;/h2&gt;
 &lt;p&gt;放假在家闲的皮爆，有空学习写了个（其实在很久之前就有打算了）
 因为网易云音乐下载有很多但是加密的，虽然可以解密，但是也不方便管理，所以就有了这个软件，可以嵌入元数据（mp3和flac），包括歌词封面等。同步网易云歌单，可以删除本地文件&lt;/p&gt;
@@ -31,10 +31,10 @@
         </item>
         <item>
         <title>某H视频-mls</title>
-        <link>http://localhost:1313/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</link>
+        <link>https://example.org/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</link>
         <pubDate>Sat, 07 Jan 2023 13:15:37 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</guid>
+        <guid>https://example.org/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</guid>
         <description>&lt;h2 id=&#34;分析流程&#34;&gt;分析流程&lt;/h2&gt;
 &lt;p&gt;这个软件呢，其实分析主要就是想要看他拉人获得vip的操作&lt;/p&gt;
 &lt;p&gt;抓包可以找到一个api&lt;/p&gt;

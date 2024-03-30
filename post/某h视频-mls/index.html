@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="分析流程 这个软件呢，其实分析主要就是想要看他拉人获得vip的操作\n抓包可以找到一个api\napi/user/traveler 这之前token还没有得到，参数\n{&#34;deviceId&#34;: device, &#34;dev&#34;: 随机3字符, &#34;code&#34;: &#39;{&#34;p&#34;:&#34;PDTVPD&#34;}&#39;} 这个code参数其实开始我也不知道是啥，走了一遍拉人的流程，发现app给我们的邀请链接有p参数，就是邀请码\nhttps://z6mhir31k.xyz?p=PDTVPD 在进到网页中点击下载软件会将邀请码复制到我们的粘贴板上\n{&#34;p&#34;:&#34;PDTVPD&#34;} 当你进入app时，读取粘贴板的第一条数据\npublic static String u() { ClipData v0 = FragmentAnim.f.getSystemService(&#34;clipboard&#34;).getPrimaryClip(); String v1 = &#34;&#34;; if(v0 != null &amp;&amp; v0.getItemCount() &gt; 0) { CharSequence v0_1 = v0.getItemAt(0).getText(); if(TextUtils.isEmpty(v0_1)) { return v1; } else { return v0_1.toString(); } } return v1; } deviceId 顺着上去就发现了deviceId的生成\npublic final void C() { String v0_2; String v3_1; String v1 = &#34;everb&#34;; String v2 = &#34;&#34;; if(a.">
 <title>某H视频-mls</title>
 
-<link rel='canonical' href='http://localhost:1313/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/'>
+<link rel='canonical' href='https://example.org/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="某H视频-mls">
 <meta property='og:description' content="分析流程 这个软件呢，其实分析主要就是想要看他拉人获得vip的操作\n抓包可以找到一个api\napi/user/traveler 这之前token还没有得到，参数\n{&#34;deviceId&#34;: device, &#34;dev&#34;: 随机3字符, &#34;code&#34;: &#39;{&#34;p&#34;:&#34;PDTVPD&#34;}&#39;} 这个code参数其实开始我也不知道是啥，走了一遍拉人的流程，发现app给我们的邀请链接有p参数，就是邀请码\nhttps://z6mhir31k.xyz?p=PDTVPD 在进到网页中点击下载软件会将邀请码复制到我们的粘贴板上\n{&#34;p&#34;:&#34;PDTVPD&#34;} 当你进入app时，读取粘贴板的第一条数据\npublic static String u() { ClipData v0 = FragmentAnim.f.getSystemService(&#34;clipboard&#34;).getPrimaryClip(); String v1 = &#34;&#34;; if(v0 != null &amp;&amp; v0.getItemCount() &gt; 0) { CharSequence v0_1 = v0.getItemAt(0).getText(); if(TextUtils.isEmpty(v0_1)) { return v1; } else { return v0_1.toString(); } } return v1; } deviceId 顺着上去就发现了deviceId的生成\npublic final void C() { String v0_2; String v3_1; String v1 = &#34;everb&#34;; String v2 = &#34;&#34;; if(a.">
-<meta property='og:url' content='http://localhost:1313/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/'>
+<meta property='og:url' content='https://example.org/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/'>
 <meta property='og:site_name' content='ljyh'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='re' /><meta property='article:tag' content='android' /><meta property='article:published_time' content='2023-01-07T13:15:37&#43;00:00'/><meta property='article:modified_time' content='2023-01-07T13:15:37&#43;00:00'/>
 <meta name="twitter:title" content="某H视频-mls">
@@ -128,9 +128,9 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >中文</option>
+                                    <option value="https://example.org/zh-cn/" >中文</option>
                                 
-                                    <option value="http://localhost:1313/" selected></option>
+                                    <option value="https://example.org/" selected></option>
                                 
                             </select>
                         </li>

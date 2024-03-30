@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="String fn main() { //String和&amp;str的区别可自行百度 //空字符串 let s=String::new(); //可变字符串 let mut s1=String:from(&#34;123&#34;); //追加字符串 s1.push_str(&#34;456&#34;); //追加字符 s1.push(&#34;1&#34;); } json use std::fs::File; use serde_json::Value; fn main(){ //解析io流文件 let f=File::open(&#34;test.txt&#34;).unwrap(); let json:Value=serde_json::from_reader(f).unwrap(); //let json:Value=serde_json::from_str(text).unwrap(); for i in json[&#34;data&#34;].as_array().unwrap(){ println!(&#34;{}&#34;,i[&#34;name&#34;].as_str().unwrap()); } } reqwest use std::{time::{SystemTime, UNIX_EPOCH}}; fn get_time() -&gt; String{ SystemTime::now() .duration_since(UNIX_EPOCH) .unwrap() .as_millis() .to_string() } async fn post() -&gt; Result&lt;String, reqwest::Error&gt;{ let client = reqwest::Client::new(); // let mut headers = HeaderMap::new(); // headers.insert(&#34;Content-Type&#34;, &#34;application/json&#34;.">
 <title>rust</title>
 
-<link rel='canonical' href='http://localhost:1313/post/rust/'>
+<link rel='canonical' href='https://example.org/post/rust/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content="rust">
 <meta property='og:description' content="String fn main() { //String和&amp;str的区别可自行百度 //空字符串 let s=String::new(); //可变字符串 let mut s1=String:from(&#34;123&#34;); //追加字符串 s1.push_str(&#34;456&#34;); //追加字符 s1.push(&#34;1&#34;); } json use std::fs::File; use serde_json::Value; fn main(){ //解析io流文件 let f=File::open(&#34;test.txt&#34;).unwrap(); let json:Value=serde_json::from_reader(f).unwrap(); //let json:Value=serde_json::from_str(text).unwrap(); for i in json[&#34;data&#34;].as_array().unwrap(){ println!(&#34;{}&#34;,i[&#34;name&#34;].as_str().unwrap()); } } reqwest use std::{time::{SystemTime, UNIX_EPOCH}}; fn get_time() -&gt; String{ SystemTime::now() .duration_since(UNIX_EPOCH) .unwrap() .as_millis() .to_string() } async fn post() -&gt; Result&lt;String, reqwest::Error&gt;{ let client = reqwest::Client::new(); // let mut headers = HeaderMap::new(); // headers.insert(&#34;Content-Type&#34;, &#34;application/json&#34;.">
-<meta property='og:url' content='http://localhost:1313/post/rust/'>
+<meta property='og:url' content='https://example.org/post/rust/'>
 <meta property='og:site_name' content='ljyh'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='rust' /><meta property='article:published_time' content='2023-10-23T20:50:37&#43;00:00'/><meta property='article:modified_time' content='2023-10-23T20:50:37&#43;00:00'/>
 <meta name="twitter:title" content="rust">
@@ -128,9 +128,9 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/zh-cn/" >中文</option>
+                                    <option value="https://example.org/zh-cn/" >中文</option>
                                 
-                                    <option value="http://localhost:1313/" selected></option>
+                                    <option value="https://example.org/" selected></option>
                                 
                             </select>
                         </li>
