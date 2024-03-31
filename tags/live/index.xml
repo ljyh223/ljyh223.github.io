@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Live on ljyh</title>
-        <link>https://example.org/tags/live/</link>
+        <link>http://localhost:1313/tags/live/</link>
         <description>Recent content in Live on ljyh</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 01 Jan 2024 12:59:26 +0000</lastBuildDate><atom:link href="https://example.org/tags/live/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 01 Jan 2024 12:59:26 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/live/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>我的2023</title>
-        <link>https://example.org/post/%E6%88%91%E7%9A%842023/</link>
+        <link>http://localhost:1313/post/%E6%88%91%E7%9A%842023/</link>
         <pubDate>Mon, 01 Jan 2024 12:59:26 +0000</pubDate>
         
-        <guid>https://example.org/post/%E6%88%91%E7%9A%842023/</guid>
+        <guid>http://localhost:1313/post/%E6%88%91%E7%9A%842023/</guid>
         <description>&lt;p&gt;2023年初设下的目标&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;考上公办&lt;/li&gt;
@@ -42,10 +42,10 @@
         </item>
         <item>
         <title>diary</title>
-        <link>https://example.org/post/diary/</link>
+        <link>http://localhost:1313/post/diary/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://example.org/post/diary/</guid>
+        <guid>http://localhost:1313/post/diary/</guid>
         <description>&lt;h2 id=&#34;首记&#34;&gt;首记&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;https://api.dujin.org/pic/fengjing&#34;
 	

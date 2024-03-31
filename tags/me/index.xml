@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Me on ljyh</title>
-        <link>https://example.org/tags/me/</link>
+        <link>http://localhost:1313/tags/me/</link>
         <description>Recent content in Me on ljyh</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 18 Dec 2023 21:19:36 +0000</lastBuildDate><atom:link href="https://example.org/tags/me/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 18 Dec 2023 21:19:36 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/me/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>你好-ljyh</title>
-        <link>https://example.org/post/%E4%BD%A0%E5%A5%BD-ljyh/</link>
+        <link>http://localhost:1313/post/%E4%BD%A0%E5%A5%BD-ljyh/</link>
         <pubDate>Mon, 18 Dec 2023 21:19:36 +0000</pubDate>
         
-        <guid>https://example.org/post/%E4%BD%A0%E5%A5%BD-ljyh/</guid>
+        <guid>http://localhost:1313/post/%E4%BD%A0%E5%A5%BD-ljyh/</guid>
         <description>&lt;h2 id=&#34;你好-ljyh&#34;&gt;你好 ljyh&lt;/h2&gt;
 &lt;p&gt;近来安好&lt;/p&gt;
 &lt;p&gt;已进入冬了，你找到温暖了吗？
@@ -30,10 +30,10 @@
         </item>
         <item>
         <title>我要去比赛了</title>
-        <link>https://example.org/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</link>
+        <link>http://localhost:1313/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</link>
         <pubDate>Thu, 23 Nov 2023 20:34:41 +0000</pubDate>
         
-        <guid>https://example.org/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</guid>
+        <guid>http://localhost:1313/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</guid>
         <description>&lt;p&gt;如题，去达州，臭傻逼移动开发，抄你妈还内网，让不让人玩了。但是学校公费，嘻嘻嘻，但是明天就要去了，只能抱抱佛脚了。&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;h2 id=&#34;更新&#34;&gt;更新&lt;/h2&gt;

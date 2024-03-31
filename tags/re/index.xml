@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Re on ljyh</title>
-        <link>https://example.org/tags/re/</link>
+        <link>http://localhost:1313/tags/re/</link>
         <description>Recent content in Re on ljyh</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 29 Mar 2024 20:55:59 +0800</lastBuildDate><atom:link href="https://example.org/tags/re/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 29 Mar 2024 20:55:59 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/re/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Bika Anime</title>
-        <link>https://example.org/post/bika-anime/</link>
+        <link>http://localhost:1313/post/bika-anime/</link>
         <pubDate>Fri, 29 Mar 2024 20:55:59 +0800</pubDate>
         
-        <guid>https://example.org/post/bika-anime/</guid>
+        <guid>http://localhost:1313/post/bika-anime/</guid>
         <description>&lt;p&gt;bika 动漫,dddd&lt;/p&gt;
-&lt;p&gt;flutter 以前用过，但是没有arm64的so，所以就放弃了，今天一个朋发给我，发现居然后arm64的，那就别挂我不客气。&lt;/p&gt;
+&lt;p&gt;flutter 以前用过，但是没有arm64的so，所以就放弃了，今天一个朋发给我，发现居然后arm64的，那就别怪我不客气。&lt;/p&gt;
 &lt;p&gt;blutter 启动，dart 2.19 解析出来了&lt;/p&gt;
-&lt;p&gt;主要是事看pp.txt和 addNames.py 这两个文件，找关键字，看有地址的，一般这种软件加密都是aes，所以直接搜索，然后挨个挨个frida hook，&lt;/p&gt;
+&lt;p&gt;主要是看pp.txt和 addNames.py 这两个文件，找关键字，看有地址的，一般这种软件加密都是aes，所以直接搜索，然后挨个挨个frida hook，&lt;/p&gt;
 &lt;p&gt;blutter 会生成一个blutter_frida.js, 添加一句话&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;fn_addr&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0x7e1018&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;Interceptor&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;attach&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;libapp&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;fn_addr&lt;/span&gt;), {
@@ -28,7 +28,17 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;hexdump ==&amp;gt; &amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;hexdump&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;objPtr&lt;/span&gt;));
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    });
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;多hook 几次基本拿下，然后就是猜，deviceId忙猜随机生成，拿uuid做md5取前16位，直接传上去，发现可以，最后就是喜闻乐见得绑定邀请码获得VIP，直接就是稳稳得拿下。&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2024/03/30/lBU4MkLnV5PhsQY.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图片.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;多hook 几次基本拿下，然后就是猜，deviceId忙猜随机生成，拿uuid做md5取前16位，直接传上去，发现可以，最后就是喜闻乐见得绑定邀请码获得VIP，直接就是稳稳得拿下。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; requests&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; time&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; json&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; uuid &lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;hashlib
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; Crypto.Cipher &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; AES
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; Crypto.Util.Padding &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; pad
@@ -95,10 +105,10 @@
         </item>
         <item>
         <title>逆向3</title>
-        <link>https://example.org/post/%E9%80%86%E5%90%913/</link>
+        <link>http://localhost:1313/post/%E9%80%86%E5%90%913/</link>
         <pubDate>Sat, 16 Dec 2023 17:27:06 +0000</pubDate>
         
-        <guid>https://example.org/post/%E9%80%86%E5%90%913/</guid>
+        <guid>http://localhost:1313/post/%E9%80%86%E5%90%913/</guid>
         <description>&lt;p&gt;所需工具&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;逍遥模拟器&lt;/li&gt;
@@ -362,10 +372,10 @@ frida hook不在此展开，多次hook易得key横不变，为 &lt;code&gt;l8N2i
         </item>
         <item>
         <title>flutter 逆向小计</title>
-        <link>https://example.org/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</link>
+        <link>http://localhost:1313/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</link>
         <pubDate>Mon, 23 Oct 2023 22:59:16 +0000</pubDate>
         
-        <guid>https://example.org/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</guid>
+        <guid>http://localhost:1313/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</guid>
         <description>&lt;p&gt;某个淘金社区，登陆有md5加密&lt;/p&gt;
 &lt;p&gt;用blutter 解析一下，找到hash_update的地址，放到frida的脚本中，在console的下面加一句&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;hexdump&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;hexdump&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;args&lt;/span&gt;[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]))
@@ -413,10 +423,10 @@ frida hook不在此展开，多次hook易得key横不变，为 &lt;code&gt;l8N2i
         </item>
         <item>
         <title>某H视频-mls</title>
-        <link>https://example.org/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</link>
+        <link>http://localhost:1313/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</link>
         <pubDate>Sat, 07 Jan 2023 13:15:37 +0000</pubDate>
         
-        <guid>https://example.org/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</guid>
+        <guid>http://localhost:1313/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</guid>
         <description>&lt;h2 id=&#34;分析流程&#34;&gt;分析流程&lt;/h2&gt;
 &lt;p&gt;这个软件呢，其实分析主要就是想要看他拉人获得vip的操作&lt;/p&gt;
 &lt;p&gt;抓包可以找到一个api&lt;/p&gt;
@@ -593,10 +603,10 @@ frida hook不在此展开，多次hook易得key横不变，为 &lt;code&gt;l8N2i
         </item>
         <item>
         <title>某洗衣小程序</title>
-        <link>https://example.org/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
+        <link>http://localhost:1313/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
         <pubDate>Sat, 07 Jan 2023 13:15:37 +0000</pubDate>
         
-        <guid>https://example.org/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</guid>
+        <guid>http://localhost:1313/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</guid>
         <description>&lt;h1 id=&#34;小程序逆向&#34;&gt;小程序逆向&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;

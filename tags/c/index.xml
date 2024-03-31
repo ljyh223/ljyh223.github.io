@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>C on ljyh</title>
-        <link>https://example.org/tags/c/</link>
+        <link>http://localhost:1313/tags/c/</link>
         <description>Recent content in C on ljyh</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 03 Jan 2024 14:43:23 +0000</lastBuildDate><atom:link href="https://example.org/tags/c/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 03 Jan 2024 14:43:23 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/c/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>C语言87</title>
-        <link>https://example.org/post/c%E8%AF%AD%E8%A8%8087/</link>
+        <link>http://localhost:1313/post/c%E8%AF%AD%E8%A8%8087/</link>
         <pubDate>Wed, 03 Jan 2024 14:43:23 +0000</pubDate>
         
-        <guid>https://example.org/post/c%E8%AF%AD%E8%A8%8087/</guid>
+        <guid>http://localhost:1313/post/c%E8%AF%AD%E8%A8%8087/</guid>
         <description>&lt;p&gt;&lt;img src=&#34;https://api.nguaduot.cn/qingbz/random&#34;
 	
 	
@@ -700,10 +700,10 @@
         </item>
         <item>
         <title>c 作业2</title>
-        <link>https://example.org/post/c-%E4%BD%9C%E4%B8%9A2/</link>
+        <link>http://localhost:1313/post/c-%E4%BD%9C%E4%B8%9A2/</link>
         <pubDate>Sun, 12 Nov 2023 14:22:18 +0000</pubDate>
         
-        <guid>https://example.org/post/c-%E4%BD%9C%E4%B8%9A2/</guid>
+        <guid>http://localhost:1313/post/c-%E4%BD%9C%E4%B8%9A2/</guid>
         <description>&lt;h3 id=&#34;题2&#34;&gt;题2&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.imagehub.cc/image/1nyZO0&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;&lt;img src=&#34;https://s1.imagehub.cc/images/2023/11/12/203c2a0f5047ce501301a4f75960fe87.png&#34;
@@ -805,10 +805,10 @@
         </item>
         <item>
         <title>c语言作业23/10/10</title>
-        <link>https://example.org/post/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</link>
+        <link>http://localhost:1313/post/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</link>
         <pubDate>Mon, 23 Oct 2023 23:04:34 +0000</pubDate>
         
-        <guid>https://example.org/post/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</guid>
+        <guid>http://localhost:1313/post/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</guid>
         <description>&lt;h3 id=&#34;编程题7&#34;&gt;编程题7&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;  &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  
@@ -1001,10 +1001,10 @@
         </item>
         <item>
         <title>c donut</title>
-        <link>https://example.org/post/c-donut/</link>
+        <link>http://localhost:1313/post/c-donut/</link>
         <pubDate>Mon, 23 Oct 2023 22:57:09 +0000</pubDate>
         
-        <guid>https://example.org/post/c-donut/</guid>
+        <guid>http://localhost:1313/post/c-donut/</guid>
         <description>&lt;p&gt;C语言旋转甜甜圈&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;

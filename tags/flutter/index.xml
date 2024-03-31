@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Flutter on ljyh</title>
-        <link>https://example.org/tags/flutter/</link>
+        <link>http://localhost:1313/tags/flutter/</link>
         <description>Recent content in Flutter on ljyh</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 23 Oct 2023 22:59:16 +0000</lastBuildDate><atom:link href="https://example.org/tags/flutter/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 23 Oct 2023 22:59:16 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/flutter/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>flutter 逆向小计</title>
-        <link>https://example.org/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</link>
+        <link>http://localhost:1313/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</link>
         <pubDate>Mon, 23 Oct 2023 22:59:16 +0000</pubDate>
         
-        <guid>https://example.org/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</guid>
+        <guid>http://localhost:1313/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</guid>
         <description>&lt;p&gt;某个淘金社区，登陆有md5加密&lt;/p&gt;
 &lt;p&gt;用blutter 解析一下，找到hash_update的地址，放到frida的脚本中，在console的下面加一句&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;hexdump&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;hexdump&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;args&lt;/span&gt;[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]))
@@ -59,10 +59,10 @@
         </item>
         <item>
         <title>flutter</title>
-        <link>https://example.org/post/flutter/</link>
+        <link>http://localhost:1313/post/flutter/</link>
         <pubDate>Sun, 03 Sep 2023 22:50:37 +0000</pubDate>
         
-        <guid>https://example.org/post/flutter/</guid>
+        <guid>http://localhost:1313/post/flutter/</guid>
         <description>&lt;h2 id=&#34;起因&#34;&gt;起因&lt;/h2&gt;
 &lt;p&gt;放假在家闲的皮爆，有空学习写了个（其实在很久之前就有打算了）
 因为网易云音乐下载有很多但是加密的，虽然可以解密，但是也不方便管理，所以就有了这个软件，可以嵌入元数据（mp3和flac），包括歌词封面等。同步网易云歌单，可以删除本地文件&lt;/p&gt;

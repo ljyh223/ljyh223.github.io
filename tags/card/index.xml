@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Card on ljyh</title>
-        <link>https://example.org/tags/card/</link>
+        <link>http://localhost:1313/tags/card/</link>
         <description>Recent content in Card on ljyh</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 09 Jan 2024 20:43:24 +0000</lastBuildDate><atom:link href="https://example.org/tags/card/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 09 Jan 2024 20:43:24 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/card/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Water calorie</title>
-        <link>https://example.org/post/water-calorie/</link>
+        <link>http://localhost:1313/post/water-calorie/</link>
         <pubDate>Tue, 09 Jan 2024 20:43:24 +0000</pubDate>
         
-        <guid>https://example.org/post/water-calorie/</guid>
+        <guid>http://localhost:1313/post/water-calorie/</guid>
         <description>&lt;p&gt;拿到水卡第二天就起了注意，明明冲了100，插到机子上没钱，后来了解到，还有一个机子专门用来充水卡，尽管水卡卬和饭卡用的是同一张，或许可能水卡单独一个扇区。&lt;/p&gt;
 &lt;p&gt;用mct读卡看到10扇区数据能用默认密钥解开&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hex&#34; data-lang=&#34;hex&#34;&gt;E95E 5707 00A1 0013 0000000000FF AAE6

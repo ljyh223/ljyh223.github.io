@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Python on ljyh</title>
-        <link>https://example.org/tags/python/</link>
+        <link>http://localhost:1313/tags/python/</link>
         <description>Recent content in Python on ljyh</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 24 Oct 2023 18:18:30 +0000</lastBuildDate><atom:link href="https://example.org/tags/python/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 24 Oct 2023 18:18:30 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>某图库</title>
-        <link>https://example.org/post/%E6%9F%90%E5%9B%BE%E5%BA%93/</link>
+        <link>http://localhost:1313/post/%E6%9F%90%E5%9B%BE%E5%BA%93/</link>
         <pubDate>Tue, 24 Oct 2023 18:18:30 +0000</pubDate>
         
-        <guid>https://example.org/post/%E6%9F%90%E5%9B%BE%E5%BA%93/</guid>
+        <guid>http://localhost:1313/post/%E6%9F%90%E5%9B%BE%E5%BA%93/</guid>
         <description>&lt;p&gt;一点点加密，随便还找了一个oss直连&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; random
@@ -76,10 +76,10 @@
         </item>
         <item>
         <title>python Notes</title>
-        <link>https://example.org/post/python-notes/</link>
+        <link>http://localhost:1313/post/python-notes/</link>
         <pubDate>Sun, 22 Oct 2023 23:26:58 +0000</pubDate>
         
-        <guid>https://example.org/post/python-notes/</guid>
+        <guid>http://localhost:1313/post/python-notes/</guid>
         <description>&lt;h2 id=&#34;清华源&#34;&gt;清华源&lt;/h2&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pip install -i https://pypi.tuna.tsinghua.edu.cn/simple model
 
