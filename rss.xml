@@ -23,10 +23,44 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 15 Apr 2024 20:46:20 &#43;0800</lastBuildDate>
+        <lastBuildDate>Mon, 22 Apr 2024 20:45:54 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="http://localhost:1313/rss.xml" />
         
+        
+            <item>
+                <title>Linux 有感</title>
+                <link>http://localhost:1313/post/linux-%E6%9C%89%E6%84%9F/</link>
+                <guid isPermaLink="true">http://localhost:1313/post/linux-%E6%9C%89%E6%84%9F/</guid>
+                <pubDate>Mon, 22 Apr 2024 20:32:08 &#43;0800</pubDate>
+                
+                    <author>reuixiy@gmail.com (ljyh)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;p&gt;在寒假最后几天给自己的电脑装了一个Arch linux ，直至开学，重装了大概3，4次才得到现在的完整版，好像来到学校还装了一次。&lt;/p&gt;
+&lt;h2 id=&#34;优点&#34;&gt;优点&lt;/h2&gt;
+&lt;p&gt;非常的好玩，很有意思，很多软件使用都挺方便的，pacman 直接一装，使用起来也很流畅，跟windows比还是要流畅一些的&lt;/p&gt;
+&lt;p&gt;界面的美化以及自定义程度很高，使用起来非常有味道。&lt;/p&gt;
+&lt;h2 id=&#34;缺点&#34;&gt;缺点&lt;/h2&gt;
+&lt;p&gt;其实也没什么太大的缺点，我本来以前也学过一些网络安全，对linux还是有一些了解的。使用起来没有什么太大的问题。
+但是呢，迫于环境原因，课程也很弱智，安排一些pr，ps这种沙雕课程，明明应该放到自学里面的，还要教，虽然我也不是很会，这种东西本就不感兴趣，更还是linux，彻底裂开了，虽然有替代品，但是我也不是天才啊，我也不想主动去学。
+只能用虚拟机来搞。ps，pr就算了，本就想到了，但是，c#窗口程序还写不了，我日他大坝。开始还写不了微信小程序(大专是不是都喜欢教这个)，后来又装上了，aur找的，也算还行。腾讯美马，近来要让写鸿蒙，我一看，tm的鸿蒙也不提供linux的studio，我真是曹思他大坝的，写你马。&lt;/p&gt;
+&lt;p&gt;总结来就是很多厂商不给适配linux ，即便可以做到，也不去做。&lt;/p&gt;
+&lt;p&gt;好了，这篇文章就是用来吐槽的&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Bika Anime</title>
