@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">ljyh blog</title>
     <subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle>
-    <updated>2024-04-22T20:45:54&#43;08:00</updated>
+    <updated>2024-04-28T11:36:41&#43;08:00</updated>
     <id>http://localhost:1313/</id>
     <link rel="alternate" type="text/html" href="http://localhost:1313/" />
     <link rel="self" type="application/atom&#43;xml" href="http://localhost:1313/atom.xml" />
@@ -20,7 +20,7 @@
             <title type="text">Linux 有感</title>
             <link rel="alternate" type="text/html" href="http://localhost:1313/post/linux-%E6%9C%89%E6%84%9F/" />
             <id>http://localhost:1313/post/linux-%E6%9C%89%E6%84%9F/</id>
-            <updated>2024-04-22T20:45:45&#43;08:00</updated>
+            <updated>2024-04-28T11:36:31&#43;08:00</updated>
             <published>2024-04-22T20:32:08&#43;08:00</published>
             <author>
                     <name>ljyh</name>
@@ -39,6 +39,9 @@
 只能用虚拟机来搞。ps，pr就算了，本就想到了，但是，c#窗口程序还写不了，我日他大坝。开始还写不了微信小程序(大专是不是都喜欢教这个)，后来又装上了，aur找的，也算还行。腾讯美马，近来要让写鸿蒙，我一看，tm的鸿蒙也不提供linux的studio，我真是曹思他大坝的，写你马。&lt;/p&gt;
 &lt;p&gt;总结来就是很多厂商不给适配linux ，即便可以做到，也不去做。&lt;/p&gt;
 &lt;p&gt;好了，这篇文章就是用来吐槽的&lt;/p&gt;
+&lt;h3 id=&#34;428&#34;&gt;4.28&lt;/h3&gt;
+&lt;p&gt;linux 寿终正寝了， 被老师叫换回去，我测了啊&lt;/p&gt;
+&lt;p&gt;放心，他还会回来的，暑假再去买一台轻薄本装linux，就这样吧，备份去了&lt;/p&gt;
 </content>
             
             
