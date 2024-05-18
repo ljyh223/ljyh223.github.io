@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Miniapp on My New Hugo Site</title>
+    <link>https://example.org/tags/miniapp/</link>
+    <description>Recent content in Miniapp on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Jan 2023 13:15:37 +0000</lastBuildDate>
+    <atom:link href="https://example.org/tags/miniapp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>某洗衣小程序</title>
+      <link>https://example.org/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
+      <pubDate>Sat, 07 Jan 2023 13:15:37 +0000</pubDate>
+      <guid>https://example.org/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</guid>
+      <description>小程序逆向 抓包&#xA;电脑版微信最新版抓不了包，用3.7.6一下的&#xA;微信在登陆时，右上角把代理填上&#xA;把AppData\Roaming\Tencent\WeChat\XPlugin\Plugins里面的东西删了，不影响使用&#xA;解密&#xA;下载aen516954023/wxappUnpacker: 微信小程序本地应用包逆向工具 (github.com)&#xA;解密wxapkg文件，在C:\Users\xxx\Documents\WeChat Files\Applet&#xA;在解密的时候出现各种几把问题，均可参考百度，google等&#xA;可能因为解密不出来wml和wss不能动态调试很难受&#xA;wxapkg文件解包&#xA;其他的单独解&#xA;逆向&#xA;因为没有拿到wml和wss，所以只能静态分析&#xA;还好比较简单&#xA;​&#x9;因为不能调试，不知道最后一个sign传的什么参数，是做的md5&#xA;import requests import execjs phone=&amp;#39;17628818007&amp;#39; url=&amp;#39;https://www.sharewash.cn/saywash/WashCallApi/common/user/requestVerifyCode.api&amp;#39; data={&amp;#39;phoneNumber&amp;#39;:phone,&amp;#39;ssid&amp;#39;:&amp;#39;&amp;#39;,&amp;#39;tokenId&amp;#39;:&amp;#39;&amp;#39;,&amp;#39;sign&amp;#39;:&amp;#39;&amp;#39;} with open(&amp;#39;../js/2.js&amp;#39;,&amp;#39;r&amp;#39;,encoding=&amp;#39;utf-8&amp;#39;) as fp: js1=fp.read() ssid=execjs.compile(js1).call(&amp;#39;getTime&amp;#39;) data[&amp;#39;ssid&amp;#39;]=ssid data[&amp;#39;sign&amp;#39;]=execjs.compile(js1).call(&amp;#39;getsign&amp;#39;,ssid,phone) print(data) function getsign() { var i, g = arguments; i = { &amp;#39;phoneNumber&amp;#39;: &amp;#39;17628818007&amp;#39;, &amp;#39;ssid&amp;#39;: &amp;#39;&amp;#39;, &amp;#39;tokenId&amp;#39;: &amp;#39;&amp;#39; } return i.ssid = getTime(), i.tokenId = false || &amp;#34;&amp;#34;, i.sign = sign(i) } function r(r) { var a = new Array(), n = r.</description>
+    </item>
+  </channel>
+</rss>

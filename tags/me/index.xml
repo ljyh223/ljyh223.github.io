@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Me on My New Hugo Site</title>
+    <link>https://example.org/tags/me/</link>
+    <description>Recent content in Me on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Dec 2023 21:19:36 +0000</lastBuildDate>
+    <atom:link href="https://example.org/tags/me/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>你好-ljyh</title>
+      <link>https://example.org/post/%E4%BD%A0%E5%A5%BD-ljyh/</link>
+      <pubDate>Mon, 18 Dec 2023 21:19:36 +0000</pubDate>
+      <guid>https://example.org/post/%E4%BD%A0%E5%A5%BD-ljyh/</guid>
+      <description>你好 ljyh 近来安好&#xA;已进入冬了，你找到温暖了吗？ 该不会今年又会生冻疮吧，那你的英语又有好好学习吗， 不过这些都不是重要的事情，你知道你要做些什么吗。 就这样吧，再见！&#xA;ljyh 你好 好得很嘞&#xA;好冷啊啊啊，可是，真的很冷诶&#xA;别太抽象，应该不会长冻疮吧，我也说不准，但愿不要。 可是，我根本不想学习诶&#xA;琐碎的事情，烦人。 放心吧，那些事情我都记得，但也不一定，捏捏&#xA;为你，千千万万遍</description>
+    </item>
+    <item>
+      <title>我要去比赛了</title>
+      <link>https://example.org/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</link>
+      <pubDate>Thu, 23 Nov 2023 20:34:41 +0000</pubDate>
+      <guid>https://example.org/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</guid>
+      <description>如题，去达州，臭傻逼移动开发，抄你妈还内网，让不让人玩了。但是学校公费，嘻嘻嘻，但是明天就要去了，只能抱抱佛脚了。&#xA;更新 wuwuwu，怎么都是牛马啊，还好我也是木流牛马</description>
+    </item>
+  </channel>
+</rss>

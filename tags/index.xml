@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on My New Hugo Site</title>
+    <link>https://example.org/tags/</link>
+    <description>Recent content in Tags on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 Mar 2024 20:55:59 +0800</lastBuildDate>
+    <atom:link href="https://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Re</title>
+      <link>https://example.org/tags/re/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/tags/re/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Study</title>
+      <link>https://example.org/tags/study/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/tags/study/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>C</title>
+      <link>https://example.org/tags/c/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/tags/c/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Live</title>
+      <link>https://example.org/tags/live/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/tags/live/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Me</title>
+      <link>https://example.org/tags/me/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/tags/me/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>English</title>
+      <link>https://example.org/tags/english/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/tags/english/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://example.org/tags/python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Script</title>
+      <link>https://example.org/tags/script/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/tags/script/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Flutter</title>
+      <link>https://example.org/tags/flutter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/tags/flutter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rust</title>
+      <link>https://example.org/tags/rust/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/tags/rust/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Android</title>
+      <link>https://example.org/tags/android/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/tags/android/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Miniapp</title>
+      <link>https://example.org/tags/miniapp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/tags/miniapp/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
