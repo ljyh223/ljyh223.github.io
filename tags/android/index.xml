@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Android on ExampleSite</title>
-    <link>http://localhost:1313/tags/android/</link>
+    <link>https://ljyh223.github.io/tags/android/</link>
     <description>Recent content in Android on ExampleSite</description>
     <image>
       <title>ExampleSite</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://ljyh223.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://ljyh223.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.126.1</generator>
     <language>en</language>
     <lastBuildDate>Sun, 03 Sep 2023 22:50:37 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ljyh223.github.io/tags/android/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>flutter</title>
-      <link>http://localhost:1313/post/flutter/</link>
+      <link>https://ljyh223.github.io/post/flutter/</link>
       <pubDate>Sun, 03 Sep 2023 22:50:37 +0000</pubDate>
-      <guid>http://localhost:1313/post/flutter/</guid>
+      <guid>https://ljyh223.github.io/post/flutter/</guid>
       <description>起因 放假在家闲的皮爆，有空学习写了个（其实在很久之前就有打算了） 因为网易云音乐下载有很多但是加密的，虽然可以解密，但是也不方便管理，所以就有了这个软件，可以嵌入元数据（mp3和flac），包括歌词封面等。同步网易云歌单，可以删除本地文件
 开发 至于学习flutter，最开始知道flutter是因为逆向系列了解到的，听说写ui很方便，之前也有用过java开发。java的语法还也不是很喜欢。 网易云的api 参考: NeteaseCloudMusicApi
 学习编程语言我不是很喜欢看视频来，慢得很，需要什么直接去搜代码就行了。 先看看官方的文档，demo，自己需要什么功能直接百度 虽然可能了解不深刻，但是跟着视频写代码更烦人
@@ -28,9 +28,9 @@
     </item>
     <item>
       <title>某H视频-mls</title>
-      <link>http://localhost:1313/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</link>
+      <link>https://ljyh223.github.io/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</link>
       <pubDate>Sat, 07 Jan 2023 13:15:37 +0000</pubDate>
-      <guid>http://localhost:1313/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</guid>
+      <guid>https://ljyh223.github.io/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</guid>
       <description>分析流程 这个软件呢，其实分析主要就是想要看他拉人获得vip的操作
 抓包可以找到一个api
 api/user/traveler 这之前token还没有得到，参数
