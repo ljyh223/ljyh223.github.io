@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Miniapp on ExampleSite</title>
+    <link>http://localhost:1313/tags/miniapp/</link>
+    <description>Recent content in Miniapp on ExampleSite</description>
+    <image>
+      <title>ExampleSite</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.126.1</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 07 Jan 2023 13:15:37 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/miniapp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>某洗衣小程序</title>
+      <link>http://localhost:1313/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
+      <pubDate>Sat, 07 Jan 2023 13:15:37 +0000</pubDate>
+      <guid>http://localhost:1313/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</guid>
+      <description>小程序逆向 抓包
+电脑版微信最新版抓不了包，用3.7.6一下的
+微信在登陆时，右上角把代理填上
+把AppData\Roaming\Tencent\WeChat\XPlugin\Plugins里面的东西删了，不影响使用
+解密
+下载aen516954023/wxappUnpacker: 微信小程序本地应用包逆向工具 (github.com)
+解密wxapkg文件，在C:\Users\xxx\Documents\WeChat Files\Applet
+在解密的时候出现各种几把问题，均可参考百度，google等
+可能因为解密不出来wml和wss不能动态调试很难受
+wxapkg文件解包
+其他的单独解
+逆向
+因为没有拿到wml和wss，所以只能静态分析
+还好比较简单
+​	因为不能调试，不知道最后一个sign传的什么参数，是做的md5
+import requests import execjs phone=&amp;#39;17628818007&amp;#39; url=&amp;#39;https://www.sharewash.cn/saywash/WashCallApi/common/user/requestVerifyCode.api&amp;#39; data={&amp;#39;phoneNumber&amp;#39;:phone,&amp;#39;ssid&amp;#39;:&amp;#39;&amp;#39;,&amp;#39;tokenId&amp;#39;:&amp;#39;&amp;#39;,&amp;#39;sign&amp;#39;:&amp;#39;&amp;#39;} with open(&amp;#39;../js/2.js&amp;#39;,&amp;#39;r&amp;#39;,encoding=&amp;#39;utf-8&amp;#39;) as fp: js1=fp.read() ssid=execjs.compile(js1).call(&amp;#39;getTime&amp;#39;) data[&amp;#39;ssid&amp;#39;]=ssid data[&amp;#39;sign&amp;#39;]=execjs.compile(js1).call(&amp;#39;getsign&amp;#39;,ssid,phone) print(data) function getsign() { var i, g = arguments; i = { &amp;#39;phoneNumber&amp;#39;: &amp;#39;17628818007&amp;#39;, &amp;#39;ssid&amp;#39;: &amp;#39;&amp;#39;, &amp;#39;tokenId&amp;#39;: &amp;#39;&amp;#39; } return i.ssid = getTime(), i.tokenId = false || &amp;#34;&amp;#34;, i.sign = sign(i) } function r(r) { var a = new Array(), n = r.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Flutter on ExampleSite</title>
+    <link>http://localhost:1313/tags/flutter/</link>
+    <description>Recent content in Flutter on ExampleSite</description>
+    <image>
+      <title>ExampleSite</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.126.1</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 23 Oct 2023 22:59:16 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/flutter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>flutter 逆向小计</title>
+      <link>http://localhost:1313/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</link>
+      <pubDate>Mon, 23 Oct 2023 22:59:16 +0000</pubDate>
+      <guid>http://localhost:1313/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</guid>
+      <description>某个淘金社区，登陆有md5加密
+用blutter 解析一下，找到hash_update的地址，放到frida的脚本中，在console的下面加一句
+console.log(&amp;#39;hexdump&amp;#39;+hexdump(args[0])) 打印出来4个uint32List，虽然看不懂，但是我们打印了hex
+多看几次知道有随机的东西，在多看几次就知道应该是时间戳末尾在控制，反复测试得到所有出现过的字符，易得脚本
+import requests import hashlib import time def get_data(p): A=[&amp;#39;gcw7eeh5&amp;#39;,&amp;#39;eegc15nnccccoqh5r7&amp;#39;,&amp;#39;15gcnncc&amp;#39;,&amp;#39;h5ccccgc15nnee/i&amp;#39;,&amp;#39;15gcnnq4oq/ih5oqccccee&amp;#39;,&amp;#39;15cc/ir7oqnnq4oqh5&amp;#39;,&amp;#39;nncc/i&amp;#39;,&amp;#39;h515r7q4oqcc&amp;#39;,&amp;#39;oqoqnnr7q4/i&amp;#39;,&amp;#39;h5nn&amp;#39;] B=[&amp;#39;eeoqh5&amp;#39;,&amp;#39;&amp;#39;,&amp;#39;h5ccoqeer7&amp;#39;,&amp;#39;oqr7&amp;#39;,&amp;#39;r7&amp;#39;,&amp;#39;oqccgc&amp;#39;,&amp;#39;oqccgcoqh515r7oqq4&amp;#39;,&amp;#39;oqgcoqnn/i&amp;#39;,&amp;#39;h515oqcc&amp;#39;,&amp;#39;oq&amp;#39;] C=[&amp;#39;&amp;#39;,&amp;#39;&amp;#39;,&amp;#39;/iq4&amp;#39;,&amp;#39;q4&amp;#39;,&amp;#39;op&amp;#39;,&amp;#39;&amp;#39;,&amp;#39;&amp;#39;,&amp;#39;&amp;#39;,&amp;#39;gc&amp;#39;,&amp;#39;2115oqr7q4/ioqccgc&amp;#39;] # 16位时间戳 t=str(int(time.time()*1000000)) k=int(t[-1]) # B164D0C43EDB3BAD89D1A073EBE9691D # 为固定值，可能跟随app版本所迭代 #一下情况特殊出现，需要对换位置 if k==8 or k==5: message= &amp;#39;action=sendcode&amp;amp;phone={}&amp;amp;verifytoken={}&amp;amp;verifycodes={}{}B164D0C43EDB3BAD89D1A073EBE9691D..{}W1W2W3W4W5W6W7W8W901020304050607..{}{}&amp;#39;.format(p,&amp;#39;{system::verifytoken}&amp;#39;,&amp;#39;{system::verifytoken}&amp;#39;,A[k],B[k],C[k],t) else: message= &amp;#39;action=sendcode&amp;amp;phone={}&amp;amp;verifytoken={}&amp;amp;verifycodes={}{}W1W2W3W4W5W6W7W8W901020304050607..{}B164D0C43EDB3BAD89D1A073EBE9691D..{}{}&amp;#39;.format(p,&amp;#39;{system::verifytoken}&amp;#39;,&amp;#39;{system::verifytoken}&amp;#39;,A[k],B[k],C[k],t) # print(message) return {&amp;#39;action&amp;#39;:&amp;#39;sendcode&amp;#39;,&amp;#39;phone&amp;#39;:p,&amp;#39;verifytoken&amp;#39;:hashlib.md5(message.encode()).hexdigest(),&amp;#39;verifycodes&amp;#39;:t} data=get_data(&amp;#39;19999994444&amp;#39;) resp=requests.get(&amp;#39;http://bbs.taojingdaohang.cn/index.php&amp;#39;,params=data) print(resp.text) 测试正常发送短信</description>
+    </item>
+    <item>
+      <title>flutter</title>
+      <link>http://localhost:1313/post/flutter/</link>
+      <pubDate>Sun, 03 Sep 2023 22:50:37 +0000</pubDate>
+      <guid>http://localhost:1313/post/flutter/</guid>
+      <description>起因 放假在家闲的皮爆，有空学习写了个（其实在很久之前就有打算了） 因为网易云音乐下载有很多但是加密的，虽然可以解密，但是也不方便管理，所以就有了这个软件，可以嵌入元数据（mp3和flac），包括歌词封面等。同步网易云歌单，可以删除本地文件
+开发 至于学习flutter，最开始知道flutter是因为逆向系列了解到的，听说写ui很方便，之前也有用过java开发。java的语法还也不是很喜欢。 网易云的api 参考: NeteaseCloudMusicApi
+学习编程语言我不是很喜欢看视频来，慢得很，需要什么直接去搜代码就行了。 先看看官方的文档，demo，自己需要什么功能直接百度 虽然可能了解不深刻，但是跟着视频写代码更烦人
+使用 设置里面要先设置cookie，只需要cookie中的MUSIC_U的部分，以及保存路径，这个保存路径是歌单的保存路径，如果下载的话会根据歌单名为文件夹保存在下级。
+元数据默认嵌入所有
+先根据歌单id获取歌曲，若要下载需要收藏歌单，下载完成会检测本地歌单中多余歌曲并徐闻是否删除。
+似乎就这点鸟功能</description>
+    </item>
+  </channel>
+</rss>

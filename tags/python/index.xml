@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Python on ExampleSite</title>
+    <link>http://localhost:1313/tags/python/</link>
+    <description>Recent content in Python on ExampleSite</description>
+    <image>
+      <title>ExampleSite</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.126.1</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 24 Oct 2023 18:18:30 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>某图库</title>
+      <link>http://localhost:1313/post/%E6%9F%90%E5%9B%BE%E5%BA%93/</link>
+      <pubDate>Tue, 24 Oct 2023 18:18:30 +0000</pubDate>
+      <guid>http://localhost:1313/post/%E6%9F%90%E5%9B%BE%E5%BA%93/</guid>
+      <description>一点点加密，随便还找了一个oss直连
+import random import time def encode(_str): staticchars = &amp;#34;PXhw7UT1B0a9kQDKZsjIASmOezxYG4CHo5Jyfg2b8FLpEvRr3WtVnlqMidu6cN&amp;#34; encodechars = &amp;#34;&amp;#34; for i in range(len(_str)): num0 = staticchars.find(_str[i]) if num0 == -1: code = _str[i] else: code = staticchars[(num0 + 3) % 62] num1 = random.randint(0, 61) num2 = random.randint(0, 61) encodechars += staticchars[num1] + code + staticchars[num2] return encodechars def timestamp(): return str(int(time.time())) def sing(): return encode(&amp;#34;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvMTExMTExMTExMTExMTExMTExMTEiLCJleHBpcmVfdGltZSI6MTY5NzMwNDUzNX0=.)FxVKiDH9rnMKEuTNMkRa7ibMrhp-Vdi-FHBgWOomdaQ###&amp;#34;+timestamp()) import requests headers = { &amp;#39;authority&amp;#39;: &amp;#39;stapi.youpengw.com&amp;#39;, &amp;#39;accept&amp;#39;: &amp;#39;*/*&amp;#39;, &amp;#39;accept-language&amp;#39;: &amp;#39;zh-CN,zh;q=0.</description>
+    </item>
+    <item>
+      <title>python Notes</title>
+      <link>http://localhost:1313/post/python-notes/</link>
+      <pubDate>Sun, 22 Oct 2023 23:26:58 +0000</pubDate>
+      <guid>http://localhost:1313/post/python-notes/</guid>
+      <description>清华源 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple model linux中python2和3的pip python{2,3} -m pip install xxx Base64 import base64 import string base64.b64decode() #解码 base64.b64encode() #编码 处理变表base64 str1 = &amp;#34;d2G0ZjLwHjS7DmOzZAY0X2lzX3CoZV9zdNOydO9vZl9yZXZlcnGlfD==&amp;#34; #解码字符串 string1 = &amp;#34;TSRQPONMLKJIHGFEDCBAUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&amp;#34; #变换后的码表 string2 = &amp;#34;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&amp;#34; print(base64.b64decode(str1.translate(str.maketrans(string1,string2)))) 正则 取AB中间字符
+(?&amp;lt;=A).*?(?=B) #不包含AB A.*?B #包含AB A.*?(?=B) #包含A不包含B import re re.findall(r&amp;#34;(?&amp;lt;=A).*?(?=B)&amp;#34;,str) n位字符取一次
+re.findall(r&amp;#39;.{2}&amp;#39;,str) requests import requests url=&amp;#39;http://example.com&amp;#39; data={&amp;#39;example&amp;#39;:&amp;#39;123&amp;#39;} # data 即from-data header={&amp;#39;User-Agent&amp;#39;:&amp;#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36 Edg/117.0.2045.47&amp;#39;} #header 请求头 proxy={&amp;#39;http&amp;#39;:&amp;#39;127.</description>
+    </item>
+  </channel>
+</rss>

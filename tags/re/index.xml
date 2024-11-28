@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Re on ExampleSite</title>
+    <link>http://localhost:1313/tags/re/</link>
+    <description>Recent content in Re on ExampleSite</description>
+    <image>
+      <title>ExampleSite</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.126.1</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 29 Mar 2024 20:55:59 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/re/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bika Anime</title>
+      <link>http://localhost:1313/post/bika-anime/</link>
+      <pubDate>Fri, 29 Mar 2024 20:55:59 +0800</pubDate>
+      <guid>http://localhost:1313/post/bika-anime/</guid>
+      <description>bika 动漫,dddd
+flutter 以前用过，但是没有arm64的so，所以就放弃了，今天一个朋发给我，发现居然后arm64的，那就别怪我不客气。
+blutter 启动，dart 2.19 解析出来了
+主要是看pp.txt和 addNames.py 这两个文件，找关键字，看有地址的，一般这种软件加密都是aes，所以直接搜索，然后挨个挨个frida hook，
+blutter 会生成一个blutter_frida.js, 添加一句话
+const fn_addr = 0x7e1018; Interceptor.attach(libapp.add(fn_addr), { onEnter: function () { init(this.context); let objPtr = getArg(this.context, 0); const [tptr, cls, values] = getTaggedObjectValue(objPtr); console.log(`${cls.name}@${tptr.toString().slice(2)} =`, JSON.stringify(values, null, 2)); //就是添这句话,找关键字就行了, console.log(&amp;#39;hexdump ==&amp;gt; &amp;#39;+hexdump(objPtr)); } }); 多hook 几次基本拿下，然后就是猜，deviceId忙猜随机生成，拿uuid做md5取前16位，直接传上去，发现可以，最后就是喜闻乐见得绑定邀请码获得VIP，直接就是稳稳得拿下。
+import requests, time, json, uuid ,hashlib from Crypto.Cipher import AES from Crypto.Util.Padding import pad code=&amp;#39;YMMTK&amp;#39; cipher = AES.new(b&amp;#39;525202f9149e061d&amp;#39;, AES.MODE_ECB) def get_header(): return { &amp;#39;user-agent&amp;#39;: &amp;#39;Mozilla/5.</description>
+    </item>
+    <item>
+      <title>逆向3</title>
+      <link>http://localhost:1313/post/%E9%80%86%E5%90%913/</link>
+      <pubDate>Sat, 16 Dec 2023 17:27:06 +0000</pubDate>
+      <guid>http://localhost:1313/post/%E9%80%86%E5%90%913/</guid>
+      <description>所需工具
+逍遥模拟器 lamda jadx frida 一双手 抓包 软件有root检测和代理检测，这里不讲绕过。代理不要挂。 安装lamda：
+set HTTPS_PROXY=127.0.0.1:7890 git clone https://github.com/rev1si0n/lamda.git rev1si0n/lamda: ⚡️ Android reverse engineering &amp;amp; automation framework | 史上最强安卓抓包/逆向/HOOK &amp;amp; 云手机/远程桌面/自动化辅助框架，你的工作从未如此简单快捷。
+下载lamda-server-x86_64.tar.gz 以及busybox-x86_64
+先把模拟器的root打开
+# 在你下载好的目录打开终端 adb push lamda-server-x86_64.tar.gz /data/local/tmp adb push busybox-x86_64 /data/local/tmp adb shell # 以下命令都是在adb shell中执行的 su chmod 755 /data/local/tmp/busybox-x86_64 cd /data /data/local/tmp/busybox-x86_64 tar -xzf /data/local/tmp/lamda-server-x86_64.tar.gz rm /data/local/tmp/lamda-server-x864.tar.gz rm /data/local/tmp/busybox-x86_64 启动lamda
+继续上一步结尾
+cd /data/local/tmp/server/bin sh launch.sh 启动完成 ctrl+D退出终端
+在你的lamda目录里打开终端
+cd tools python startmitm.</description>
+    </item>
+    <item>
+      <title>flutter 逆向小计</title>
+      <link>http://localhost:1313/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</link>
+      <pubDate>Mon, 23 Oct 2023 22:59:16 +0000</pubDate>
+      <guid>http://localhost:1313/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</guid>
+      <description>某个淘金社区，登陆有md5加密
+用blutter 解析一下，找到hash_update的地址，放到frida的脚本中，在console的下面加一句
+console.log(&amp;#39;hexdump&amp;#39;+hexdump(args[0])) 打印出来4个uint32List，虽然看不懂，但是我们打印了hex
+多看几次知道有随机的东西，在多看几次就知道应该是时间戳末尾在控制，反复测试得到所有出现过的字符，易得脚本
+import requests import hashlib import time def get_data(p): A=[&amp;#39;gcw7eeh5&amp;#39;,&amp;#39;eegc15nnccccoqh5r7&amp;#39;,&amp;#39;15gcnncc&amp;#39;,&amp;#39;h5ccccgc15nnee/i&amp;#39;,&amp;#39;15gcnnq4oq/ih5oqccccee&amp;#39;,&amp;#39;15cc/ir7oqnnq4oqh5&amp;#39;,&amp;#39;nncc/i&amp;#39;,&amp;#39;h515r7q4oqcc&amp;#39;,&amp;#39;oqoqnnr7q4/i&amp;#39;,&amp;#39;h5nn&amp;#39;] B=[&amp;#39;eeoqh5&amp;#39;,&amp;#39;&amp;#39;,&amp;#39;h5ccoqeer7&amp;#39;,&amp;#39;oqr7&amp;#39;,&amp;#39;r7&amp;#39;,&amp;#39;oqccgc&amp;#39;,&amp;#39;oqccgcoqh515r7oqq4&amp;#39;,&amp;#39;oqgcoqnn/i&amp;#39;,&amp;#39;h515oqcc&amp;#39;,&amp;#39;oq&amp;#39;] C=[&amp;#39;&amp;#39;,&amp;#39;&amp;#39;,&amp;#39;/iq4&amp;#39;,&amp;#39;q4&amp;#39;,&amp;#39;op&amp;#39;,&amp;#39;&amp;#39;,&amp;#39;&amp;#39;,&amp;#39;&amp;#39;,&amp;#39;gc&amp;#39;,&amp;#39;2115oqr7q4/ioqccgc&amp;#39;] # 16位时间戳 t=str(int(time.time()*1000000)) k=int(t[-1]) # B164D0C43EDB3BAD89D1A073EBE9691D # 为固定值，可能跟随app版本所迭代 #一下情况特殊出现，需要对换位置 if k==8 or k==5: message= &amp;#39;action=sendcode&amp;amp;phone={}&amp;amp;verifytoken={}&amp;amp;verifycodes={}{}B164D0C43EDB3BAD89D1A073EBE9691D..{}W1W2W3W4W5W6W7W8W901020304050607..{}{}&amp;#39;.format(p,&amp;#39;{system::verifytoken}&amp;#39;,&amp;#39;{system::verifytoken}&amp;#39;,A[k],B[k],C[k],t) else: message= &amp;#39;action=sendcode&amp;amp;phone={}&amp;amp;verifytoken={}&amp;amp;verifycodes={}{}W1W2W3W4W5W6W7W8W901020304050607..{}B164D0C43EDB3BAD89D1A073EBE9691D..{}{}&amp;#39;.format(p,&amp;#39;{system::verifytoken}&amp;#39;,&amp;#39;{system::verifytoken}&amp;#39;,A[k],B[k],C[k],t) # print(message) return {&amp;#39;action&amp;#39;:&amp;#39;sendcode&amp;#39;,&amp;#39;phone&amp;#39;:p,&amp;#39;verifytoken&amp;#39;:hashlib.md5(message.encode()).hexdigest(),&amp;#39;verifycodes&amp;#39;:t} data=get_data(&amp;#39;19999994444&amp;#39;) resp=requests.get(&amp;#39;http://bbs.taojingdaohang.cn/index.php&amp;#39;,params=data) print(resp.text) 测试正常发送短信</description>
+    </item>
+    <item>
+      <title>某H视频-mls</title>
+      <link>http://localhost:1313/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</link>
+      <pubDate>Sat, 07 Jan 2023 13:15:37 +0000</pubDate>
+      <guid>http://localhost:1313/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</guid>
+      <description>分析流程 这个软件呢，其实分析主要就是想要看他拉人获得vip的操作
+抓包可以找到一个api
+api/user/traveler 这之前token还没有得到，参数
+{&amp;#34;deviceId&amp;#34;: device, &amp;#34;dev&amp;#34;: 随机3字符, &amp;#34;code&amp;#34;: &amp;#39;{&amp;#34;p&amp;#34;:&amp;#34;PDTVPD&amp;#34;}&amp;#39;} 这个code参数其实开始我也不知道是啥，走了一遍拉人的流程，发现app给我们的邀请链接有p参数，就是邀请码
+https://z6mhir31k.xyz?p=PDTVPD 在进到网页中点击下载软件会将邀请码复制到我们的粘贴板上
+{&amp;#34;p&amp;#34;:&amp;#34;PDTVPD&amp;#34;} 当你进入app时，读取粘贴板的第一条数据
+public static String u() { ClipData v0 = FragmentAnim.f.getSystemService(&amp;#34;clipboard&amp;#34;).getPrimaryClip(); String v1 = &amp;#34;&amp;#34;; if(v0 != null &amp;amp;&amp;amp; v0.getItemCount() &amp;gt; 0) { CharSequence v0_1 = v0.getItemAt(0).getText(); if(TextUtils.isEmpty(v0_1)) { return v1; } else { return v0_1.toString(); } } return v1; } deviceId 顺着上去就发现了deviceId的生成
+public final void C() { String v0_2; String v3_1; String v1 = &amp;#34;everb&amp;#34;; String v2 = &amp;#34;&amp;#34;; if(a.</description>
+    </item>
+    <item>
+      <title>某洗衣小程序</title>
+      <link>http://localhost:1313/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
+      <pubDate>Sat, 07 Jan 2023 13:15:37 +0000</pubDate>
+      <guid>http://localhost:1313/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</guid>
+      <description>小程序逆向 抓包
+电脑版微信最新版抓不了包，用3.7.6一下的
+微信在登陆时，右上角把代理填上
+把AppData\Roaming\Tencent\WeChat\XPlugin\Plugins里面的东西删了，不影响使用
+解密
+下载aen516954023/wxappUnpacker: 微信小程序本地应用包逆向工具 (github.com)
+解密wxapkg文件，在C:\Users\xxx\Documents\WeChat Files\Applet
+在解密的时候出现各种几把问题，均可参考百度，google等
+可能因为解密不出来wml和wss不能动态调试很难受
+wxapkg文件解包
+其他的单独解
+逆向
+因为没有拿到wml和wss，所以只能静态分析
+还好比较简单
+​	因为不能调试，不知道最后一个sign传的什么参数，是做的md5
+import requests import execjs phone=&amp;#39;17628818007&amp;#39; url=&amp;#39;https://www.sharewash.cn/saywash/WashCallApi/common/user/requestVerifyCode.api&amp;#39; data={&amp;#39;phoneNumber&amp;#39;:phone,&amp;#39;ssid&amp;#39;:&amp;#39;&amp;#39;,&amp;#39;tokenId&amp;#39;:&amp;#39;&amp;#39;,&amp;#39;sign&amp;#39;:&amp;#39;&amp;#39;} with open(&amp;#39;../js/2.js&amp;#39;,&amp;#39;r&amp;#39;,encoding=&amp;#39;utf-8&amp;#39;) as fp: js1=fp.read() ssid=execjs.compile(js1).call(&amp;#39;getTime&amp;#39;) data[&amp;#39;ssid&amp;#39;]=ssid data[&amp;#39;sign&amp;#39;]=execjs.compile(js1).call(&amp;#39;getsign&amp;#39;,ssid,phone) print(data) function getsign() { var i, g = arguments; i = { &amp;#39;phoneNumber&amp;#39;: &amp;#39;17628818007&amp;#39;, &amp;#39;ssid&amp;#39;: &amp;#39;&amp;#39;, &amp;#39;tokenId&amp;#39;: &amp;#39;&amp;#39; } return i.ssid = getTime(), i.tokenId = false || &amp;#34;&amp;#34;, i.sign = sign(i) } function r(r) { var a = new Array(), n = r.</description>
+    </item>
+  </channel>
+</rss>

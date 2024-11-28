@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Rust on ExampleSite</title>
+    <link>http://localhost:1313/tags/rust/</link>
+    <description>Recent content in Rust on ExampleSite</description>
+    <image>
+      <title>ExampleSite</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.126.1</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 23 Oct 2023 20:50:37 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>rust</title>
+      <link>http://localhost:1313/post/rust/</link>
+      <pubDate>Mon, 23 Oct 2023 20:50:37 +0000</pubDate>
+      <guid>http://localhost:1313/post/rust/</guid>
+      <description>String fn main() { //String和&amp;amp;str的区别可自行百度 //空字符串 let s=String::new(); //可变字符串 let mut s1=String:from(&amp;#34;123&amp;#34;); //追加字符串 s1.push_str(&amp;#34;456&amp;#34;); //追加字符 s1.push(&amp;#34;1&amp;#34;); } json use std::fs::File; use serde_json::Value; fn main(){ //解析io流文件 let f=File::open(&amp;#34;test.txt&amp;#34;).unwrap(); let json:Value=serde_json::from_reader(f).unwrap(); //let json:Value=serde_json::from_str(text).unwrap(); for i in json[&amp;#34;data&amp;#34;].as_array().unwrap(){ println!(&amp;#34;{}&amp;#34;,i[&amp;#34;name&amp;#34;].as_str().unwrap()); } } reqwest use std::{time::{SystemTime, UNIX_EPOCH}}; fn get_time() -&amp;gt; String{ SystemTime::now() .duration_since(UNIX_EPOCH) .unwrap() .as_millis() .to_string() } async fn post() -&amp;gt; Result&amp;lt;String, reqwest::Error&amp;gt;{ let client = reqwest::Client::new(); // let mut headers = HeaderMap::new(); // headers.insert(&amp;#34;Content-Type&amp;#34;, &amp;#34;application/json&amp;#34;.</description>
+    </item>
+  </channel>
+</rss>
