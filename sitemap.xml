@@ -2,10 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/tags/live/</loc>
+    <lastmod>2024-11-28T21:10:54+08:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/</loc>
     <lastmod>2024-11-28T21:10:54+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/</loc>
+    <lastmod>2024-11-28T21:10:54+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2024-11-28T21:10:54+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/%E5%9B%9E%E6%9C%9B/</loc>
@@ -29,9 +35,6 @@
     <loc>http://localhost:1313/tags/re/</loc>
     <lastmod>2024-03-29T20:55:59+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2024-03-29T20:55:59+08:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/study/</loc>
     <lastmod>2024-01-05T19:28:19+00:00</lastmod>
   </url><url>
@@ -43,9 +46,6 @@
   </url><url>
     <loc>http://localhost:1313/post/c%E8%AF%AD%E8%A8%8087/</loc>
     <lastmod>2024-01-03T14:43:23+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/live/</loc>
-    <lastmod>2024-01-01T12:59:26+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/%E6%88%91%E7%9A%842023/</loc>
     <lastmod>2024-01-01T12:59:26+00:00</lastmod>
