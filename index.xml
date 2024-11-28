@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>ljyh</title>
-    <link>http://localhost:1313/</link>
+    <link>https://ljyh223.github.io/</link>
     <description>Recent content on ljyh</description>
     <image>
       <title>ljyh</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://ljyh223.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://ljyh223.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.126.1</generator>
     <language>en</language>
     <lastBuildDate>Thu, 28 Nov 2024 21:10:54 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ljyh223.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>回望</title>
-      <link>http://localhost:1313/post/%E5%9B%9E%E6%9C%9B/</link>
+      <link>https://ljyh223.github.io/post/%E5%9B%9E%E6%9C%9B/</link>
       <pubDate>Thu, 28 Nov 2024 21:10:54 +0800</pubDate>
-      <guid>http://localhost:1313/post/%E5%9B%9E%E6%9C%9B/</guid>
+      <guid>https://ljyh223.github.io/post/%E5%9B%9E%E6%9C%9B/</guid>
       <description>2024 谈了女朋友 做项目 赞一点钱 好像看一点书 要说的话，感觉好像跟往年差不多的，但是呢发生了一个很重要的事情，就是谈了对象。在看一样，好像没有进步，做的一些东西感觉不够厉害。
 我觉得自己有点找不到方向了，今年好像有点迷茫啊，没有沉下心了吗？
 我想起来了，现在是大二，我要做很多杂事情，被分心了。等我想起来的时候已经到了年底，并且还有还很多的事情要去做。</description>
     </item>
     <item>
       <title>小记福州</title>
-      <link>http://localhost:1313/post/%E5%B0%8F%E8%AE%B0%E7%A6%8F%E5%B7%9E/</link>
+      <link>https://ljyh223.github.io/post/%E5%B0%8F%E8%AE%B0%E7%A6%8F%E5%B7%9E/</link>
       <pubDate>Thu, 28 Nov 2024 21:03:24 +0800</pubDate>
-      <guid>http://localhost:1313/post/%E5%B0%8F%E8%AE%B0%E7%A6%8F%E5%B7%9E/</guid>
+      <guid>https://ljyh223.github.io/post/%E5%B0%8F%E8%AE%B0%E7%A6%8F%E5%B7%9E/</guid>
       <description>第一天 今天应该是周六，这些其实都是后来后来补的，因为周六那天是特别忙的。 昨晚睡的很晚，差不多1点过才睡。早上呢又起得很早，天都塌了。
 首先是开幕式，然后我们我们所有的团队都到图书馆去合照，并且派了指老导师来给我建议，修改提升做作品。所以周六那一天，从上午9点左右一直待了大概10个小时，大部分时间都在看电脑。到了晚上7点，就开始了第一支汇报，自己发挥的还是不错的，就是有点紧张。那个网龙的美术总监说切入点很好，并且用的这个GPT4也很不错。
 值得注意的是福建这边大概5.10 分左右就已经天黑了。等到所有的队伍汇报完毕，等待出结果，然后为明天的汇报顺序抽签。
@@ -56,17 +56,17 @@
     </item>
     <item>
       <title>分享以及杂谈</title>
-      <link>http://localhost:1313/post/%E5%88%86%E4%BA%AB%E4%BB%A5%E5%8F%8A%E6%9D%82%E8%B0%88/</link>
+      <link>https://ljyh223.github.io/post/%E5%88%86%E4%BA%AB%E4%BB%A5%E5%8F%8A%E6%9D%82%E8%B0%88/</link>
       <pubDate>Sat, 18 May 2024 17:24:42 +0800</pubDate>
-      <guid>http://localhost:1313/post/%E5%88%86%E4%BA%AB%E4%BB%A5%E5%8F%8A%E6%9D%82%E8%B0%88/</guid>
+      <guid>https://ljyh223.github.io/post/%E5%88%86%E4%BA%AB%E4%BB%A5%E5%8F%8A%E6%9D%82%E8%B0%88/</guid>
       <description>最近做项目, 需要很多数据，写了些爬虫, 没什么，拿出来分享
 一个大学排名的 import requests,json page=1 url=&amp;#39;https://www.topuniversities.com/rankings/endpoint?nid=3897789&amp;amp;page={0}&amp;amp;items_per_page=20&amp;amp;tab=&amp;amp;region=Asia&amp;amp;countries=&amp;amp;cities=&amp;amp;search=&amp;amp;star=&amp;amp;sort_by=rank&amp;amp;order_by=asc&amp;amp;program_type=&amp;#39; data=[] result=requests.get(url.format(page)).json() surplus=result[&amp;#39;total_record&amp;#39;]-20 data+=result[&amp;#39;score_nodes&amp;#39;] while surplus&amp;gt;0: page+=1 result=requests.get(url.format(page)).json() data+=result[&amp;#39;score_nodes&amp;#39;] surplus-=int(result[&amp;#39;items_per_page&amp;#39;]) with open(&amp;#39;data/3.json&amp;#39;,&amp;#39;w&amp;#39;,encoding=&amp;#39;utf-8&amp;#39;) as f: json.dump(data,f) 校徽图片的 from concurrent.futures import ThreadPoolExecutor from lxml import etree import requests def download(i): image_url=f&amp;#39;https://www.urongda.com/img/{i}-logo.png&amp;#39; with open(f&amp;#39;image/{i}.png&amp;#39;,&amp;#39;wb&amp;#39;) as f: f.write(requests.get(image_url).content) result=requests.get(&amp;#39;https://www.urongda.com/&amp;#39;) html = etree.HTML(result.text) href=html.xpath(&amp;#39;/html/body/main/div[1]/div//@data-name&amp;#39;) with ThreadPoolExecutor(max_workers=10) as t: for i in href: t.submit(download,i) 虎扑评分的爬虫，一点点加密 import hashlib,time, requests, json from concurrent.futures import ThreadPoolExecutor header={ &amp;#39;user-agent&amp;#39;: &amp;#39;Dalvik/2.1.0 (Linux; U; Android 9; ASUS_I005DA Build/PI) kanqiu/8.</description>
     </item>
     <item>
       <title>Linux</title>
-      <link>http://localhost:1313/post/linux/</link>
+      <link>https://ljyh223.github.io/post/linux/</link>
       <pubDate>Mon, 22 Apr 2024 20:32:08 +0800</pubDate>
-      <guid>http://localhost:1313/post/linux/</guid>
+      <guid>https://ljyh223.github.io/post/linux/</guid>
       <description>在寒假最后几天给自己的电脑装了一个Arch linux ，直至开学，重装了大概3，4次才得到现在的完整版，好像来到学校还装了一次。
 优点 非常的好玩，很有意思，很多软件使用都挺方便的，pacman 直接一装，使用起来也很流畅，跟windows比还是要流畅一些的
 界面的美化以及自定义程度很高，使用起来非常有味道。
@@ -78,9 +78,9 @@
     </item>
     <item>
       <title>Bika Anime</title>
-      <link>http://localhost:1313/post/bika-anime/</link>
+      <link>https://ljyh223.github.io/post/bika-anime/</link>
       <pubDate>Fri, 29 Mar 2024 20:55:59 +0800</pubDate>
-      <guid>http://localhost:1313/post/bika-anime/</guid>
+      <guid>https://ljyh223.github.io/post/bika-anime/</guid>
       <description>bika 动漫,dddd
 flutter 以前用过，但是没有arm64的so，所以就放弃了，今天一个朋发给我，发现居然后arm64的，那就别怪我不客气。
 blutter 启动，dart 2.19 解析出来了
@@ -91,9 +91,9 @@ import requests, time, json, uuid ,hashlib from Crypto.Cipher import AES from Cr
     </item>
     <item>
       <title>政治</title>
-      <link>http://localhost:1313/post/%E6%94%BF%E6%B2%BB/</link>
+      <link>https://ljyh223.github.io/post/%E6%94%BF%E6%B2%BB/</link>
       <pubDate>Fri, 05 Jan 2024 19:28:19 +0000</pubDate>
-      <guid>http://localhost:1313/post/%E6%94%BF%E6%B2%BB/</guid>
+      <guid>https://ljyh223.github.io/post/%E6%94%BF%E6%B2%BB/</guid>
       <description>政治16 题库:http://me.ljyh223.xyz/helpme/
 1. 如何成为担当民族复兴大任的时代新人 立大志
 明大德
@@ -127,16 +127,16 @@ import requests, time, json, uuid ,hashlib from Crypto.Cipher import AES from Cr
     </item>
     <item>
       <title>C语言87</title>
-      <link>http://localhost:1313/post/c%E8%AF%AD%E8%A8%8087/</link>
+      <link>https://ljyh223.github.io/post/c%E8%AF%AD%E8%A8%8087/</link>
       <pubDate>Wed, 03 Jan 2024 14:43:23 +0000</pubDate>
-      <guid>http://localhost:1313/post/c%E8%AF%AD%E8%A8%8087/</guid>
+      <guid>https://ljyh223.github.io/post/c%E8%AF%AD%E8%A8%8087/</guid>
       <description>(单选题) A.只有下标值为4的数组元素ia[4]的值为零 B.仅最后一个数组元素的值为零 C.四个数组元素的值都为零 D.仅第一个数组元素中的值为零 答案: C (单选题)下面关于指针的正确描述是哪个（ ）。 A.不能对指针进行任何形式的运算 B.只能对指针进行加法运算 C.可以对指针进行加、减运算 D.可以对指针进行乘、除运算 答案: C (单选题)int a[2][3]={ {1},{0,2} }定义二维数组并赋值后，各数组元素中的初始值为（ ）。 A.a[0][0]=1a[0][1]=1a[0][2]=0a[1][0]=0a[1][1]=0a[1][2]=2 B.a[0][0]=0a[0][1]=0a[0][2]=1a[1][0]=0a[1][1]=2a[1][2]=0 C.a[0][0]=1a[0][1]=0a[0][2]=0a[1][0]=0a[1][1]=2a[1][2]=0 D.a[0][0]=1a[0][1]=0a[0][2]=0a[1][0]=0a[1][1]=0a[1][2]=2 答案: C (单选题)设有程序段：int i=10;while(i==0) i=i-3;则下面叙述中正确的是( )。 A.循环体语句一次也不执行 B.循环是无限循环 C.循环体语句执行一次 D.while循环执行10次 答案: A (单选题)关系运算符就是对两个操作数之间进行（ ）的运算符。 A.比较运算 B.相减运算 C.算术运算 D.三角函数计算 答案: A (单选题)下面定义指针变量的命令哪个是正确的？（ ） A.intpdr; B.int*pdr; C.int@pdr; D.int&amp;amp;pdr; 答案: B (单选题)在C语言中，最基本的数据类型包括（ ）。 A.整型、实型、逻辑型 B.整型、字符型、逻辑型 C.实型、字符型、逻辑型 D.整型、实型、字符型 答案: D (单选题)关系表达式与逻辑表达式的不同在哪里，请选择下列正确的表述（ ）。 A.关系表达式用于比较两个操作数的大小关系，逻辑表达式用于比较两个关系表达式的大小关系。 B.后面B、C、D的描述都不正确。 C.关系表达式和逻辑表达式的作用都一样，用于判断两个数之间的关系。 D.关系表达式只能描述单一的条件，逻辑表达式用于判定多个条件的成立关系。 答案: D (单选题) A.</description>
     </item>
     <item>
       <title>我的2023</title>
-      <link>http://localhost:1313/post/%E6%88%91%E7%9A%842023/</link>
+      <link>https://ljyh223.github.io/post/%E6%88%91%E7%9A%842023/</link>
       <pubDate>Mon, 01 Jan 2024 12:59:26 +0000</pubDate>
-      <guid>http://localhost:1313/post/%E6%88%91%E7%9A%842023/</guid>
+      <guid>https://ljyh223.github.io/post/%E6%88%91%E7%9A%842023/</guid>
       <description>2023年初设下的目标
 考上公办 new 一个对象 学习安卓开发 细数我的2023年，潦潦草草。 上次春节，三天打鱼得看了看复习资料，春节也是过得一塌糊涂。 又到开学，仍是浑浑噩噩。直到考试临近，抱了一下佛脚。 真是惊心动魄啊，考上了，不费吹灰之力便就考上了。 散烂数10日后，我去绵阳兼职了一周的保安，真是遭罪。 后来又到我满18，去了富士康，真是遭罪，期间还学了高数和安卓，真是能干。 回家混到开学，真是无比期待啊，我的大学｛专）时光。 好好学习，真是天天向上捏。 去工作室打听的时候，被老师相中。劝我转去他们专业。 便是苦痛的军训，相当的无聊，且不说，余下一两天的时候，老师让我去打比赛。 又是懒懒散散得赛前预习，得过且过吧。 比赛也是一点都不好玩，且混了一个省三，并报送进了工作室（嘻嘻） 又是帮老师做项目，妈的，且混且混。 年底就到了。。。
 2023的目标完成了2个，余下的2024继续 顺便把今年的目标立下
@@ -144,9 +144,9 @@ import requests, time, json, uuid ,hashlib from Crypto.Cipher import AES from Cr
     </item>
     <item>
       <title>你好-ljyh</title>
-      <link>http://localhost:1313/post/%E4%BD%A0%E5%A5%BD-ljyh/</link>
+      <link>https://ljyh223.github.io/post/%E4%BD%A0%E5%A5%BD-ljyh/</link>
       <pubDate>Mon, 18 Dec 2023 21:19:36 +0000</pubDate>
-      <guid>http://localhost:1313/post/%E4%BD%A0%E5%A5%BD-ljyh/</guid>
+      <guid>https://ljyh223.github.io/post/%E4%BD%A0%E5%A5%BD-ljyh/</guid>
       <description>你好 ljyh 近来安好
 已进入冬了，你找到温暖了吗？ 该不会今年又会生冻疮吧，那你的英语又有好好学习吗， 不过这些都不是重要的事情，你知道你要做些什么吗。 就这样吧，再见！
 ljyh 你好 好得很嘞
@@ -157,9 +157,9 @@ ljyh 你好 好得很嘞
     </item>
     <item>
       <title>逆向3</title>
-      <link>http://localhost:1313/post/%E9%80%86%E5%90%913/</link>
+      <link>https://ljyh223.github.io/post/%E9%80%86%E5%90%913/</link>
       <pubDate>Sat, 16 Dec 2023 17:27:06 +0000</pubDate>
-      <guid>http://localhost:1313/post/%E9%80%86%E5%90%913/</guid>
+      <guid>https://ljyh223.github.io/post/%E9%80%86%E5%90%913/</guid>
       <description>所需工具
 逍遥模拟器 lamda jadx frida 一双手 抓包 软件有root检测和代理检测，这里不讲绕过。代理不要挂。 安装lamda：
 set HTTPS_PROXY=127.0.0.1:7890 git clone https://github.com/rev1si0n/lamda.git rev1si0n/lamda: ⚡️ Android reverse engineering &amp;amp; automation framework | 史上最强安卓抓包/逆向/HOOK &amp;amp; 云手机/远程桌面/自动化辅助框架，你的工作从未如此简单快捷。
@@ -173,17 +173,17 @@ cd tools python startmitm.</description>
     </item>
     <item>
       <title>我要去比赛了</title>
-      <link>http://localhost:1313/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</link>
+      <link>https://ljyh223.github.io/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</link>
       <pubDate>Thu, 23 Nov 2023 20:34:41 +0000</pubDate>
-      <guid>http://localhost:1313/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</guid>
+      <guid>https://ljyh223.github.io/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</guid>
       <description>如题，去达州，臭傻逼移动开发，抄你妈还内网，让不让人玩了。但是学校公费，嘻嘻嘻，但是明天就要去了，只能抱抱佛脚了。
 更新 wuwuwu，怎么都是牛马啊，还好我也是木流牛马</description>
     </item>
     <item>
       <title>畅通英语-全书-高清图片链接</title>
-      <link>http://localhost:1313/post/%E7%95%85%E9%80%9A%E8%8B%B1%E8%AF%AD-%E5%85%A8%E4%B9%A6-%E9%AB%98%E6%B8%85%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5/</link>
+      <link>https://ljyh223.github.io/post/%E7%95%85%E9%80%9A%E8%8B%B1%E8%AF%AD-%E5%85%A8%E4%B9%A6-%E9%AB%98%E6%B8%85%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5/</link>
       <pubDate>Sun, 12 Nov 2023 23:32:41 +0000</pubDate>
-      <guid>http://localhost:1313/post/%E7%95%85%E9%80%9A%E8%8B%B1%E8%AF%AD-%E5%85%A8%E4%B9%A6-%E9%AB%98%E6%B8%85%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5/</guid>
+      <guid>https://ljyh223.github.io/post/%E7%95%85%E9%80%9A%E8%8B%B1%E8%AF%AD-%E5%85%A8%E4%B9%A6-%E9%AB%98%E6%B8%85%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5/</guid>
       <description>1 Window on the world https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_6a4a6879d044476e5e8b8dca3b2d3d3e.jpg https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_6a4a6879d044476e5e8b8dca3b2d3d3e.jpg https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_cfcebfe3982773d77f165a7aad013795.jpg https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_d70378eac179796d98f27c00226636bc.jpg https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_00bb3ee963b35c3ad84fcc6f0d999ab4.jpg https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_02f55083340252cdb336e463b19da074.jpg https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_f5faef8777663b8a455031c46596c667.jpg
 2 How strange! https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_8dbbb37e5acf8fb28e00a4b0e150bcf2.jpg https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_0e671baa1820f5e8d3526dbed632a32a.jpg https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_c2458506b07dfa9bd243cefdbdded6f0.jpg https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_04a544b2c68c32aa5b13f175591b10c0.jpg https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_c0185575a25d4766145d5f15df4ac717.jpg https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_f65b7a6bdbca10b14cb65a081b11973e.jpg
 3 Food for thought https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_8e9b180dfd3d0daaca955f18f3552743.jpg https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_663bd570f1176ebc0ae51eb820a3f5d5.jpg https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_e0605f1cffdbcbb01a8918fc93d8384c.jpg https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_4d11bd07e376481181bf7d5f56795d1a.jpg https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_800d933e1d96e620ccad24132ad30d31.jpg https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_c1b8d426f2c5af496c7c8b953d802605.jpg
@@ -195,31 +195,31 @@ Task 1 https://cdn-img.daxuesoutijiang.com/bookimg/dxbook_f6a72be9a167613e890249
     </item>
     <item>
       <title>c 作业2</title>
-      <link>http://localhost:1313/post/c-%E4%BD%9C%E4%B8%9A2/</link>
+      <link>https://ljyh223.github.io/post/c-%E4%BD%9C%E4%B8%9A2/</link>
       <pubDate>Sun, 12 Nov 2023 14:22:18 +0000</pubDate>
-      <guid>http://localhost:1313/post/c-%E4%BD%9C%E4%B8%9A2/</guid>
+      <guid>https://ljyh223.github.io/post/c-%E4%BD%9C%E4%B8%9A2/</guid>
       <description>题2 #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;math.h&amp;gt; int main() { float f,x; printf(&amp;#34;请输入一个数\n&amp;#34;); scanf(&amp;#34;%f&amp;#34;,&amp;amp;x); switch ((int)(x/1)) { case 0: f=0; break; case 1: f=3*x+5; break; case 2: f=3*sin(x)-1; break; case 3: f=log(1+x*x); break; case 4: f=log10(x*x-2*x)+5; break; default: f=-1; break; } printf(&amp;#34;输入:%f,结果:%f&amp;#34;,x,f); } 题3 #include &amp;lt;stdio.h&amp;gt; int main() { float g,n; float m=0; printf(&amp;#34;请输入重量\n&amp;#34;); scanf(&amp;#34;%f&amp;#34;,&amp;amp;g); if(g&amp;gt;50) { printf(&amp;#34;拒收&amp;#34;); return 0; } n=g; switch ((int)g/5) { case 10: case 9: case 8: case 7: case 6: m+=5.</description>
     </item>
     <item>
       <title>某图库</title>
-      <link>http://localhost:1313/post/%E6%9F%90%E5%9B%BE%E5%BA%93/</link>
+      <link>https://ljyh223.github.io/post/%E6%9F%90%E5%9B%BE%E5%BA%93/</link>
       <pubDate>Tue, 24 Oct 2023 18:18:30 +0000</pubDate>
-      <guid>http://localhost:1313/post/%E6%9F%90%E5%9B%BE%E5%BA%93/</guid>
+      <guid>https://ljyh223.github.io/post/%E6%9F%90%E5%9B%BE%E5%BA%93/</guid>
       <description>一点点加密，随便还找了一个oss直连
 import random import time def encode(_str): staticchars = &amp;#34;PXhw7UT1B0a9kQDKZsjIASmOezxYG4CHo5Jyfg2b8FLpEvRr3WtVnlqMidu6cN&amp;#34; encodechars = &amp;#34;&amp;#34; for i in range(len(_str)): num0 = staticchars.find(_str[i]) if num0 == -1: code = _str[i] else: code = staticchars[(num0 + 3) % 62] num1 = random.randint(0, 61) num2 = random.randint(0, 61) encodechars += staticchars[num1] + code + staticchars[num2] return encodechars def timestamp(): return str(int(time.time())) def sing(): return encode(&amp;#34;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvMTExMTExMTExMTExMTExMTExMTEiLCJleHBpcmVfdGltZSI6MTY5NzMwNDUzNX0=.)FxVKiDH9rnMKEuTNMkRa7ibMrhp-Vdi-FHBgWOomdaQ###&amp;#34;+timestamp()) import requests headers = { &amp;#39;authority&amp;#39;: &amp;#39;stapi.youpengw.com&amp;#39;, &amp;#39;accept&amp;#39;: &amp;#39;*/*&amp;#39;, &amp;#39;accept-language&amp;#39;: &amp;#39;zh-CN,zh;q=0.</description>
     </item>
     <item>
       <title>c语言作业23/10/10</title>
-      <link>http://localhost:1313/post/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</link>
+      <link>https://ljyh223.github.io/post/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</link>
       <pubDate>Mon, 23 Oct 2023 23:04:34 +0000</pubDate>
-      <guid>http://localhost:1313/post/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</guid>
+      <guid>https://ljyh223.github.io/post/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</guid>
       <description>编程题7 #include &amp;lt;stdio.h&amp;gt; int main() { int num, a, b, c, d; printf(&amp;#34;请输入一个四位数：&amp;#34;); scanf(&amp;#34;%d&amp;#34;, &amp;amp;num); if (num &amp;gt;= 1000 &amp;amp;&amp;amp; num &amp;lt;= 9999) { a = num % 10; b = num / 100 % 10; c = num / 10 % 10; d = num / 1000; printf(&amp;#34;个位：%d,十位：%d,百位：%d,千位：%d&amp;#34;, a, c, b, d); } else { printf(&amp;#34;重新输入&amp;#34;); } return 0; } 编程题8 #include &amp;lt;stdio.h&amp;gt; #define PAI 3.1415926 int main() { int r; printf(&amp;#34;请输入半径:&amp;#34;); scanf(&amp;#34;%d&amp;#34;,&amp;amp;r); printf(&amp;#34;圆的半径=%d, 圆的直径=%d, 圆的周长=%.</description>
     </item>
     <item>
       <title>flutter 逆向小计</title>
-      <link>http://localhost:1313/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</link>
+      <link>https://ljyh223.github.io/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</link>
       <pubDate>Mon, 23 Oct 2023 22:59:16 +0000</pubDate>
-      <guid>http://localhost:1313/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</guid>
+      <guid>https://ljyh223.github.io/post/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</guid>
       <description>某个淘金社区，登陆有md5加密
 用blutter 解析一下，找到hash_update的地址，放到frida的脚本中，在console的下面加一句
 console.log(&amp;#39;hexdump&amp;#39;+hexdump(args[0])) 打印出来4个uint32List，虽然看不懂，但是我们打印了hex
@@ -228,41 +228,41 @@ import requests import hashlib import time def get_data(p): A=[&amp;#39;gcw7eeh5
     </item>
     <item>
       <title>c donut</title>
-      <link>http://localhost:1313/post/c-donut/</link>
+      <link>https://ljyh223.github.io/post/c-donut/</link>
       <pubDate>Mon, 23 Oct 2023 22:57:09 +0000</pubDate>
-      <guid>http://localhost:1313/post/c-donut/</guid>
+      <guid>https://ljyh223.github.io/post/c-donut/</guid>
       <description>C语言旋转甜甜圈
 #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;math.h&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;Windows.h&amp;gt; void usleep(__int64 usec) { HANDLE timer; LARGE_INTEGER ft; ft.QuadPart = -(10 * usec); timer = CreateWaitableTimer(NULL, TRUE, NULL); SetWaitableTimer(timer, &amp;amp;ft, 0, NULL, NULL, 0); WaitForSingleObject(timer, INFINITE); CloseHandle(timer); } int main() { float A = 0, B = 0; float i, j; int k; float z[1760]; char b[1760]; printf(&amp;#34;\x1b[2J&amp;#34;); for (;;) { memset(b, 32, 1760); memset(z, 0, 7040); for (j = 0; j &amp;lt; 6.</description>
     </item>
     <item>
       <title>某刷课</title>
-      <link>http://localhost:1313/post/%E6%9F%90%E5%88%B7%E8%AF%BE/</link>
+      <link>https://ljyh223.github.io/post/%E6%9F%90%E5%88%B7%E8%AF%BE/</link>
       <pubDate>Mon, 23 Oct 2023 22:55:18 +0000</pubDate>
-      <guid>http://localhost:1313/post/%E6%9F%90%E5%88%B7%E8%AF%BE/</guid>
+      <guid>https://ljyh223.github.io/post/%E6%9F%90%E5%88%B7%E8%AF%BE/</guid>
       <description>无任何难度，android rsa，第二次加入了人脸识别，幌子，直接用实名的人脸绕过
 from Crypto.PublicKey import RSA from Crypto.Cipher import PKCS1_v1_5 import base64,requests KEY=&amp;#39;MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC3Vsn6GuSivbc0mh1QFDjFVMdkb7lcAfsGdw6WuR0yM4GBP5MCJr301VX5aQucOKmpnpR4mhMSaCG0AVbK9VBNlghFcihfn3u4uMPGtqtXzKSJNZmLrzrS7Xd0ecUcAGHAnpEnXXgoUoYrAkthwKTBDayEIygQBrq+nMX53gST9QIDAQAB&amp;#39; def RSA_encrypt(clear): if clear==&amp;#39;&amp;#39;: return &amp;#39;&amp;#39; rsa_key = RSA.import_key(base64.b64decode(KEY)) cipher = PKCS1_v1_5.new(rsa_key) return base64.b64encode(cipher.encrypt(str(clear).encode(&amp;#39;utf-8&amp;#39;))).decode() def course_list(): url=&amp;#39;http://app.lfanpei.com/api/index/apiSafeLearning/learningCourseDetail&amp;#39; data={&amp;#39;apiToken&amp;#39;:&amp;#39;&amp;#39;,&amp;#39;classId&amp;#39;:classid,&amp;#39;courseId&amp;#39;:courseId} data={k:RSA_encrypt(v) for k,v in data.items()} data[&amp;#39;apiToken&amp;#39;]=TOKEN #print(data) result=requests.post(url,data=data) # print(result.text) cl=[] for i in result.json()[&amp;#39;data&amp;#39;][&amp;#39;apiSafeCourseDetail&amp;#39;][&amp;#39;safeCourseChaptersList&amp;#39;]: for j in i[&amp;#39;apiSafeCourseviewList&amp;#39;]: if j[&amp;#39;faceContrastTimes&amp;#39;]!=1: face_Comparison() return 0 if j[&amp;#39;viewOver&amp;#39;]!=1: # 1 为已完成的 cl.append([j[&amp;#39;viewId&amp;#39;],TIME,j[&amp;#39;courseViewHours&amp;#39;],j[&amp;#39;viewTitle&amp;#39;]]) else: print(&amp;#39;已完成&amp;#39;,j[&amp;#39;viewTitle&amp;#39;]) return cl def learm_update(): url=&amp;#39;http://app.lfanpei.com/api/video/apiSafeView/saveVideoPlayProgress&amp;#39; data={&amp;#39;apiToken&amp;#39;:&amp;#39;&amp;#39;,&amp;#39;classId&amp;#39;:classid,&amp;#39;courseId&amp;#39;:courseId,&amp;#39;viewfileId&amp;#39;:viewfileid,&amp;#39;curPercent&amp;#39;:&amp;#39;100&amp;#39;,&amp;#39;curChapter&amp;#39;:&amp;#39;0&amp;#39;,&amp;#39;viewTime&amp;#39;:TIME,&amp;#39;curView&amp;#39;:&amp;#39;1&amp;#39;,&amp;#39;viewOver&amp;#39;:&amp;#39;1&amp;#39;} data={k:RSA_encrypt(v) for k,v in data.</description>
     </item>
     <item>
       <title>rust</title>
-      <link>http://localhost:1313/post/rust/</link>
+      <link>https://ljyh223.github.io/post/rust/</link>
       <pubDate>Mon, 23 Oct 2023 20:50:37 +0000</pubDate>
-      <guid>http://localhost:1313/post/rust/</guid>
+      <guid>https://ljyh223.github.io/post/rust/</guid>
       <description>String fn main() { //String和&amp;amp;str的区别可自行百度 //空字符串 let s=String::new(); //可变字符串 let mut s1=String:from(&amp;#34;123&amp;#34;); //追加字符串 s1.push_str(&amp;#34;456&amp;#34;); //追加字符 s1.push(&amp;#34;1&amp;#34;); } json use std::fs::File; use serde_json::Value; fn main(){ //解析io流文件 let f=File::open(&amp;#34;test.txt&amp;#34;).unwrap(); let json:Value=serde_json::from_reader(f).unwrap(); //let json:Value=serde_json::from_str(text).unwrap(); for i in json[&amp;#34;data&amp;#34;].as_array().unwrap(){ println!(&amp;#34;{}&amp;#34;,i[&amp;#34;name&amp;#34;].as_str().unwrap()); } } reqwest use std::{time::{SystemTime, UNIX_EPOCH}}; fn get_time() -&amp;gt; String{ SystemTime::now() .duration_since(UNIX_EPOCH) .unwrap() .as_millis() .to_string() } async fn post() -&amp;gt; Result&amp;lt;String, reqwest::Error&amp;gt;{ let client = reqwest::Client::new(); // let mut headers = HeaderMap::new(); // headers.insert(&amp;#34;Content-Type&amp;#34;, &amp;#34;application/json&amp;#34;.</description>
     </item>
     <item>
       <title>python Notes</title>
-      <link>http://localhost:1313/post/python-notes/</link>
+      <link>https://ljyh223.github.io/post/python-notes/</link>
       <pubDate>Sun, 22 Oct 2023 23:26:58 +0000</pubDate>
-      <guid>http://localhost:1313/post/python-notes/</guid>
+      <guid>https://ljyh223.github.io/post/python-notes/</guid>
       <description>清华源 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple model linux中python2和3的pip python{2,3} -m pip install xxx Base64 import base64 import string base64.b64decode() #解码 base64.b64encode() #编码 处理变表base64 str1 = &amp;#34;d2G0ZjLwHjS7DmOzZAY0X2lzX3CoZV9zdNOydO9vZl9yZXZlcnGlfD==&amp;#34; #解码字符串 string1 = &amp;#34;TSRQPONMLKJIHGFEDCBAUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&amp;#34; #变换后的码表 string2 = &amp;#34;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&amp;#34; print(base64.b64decode(str1.translate(str.maketrans(string1,string2)))) 正则 取AB中间字符
 (?&amp;lt;=A).*?(?=B) #不包含AB A.*?B #包含AB A.*?(?=B) #包含A不包含B import re re.findall(r&amp;#34;(?&amp;lt;=A).*?(?=B)&amp;#34;,str) n位字符取一次
 re.findall(r&amp;#39;.{2}&amp;#39;,str) requests import requests url=&amp;#39;http://example.com&amp;#39; data={&amp;#39;example&amp;#39;:&amp;#39;123&amp;#39;} # data 即from-data header={&amp;#39;User-Agent&amp;#39;:&amp;#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36 Edg/117.0.2045.47&amp;#39;} #header 请求头 proxy={&amp;#39;http&amp;#39;:&amp;#39;127.</description>
     </item>
     <item>
       <title>flutter</title>
-      <link>http://localhost:1313/post/flutter/</link>
+      <link>https://ljyh223.github.io/post/flutter/</link>
       <pubDate>Sun, 03 Sep 2023 22:50:37 +0000</pubDate>
-      <guid>http://localhost:1313/post/flutter/</guid>
+      <guid>https://ljyh223.github.io/post/flutter/</guid>
       <description>起因 放假在家闲的皮爆，有空学习写了个（其实在很久之前就有打算了） 因为网易云音乐下载有很多但是加密的，虽然可以解密，但是也不方便管理，所以就有了这个软件，可以嵌入元数据（mp3和flac），包括歌词封面等。同步网易云歌单，可以删除本地文件
 开发 至于学习flutter，最开始知道flutter是因为逆向系列了解到的，听说写ui很方便，之前也有用过java开发。java的语法还也不是很喜欢。 网易云的api 参考: NeteaseCloudMusicApi
 学习编程语言我不是很喜欢看视频来，慢得很，需要什么直接去搜代码就行了。 先看看官方的文档，demo，自己需要什么功能直接百度 虽然可能了解不深刻，但是跟着视频写代码更烦人
@@ -273,9 +273,9 @@ re.findall(r&amp;#39;.{2}&amp;#39;,str) requests import requests url=&amp;#39;ht
     </item>
     <item>
       <title>某H视频-mls</title>
-      <link>http://localhost:1313/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</link>
+      <link>https://ljyh223.github.io/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</link>
       <pubDate>Sat, 07 Jan 2023 13:15:37 +0000</pubDate>
-      <guid>http://localhost:1313/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</guid>
+      <guid>https://ljyh223.github.io/post/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</guid>
       <description>分析流程 这个软件呢，其实分析主要就是想要看他拉人获得vip的操作
 抓包可以找到一个api
 api/user/traveler 这之前token还没有得到，参数
@@ -287,9 +287,9 @@ public final void C() { String v0_2; String v3_1; String v1 = &amp;#34;everb&amp
     </item>
     <item>
       <title>某洗衣小程序</title>
-      <link>http://localhost:1313/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
+      <link>https://ljyh223.github.io/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
       <pubDate>Sat, 07 Jan 2023 13:15:37 +0000</pubDate>
-      <guid>http://localhost:1313/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</guid>
+      <guid>https://ljyh223.github.io/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</guid>
       <description>小程序逆向 抓包
 电脑版微信最新版抓不了包，用3.7.6一下的
 微信在登陆时，右上角把代理填上
@@ -309,9 +309,9 @@ import requests import execjs phone=&amp;#39;17628818007&amp;#39; url=&amp;#39;h
     </item>
     <item>
       <title>diary</title>
-      <link>http://localhost:1313/post/diary/</link>
+      <link>https://ljyh223.github.io/post/diary/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/diary/</guid>
+      <guid>https://ljyh223.github.io/post/diary/</guid>
       <description>首记 岛村评价驹子写日记认为这是一种徒劳的行为，当时我也这样认为。
 现在心态一日不如一日，要抑郁了，想写日记记录自己琐碎的生活和自己的18岁
 Maybe I can&amp;rsquo;t be alone anymore

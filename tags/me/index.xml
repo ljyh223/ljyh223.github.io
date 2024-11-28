@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Me on ljyh</title>
-    <link>http://localhost:1313/tags/me/</link>
+    <link>https://ljyh223.github.io/tags/me/</link>
     <description>Recent content in Me on ljyh</description>
     <image>
       <title>ljyh</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://ljyh223.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://ljyh223.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.126.1</generator>
     <language>en</language>
     <lastBuildDate>Mon, 18 Dec 2023 21:19:36 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/me/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ljyh223.github.io/tags/me/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>你好-ljyh</title>
-      <link>http://localhost:1313/post/%E4%BD%A0%E5%A5%BD-ljyh/</link>
+      <link>https://ljyh223.github.io/post/%E4%BD%A0%E5%A5%BD-ljyh/</link>
       <pubDate>Mon, 18 Dec 2023 21:19:36 +0000</pubDate>
-      <guid>http://localhost:1313/post/%E4%BD%A0%E5%A5%BD-ljyh/</guid>
+      <guid>https://ljyh223.github.io/post/%E4%BD%A0%E5%A5%BD-ljyh/</guid>
       <description>你好 ljyh 近来安好
 已进入冬了，你找到温暖了吗？ 该不会今年又会生冻疮吧，那你的英语又有好好学习吗， 不过这些都不是重要的事情，你知道你要做些什么吗。 就这样吧，再见！
 ljyh 你好 好得很嘞
@@ -28,9 +28,9 @@ ljyh 你好 好得很嘞
     </item>
     <item>
       <title>我要去比赛了</title>
-      <link>http://localhost:1313/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</link>
+      <link>https://ljyh223.github.io/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</link>
       <pubDate>Thu, 23 Nov 2023 20:34:41 +0000</pubDate>
-      <guid>http://localhost:1313/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</guid>
+      <guid>https://ljyh223.github.io/post/%E6%88%91%E8%A6%81%E5%8E%BB%E6%AF%94%E8%B5%9B%E4%BA%86/</guid>
       <description>如题，去达州，臭傻逼移动开发，抄你妈还内网，让不让人玩了。但是学校公费，嘻嘻嘻，但是明天就要去了，只能抱抱佛脚了。
 更新 wuwuwu，怎么都是牛马啊，还好我也是木流牛马</description>
     </item>

@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Live on ljyh</title>
-    <link>http://localhost:1313/tags/live/</link>
+    <link>https://ljyh223.github.io/tags/live/</link>
     <description>Recent content in Live on ljyh</description>
     <image>
       <title>ljyh</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://ljyh223.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://ljyh223.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.126.1</generator>
     <language>en</language>
     <lastBuildDate>Thu, 28 Nov 2024 21:10:54 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/live/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ljyh223.github.io/tags/live/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>回望</title>
-      <link>http://localhost:1313/post/%E5%9B%9E%E6%9C%9B/</link>
+      <link>https://ljyh223.github.io/post/%E5%9B%9E%E6%9C%9B/</link>
       <pubDate>Thu, 28 Nov 2024 21:10:54 +0800</pubDate>
-      <guid>http://localhost:1313/post/%E5%9B%9E%E6%9C%9B/</guid>
+      <guid>https://ljyh223.github.io/post/%E5%9B%9E%E6%9C%9B/</guid>
       <description>2024 谈了女朋友 做项目 赞一点钱 好像看一点书 要说的话，感觉好像跟往年差不多的，但是呢发生了一个很重要的事情，就是谈了对象。在看一样，好像没有进步，做的一些东西感觉不够厉害。
 我觉得自己有点找不到方向了，今年好像有点迷茫啊，没有沉下心了吗？
 我想起来了，现在是大二，我要做很多杂事情，被分心了。等我想起来的时候已经到了年底，并且还有还很多的事情要去做。</description>
     </item>
     <item>
       <title>我的2023</title>
-      <link>http://localhost:1313/post/%E6%88%91%E7%9A%842023/</link>
+      <link>https://ljyh223.github.io/post/%E6%88%91%E7%9A%842023/</link>
       <pubDate>Mon, 01 Jan 2024 12:59:26 +0000</pubDate>
-      <guid>http://localhost:1313/post/%E6%88%91%E7%9A%842023/</guid>
+      <guid>https://ljyh223.github.io/post/%E6%88%91%E7%9A%842023/</guid>
       <description>2023年初设下的目标
 考上公办 new 一个对象 学习安卓开发 细数我的2023年，潦潦草草。 上次春节，三天打鱼得看了看复习资料，春节也是过得一塌糊涂。 又到开学，仍是浑浑噩噩。直到考试临近，抱了一下佛脚。 真是惊心动魄啊，考上了，不费吹灰之力便就考上了。 散烂数10日后，我去绵阳兼职了一周的保安，真是遭罪。 后来又到我满18，去了富士康，真是遭罪，期间还学了高数和安卓，真是能干。 回家混到开学，真是无比期待啊，我的大学｛专）时光。 好好学习，真是天天向上捏。 去工作室打听的时候，被老师相中。劝我转去他们专业。 便是苦痛的军训，相当的无聊，且不说，余下一两天的时候，老师让我去打比赛。 又是懒懒散散得赛前预习，得过且过吧。 比赛也是一点都不好玩，且混了一个省三，并报送进了工作室（嘻嘻） 又是帮老师做项目，妈的，且混且混。 年底就到了。。。
 2023的目标完成了2个，余下的2024继续 顺便把今年的目标立下
@@ -34,9 +34,9 @@
     </item>
     <item>
       <title>diary</title>
-      <link>http://localhost:1313/post/diary/</link>
+      <link>https://ljyh223.github.io/post/diary/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/diary/</guid>
+      <guid>https://ljyh223.github.io/post/diary/</guid>
       <description>首记 岛村评价驹子写日记认为这是一种徒劳的行为，当时我也这样认为。
 现在心态一日不如一日，要抑郁了，想写日记记录自己琐碎的生活和自己的18岁
 Maybe I can&amp;rsquo;t be alone anymore

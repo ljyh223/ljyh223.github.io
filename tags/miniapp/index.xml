@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Miniapp on ljyh</title>
-    <link>http://localhost:1313/tags/miniapp/</link>
+    <link>https://ljyh223.github.io/tags/miniapp/</link>
     <description>Recent content in Miniapp on ljyh</description>
     <image>
       <title>ljyh</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://ljyh223.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://ljyh223.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.126.1</generator>
     <language>en</language>
     <lastBuildDate>Sat, 07 Jan 2023 13:15:37 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/miniapp/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ljyh223.github.io/tags/miniapp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>某洗衣小程序</title>
-      <link>http://localhost:1313/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
+      <link>https://ljyh223.github.io/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
       <pubDate>Sat, 07 Jan 2023 13:15:37 +0000</pubDate>
-      <guid>http://localhost:1313/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</guid>
+      <guid>https://ljyh223.github.io/post/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/</guid>
       <description>小程序逆向 抓包
 电脑版微信最新版抓不了包，用3.7.6一下的
 微信在登陆时，右上角把代理填上

@@ -2,43 +2,43 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>C on ljyh</title>
-    <link>http://localhost:1313/tags/c/</link>
+    <link>https://ljyh223.github.io/tags/c/</link>
     <description>Recent content in C on ljyh</description>
     <image>
       <title>ljyh</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://ljyh223.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://ljyh223.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.126.1</generator>
     <language>en</language>
     <lastBuildDate>Wed, 03 Jan 2024 14:43:23 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ljyh223.github.io/tags/c/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C语言87</title>
-      <link>http://localhost:1313/post/c%E8%AF%AD%E8%A8%8087/</link>
+      <link>https://ljyh223.github.io/post/c%E8%AF%AD%E8%A8%8087/</link>
       <pubDate>Wed, 03 Jan 2024 14:43:23 +0000</pubDate>
-      <guid>http://localhost:1313/post/c%E8%AF%AD%E8%A8%8087/</guid>
+      <guid>https://ljyh223.github.io/post/c%E8%AF%AD%E8%A8%8087/</guid>
       <description>(单选题) A.只有下标值为4的数组元素ia[4]的值为零 B.仅最后一个数组元素的值为零 C.四个数组元素的值都为零 D.仅第一个数组元素中的值为零 答案: C (单选题)下面关于指针的正确描述是哪个（ ）。 A.不能对指针进行任何形式的运算 B.只能对指针进行加法运算 C.可以对指针进行加、减运算 D.可以对指针进行乘、除运算 答案: C (单选题)int a[2][3]={ {1},{0,2} }定义二维数组并赋值后，各数组元素中的初始值为（ ）。 A.a[0][0]=1a[0][1]=1a[0][2]=0a[1][0]=0a[1][1]=0a[1][2]=2 B.a[0][0]=0a[0][1]=0a[0][2]=1a[1][0]=0a[1][1]=2a[1][2]=0 C.a[0][0]=1a[0][1]=0a[0][2]=0a[1][0]=0a[1][1]=2a[1][2]=0 D.a[0][0]=1a[0][1]=0a[0][2]=0a[1][0]=0a[1][1]=0a[1][2]=2 答案: C (单选题)设有程序段：int i=10;while(i==0) i=i-3;则下面叙述中正确的是( )。 A.循环体语句一次也不执行 B.循环是无限循环 C.循环体语句执行一次 D.while循环执行10次 答案: A (单选题)关系运算符就是对两个操作数之间进行（ ）的运算符。 A.比较运算 B.相减运算 C.算术运算 D.三角函数计算 答案: A (单选题)下面定义指针变量的命令哪个是正确的？（ ） A.intpdr; B.int*pdr; C.int@pdr; D.int&amp;amp;pdr; 答案: B (单选题)在C语言中，最基本的数据类型包括（ ）。 A.整型、实型、逻辑型 B.整型、字符型、逻辑型 C.实型、字符型、逻辑型 D.整型、实型、字符型 答案: D (单选题)关系表达式与逻辑表达式的不同在哪里，请选择下列正确的表述（ ）。 A.关系表达式用于比较两个操作数的大小关系，逻辑表达式用于比较两个关系表达式的大小关系。 B.后面B、C、D的描述都不正确。 C.关系表达式和逻辑表达式的作用都一样，用于判断两个数之间的关系。 D.关系表达式只能描述单一的条件，逻辑表达式用于判定多个条件的成立关系。 答案: D (单选题) A.</description>
     </item>
     <item>
       <title>c 作业2</title>
-      <link>http://localhost:1313/post/c-%E4%BD%9C%E4%B8%9A2/</link>
+      <link>https://ljyh223.github.io/post/c-%E4%BD%9C%E4%B8%9A2/</link>
       <pubDate>Sun, 12 Nov 2023 14:22:18 +0000</pubDate>
-      <guid>http://localhost:1313/post/c-%E4%BD%9C%E4%B8%9A2/</guid>
+      <guid>https://ljyh223.github.io/post/c-%E4%BD%9C%E4%B8%9A2/</guid>
       <description>题2 #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;math.h&amp;gt; int main() { float f,x; printf(&amp;#34;请输入一个数\n&amp;#34;); scanf(&amp;#34;%f&amp;#34;,&amp;amp;x); switch ((int)(x/1)) { case 0: f=0; break; case 1: f=3*x+5; break; case 2: f=3*sin(x)-1; break; case 3: f=log(1+x*x); break; case 4: f=log10(x*x-2*x)+5; break; default: f=-1; break; } printf(&amp;#34;输入:%f,结果:%f&amp;#34;,x,f); } 题3 #include &amp;lt;stdio.h&amp;gt; int main() { float g,n; float m=0; printf(&amp;#34;请输入重量\n&amp;#34;); scanf(&amp;#34;%f&amp;#34;,&amp;amp;g); if(g&amp;gt;50) { printf(&amp;#34;拒收&amp;#34;); return 0; } n=g; switch ((int)g/5) { case 10: case 9: case 8: case 7: case 6: m+=5.</description>
     </item>
     <item>
       <title>c语言作业23/10/10</title>
-      <link>http://localhost:1313/post/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</link>
+      <link>https://ljyh223.github.io/post/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</link>
       <pubDate>Mon, 23 Oct 2023 23:04:34 +0000</pubDate>
-      <guid>http://localhost:1313/post/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</guid>
+      <guid>https://ljyh223.github.io/post/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</guid>
       <description>编程题7 #include &amp;lt;stdio.h&amp;gt; int main() { int num, a, b, c, d; printf(&amp;#34;请输入一个四位数：&amp;#34;); scanf(&amp;#34;%d&amp;#34;, &amp;amp;num); if (num &amp;gt;= 1000 &amp;amp;&amp;amp; num &amp;lt;= 9999) { a = num % 10; b = num / 100 % 10; c = num / 10 % 10; d = num / 1000; printf(&amp;#34;个位：%d,十位：%d,百位：%d,千位：%d&amp;#34;, a, c, b, d); } else { printf(&amp;#34;重新输入&amp;#34;); } return 0; } 编程题8 #include &amp;lt;stdio.h&amp;gt; #define PAI 3.1415926 int main() { int r; printf(&amp;#34;请输入半径:&amp;#34;); scanf(&amp;#34;%d&amp;#34;,&amp;amp;r); printf(&amp;#34;圆的半径=%d, 圆的直径=%d, 圆的周长=%.</description>
     </item>
     <item>
       <title>c donut</title>
-      <link>http://localhost:1313/post/c-donut/</link>
+      <link>https://ljyh223.github.io/post/c-donut/</link>
       <pubDate>Mon, 23 Oct 2023 22:57:09 +0000</pubDate>
-      <guid>http://localhost:1313/post/c-donut/</guid>
+      <guid>https://ljyh223.github.io/post/c-donut/</guid>
       <description>C语言旋转甜甜圈
 #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;math.h&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;Windows.h&amp;gt; void usleep(__int64 usec) { HANDLE timer; LARGE_INTEGER ft; ft.QuadPart = -(10 * usec); timer = CreateWaitableTimer(NULL, TRUE, NULL); SetWaitableTimer(timer, &amp;amp;ft, 0, NULL, NULL, 0); WaitForSingleObject(timer, INFINITE); CloseHandle(timer); } int main() { float A = 0, B = 0; float i, j; int k; float z[1760]; char b[1760]; printf(&amp;#34;\x1b[2J&amp;#34;); for (;;) { memset(b, 32, 1760); memset(z, 0, 7040); for (j = 0; j &amp;lt; 6.</description>
     </item>
