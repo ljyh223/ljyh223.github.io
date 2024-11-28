@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Study on ExampleSite</title>
-    <link>https://ljyh223.github.io/tags/study/</link>
-    <description>Recent content in Study on ExampleSite</description>
+    <title>Study on ljyh</title>
+    <link>http://localhost:1313/tags/study/</link>
+    <description>Recent content in Study on ljyh</description>
     <image>
-      <title>ExampleSite</title>
-      <url>https://ljyh223.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://ljyh223.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <title>ljyh</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.126.1</generator>
     <language>en</language>
     <lastBuildDate>Fri, 05 Jan 2024 19:28:19 +0000</lastBuildDate>
-    <atom:link href="https://ljyh223.github.io/tags/study/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/study/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>政治</title>
-      <link>https://ljyh223.github.io/post/%E6%94%BF%E6%B2%BB/</link>
+      <link>http://localhost:1313/post/%E6%94%BF%E6%B2%BB/</link>
       <pubDate>Fri, 05 Jan 2024 19:28:19 +0000</pubDate>
-      <guid>https://ljyh223.github.io/post/%E6%94%BF%E6%B2%BB/</guid>
+      <guid>http://localhost:1313/post/%E6%94%BF%E6%B2%BB/</guid>
       <description>政治16 题库:http://me.ljyh223.xyz/helpme/
 1. 如何成为担当民族复兴大任的时代新人 立大志
 明大德
