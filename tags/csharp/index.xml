@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CSharp on Alex lan</title><link>http://localhost:1313/tags/csharp/</link><description>Recent content in CSharp on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/csharp/index.xml" rel="self" type="application/rss+xml"/><item><title>avaloniaui</title><link>http://localhost:1313/docs/code/avaloniaui/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/code/avaloniaui/</guid><description>&lt;p>avaloniaui 打包windows
+&lt;a href="https://www.cnblogs.com/raok/p/17572367.html">参考&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>dotnet publish CountDown.sln -c Release -r win-x64 /p:PublishSingleFile&lt;span style="color:#f92672">=&lt;/span>true /p:PublishTrimmed&lt;span style="color:#f92672">=&lt;/span>true /p:PublishReadyToRun&lt;span style="color:#f92672">=&lt;/span>true /p:PublishReadyToRunShowWarnings&lt;span style="color:#f92672">=&lt;/span>true /p:UseAppHost&lt;span style="color:#f92672">=&lt;/span>true /p:IncludeNativeLibrariesForSelfExtract&lt;span style="color:#f92672">=&lt;/span>true /p:SelfContained&lt;span style="color:#f92672">=&lt;/span>true --self-contained true
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>c#</title><link>http://localhost:1313/docs/code/c%23/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/code/c%23/</guid><description>&lt;h2 id="c开发笔记">
+ C#开发笔记
+ &lt;a class="anchor" href="#c%e5%bc%80%e5%8f%91%e7%ac%94%e8%ae%b0">#&lt;/a>
+&lt;/h2>
+&lt;h3 id="网络请求">
+ 网络请求
+ &lt;a class="anchor" href="#%e7%bd%91%e7%bb%9c%e8%af%b7%e6%b1%82">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">using&lt;/span> System.Collections.Generic;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">using&lt;/span> System.Diagnostics;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">using&lt;/span> System.Text.Json.Nodes;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">string&lt;/span> cookie = &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">var&lt;/span> handler = &lt;span style="color:#66d9ef">new&lt;/span> HttpClientHandler();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">using&lt;/span> (&lt;span style="color:#66d9ef">var&lt;/span> httpClient = &lt;span style="color:#66d9ef">new&lt;/span> HttpClient(handler))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">using&lt;/span> (&lt;span style="color:#66d9ef">var&lt;/span> request = &lt;span style="color:#66d9ef">new&lt;/span> HttpRequestMessage(&lt;span style="color:#66d9ef">new&lt;/span> HttpMethod(&lt;span style="color:#e6db74">&amp;#34;POST&amp;#34;&lt;/span>), &lt;span style="color:#66d9ef">new&lt;/span> Uri(&lt;span style="color:#e6db74">&amp;#34;https://cloud.yibailingshou.com/wsy_user/web/index.php?m=login&amp;amp;a=register_get_phone_code&amp;#34;&lt;/span>)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">var&lt;/span> multipartContent = &lt;span style="color:#66d9ef">new&lt;/span> MultipartFormDataContent();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> multipartContent.Add(&lt;span style="color:#66d9ef">new&lt;/span> StringContent(&lt;span style="color:#e6db74">&amp;#34;17628818007&amp;#34;&lt;/span>), &lt;span style="color:#e6db74">&amp;#34;phone&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> multipartContent.Add(&lt;span style="color:#66d9ef">new&lt;/span> StringContent(&lt;span style="color:#e6db74">&amp;#34;czo0OiI5NTY1Ijs&amp;#34;&lt;/span>), &lt;span style="color:#e6db74">&amp;#34;customer_id&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> multipartContent.Add(&lt;span style="color:#66d9ef">new&lt;/span> StringContent(&lt;span style="color:#e6db74">&amp;#34;+86&amp;#34;&lt;/span>), &lt;span style="color:#e6db74">&amp;#34;country_code&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> multipartContent.Add(&lt;span style="color:#66d9ef">new&lt;/span> StringContent(&lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>), &lt;span style="color:#e6db74">&amp;#34;captcha_token&amp;#34;&lt;/span>);&lt;span style="color:#75715e">//post data&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> request.Headers.TryAddWithoutValidation(&lt;span style="color:#e6db74">&amp;#34;X-Requested-With&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;XMLHttpRequest&amp;#34;&lt;/span>);&lt;span style="color:#75715e">//添加header&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> request.Content = multipartContent;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">using&lt;/span> (&lt;span style="color:#66d9ef">var&lt;/span> response = &lt;span style="color:#66d9ef">await&lt;/span> httpClient.SendAsync(request))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> response.EnsureSuccessStatusCode();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">var&lt;/span> body = &lt;span style="color:#66d9ef">await&lt;/span> response.Content.ReadAsStringAsync();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Console.WriteLine(body);&lt;span style="color:#75715e">// 响应正文&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Console.WriteLine(response);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (response.Headers.TryGetValues(&lt;span style="color:#e6db74">&amp;#34;Set-Cookie&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">out&lt;/span> IEnumerable&amp;lt;&lt;span style="color:#66d9ef">string&lt;/span>&amp;gt; cookieValues))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">string&lt;/span> ck = cookieValues.FirstOrDefault();&lt;span style="color:#75715e">//响应header中的Set-cookie&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Console.WriteLine(ck.Split(&lt;span style="color:#e6db74">&amp;#34;;&amp;#34;&lt;/span>)[&lt;span style="color:#ae81ff">0&lt;/span>]);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">dynamic&lt;/span> result = JsonNode.Parse(body)!;&lt;span style="color:#75715e">//json解析&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (result[&lt;span style="color:#e6db74">&amp;#34;errcode&amp;#34;&lt;/span>].GetValue&amp;lt;&lt;span style="color:#66d9ef">int&lt;/span>&amp;gt;() == &lt;span style="color:#ae81ff">407&lt;/span>)&lt;span style="color:#75715e">// json对象取值&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//return &amp;#34;407&amp;#34;;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (result[&lt;span style="color:#e6db74">&amp;#34;errcode&amp;#34;&lt;/span>].GetValue&amp;lt;&lt;span style="color:#66d9ef">int&lt;/span>&amp;gt;() == &lt;span style="color:#ae81ff">0&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//return &amp;#34;0&amp;#34;;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//return &amp;#34;false&amp;#34;;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="aes加密">
+ AES加密
+ &lt;a class="anchor" href="#aes%e5%8a%a0%e5%af%86">#&lt;/a>
+&lt;/h3>
+&lt;p>解密反之，易写&lt;/p></description></item></channel></rss>

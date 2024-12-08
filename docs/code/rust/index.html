@@ -1,0 +1,356 @@
+<!doctype html><html lang=en dir=ltr><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content='
+  String
+  #
+
+fn main()
+{
+	//String和&amp;str的区别可自行百度
+	//空字符串
+	let s=String::new();
+	//可变字符串
+	let mut s1=String:from("123");
+	//追加字符串
+	s1.push_str("456");
+	//追加字符
+	s1.push("1");
+}
+
+  文件读写
+  #
+
+
+  读文件
+  #
+
+use std::{fs::File, io::Read};
+
+fn main(){
+
+	//使用create如果文件不存在则创建,存在则会覆盖源文件(网上所说是会)
+	//如果使用open,没有也是会报错
+    let mut file=File::create("test.txt").expect("open error");
+    let mut s=String::new();
+    let _ = file.read_to_string(&amp;mut s);
+    print!("{:#?}",s);
+}
+
+  写文件
+  #
+
+use std::io::Write;
+fn main() {
+   let mut file = std::fs::File::create("data.txt").expect("create failed");
+   file.write_all("12345".as_bytes()).expect("write failed");
+   file.write_all("hello world".as_bytes()).expect("write failed");
+}
+
+  追加数据
+  #
+
+use std::fs::OpenOptions;
+use std::io::Write;
+
+fn main() {
+   let mut file = OpenOptions::new().append(true).open("data.txt").expect("cannot open file");
+   file.write_all("123".as_bytes()).expect("write failed");
+   file.write_all("456".as_bytes()).expect("write failed");
+   file.write_all("789".as_bytes()).expect("write failed");
+}
+
+  删除文件
+  #
+
+use std::fs;
+fn main() {
+   fs::remove_file("data.txt").expect("could not remove file");
+   println!("file is removed");
+}
+
+  文件是否存在
+  #
+
+fn main（）{  
+	let file_path = Path::new(“path_to_file”);  
+	if file_path.exists() {  
+		println!("文件存在");  
+	}else {  
+		println!("文件不存在");  
+	}  
+}
+
+  json
+  #
+
+use std::fs::File;
+
+use serde_json::Value;
+fn main(){
+	//解析io流文件
+    let f=File::open("test.txt").unwrap();
+    let json:Value=serde_json::from_reader(f).unwrap();
+    //let json:Value=serde_json::from_str(text).unwrap();
+    for i in json["data"].as_array().unwrap(){
+        println!("{}",i["name"].as_str().unwrap());
+    }
+	//快速定义
+	let json_object=json!({"total":123,"data":[]);
+}
+
+  reqwest
+  #
+
+
+use std::{time::{SystemTime, UNIX_EPOCH}};
+
+fn get_time() -> String{
+    SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap()
+        .as_millis()
+        .to_string()
+}
+
+
+
+async fn post() -> Result<String, reqwest::Error>{
+    let client = reqwest::Client::new();
+    // let mut headers = HeaderMap::new();
+    // headers.insert("Content-Type", "application/json".parse().unwrap());
+
+    let time=get_time();
+    let data=[("phone","17340307464"),("password","d41d8cd98f00b204e9800998ecf8427e"),("countrycode",""),("rememberLogin","true"),("timerstamp",&amp;time)];
+    Ok(client.post("https://music.163.com/weapi/login/cellphone").json(&amp;data).send().await?.text().await?)
+}
+
+#[tokio::main]
+async fn main() {
+    if let Ok(res) = post().await {
+        println!("{:#?}", res);
+    }
+}
+
+  集合相关
+  #
+
+fn main() {
+    let a = vec![(2, "aa"), (4, "c"), (3, "cc")];
+    let b = vec![(3, "cc"), (5, "ee"), (2, "aa")];
+ 
+    // 取交集
+    let intersect = a.iter().filter(|&amp;u| b.contains(u)).collect::<Vec<_>>();
+    println!("a 和 b 交集是：{:?}", intersect);
+ 
+    // 取差集
+    let minusion = a.iter().filter(|&amp;u| !b.contains(u)).collect::<Vec<_>>();
+    println!("a 和 b 差集是：{:?}", minusion);
+ 
+    // 取并集
+    let union = a
+        .iter()
+        .filter(|&amp;u| !b.contains(u))
+        .chain(&amp;b)
+        .collect::<Vec<_>>();
+    println!("a 和 b 并集是：{:?}", union);
+ 
+    // 取补集
+    let complement = a
+        .iter()
+        .filter(|&amp;u| !b.contains(u))
+        .chain(b.iter().filter(|&amp;u| !a.contains(u)))
+        .collect::<Vec<_>>();
+    println!("a 和 b 补集是：{:?}", complement);
+}
+
+  hashmap
+  #
+
+hashmap 补集'><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://localhost:1313/docs/code/rust/"><meta property="og:site_name" content="Alex lan"><meta property="og:title" content="rust"><meta property="og:description" content='String#fn main() { //String和&amp;str的区别可自行百度 //空字符串 let s=String::new(); //可变字符串 let mut s1=String:from("123"); //追加字符串 s1.push_str("456"); //追加字符 s1.push("1"); } 文件读写#读文件#use std::{fs::File, io::Read}; fn main(){ //使用create如果文件不存在则创建,存在则会覆盖源文件(网上所说是会) //如果使用open,没有也是会报错 let mut file=File::create("test.txt").expect("open error"); let mut s=String::new(); let _ = file.read_to_string(&amp;mut s); print!("{:#?}",s); } 写文件#use std::io::Write; fn main() { let mut file = std::fs::File::create("data.txt").expect("create failed"); file.write_all("12345".as_bytes()).expect("write failed"); file.write_all("hello world".as_bytes()).expect("write failed"); } 追加数据#use std::fs::OpenOptions; use std::io::Write; fn main() { let mut file = OpenOptions::new().append(true).open("data.txt").expect("cannot open file"); file.write_all("123".as_bytes()).expect("write failed"); file.write_all("456".as_bytes()).expect("write failed"); file.write_all("789".as_bytes()).expect("write failed"); } 删除文件#use std::fs; fn main() { fs::remove_file("data.txt").expect("could not remove file"); println!("file is removed"); } 文件是否存在#fn main（）{ let file_path = Path::new(“path_to_file”); if file_path.exists() { println!("文件存在"); }else { println!("文件不存在"); } } json#use std::fs::File; use serde_json::Value; fn main(){ //解析io流文件 let f=File::open("test.txt").unwrap(); let json:Value=serde_json::from_reader(f).unwrap(); //let json:Value=serde_json::from_str(text).unwrap(); for i in json["data"].as_array().unwrap(){ println!("{}",i["name"].as_str().unwrap()); } //快速定义 let json_object=json!({"total":123,"data":[]); } reqwest#use std::{time::{SystemTime, UNIX_EPOCH}}; fn get_time() -> String{ SystemTime::now() .duration_since(UNIX_EPOCH) .unwrap() .as_millis() .to_string() } async fn post() -> Result<String, reqwest::Error>{ let client = reqwest::Client::new(); // let mut headers = HeaderMap::new(); // headers.insert("Content-Type", "application/json".parse().unwrap()); let time=get_time(); let data=[("phone","17340307464"),("password","d41d8cd98f00b204e9800998ecf8427e"),("countrycode",""),("rememberLogin","true"),("timerstamp",&amp;time)]; Ok(client.post("https://music.163.com/weapi/login/cellphone").json(&amp;data).send().await?.text().await?) } #[tokio::main] async fn main() { if let Ok(res) = post().await { println!("{:#?}", res); } } 集合相关#fn main() { let a = vec![(2, "aa"), (4, "c"), (3, "cc")]; let b = vec![(3, "cc"), (5, "ee"), (2, "aa")]; // 取交集 let intersect = a.iter().filter(|&amp;u| b.contains(u)).collect::<Vec<_>>(); println!("a 和 b 交集是：{:?}", intersect); // 取差集 let minusion = a.iter().filter(|&amp;u| !b.contains(u)).collect::<Vec<_>>(); println!("a 和 b 差集是：{:?}", minusion); // 取并集 let union = a .iter() .filter(|&amp;u| !b.contains(u)) .chain(&amp;b) .collect::<Vec<_>>(); println!("a 和 b 并集是：{:?}", union); // 取补集 let complement = a .iter() .filter(|&amp;u| !b.contains(u)) .chain(b.iter().filter(|&amp;u| !a.contains(u))) .collect::<Vec<_>>(); println!("a 和 b 补集是：{:?}", complement); } hashmap#hashmap 补集'><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:published_time" content="2024-12-08T14:03:24+08:00"><meta property="article:modified_time" content="2024-12-08T14:03:24+08:00"><meta property="article:tag" content="Rust"><title>rust | Alex lan</title>
+<link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://localhost:1313/docs/code/rust/><link rel=stylesheet href=/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.c290d52f387bc8e8a0bd57b2126cae6de6c478944752e1d9608ba90f1c1a9220.js integrity="sha256-wpDVLzh7yOigvVeyEmyubebEeJRHUuHZYIupDxwakiA=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Alex lan</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li><input type=checkbox id=section-867144600acf9658ad1e030dba887392 class=toggle checked>
+<label for=section-867144600acf9658ad1e030dba887392 class="flex justify-between"><a role=button>code</a></label><ul><li><input type=checkbox id=section-bad47914f28bea05b9a99cdd87cd69fb class=toggle>
+<label for=section-bad47914f28bea05b9a99cdd87cd69fb class="flex justify-between"><a role=button>Android</a></label><ul><li><a href=/docs/code/android/ui/>Android ui</a></li><li><a href=/docs/code/android/%E5%8D%8F%E7%A8%8B-retrofit/>Android 协程-retrofit</a></li><li><a href=/docs/code/android/%E6%AF%94%E8%B5%9B/>Android 比赛</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%A2%8E%E7%A2%8E%E5%BF%B5/>android 碎念</a></li><li><a href=/docs/code/android/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android 网络请求</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E9%80%82%E9%85%8D%E5%99%A8/>Android 适配器</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android-网络请求</a></li></ul></li><li><input type=checkbox id=section-4c67168a533057d7cb02259caca8884d class=toggle>
+<label for=section-4c67168a533057d7cb02259caca8884d class="flex justify-between"><a role=button>linux</a></label><ul><li><a href=/docs/code/linux/screen/>linux screen</a></li></ul></li><li><input type=checkbox id=section-227bbb535145acab9a03ddf223110bf7 class=toggle>
+<label for=section-227bbb535145acab9a03ddf223110bf7 class="flex justify-between"><a role=button>鸿蒙</a></label><ul><li><a href=/docs/code/harmony/tabbar/>鸿蒙开发-TbaBar</a></li><li><a href=/docs/code/harmony/%E5%85%A5%E9%97%A8/>鸿蒙开发-入门</a></li><li><a href=/docs/code/harmony/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/>鸿蒙开发-状态管理</a></li><li><a href=/docs/code/harmony/%E7%BD%91%E7%BB%9C/>鸿蒙开发-网络请求</a></li></ul></li><li><input type=checkbox id=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class=toggle>
+<label for=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class="flex justify-between"><a role=button>ee</a></label><ul><li><a href=/docs/code/new/autotakepic_flask/>Auto Take Pic Flask</a></li><li><a href=/docs/code/new/c_%E7%94%9C%E7%94%9C%E5%9C%88/>C 甜甜圈</a></li><li><a href=/docs/code/new/rust/%E6%9F%90%E5%9B%BE/>某图</a></li><li><a href=/docs/code/new/%E4%BD%9C%E4%B8%9A2023.10.10/>作业2023.10.10</a></li><li><a href=/docs/code/new/%E6%98%9F%E4%BA%91%E5%8A%A0%E9%80%9F%E5%99%A8/>星云加速器</a></li><li><a href=/docs/code/new/%E6%9C%A8%E9%A9%AC%E7%99%BB%E9%99%86/>木马登陆</a></li><li><a href=/docs/code/new/%E6%9F%90update/>某update</a></li><li><a href=/docs/code/new/%E6%9F%90%E5%88%B7%E8%AF%BE/>某刷课</a></li><li><a href=/docs/code/new/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/>某洗衣小程序</a></li><li><a href=/docs/code/new/%E9%82%A3%E4%BA%9B%E9%AA%9A%E6%93%8D%E4%BD%9C/>那些骚操作</a></li></ul></li><li><a href=/docs/code/arch-linux/>arch linux</a></li><li><a href=/docs/code/avaloniaui/>avaloniaui</a></li><li><a href=/docs/code/c%23/>c#</a></li><li><a href=/docs/code/java_mysql/>Java_mysql</a></li><li><a href=/docs/code/linux%E7%9F%A5%E8%AF%86/>linux知识</a></li><li><a href=/docs/code/mqtt--%E4%B8%B2%E5%8F%A3--4055/>MQTT && 串口</a></li><li><a href=/docs/code/python/>Python</a></li><li><a href=/docs/code/rust/ class=active>rust</a></li><li><a href=/docs/code/cmd/>Cmd</a></li><li><a href=/docs/code/dart/>Dart</a></li><li><a href=/docs/code/%E6%95%B0%E6%8D%AE%E5%BA%93/>数据库</a></li></ul></li><li><input type=checkbox id=section-a88931adc275b5db7ba2257eca8098f2 class=toggle>
+<label for=section-a88931adc275b5db7ba2257eca8098f2 class="flex justify-between"><a role=button>e .wp</a></label><ul><li><a href=/docs/wp/bili_22_1024/>bili_22_1024</a></li><li><a href=/docs/wp/love_math/>LOVE_math</a></li><li><a href=/docs/wp/webexercise/ruby_cookie/>ruby_cookie</a></li></ul></li><li><input type=checkbox id=section-d633b3f91ad6faec5e15f38ac64d5024 class=toggle>
+<label for=section-d633b3f91ad6faec5e15f38ac64d5024 class="flex justify-between"><a role=button>good good study</a></label><ul><li><input type=checkbox id=section-ad1d0d6744ceb9d7276a26afbd49c97f class=toggle>
+<label for=section-ad1d0d6744ceb9d7276a26afbd49c97f class="flex justify-between"><a role=button>class notes</a></label><ul><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/java/>java</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/linux/>linux</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/>信息安全</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E5%B1%80%E5%9F%9F%E7%BD%91-%E6%80%9D%E7%A7%91-pt/>局域网 思科 pt</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/>算法与数据结构笔记</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/>网页制作</a></li></ul></li><li><input type=checkbox id=section-297a8c491188fdc1e4d5049993bd118b class=toggle>
+<label for=section-297a8c491188fdc1e4d5049993bd118b class="flex justify-between"><a role=button>english</a></label><ul><li><a href=/docs/learm/english/%E4%B8%80%E8%88%AC%E7%8E%B0%E5%9C%A8%E6%97%B6/>一般现在时</a></li><li><a href=/docs/learm/english/%E7%8E%B0%E5%9C%A8%E8%BF%9B%E8%A1%8C%E6%97%B6/>现在进行时</a></li></ul></li><li><input type=checkbox id=section-d273ec3342c86bd09d8e0a595cc7603e class=toggle>
+<label for=section-d273ec3342c86bd09d8e0a595cc7603e class="flex justify-between"><a role=button>math</a></label><ul><li><a href=/docs/learm/math/%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>公式测试</a></li><li><a href=/docs/learm/math/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86/>基本积分</a></li><li><a href=/docs/learm/math/%E5%AF%BC%E6%95%B0/>导数</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%88%97/>数列</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>数学公式测试</a></li><li><a href=/docs/learm/math/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F/>泰勒公式</a></li><li><a href=/docs/learm/math/%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/>等价无穷小</a></li><li><a href=/docs/learm/math/%E9%B8%A1%E6%9D%82%E5%85%AC%E5%BC%8F/>鸡杂公式</a></li></ul></li></ul></li><li><input type=checkbox id=section-bc5bfc4ab3726cdac08770524fbd5e52 class=toggle>
+<label for=section-bc5bfc4ab3726cdac08770524fbd5e52 class="flex justify-between"><a role=button>hack</a></label><ul><li><a href=/docs/hack/msf/>msf</a></li><li><a href=/docs/hack/thefatrat/>TheFatRat</a></li></ul></li><li><input type=checkbox id=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class=toggle>
+<label for=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class="flex justify-between"><a href=/docs/re/>re</a></label><ul><li><input type=checkbox id=section-59835f29e02875febbf77853a8373c43 class=toggle>
+<label for=section-59835f29e02875febbf77853a8373c43 class="flex justify-between"><a href=/docs/re/new/>demo</a></label><ul><li><a href=/docs/re/new/%E6%9F%90h%E8%A7%86%E9%A2%91%E8%BD%AF%E4%BB%B6/>Android 比赛</a></li><li><a href=/docs/re/new/u%E5%87%80/>u净</a></li><li><a href=/docs/re/new/%E5%A4%A7%E5%AD%A6%E6%90%9C%E9%A2%98%E9%85%B1/>大学搜题</a></li><li><a href=/docs/re/new/%E5%B1%B1%E8%A5%BF%E6%81%92%E5%AE%89%E5%88%B7%E8%AF%BE%E4%BB%A5%E5%8F%8A%E8%80%83%E8%AF%95/>山西恒安刷课以及考试</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6/>某h软件</a></li><li><a href=/docs/re/new/bika/>某h软件 bika</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6-2/>某h软件-2</a></li><li><a href=/docs/re/new/%E6%B7%98%E9%87%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E9%99%86/>淘金社区登陆</a></li><li><a href=/docs/re/new/%E7%88%B1%E5%A4%9A%E5%A4%9A-%E5%88%86%E6%9E%90/>爱多多 分析</a></li><li><a href=/docs/re/new/%E7%A5%9E%E5%9B%BE%E5%A3%81%E7%BA%B8/>神图壁纸</a></li></ul></li><li><a href=/docs/re/arm%E6%B1%87%E7%BC%96/>arm 汇编</a></li><li><a href=/docs/re/flutter---blutter/>flutter - blutter</a></li><li><a href=/docs/re/flutter/>flutter 初探</a></li><li><a href=/docs/re/frida/>frida</a></li><li><a href=/docs/re/ida%E5%8A%A8%E8%B0%83so/>ida 动态调试so</a></li><li><a href=/docs/re/%E5%8F%8D%E7%BC%96%E8%AF%91/>反编译</a></li><li><a href=/docs/re/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91/>小程序 逆向</a></li></ul></li><li><input type=checkbox id=section-18930a98ed98865a0f74f8bc6e5f9129 class=toggle>
+<label for=section-18930a98ed98865a0f74f8bc6e5f9129 class="flex justify-between"><a role=button>网络安全</a></label><ul><li><input type=checkbox id=section-651b79d602e2b6fd9e11ffc5f6867235 class=toggle>
+<label for=section-651b79d602e2b6fd9e11ffc5f6867235 class="flex justify-between"><a role=button>java</a></label><ul><li><a href=/docs/network-security/java/sql%E6%B3%A8%E5%85%A5/>java sql 注入</a></li><li><a href=/docs/network-security/java/web-inf%E8%AF%BB%E5%8F%96/>WEB-INF 读取</a></li><li><a href=/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>反序列化</a></li></ul></li><li><input type=checkbox id=section-a44367811822bf6f468461f4b263fc52 class=toggle>
+<label for=section-a44367811822bf6f468461f4b263fc52 class="flex justify-between"><a role=button>node</a></label><ul><li><a href=/docs/network-security/node/%E5%8E%9F%E5%BD%A2%E9%93%BE%E6%B1%A1%E6%9F%93/>node 原型链污染</a></li></ul></li><li><input type=checkbox id=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class=toggle>
+<label for=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class="flex justify-between"><a role=button>other</a></label><ul><li><a href=/docs/network-security/other/linux/>linux 知识点</a></li><li><a href=/docs/network-security/other/xpath%E6%B3%A8%E5%85%A5/>xpath 注入</a></li><li><a href=/docs/network-security/other/xxe/>XXE</a></li><li><a href=/docs/network-security/other/%E5%8F%8D%E5%BC%B9shll/>反弹shell</a></li><li><a href=/docs/network-security/other/%E7%AB%AF%E5%8F%A3/>常见端口</a></li></ul></li><li><input type=checkbox id=section-40d2a42f189bda5f49dc4cec9d080122 class=toggle>
+<label for=section-40d2a42f189bda5f49dc4cec9d080122 class="flex justify-between"><a role=button>php</a></label><ul><li><a href=/docs/network-security/php/php/>php</a></li><li><a href=/docs/network-security/php/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>php</a></li><li><a href=/docs/network-security/php/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8Clinux%E7%BB%95%E8%BF%87/>php命令执行linux绕过</a></li><li><a href=/docs/network-security/php/readflag/>readflag</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/regexp%E7%9B%B2%E6%B3%A8/>regexp盲注</a></li><li><a href=/docs/network-security/php/session%E4%BC%AA%E9%80%A0/>session伪造</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/>堆叠注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5/>字符型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/>报错注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%95%B4%E5%9E%8B%E6%B3%A8%E5%85%A5/>整型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/>时间注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E7%9B%B2%E6%B3%A8/>盲注</a></li><li><a href=/docs/network-security/php/htaccess%E7%9A%84%E5%88%A9%E7%94%A8/>Htaccess的利用</a></li><li><a href=/docs/network-security/php/md5%E7%A2%B0%E6%92%9E/>Md5碰撞</a></li><li><a href=/docs/network-security/php/%E4%BC%AA%E5%8D%8F%E8%AE%AE/>伪协议</a></li><li><a href=/docs/network-security/php/%E5%87%BD%E6%95%B0%E6%BC%8F%E6%B4%9E/>函数漏洞</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/>文件上传</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/>文件包含</a></li></ul></li><li><input type=checkbox id=section-00e8dd07f7030a556feb24211f954773 class=toggle>
+<label for=section-00e8dd07f7030a556feb24211f954773 class="flex justify-between"><a role=button>python</a></label><ul><li><a href=/docs/network-security/python/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>pickle反序列化</a></li><li><a href=/docs/network-security/python/python-session%E4%BC%AA%E9%80%A0/>python session伪造</a></li><li><a href=/docs/network-security/python/ssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/>SSTI模板注入</a></li></ul></li><li><input type=checkbox id=section-e32c44d2f36aa533e1dcd6f636ecb361 class=toggle>
+<label for=section-e32c44d2f36aa533e1dcd6f636ecb361 class="flex justify-between"><a role=button>tools</a></label><ul><li><a href=/docs/network-security/tools/fake-mysql/>fake-mysql</a></li></ul></li></ul></li></ul><ul><li><a href=/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label><h3>rust</h3><label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#string>String</a></li><li><a href=#文件读写>文件读写</a><ul><li><a href=#读文件>读文件</a></li><li><a href=#写文件>写文件</a></li><li><a href=#追加数据>追加数据</a></li><li><a href=#删除文件>删除文件</a></li><li><a href=#文件是否存在>文件是否存在</a></li></ul></li><li><a href=#json>json</a></li><li><a href=#reqwest>reqwest</a></li><li><a href=#集合相关>集合相关</a><ul><li><a href=#hashmap>hashmap</a></li></ul></li></ul></nav></aside></header><article class="markdown book-article"><h2 id=string>String
+<a class=anchor href=#string>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>()
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	<span style=color:#75715e>//String和&amp;str的区别可自行百度
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#75715e>//空字符串
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#66d9ef>let</span> s<span style=color:#f92672>=</span>String::new();
+</span></span><span style=display:flex><span>	<span style=color:#75715e>//可变字符串
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> s1<span style=color:#f92672>=</span>String:<span style=color:#a6e22e>from</span>(<span style=color:#e6db74>&#34;123&#34;</span>);
+</span></span><span style=display:flex><span>	<span style=color:#75715e>//追加字符串
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	s1.push_str(<span style=color:#e6db74>&#34;456&#34;</span>);
+</span></span><span style=display:flex><span>	<span style=color:#75715e>//追加字符
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	s1.push(<span style=color:#e6db74>&#34;1&#34;</span>);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=文件读写>文件读写
+<a class=anchor href=#%e6%96%87%e4%bb%b6%e8%af%bb%e5%86%99>#</a></h2><h3 id=读文件>读文件
+<a class=anchor href=#%e8%af%bb%e6%96%87%e4%bb%b6>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#66d9ef>use</span> std::{fs::File, io::Read};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>(){
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>//使用create如果文件不存在则创建,存在则会覆盖源文件(网上所说是会)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#75715e>//如果使用open,没有也是会报错
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> file<span style=color:#f92672>=</span>File::create(<span style=color:#e6db74>&#34;test.txt&#34;</span>).expect(<span style=color:#e6db74>&#34;open error&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> s<span style=color:#f92672>=</span>String::new();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> _ <span style=color:#f92672>=</span> file.read_to_string(<span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> s);
+</span></span><span style=display:flex><span>    print!(<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{:#?}</span><span style=color:#e6db74>&#34;</span>,s);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=写文件>写文件
+<a class=anchor href=#%e5%86%99%e6%96%87%e4%bb%b6>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#66d9ef>use</span> std::io::Write;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>() {
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> file <span style=color:#f92672>=</span> std::fs::File::create(<span style=color:#e6db74>&#34;data.txt&#34;</span>).expect(<span style=color:#e6db74>&#34;create failed&#34;</span>);
+</span></span><span style=display:flex><span>   file.write_all(<span style=color:#e6db74>&#34;12345&#34;</span>.as_bytes()).expect(<span style=color:#e6db74>&#34;write failed&#34;</span>);
+</span></span><span style=display:flex><span>   file.write_all(<span style=color:#e6db74>&#34;hello world&#34;</span>.as_bytes()).expect(<span style=color:#e6db74>&#34;write failed&#34;</span>);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=追加数据>追加数据
+<a class=anchor href=#%e8%bf%bd%e5%8a%a0%e6%95%b0%e6%8d%ae>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#66d9ef>use</span> std::fs::OpenOptions;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>use</span> std::io::Write;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>() {
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> file <span style=color:#f92672>=</span> OpenOptions::new().append(<span style=color:#66d9ef>true</span>).open(<span style=color:#e6db74>&#34;data.txt&#34;</span>).expect(<span style=color:#e6db74>&#34;cannot open file&#34;</span>);
+</span></span><span style=display:flex><span>   file.write_all(<span style=color:#e6db74>&#34;123&#34;</span>.as_bytes()).expect(<span style=color:#e6db74>&#34;write failed&#34;</span>);
+</span></span><span style=display:flex><span>   file.write_all(<span style=color:#e6db74>&#34;456&#34;</span>.as_bytes()).expect(<span style=color:#e6db74>&#34;write failed&#34;</span>);
+</span></span><span style=display:flex><span>   file.write_all(<span style=color:#e6db74>&#34;789&#34;</span>.as_bytes()).expect(<span style=color:#e6db74>&#34;write failed&#34;</span>);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=删除文件>删除文件
+<a class=anchor href=#%e5%88%a0%e9%99%a4%e6%96%87%e4%bb%b6>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#66d9ef>use</span> std::fs;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>() {
+</span></span><span style=display:flex><span>   fs::remove_file(<span style=color:#e6db74>&#34;data.txt&#34;</span>).expect(<span style=color:#e6db74>&#34;could not remove file&#34;</span>);
+</span></span><span style=display:flex><span>   println!(<span style=color:#e6db74>&#34;file is removed&#34;</span>);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=文件是否存在>文件是否存在
+<a class=anchor href=#%e6%96%87%e4%bb%b6%e6%98%af%e5%90%a6%e5%ad%98%e5%9c%a8>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span><span style=color:#960050;background-color:#1e0010>（）</span>{  
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>let</span> file_path <span style=color:#f92672>=</span> Path::new(<span style=color:#960050;background-color:#1e0010>“</span>path_to_file<span style=color:#960050;background-color:#1e0010>”</span>);  
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> file_path.exists() {  
+</span></span><span style=display:flex><span>		println!(<span style=color:#e6db74>&#34;文件存在&#34;</span>);  
+</span></span><span style=display:flex><span>	}<span style=color:#66d9ef>else</span> {  
+</span></span><span style=display:flex><span>		println!(<span style=color:#e6db74>&#34;文件不存在&#34;</span>);  
+</span></span><span style=display:flex><span>	}  
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=json>json
+<a class=anchor href=#json>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#66d9ef>use</span> std::fs::File;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>use</span> serde_json::Value;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>(){
+</span></span><span style=display:flex><span>	<span style=color:#75715e>//解析io流文件
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>let</span> f<span style=color:#f92672>=</span>File::open(<span style=color:#e6db74>&#34;test.txt&#34;</span>).unwrap();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> json:<span style=color:#a6e22e>Value</span><span style=color:#f92672>=</span>serde_json::from_reader(f).unwrap();
+</span></span><span style=display:flex><span>    <span style=color:#75715e>//let json:Value=serde_json::from_str(text).unwrap();
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>for</span> i <span style=color:#66d9ef>in</span> json[<span style=color:#e6db74>&#34;data&#34;</span>].as_array().unwrap(){
+</span></span><span style=display:flex><span>        println!(<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#34;</span>,i[<span style=color:#e6db74>&#34;name&#34;</span>].as_str().unwrap());
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>	<span style=color:#75715e>//快速定义
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#66d9ef>let</span> json_object<span style=color:#f92672>=</span>json!({<span style=color:#e6db74>&#34;total&#34;</span>:<span style=color:#ae81ff>123</span>,<span style=color:#e6db74>&#34;data&#34;</span>:[]);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=reqwest>reqwest
+<a class=anchor href=#reqwest>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>use</span> std::{time::{SystemTime, <span style=color:#66d9ef>UNIX_EPOCH</span>}};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>get_time</span>() -&gt; String{
+</span></span><span style=display:flex><span>    SystemTime::now()
+</span></span><span style=display:flex><span>        .duration_since(<span style=color:#66d9ef>UNIX_EPOCH</span>)
+</span></span><span style=display:flex><span>        .unwrap()
+</span></span><span style=display:flex><span>        .as_millis()
+</span></span><span style=display:flex><span>        .to_string()
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>post</span>() -&gt; Result<span style=color:#f92672>&lt;</span>String, reqwest::Error<span style=color:#f92672>&gt;</span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> client <span style=color:#f92672>=</span> reqwest::Client::new();
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// let mut headers = HeaderMap::new();
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>// headers.insert(&#34;Content-Type&#34;, &#34;application/json&#34;.parse().unwrap());
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> time<span style=color:#f92672>=</span>get_time();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> data<span style=color:#f92672>=</span>[(<span style=color:#e6db74>&#34;phone&#34;</span>,<span style=color:#e6db74>&#34;17340307464&#34;</span>),(<span style=color:#e6db74>&#34;password&#34;</span>,<span style=color:#e6db74>&#34;d41d8cd98f00b204e9800998ecf8427e&#34;</span>),(<span style=color:#e6db74>&#34;countrycode&#34;</span>,<span style=color:#e6db74>&#34;&#34;</span>),(<span style=color:#e6db74>&#34;rememberLogin&#34;</span>,<span style=color:#e6db74>&#34;true&#34;</span>),(<span style=color:#e6db74>&#34;timerstamp&#34;</span>,<span style=color:#f92672>&amp;</span>time)];
+</span></span><span style=display:flex><span>    Ok(client.post(<span style=color:#e6db74>&#34;https://music.163.com/weapi/login/cellphone&#34;</span>).json(<span style=color:#f92672>&amp;</span>data).send().<span style=color:#66d9ef>await</span><span style=color:#f92672>?</span>.text().<span style=color:#66d9ef>await</span><span style=color:#f92672>?</span>)
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#[tokio::main]</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#66d9ef>let</span> Ok(res) <span style=color:#f92672>=</span> post().<span style=color:#66d9ef>await</span> {
+</span></span><span style=display:flex><span>        println!(<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{:#?}</span><span style=color:#e6db74>&#34;</span>, res);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=集合相关>集合相关
+<a class=anchor href=#%e9%9b%86%e5%90%88%e7%9b%b8%e5%85%b3>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> a <span style=color:#f92672>=</span> vec![(<span style=color:#ae81ff>2</span>, <span style=color:#e6db74>&#34;aa&#34;</span>), (<span style=color:#ae81ff>4</span>, <span style=color:#e6db74>&#34;c&#34;</span>), (<span style=color:#ae81ff>3</span>, <span style=color:#e6db74>&#34;cc&#34;</span>)];
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> b <span style=color:#f92672>=</span> vec![(<span style=color:#ae81ff>3</span>, <span style=color:#e6db74>&#34;cc&#34;</span>), (<span style=color:#ae81ff>5</span>, <span style=color:#e6db74>&#34;ee&#34;</span>), (<span style=color:#ae81ff>2</span>, <span style=color:#e6db74>&#34;aa&#34;</span>)];
+</span></span><span style=display:flex><span> 
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 取交集
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>let</span> intersect <span style=color:#f92672>=</span> a.iter().filter(<span style=color:#f92672>|&amp;</span>u<span style=color:#f92672>|</span> b.contains(u)).collect::<span style=color:#f92672>&lt;</span>Vec<span style=color:#f92672>&lt;</span>_<span style=color:#f92672>&gt;&gt;</span>();
+</span></span><span style=display:flex><span>    println!(<span style=color:#e6db74>&#34;a 和 b 交集是：</span><span style=color:#e6db74>{:?}</span><span style=color:#e6db74>&#34;</span>, intersect);
+</span></span><span style=display:flex><span> 
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 取差集
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>let</span> minusion <span style=color:#f92672>=</span> a.iter().filter(<span style=color:#f92672>|&amp;</span>u<span style=color:#f92672>|</span> <span style=color:#f92672>!</span>b.contains(u)).collect::<span style=color:#f92672>&lt;</span>Vec<span style=color:#f92672>&lt;</span>_<span style=color:#f92672>&gt;&gt;</span>();
+</span></span><span style=display:flex><span>    println!(<span style=color:#e6db74>&#34;a 和 b 差集是：</span><span style=color:#e6db74>{:?}</span><span style=color:#e6db74>&#34;</span>, minusion);
+</span></span><span style=display:flex><span> 
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 取并集
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>union</span> <span style=color:#f92672>=</span> a
+</span></span><span style=display:flex><span>        .iter()
+</span></span><span style=display:flex><span>        .filter(<span style=color:#f92672>|&amp;</span>u<span style=color:#f92672>|</span> <span style=color:#f92672>!</span>b.contains(u))
+</span></span><span style=display:flex><span>        .chain(<span style=color:#f92672>&amp;</span>b)
+</span></span><span style=display:flex><span>        .collect::<span style=color:#f92672>&lt;</span>Vec<span style=color:#f92672>&lt;</span>_<span style=color:#f92672>&gt;&gt;</span>();
+</span></span><span style=display:flex><span>    println!(<span style=color:#e6db74>&#34;a 和 b 并集是：</span><span style=color:#e6db74>{:?}</span><span style=color:#e6db74>&#34;</span>, <span style=color:#66d9ef>union</span>);
+</span></span><span style=display:flex><span> 
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 取补集
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>let</span> complement <span style=color:#f92672>=</span> a
+</span></span><span style=display:flex><span>        .iter()
+</span></span><span style=display:flex><span>        .filter(<span style=color:#f92672>|&amp;</span>u<span style=color:#f92672>|</span> <span style=color:#f92672>!</span>b.contains(u))
+</span></span><span style=display:flex><span>        .chain(b.iter().filter(<span style=color:#f92672>|&amp;</span>u<span style=color:#f92672>|</span> <span style=color:#f92672>!</span>a.contains(u)))
+</span></span><span style=display:flex><span>        .collect::<span style=color:#f92672>&lt;</span>Vec<span style=color:#f92672>&lt;</span>_<span style=color:#f92672>&gt;&gt;</span>();
+</span></span><span style=display:flex><span>    println!(<span style=color:#e6db74>&#34;a 和 b 补集是：</span><span style=color:#e6db74>{:?}</span><span style=color:#e6db74>&#34;</span>, complement);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=hashmap>hashmap
+<a class=anchor href=#hashmap>#</a></h3><p>hashmap 补集</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>diff_hashmap</span>(map1:<span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>HashMap</span><span style=color:#f92672>&lt;</span>String,Music<span style=color:#f92672>&gt;</span>,map2:<span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>HashMap</span><span style=color:#f92672>&lt;</span>String,Music<span style=color:#f92672>&gt;</span>)-&gt;<span style=color:#a6e22e>HashMap</span><span style=color:#f92672>&lt;</span>String,Music<span style=color:#f92672>&gt;</span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> m<span style=color:#f92672>=</span>HashMap::new();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(k,v) <span style=color:#66d9ef>in</span> map1{
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>!</span>map2.contains_key(k) {
+</span></span><span style=display:flex><span>            m.insert(k.clone(), v.clone());
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (k,v) <span style=color:#66d9ef>in</span> map2 {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>!</span>map1.contains_key(k) {
+</span></span><span style=display:flex><span>            m.insert(k.clone(), v.clone());
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }m
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>lyric and add_pic</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>use</span> metaflac::Tag;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>use</span> metaflac::block::PictureType::Media;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#[tokio::main]</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>() -&gt; Result<span style=color:#f92672>&lt;</span>(), reqwest::Error<span style=color:#f92672>&gt;</span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> lyc<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;[00:09.74]群青色の空</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[00:11.88]自由なんてものは</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[00:14.02]手を伸ばすほどに遠く遠く飛んでく</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[00:16.80]ほら、海猫の歌が僕を笑っているんだ</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[00:21.28]夏の島に縛られた十六年間</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[00:25.08]長い前髪も伸び過ぎて捨てられたあの日みたい</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[00:29.32]どんな愛情も</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[00:30.50]ねえ、たったひと切れのパンより軽い（ライト）</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[00:32.80]生きているよ</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[00:34.43]神様にもきっと見捨てられている僕でも</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[00:40.10]追い風に白い帆を上げよう</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[00:43.92]君が留まり僕がゆくなら</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[00:47.76]いつか遠い海で会えるんだろう</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[00:51.56]きっとこの星はまあるいから</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[00:55.40]追い風に白い帆を上げよう</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[00:59.14]君が留まり僕がゆくなら</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[01:02.88]いつか遠い海で会えるんだろう</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[01:06.78]きっとこの星はまあるいから</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[01:25.62]潮の香りが染み込んでいる日だ</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[01:29.76]薄汚れた白い背中を押す風が吹いた</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[01:33.68]もし叶うなら愛されたいな</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[01:37.52]あたたかな胸に頰を埋め眠りたいな</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[01:41.38]雲を追うよ、風を切るマスト</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[01:45.02]僕を乗せた船はどこまでも</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[01:48.72]黄金島にもゆけるよ</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[01:50.60]地図はないけど</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[01:52.32]さあ、人魚たちの歌に手を叩こう</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[01:56.54]ナナナ……</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[02:11.53]追い風に白い帆を上げよう</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[02:15.30]君が留まり僕がゆくなら</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[02:19.16]いつか遠い海で会えるんだろう</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[02:22.92]きっとこの星はまあるいから</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[02:26.94]追い風に白い帆を上げよう</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[02:30.48]君が留まり僕がゆくなら</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[02:34.24]いつか遠い海で会えるんだろう</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[02:38.16]きっとこの星はまあるいから</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[02:47.54]まあるいから</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[02:55.42]まあるいから</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> tag <span style=color:#f92672>=</span> Tag::read_from_path(<span style=color:#e6db74>&#34;C:/test/rust/demo1/file/wcat.flac&#34;</span>).unwrap();
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> data<span style=color:#f92672>=</span>reqwest::get(<span style=color:#e6db74>&#34;https://p2.music.126.net/mog628G4JLNEMi-GpWxccQ==/109951164647211717.jpg&#34;</span>).<span style=color:#66d9ef>await</span><span style=color:#f92672>?</span>.bytes().<span style=color:#66d9ef>await</span><span style=color:#f92672>?</span>.to_vec();
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    tag.add_picture(<span style=color:#e6db74>&#34;image/jpeg&#34;</span>, Media, data);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> comment<span style=color:#f92672>=</span>tag.vorbis_comments_mut();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    comment.set_lyrics(vec![lyc]);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    tag.save().unwrap();
+</span></span><span style=display:flex><span>    Ok(())
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#string>String</a></li><li><a href=#文件读写>文件读写</a><ul><li><a href=#读文件>读文件</a></li><li><a href=#写文件>写文件</a></li><li><a href=#追加数据>追加数据</a></li><li><a href=#删除文件>删除文件</a></li><li><a href=#文件是否存在>文件是否存在</a></li></ul></li><li><a href=#json>json</a></li><li><a href=#reqwest>reqwest</a></li><li><a href=#集合相关>集合相关</a><ul><li><a href=#hashmap>hashmap</a></li></ul></li></ul></nav></div></aside></main></body></html>

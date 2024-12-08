@@ -1,0 +1,984 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>C on Alex lan</title><link>http://localhost:1313/tags/c/</link><description>Recent content in C on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Wed, 03 Jan 2024 14:43:23 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/c/index.xml" rel="self" type="application/rss+xml"/><item><title>C语言87</title><link>http://localhost:1313/posts/c%E8%AF%AD%E8%A8%8087/</link><pubDate>Wed, 03 Jan 2024 14:43:23 +0000</pubDate><guid>http://localhost:1313/posts/c%E8%AF%AD%E8%A8%8087/</guid><description>&lt;p>&lt;img src="https://api.nguaduot.cn/qingbz/random" alt="image" />&lt;/p>
+&lt;ol>
+&lt;li>(单选题)&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.只有下标值为4的数组元素ia[4]的值为零&lt;/li>
+&lt;li>B.仅最后一个数组元素的值为零&lt;/li>
+&lt;li>C.四个数组元素的值都为零&lt;/li>
+&lt;li>D.仅第一个数组元素中的值为零
+&lt;!-- raw HTML omitted -->答案: C &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;ol start="2">
+&lt;li>(单选题)下面关于指针的正确描述是哪个（    ）。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.不能对指针进行任何形式的运算&lt;/li>
+&lt;li>B.只能对指针进行加法运算&lt;/li>
+&lt;li>C.可以对指针进行加、减运算&lt;/li>
+&lt;li>D.可以对指针进行乘、除运算
+&lt;!-- raw HTML omitted -->答案: C &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="3">
+&lt;li>(单选题)int a[2][3]={ {1},{0,2} }定义二维数组并赋值后，各数组元素中的初始值为（    ）。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.a[0][0]=1a[0][1]=1a[0][2]=0a[1][0]=0a[1][1]=0a[1][2]=2&lt;/li>
+&lt;li>B.a[0][0]=0a[0][1]=0a[0][2]=1a[1][0]=0a[1][1]=2a[1][2]=0&lt;/li>
+&lt;li>C.a[0][0]=1a[0][1]=0a[0][2]=0a[1][0]=0a[1][1]=2a[1][2]=0&lt;/li>
+&lt;li>D.a[0][0]=1a[0][1]=0a[0][2]=0a[1][0]=0a[1][1]=0a[1][2]=2
+&lt;!-- raw HTML omitted -->答案: C &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="4">
+&lt;li>(单选题)设有程序段：int i=10;while(i==0)        i=i-3;则下面叙述中正确的是(    )。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.循环体语句一次也不执行&lt;/li>
+&lt;li>B.循环是无限循环&lt;/li>
+&lt;li>C.循环体语句执行一次&lt;/li>
+&lt;li>D.while循环执行10次
+&lt;!-- raw HTML omitted -->答案: A &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="5">
+&lt;li>(单选题)关系运算符就是对两个操作数之间进行（  ）的运算符。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.比较运算&lt;/li>
+&lt;li>B.相减运算&lt;/li>
+&lt;li>C.算术运算&lt;/li>
+&lt;li>D.三角函数计算
+&lt;!-- raw HTML omitted -->答案: A &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="6">
+&lt;li>(单选题)下面定义指针变量的命令哪个是正确的？（    ）&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.intpdr;&lt;/li>
+&lt;li>B.int*pdr;&lt;/li>
+&lt;li>C.int@pdr;&lt;/li>
+&lt;li>D.int&amp;amp;pdr;
+&lt;!-- raw HTML omitted -->答案: B &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="7">
+&lt;li>(单选题)在C语言中，最基本的数据类型包括（       ）。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.整型、实型、逻辑型&lt;/li>
+&lt;li>B.整型、字符型、逻辑型&lt;/li>
+&lt;li>C.实型、字符型、逻辑型&lt;/li>
+&lt;li>D.整型、实型、字符型
+&lt;!-- raw HTML omitted -->答案: D &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="8">
+&lt;li>(单选题)关系表达式与逻辑表达式的不同在哪里，请选择下列正确的表述（   ）。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.关系表达式用于比较两个操作数的大小关系，逻辑表达式用于比较两个关系表达式的大小关系。&lt;/li>
+&lt;li>B.后面B、C、D的描述都不正确。&lt;/li>
+&lt;li>C.关系表达式和逻辑表达式的作用都一样，用于判断两个数之间的关系。&lt;/li>
+&lt;li>D.关系表达式只能描述单一的条件，逻辑表达式用于判定多个条件的成立关系。
+&lt;!-- raw HTML omitted -->答案: D &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="9">
+&lt;li>(单选题)&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.cstr[]=&amp;ldquo;verygood&amp;rdquo;;&lt;/li>
+&lt;li>B.cstr[]=&amp;lsquo;verygood&amp;rsquo;;&lt;/li>
+&lt;li>C.cstr[20]=verygood;&lt;/li>
+&lt;li>D.cstr[]={verygood};
+&lt;!-- raw HTML omitted -->答案: A &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="10">
+&lt;li>(单选题)关于自定义函数的叙述不正确的是（  ）。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.自定义函数由函数定义语句和函数体两部分构成。&lt;/li>
+&lt;li>B.自定义函数必须在主函数体外进行定义。&lt;/li>
+&lt;li>C.自定义函数的函数体只需写在主函数中即可，不需要单独定义。&lt;/li>
+&lt;li>D.自定义函数可以在主函数前定义，也可以在主函数之后定义。
+&lt;!-- raw HTML omitted -->答案: C &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="11">
+&lt;li>(单选题)运算符==的运算功能是（    ）&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.连等运算&lt;/li>
+&lt;li>B.不等运算&lt;/li>
+&lt;li>C.相等关系运算&lt;/li>
+&lt;li>D.赋值运算
+&lt;!-- raw HTML omitted -->答案: C &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="12">
+&lt;li>(单选题)&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.padr=a;&lt;/li>
+&lt;li>B.padr=&amp;amp;a;&lt;/li>
+&lt;li>C.padr=*a;&lt;/li>
+&lt;li>D.padr=@a;
+&lt;!-- raw HTML omitted -->答案: B &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="13">
+&lt;li>(单选题)关于函数的声明不正确的是（   ）。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.自定义函数声明语句的格式是：数据类型自定义函数名([函数参数]);&lt;/li>
+&lt;li>B.自定义函数的声明可以在主程序中的任何位置进行声明。&lt;/li>
+&lt;li>C.要使用自定义函数，则必须遵循先声明、再定义、再使用的顺序。&lt;/li>
+&lt;li>D.自定义函数如果在主函数之前定义，则不需要进行函数的声明。
+&lt;!-- raw HTML omitted -->答案: B &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="14">
+&lt;li>(单选题)int A[5]定义的数组A[5]，其数组元素分别是（    ）。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.A[0],A[1],A[2],A[3],A[4],A[5]&lt;/li>
+&lt;li>B.A[1],A[2],A[3],A[4],A[5]&lt;/li>
+&lt;li>C.A1,A2,A3,A4,A5&lt;/li>
+&lt;li>D.A[0],A[1],A[2],A[3],A[4]
+&lt;!-- raw HTML omitted -->答案: D &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="15">
+&lt;li>(单选题)以下哪一组运算符都属于逻辑运算符（   ）。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.&amp;lt;、&amp;gt;、==、&amp;amp;&amp;amp;&lt;/li>
+&lt;li>B.&amp;gt;=、&amp;lt;=、&amp;amp;&amp;amp;&lt;/li>
+&lt;li>C.！、&amp;amp;&amp;amp;、||&lt;/li>
+&lt;li>D.!=、!、&amp;gt;
+&lt;!-- raw HTML omitted -->答案: C &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="16">
+&lt;li>(单选题)定义一维数组的命令如后所示：int isj[4]，将“22、18、32、65”赋值给该数组的正确格式为：（    ）&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.isj[4]={22、18、32、65};&lt;/li>
+&lt;li>B.isj[4]=22、18、32、65;&lt;/li>
+&lt;li>C.isj[4]={22,18,32,65};&lt;/li>
+&lt;li>D.isj[]={22、18、32、65};
+&lt;!-- raw HTML omitted -->答案: C &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="17">
+&lt;li>(单选题)关系表达式的运算结果为（   ）。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.逻辑值“真或假”&lt;/li>
+&lt;li>B.字符数据&lt;/li>
+&lt;li>C.整数&lt;/li>
+&lt;li>D.浮点数
+&lt;!-- raw HTML omitted -->答案: A &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="18">
+&lt;li>(单选题)下列叙述中正确的是（    ）。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.C语言中的所有字母都不区分大小写&lt;/li>
+&lt;li>B.C语言中的所有关键字必须小写&lt;/li>
+&lt;li>C.C程序中的关键字必须小写，其他标识符不区分大小写&lt;/li>
+&lt;li>D.C程序中的所有字母都必须小写
+&lt;!-- raw HTML omitted -->答案: B &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="19">
+&lt;li>(单选题)&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>A.循环体语句一次也不执行&lt;/li>
+&lt;li>B.循环是无限循环&lt;/li>
+&lt;li>C.循环体语句执行一次&lt;/li>
+&lt;li>D.while循环执行10次
+&lt;!-- raw HTML omitted -->答案: A &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="20">
+&lt;li>(填空题)定义指针变量int *pix; ，定义整型数组int isj[5];，将数组isj[5]的首地址赋值给pix的命令方式一：（     ），命令方式二：（    ）&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)pix=isj;&lt;/li>
+&lt;li>(2)pix=&amp;amp;isj[0];&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="21">
+&lt;li>(填空题)通过struct student stxiaozu[3];命令定义的是一个（     ）数组。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)结构体;结构型&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="22">
+&lt;li>(填空题)(    )变量在所有函数中都有效,可以用于传递参数;(    ）变量只在定义它的函数内有效,函数执行完以后该变量就失效了。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)全局变量;全局&lt;/li>
+&lt;li>(2)局部变量;局部&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="23">
+&lt;li>(填空题)形参是指函数定义时在定义语句中函数名后括号里所表示的参数每个形参由（    ）和（    ）构成,形参与形参之间用（    ）间隔开。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)数据类型名&lt;/li>
+&lt;li>(2)形参变量名;变量名&lt;/li>
+&lt;li>(3)逗号;,&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="24">
+&lt;li>(填空题)实参是指函数调用命令中所提供的参数,它可以是（    ）、（    ）、（    ）三种形式。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)数值;常量;数据&lt;/li>
+&lt;li>(2)变量&lt;/li>
+&lt;li>(3)计算式;表达式&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="25">
+&lt;li>(填空题)定义一个二维数组M[2][2]，该数组中的数据一共排成（   ）行（    ）列。该数组一共有（   ）个数组元素，行下标和列下标最大的数组元素是M[（   )][（   )]。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)2&lt;/li>
+&lt;li>(2)2&lt;/li>
+&lt;li>(3)4&lt;/li>
+&lt;li>(4)1&lt;/li>
+&lt;li>(5)1&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="26">
+&lt;li>(填空题)下面定义了以下几类变量。int a,b;double var;char name[10];register int i;下面的地址引用形式中哪些是正确的形式?&amp;amp;a、&amp;amp;(a+1)、&amp;amp;b、&amp;amp;5、&amp;amp;var、&amp;amp;name、&amp;amp;name[0]~&amp;amp;name[9]、&amp;amp;i;正确形式:____错误形式:____填空时按照题中的前后顺序书写,引用形式之间如题用“、”间隔。可直接复制题中的引用形式。
+答案被吃掉了&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="27">
+&lt;li>(填空题)条件判断语句if else语句包含两个语句块，条件成立时执行的语句块位于（  ）和(    )之间。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)if;iF;If;IF&lt;/li>
+&lt;li>(2)else;Else;ELSE&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="28">
+&lt;li>(填空题)所有在函数外部定义的任何变量都属于____变量又称为____变量,在函数内部定义的变量都属于____变量,又叫作____变量。
+答案被吃掉了&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="29">
+&lt;li>(填空题)程序填空:定义结构体变量,用于保存教师的基本信息,输入教师基本信息到结构体变量中,并将保存的数据输出到屏幕上。教师信息:工号:1101,姓名:李晓玲,年龄:28,部门:管理工程系。#include &amp;ldquo;stdio.h&amp;quot;int main(){ (&lt;strong>&lt;strong>)//定义结构体数据类型teacher { (&lt;/strong>&lt;/strong>)//定义保存工号数据的结构体成员cno char cname[10]; int iage; char cdept[20]; }; (&lt;strong>&lt;strong>) //定义结构体变量sta并通过赋值存入李晓玲老师的信息 printf(&amp;ldquo;工号:%s,姓名:%s,年龄:%d,部门:%s\n&amp;rdquo;,(&lt;/strong>&lt;/strong>));//请填写正确的变量名参数}
+答案被吃掉了&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="30">
+&lt;li>(填空题)&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)主函数;main函数;main()&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="31">
+&lt;li>(填空题)定义结构数据类型的同时定义结构体变量，称为（     ）定义法。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)直接&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="32">
+&lt;li>(填空题)&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)&amp;amp;a、&amp;amp;b、&amp;amp;var、&amp;amp;name[0]~&amp;amp;name[9];&amp;amp;a、&amp;amp;b、&amp;amp;var、&amp;amp;name[0]-&amp;amp;name[9];&amp;amp;a、&amp;amp;b、&amp;amp;var、&amp;amp;name[0]至&amp;amp;name[9]&lt;/li>
+&lt;li>(2)&amp;amp;(a+1)、&amp;amp;5、&amp;amp;name、&amp;amp;i&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="33">
+&lt;li>(填空题)所有在函数外部定义的任何变量都属于（   ）变量又称为（    ）变量,在函数内部定义的变量都属于（   ）变量，又叫作（   ）变量。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)外部;外部变量;全局变量;全局&lt;/li>
+&lt;li>(2)全局变量;全局;外部;外部变量&lt;/li>
+&lt;li>(3)内部;内部变量;局部;局部变量&lt;/li>
+&lt;li>(4)局部;局部变量;内部;内部变量&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="34">
+&lt;li>(填空题)定义数组K[2][3]={ {3,2,5},{1,0,1} }，请问K[0][ 0]=(    )，K[1][2]=（    ）。中间一列的数值是（    ），（    ）对应的数组元素分别是哪几个写出数组元素名（    ）、（     ）。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)3&lt;/li>
+&lt;li>(2)1&lt;/li>
+&lt;li>(3)2&lt;/li>
+&lt;li>(4)0&lt;/li>
+&lt;li>(5)K[0][1]&lt;/li>
+&lt;li>(6)K[1][1]&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="35">
+&lt;li>(填空题)定义的结构体数组，其每一个数组元素都是一个（   ）变量。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)结构体;结构型&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="36">
+&lt;li>(填空题)&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)声明部分;声明;头文件声明&lt;/li>
+&lt;li>(2)主函数;main函数;主函数部分&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="37">
+&lt;li>(填空题)&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)structteacher&lt;/li>
+&lt;li>(2)charcno[6];&lt;/li>
+&lt;li>(3)structteachersta={&amp;ldquo;1101&amp;rdquo;,&amp;ldquo;李晓玲&amp;rdquo;,28,&amp;ldquo;管理工程系&amp;rdquo;};&lt;/li>
+&lt;li>(4)teacher.cno,teacher.cname,teacher.iage,teacher.cdept&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="38">
+&lt;li>(填空题)如果while循环的循环条件表达式为“（      ）”时，该循环将进入死循环。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)1&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="39">
+&lt;li>(填空题)指针变量就是专门用来存储（    ）的变量。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)地址;数据地址;变量地址&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="40">
+&lt;li>(填空题)&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)地址;变量的地址;数据的地址;一个变量在内存中的地址&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="41">
+&lt;li>(填空题)int iM[5]; 定义的一维数组一共有（    ）个数组变量，第一个数组变量的下标为（    ），最后一个数组变量的下标为（    ）。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)5&lt;/li>
+&lt;li>(2)0&lt;/li>
+&lt;li>(3)4&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="42">
+&lt;li>(填空题)定义数组K[2][2]={ {1，5}，{3} }，则K[1][1]=（    ）。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)0&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="43">
+&lt;li>(填空题)程序填空:输出字符数组中的全部元素,数组中存放的是字符串“windows”长度为7个字符,本题中直接将字符串赋值给字符数组a。#include &amp;ldquo;stdio.h&amp;quot;int main(){ (&lt;strong>&lt;strong>);             //写出定义字符数组a并赋值的命令 char *pa; int i; printf(&amp;quot;\n&amp;rdquo;); for(i=0;i&amp;lt;=6;i++) (&lt;/strong>&lt;/strong>_____);      //写出实现字符输出的命令 printf(&amp;quot;\n&amp;rdquo;);}&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)chara[]=&amp;ldquo;windows&amp;rdquo;;charca[]=&amp;ldquo;windows&amp;rdquo;;chara[7]=&amp;ldquo;windows&amp;rdquo;&lt;/li>
+&lt;li>(2)printf(&amp;quot;%c&amp;quot;,a[i]);printf(&amp;quot;%c&amp;quot;),ca[i];putchar(a[i]);putchar(ca[i])&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="44">
+&lt;li>(填空题)除了（     )循环外，（       ）循环和（   ）都必须在循环体中修改循环变量的值。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)for&lt;/li>
+&lt;li>(2)while;dowhile;dowhile;当循环;do循环&lt;/li>
+&lt;li>(3)dowhile;dowhile;while;当循环;do循环&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="45">
+&lt;li>(填空题)&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)变量&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="46">
+&lt;li>(填空题)&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)&amp;amp;ix&lt;/li>
+&lt;li>(2)&amp;amp;iy&lt;/li>
+&lt;li>(3)ix&amp;gt;iy&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="47">
+&lt;li>(填空题)形参是指函数定义时在定义语句中函数名后括号里所表示的参数每个形参由（）和（）构成，形参与形参之间用（）间隔开。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)数据类型名;数据类型&lt;/li>
+&lt;li>(2)变量名;变量&lt;/li>
+&lt;li>(3)逗号;，;,&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="48">
+&lt;li>(填空题)一个C程序中必须有一个主函数，主函数的名字规定为“（   ）”。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)main;main()&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="49">
+&lt;li>(填空题)&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)chara[]=&amp;ldquo;windows&amp;rdquo;;&lt;/li>
+&lt;li>(2)printf(&amp;quot;%c&amp;quot;,a[i]);&lt;/li>
+&lt;li>(3)printf(&amp;quot;%c&amp;quot;,pa[i]);&lt;/li>
+&lt;li>(4)printf(&amp;quot;%c&amp;quot;,*(a+i));&lt;/li>
+&lt;li>(5)printf(&amp;quot;%c&amp;quot;,*(pa+i));&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="50">
+&lt;li>(填空题)while循环，当（   ）时才会执行循环体中的命令。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)循环条件成立;条件成立&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="51">
+&lt;li>(填空题)&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)变量&lt;/li>
+&lt;li>(2)数值;数据;数字&lt;/li>
+&lt;li>(3)计算式;算式&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="52">
+&lt;li>(填空题)C语言程序中的主函数由（    ）和（    ）两部分构成。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)主函数定义命令;函数定义命令;函数头&lt;/li>
+&lt;li>(2)主函数体;函数体&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="53">
+&lt;li>(填空题)程序代码如下,请在空白处填写正确的命令,完善程序。#include &amp;ldquo;stdio.h&amp;quot;int main(){ (&lt;strong>&lt;strong>) //定义结构数组类型“student” { (&lt;/strong>&lt;/strong>) //定义保存姓名数据的成员cname int imiddle int ifinal; float fave; }; (&lt;strong>&lt;strong>) //定义结构体变量sta并赋值 (&lt;/strong>&lt;/strong>) //计算总评成绩(平均成绩) printf(&amp;rdquo;(____)&amp;quot;,sta.cname,sta.imiddle,sta.ifinal,sta.fave);//填写正确的输出格式参数}
+答案被吃掉了&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="54">
+&lt;li>(填空题)&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)structstudent&lt;/li>
+&lt;li>(2)charcname[8];&lt;/li>
+&lt;li>(3)structstudentsta={&amp;ldquo;李林玲&amp;rdquo;,80,100};&lt;/li>
+&lt;li>(4)sta.fave=(sta.imiddle+sta.ifinal)/2.0;&lt;/li>
+&lt;li>(5)%s:%d%d%0.1f&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="55">
+&lt;li>(填空题)C程序总是从(     )开始执行。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)主函数;main函数&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="56">
+&lt;li>(填空题)C语言中，使用嵌套if-else语句来实现（   ）选择结构.&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)多分支&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="57">
+&lt;li>(填空题)先定义结构体数据类型，再用另一条命令定义结构体变量，称为（     )定义法。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)间接&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="58">
+&lt;li>(填空题)（   ）变量在所有函数中都有效，可以用于传递参数；（   ）变量只在定义它的函数内有效，函数执行完以后该变量就失效了。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)全局;全局变量;外部;外部变量&lt;/li>
+&lt;li>(2)局部;局部变量;内部;内部变量&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="59">
+&lt;li>(填空题)字符串的结束符为（    )。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)\0;&amp;rsquo;\0'&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="60">
+&lt;li>(填空题)（      ）循环和（      ）循环，循环条件成立时才会执行循环体中的命令。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)while;WHILE;当循环;当&lt;/li>
+&lt;li>(2)for;FOR&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="61">
+&lt;li>(填空题)定义一个能保存10个字符的字符数组，数组名为“czf ”，写出正确的命令（  ）。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)charczf[10];charczf【10】&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="62">
+&lt;li>(填空题)使用( )函数可以实现字符数组数据的格式化输出。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>(1)printf;printf();输出;PRINTF&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;ol start="63">
+&lt;li>(判断题)数组名就是一个指针变量，他表示数组的首地址。
+&lt;!-- raw HTML omitted -->答案: 对 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="64">
+&lt;li>(判断题)一维数组可以先定义，再给该数组赋值。
+&lt;!-- raw HTML omitted -->答案: 对 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="65">
+&lt;li>(判断题)使用gets（）函数可以从键盘上将字符串一次输入到字符数组中。
+&lt;!-- raw HTML omitted -->答案: 对 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="66">
+&lt;li>(判断题)switch（表达式）中的表达式可以是变量或计算式。
+&lt;!-- raw HTML omitted -->答案: 对 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="67">
+&lt;li>(判断题)
+&lt;!-- raw HTML omitted -->答案: 错 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="68">
+&lt;li>(判断题)要输出二维数组中的值必须使用双重循环来实现。
+&lt;!-- raw HTML omitted -->答案: 对 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="69">
+&lt;li>(判断题)数组中的数据也可以一次将一个数组元素中的值传递给自定义函数进行处理，此时实参的形式为“数组名[下标]”，形参的形式为“数据类型名 变量名”。
+&lt;!-- raw HTML omitted -->答案: 对 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="70">
+&lt;li>(判断题)数组中的数据只能一次将一个数组元素中的值传递给自定义函数进行处理。
+&lt;!-- raw HTML omitted -->答案: 错 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="71">
+&lt;li>(判断题)必须在定义一维数组时给该数组赋初值。
+&lt;!-- raw HTML omitted -->答案: 错 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="72">
+&lt;li>(判断题)使用printf(&amp;quot;%c&amp;quot;,czf)，可以将字符数组czf中的字符串一次输出到屏幕上。
+&lt;!-- raw HTML omitted -->答案: 错 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="73">
+&lt;li>(判断题)
+&lt;!-- raw HTML omitted -->答案: 对 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="74">
+&lt;li>(判断题)scanf 语句可以实现程序运行过程中从键盘上输入数据。
+&lt;!-- raw HTML omitted -->答案: 对 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="75">
+&lt;li>(判断题)
+&lt;!-- raw HTML omitted -->答案: 错 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="76">
+&lt;li>(判断题)
+&lt;!-- raw HTML omitted -->答案: 对 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="77">
+&lt;li>(判断题)%f这个格式输出符用于输出整数型变量的值。
+&lt;!-- raw HTML omitted -->答案: 错 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="78">
+&lt;li>(判断题)如果一次将整个数组传递给自定义函数，在自定义函数中可以对数组中的值进行修改，自定义函数运行结束返回主函数后，数组中保存的是修改后的值。
+&lt;!-- raw HTML omitted -->答案: 对 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="79">
+&lt;li>(判断题)
+&lt;!-- raw HTML omitted -->答案: 错 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="80">
+&lt;li>(判断题)定义结构变量的正确命令格式是：&amp;lt;结构体数据类型名&amp;gt; &amp;lt;结构体变量名&amp;gt;;
+&lt;!-- raw HTML omitted -->答案: 错 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="81">
+&lt;li>(判断题)使用gets（）函数将字符串输入到字符数组中，系统会自动在字符串最后一个字符后面存入一个结束符。
+&lt;!-- raw HTML omitted -->答案: 对 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="82">
+&lt;li>(判断题)定义结构体变量必须先定义结构体数据类型，然后再定义结构变量。
+&lt;!-- raw HTML omitted -->答案: 对 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="83">
+&lt;li>(判断题)如果一次将整个数组中的数据传递给自定义函数,形参变量为“数组名”,实参变量为“数组名[]”的形式。
+&lt;!-- raw HTML omitted -->答案: 错 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="84">
+&lt;li>(判断题)使用结构体变量可以在一个变量中存储多个类型不同的数据。
+&lt;!-- raw HTML omitted -->答案: 对 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="85">
+&lt;li>(判断题)如果一次将整个数组传递到自定义函数,自定义函数中可以对数组中的值进行修改,自定义函数运行结束返回主函数后,数组中保存的是修改后的值。
+&lt;!-- raw HTML omitted -->答案: 对 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="86">
+&lt;li>(判断题)如果一次将整个数组中的数据传递给自定义函数，形参变量为“数组名”，实参变量为“数组名[]”的形式。
+&lt;!-- raw HTML omitted -->答案: 错 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;ol start="87">
+&lt;li>(判断题)i++的等价运算式是i=i+1。
+&lt;!-- raw HTML omitted -->答案: 对 &lt;!-- raw HTML omitted -->&lt;/li>
+&lt;/ol>
+&lt;hr></description></item><item><title>c 作业2</title><link>http://localhost:1313/posts/c-%E4%BD%9C%E4%B8%9A2/</link><pubDate>Sun, 12 Nov 2023 14:22:18 +0000</pubDate><guid>http://localhost:1313/posts/c-%E4%BD%9C%E4%B8%9A2/</guid><description>&lt;h3 id="题2">
+ 题2
+ &lt;a class="anchor" href="#%e9%a2%982">#&lt;/a>
+&lt;/h3>
+&lt;p>&lt;a href="https://www.imagehub.cc/image/1nyZO0">&lt;img src="https://s1.imagehub.cc/images/2023/11/12/203c2a0f5047ce501301a4f75960fe87.png" alt="题2" />&lt;/a>&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;math.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">float&lt;/span> f,x;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;请输入一个数&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#a6e22e">scanf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;%f&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;amp;&lt;/span>x);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">switch&lt;/span> ((&lt;span style="color:#66d9ef">int&lt;/span>)(x&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>)) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		f&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">break&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		f&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3&lt;/span>&lt;span style="color:#f92672">*&lt;/span>x&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">5&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">break&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		f&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3&lt;/span>&lt;span style="color:#f92672">*&lt;/span>&lt;span style="color:#a6e22e">sin&lt;/span>(x)&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">break&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		f&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#f92672">+&lt;/span>x&lt;span style="color:#f92672">*&lt;/span>x);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">break&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		f&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#a6e22e">log10&lt;/span>(x&lt;span style="color:#f92672">*&lt;/span>x&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#f92672">*&lt;/span>x)&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">5&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">break&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">default&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		f&lt;span style="color:#f92672">=-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">break&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;输入:%f,结果:%f&amp;#34;&lt;/span>,x,f);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="题3">
+ 题3
+ &lt;a class="anchor" href="#%e9%a2%983">#&lt;/a>
+&lt;/h3>
+&lt;p>&lt;a href="https://www.imagehub.cc/image/1nymkz">&lt;img src="https://s1.imagehub.cc/images/2023/11/12/d4be3340a1f92e404d0b377340ab9e0d.png" alt="题3" />&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">float&lt;/span> g,n;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">float&lt;/span> m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;请输入重量&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#a6e22e">scanf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;%f&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;amp;&lt;/span>g);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">if&lt;/span>(g&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">50&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;拒收&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	n&lt;span style="color:#f92672">=&lt;/span>g;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">switch&lt;/span> ((&lt;span style="color:#66d9ef">int&lt;/span>)g&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#ae81ff">5&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#ae81ff">10&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#ae81ff">9&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#ae81ff">7&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#ae81ff">6&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			m&lt;span style="color:#f92672">+=&lt;/span>&lt;span style="color:#ae81ff">5.0&lt;/span>&lt;span style="color:#f92672">*&lt;/span>(g&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">30&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			g&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">30&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#ae81ff">5&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			m&lt;span style="color:#f92672">+=&lt;/span>&lt;span style="color:#ae81ff">4.5&lt;/span>&lt;span style="color:#f92672">*&lt;/span>(g&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">20&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			g&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">20&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			m&lt;span style="color:#f92672">+=&lt;/span>&lt;span style="color:#ae81ff">4.0&lt;/span>&lt;span style="color:#f92672">*&lt;/span>(g&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">10&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			g&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">10&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			m&lt;span style="color:#f92672">+=&lt;/span>&lt;span style="color:#ae81ff">3.5&lt;/span>&lt;span style="color:#f92672">*&lt;/span>(g&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">5&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			g&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">5&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			m&lt;span style="color:#f92672">+=&lt;/span>&lt;span style="color:#ae81ff">3.0&lt;/span>&lt;span style="color:#f92672">*&lt;/span>g;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			&lt;span style="color:#66d9ef">break&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">default&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			m&lt;span style="color:#f92672">=-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			&lt;span style="color:#66d9ef">break&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;重量:%.2fkg,快递费:%.2f&amp;#34;&lt;/span>,n,m);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>c语言作业23/10/10</title><link>http://localhost:1313/posts/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</link><pubDate>Mon, 23 Oct 2023 23:04:34 +0000</pubDate><guid>http://localhost:1313/posts/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/</guid><description>&lt;h3 id="编程题7">
+ 编程题7
+ &lt;a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%987">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt; &lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#66d9ef">int&lt;/span> num, a, b, c, d; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;请输入一个四位数：&amp;#34;&lt;/span>); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#a6e22e">scanf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;%d&amp;#34;&lt;/span>, &lt;span style="color:#f92672">&amp;amp;&lt;/span>num); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#66d9ef">if&lt;/span> (num &lt;span style="color:#f92672">&amp;gt;=&lt;/span> &lt;span style="color:#ae81ff">1000&lt;/span> &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> num &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#ae81ff">9999&lt;/span>) { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>        a &lt;span style="color:#f92672">=&lt;/span> num &lt;span style="color:#f92672">%&lt;/span> &lt;span style="color:#ae81ff">10&lt;/span>; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>        b &lt;span style="color:#f92672">=&lt;/span> num &lt;span style="color:#f92672">/&lt;/span> &lt;span style="color:#ae81ff">100&lt;/span> &lt;span style="color:#f92672">%&lt;/span> &lt;span style="color:#ae81ff">10&lt;/span>; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>        c &lt;span style="color:#f92672">=&lt;/span> num &lt;span style="color:#f92672">/&lt;/span> &lt;span style="color:#ae81ff">10&lt;/span> &lt;span style="color:#f92672">%&lt;/span> &lt;span style="color:#ae81ff">10&lt;/span>; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>        d &lt;span style="color:#f92672">=&lt;/span> num &lt;span style="color:#f92672">/&lt;/span> &lt;span style="color:#ae81ff">1000&lt;/span>; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>        &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;个位：%d,十位：%d,百位：%d,千位：%d&amp;#34;&lt;/span>, a, c, b, d); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    } &lt;span style="color:#66d9ef">else&lt;/span> { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>        &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;重新输入&amp;#34;&lt;/span>); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    } 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;h3 id="编程题8">
+ 编程题8
+ &lt;a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%988">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt; &lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#define PAI 3.1415926 
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{ 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#66d9ef">int&lt;/span> r; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;请输入半径:&amp;#34;&lt;/span>); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#a6e22e">scanf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;%d&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;amp;&lt;/span>r); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;圆的半径=%d, 圆的直径=%d, 圆的周长=%.2f&amp;#34;&lt;/span>, 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>        r, 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>        &lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#f92672">*&lt;/span>r, 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>        PAI&lt;span style="color:#f92672">*&lt;/span>r&lt;span style="color:#f92672">*&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>        ); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="编程题9">
+ 编程题9
+ &lt;a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%989">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#define PAI 3.1415926
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> r;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;请输入半径:&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">scanf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;%d&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;amp;&lt;/span>r);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;半径=%d, 周长=%.2f, 面积=%.2f&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> r,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#f92672">*&lt;/span> PAI&lt;span style="color:#f92672">*&lt;/span>r,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> PAI&lt;span style="color:#f92672">*&lt;/span>r&lt;span style="color:#f92672">*&lt;/span>r
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> );
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="编程题11">
+ 编程题11
+ &lt;a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%9811">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;math.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">double&lt;/span> a&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3&lt;/span>,b&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4&lt;/span>,c&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">6&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">double&lt;/span> p,s;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (a&lt;span style="color:#f92672">+&lt;/span>b&lt;span style="color:#f92672">&amp;gt;&lt;/span>c &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> a&lt;span style="color:#f92672">+&lt;/span>c&lt;span style="color:#f92672">&amp;gt;&lt;/span>b &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> b&lt;span style="color:#f92672">+&lt;/span>c&lt;span style="color:#f92672">&amp;gt;&lt;/span>a)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> p&lt;span style="color:#f92672">=&lt;/span>(a&lt;span style="color:#f92672">+&lt;/span>b&lt;span style="color:#f92672">+&lt;/span>c)&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> s&lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">sqrt&lt;/span> (p&lt;span style="color:#f92672">*&lt;/span>(p&lt;span style="color:#f92672">-&lt;/span>a)&lt;span style="color:#f92672">*&lt;/span>(p&lt;span style="color:#f92672">-&lt;/span>b)&lt;span style="color:#f92672">*&lt;/span>(p&lt;span style="color:#f92672">-&lt;/span>c));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">printf&lt;/span> ( &lt;span style="color:#e6db74">&amp;#34;面积为%lf&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span> , s);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span> &lt;span style="color:#a6e22e">printf&lt;/span> ( &lt;span style="color:#e6db74">&amp;#34;无法构成三角形&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span> );
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="编程题12">
+ 编程题12
+ &lt;a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%9812">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;math.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> a,b;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">puts&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;请输入两个整数&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">scanf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;%d,%d&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;amp;&lt;/span>a,&lt;span style="color:#f92672">&amp;amp;&lt;/span>b);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;和=%d,差=%d,积=%d,商=%.2f,余数=%d&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> a&lt;span style="color:#f92672">+&lt;/span>b,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> a&lt;span style="color:#f92672">-&lt;/span>b,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> a&lt;span style="color:#f92672">*&lt;/span>b,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> a&lt;span style="color:#f92672">/&lt;/span>(&lt;span style="color:#66d9ef">float&lt;/span>)b,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> a&lt;span style="color:#f92672">%&lt;/span>b
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> );
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="编程题13">
+ 编程题13
+ &lt;a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%9813">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;math.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#define PAI 3.1415926
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#75715e">//圆面积
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#75715e">#define get_round_area(r) PAI * r * r
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#75715e">//圆周长
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#75715e">#define get_round_perimeter(r) 2 * PAI * r
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#75715e">//球体表面积
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#75715e">#define get_sphere_Sarea(r) 4 * PAI * r *4 * PAI* r
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#75715e">//球体体积
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#75715e">#define get_sphere_volume(r) 4.0 / 3 * PAI * r * r * r
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#75715e">//圆柱体积
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#75715e">#define get_cylinder_vloume(r,h) get_round_area(r) * h
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> r,h;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;请输入圆的半径和圆柱的高&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">scanf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;%f,%f&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;amp;&lt;/span>r,&lt;span style="color:#f92672">&amp;amp;&lt;/span>h);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;半径=%.2f，周长=%.2f，面积=%.2f，圆球表面积=%.2f，圆球体积=%.2f，圆柱体积=%.2f&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> r,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">get_round_perimeter&lt;/span>(r),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">get_round_area&lt;/span>(r),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">get_sphere_Sarea&lt;/span>(r),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">get_sphere_volume&lt;/span>(r),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">get_cylinder_vloume&lt;/span>(r,h)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> );
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="编程题14">
+ 编程题14
+ &lt;a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%9814">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt; &lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#define PAI 3.1415926 
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{ 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#66d9ef">int&lt;/span> r; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#a6e22e">puts&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;请输入半径&amp;#34;&lt;/span>); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#a6e22e">scanf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;%d&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;amp;&lt;/span>r); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;直径=%d, 周长=%.2f&amp;#34;&lt;/span>,&lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#f92672">*&lt;/span>r,PAI&lt;span style="color:#f92672">*&lt;/span>r&lt;span style="color:#f92672">*&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="编程题15">
+ 编程题15
+ &lt;a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%9815">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> a,b;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">puts&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;请输入两个整数&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">scanf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;%d,%d&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;amp;&lt;/span>a,&lt;span style="color:#f92672">&amp;amp;&lt;/span>b);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;a=%d, b=%d&amp;#34;&lt;/span>,a,b);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="编程题16">
+ 编程题16
+ &lt;a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%9816">#&lt;/a>
+&lt;/h3>
+&lt;p>&lt;img src="https://p.sda1.dev/13/ed13f1a0c9015ec868673b4623c40671/6489ECC1BEDFE767DA12392988C4570A.png" alt="" />&lt;/p></description></item><item><title>c donut</title><link>http://localhost:1313/posts/c-donut/</link><pubDate>Mon, 23 Oct 2023 22:57:09 +0000</pubDate><guid>http://localhost:1313/posts/c-donut/</guid><description>&lt;p>C语言旋转甜甜圈&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-C" data-lang="C">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;math.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;cstring&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;Windows.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">usleep&lt;/span>(&lt;span style="color:#66d9ef">__int64&lt;/span> usec)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> HANDLE timer;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LARGE_INTEGER ft;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ft.QuadPart &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">-&lt;/span>(&lt;span style="color:#ae81ff">10&lt;/span> &lt;span style="color:#f92672">*&lt;/span> usec);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> timer &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">CreateWaitableTimer&lt;/span>(NULL, TRUE, NULL);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">SetWaitableTimer&lt;/span>(timer, &lt;span style="color:#f92672">&amp;amp;&lt;/span>ft, &lt;span style="color:#ae81ff">0&lt;/span>, NULL, NULL, &lt;span style="color:#ae81ff">0&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">WaitForSingleObject&lt;/span>(timer, INFINITE);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">CloseHandle&lt;/span>(timer);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> A &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>, B &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> i, j;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> k;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> z[&lt;span style="color:#ae81ff">1760&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">char&lt;/span> b[&lt;span style="color:#ae81ff">1760&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#ae81ff">\x1b&lt;/span>&lt;span style="color:#e6db74">[2J&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (;;) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">memset&lt;/span>(b, &lt;span style="color:#ae81ff">32&lt;/span>, &lt;span style="color:#ae81ff">1760&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">memset&lt;/span>(z, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">7040&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (j &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; j &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">6.28&lt;/span>; j &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">0.07&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">6.28&lt;/span>; i &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">0.02&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> c &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">sin&lt;/span>(i);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> d &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">cos&lt;/span>(j);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> e &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">sin&lt;/span>(A);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> f &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">sin&lt;/span>(j);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> g &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">cos&lt;/span>(A);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> h &lt;span style="color:#f92672">=&lt;/span> d &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> D &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">/&lt;/span> (c &lt;span style="color:#f92672">*&lt;/span> h &lt;span style="color:#f92672">*&lt;/span> e &lt;span style="color:#f92672">+&lt;/span> f &lt;span style="color:#f92672">*&lt;/span> g &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">5&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> l &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">cos&lt;/span>(i);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> m &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">cos&lt;/span>(B);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> n &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">sin&lt;/span>(B);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> t &lt;span style="color:#f92672">=&lt;/span> c &lt;span style="color:#f92672">*&lt;/span> h &lt;span style="color:#f92672">*&lt;/span> g &lt;span style="color:#f92672">-&lt;/span> f &lt;span style="color:#f92672">*&lt;/span> e;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> x &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">40&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">30&lt;/span> &lt;span style="color:#f92672">*&lt;/span> D &lt;span style="color:#f92672">*&lt;/span> (l &lt;span style="color:#f92672">*&lt;/span> h &lt;span style="color:#f92672">*&lt;/span> m &lt;span style="color:#f92672">-&lt;/span> t &lt;span style="color:#f92672">*&lt;/span> n);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> y &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">12&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">15&lt;/span> &lt;span style="color:#f92672">*&lt;/span> D &lt;span style="color:#f92672">*&lt;/span> (l &lt;span style="color:#f92672">*&lt;/span> h &lt;span style="color:#f92672">*&lt;/span> n &lt;span style="color:#f92672">+&lt;/span> t &lt;span style="color:#f92672">*&lt;/span> m);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> o &lt;span style="color:#f92672">=&lt;/span> x &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">80&lt;/span> &lt;span style="color:#f92672">*&lt;/span> y;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> N &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span> &lt;span style="color:#f92672">*&lt;/span> ((f &lt;span style="color:#f92672">*&lt;/span> e &lt;span style="color:#f92672">-&lt;/span> c &lt;span style="color:#f92672">*&lt;/span> d &lt;span style="color:#f92672">*&lt;/span> g) &lt;span style="color:#f92672">*&lt;/span> m &lt;span style="color:#f92672">-&lt;/span> c &lt;span style="color:#f92672">*&lt;/span> d &lt;span style="color:#f92672">*&lt;/span> e &lt;span style="color:#f92672">-&lt;/span> f &lt;span style="color:#f92672">*&lt;/span> g &lt;span style="color:#f92672">-&lt;/span> l &lt;span style="color:#f92672">*&lt;/span> d &lt;span style="color:#f92672">*&lt;/span> n);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#ae81ff">22&lt;/span> &lt;span style="color:#f92672">&amp;gt;&lt;/span> y &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> y &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> x &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ae81ff">80&lt;/span> &lt;span style="color:#f92672">&amp;gt;&lt;/span> x &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> D &lt;span style="color:#f92672">&amp;gt;&lt;/span> z[o]) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> z[o] &lt;span style="color:#f92672">=&lt;/span> D;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> b[o] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;.,-~:;=!*#$@&amp;#34;&lt;/span>[N &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#f92672">?&lt;/span> N : &lt;span style="color:#ae81ff">0&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#ae81ff">\x1b&lt;/span>&lt;span style="color:#e6db74">[H&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (k &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; k &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">1761&lt;/span>; k&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">putchar&lt;/span>(k &lt;span style="color:#f92672">%&lt;/span> &lt;span style="color:#ae81ff">80&lt;/span> &lt;span style="color:#f92672">?&lt;/span> b[k] &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#ae81ff">10&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> A &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">0.00004&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> B &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">0.00002&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">usleep&lt;/span>(&lt;span style="color:#ae81ff">30000&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>另一份&lt;/p></description></item></channel></rss>

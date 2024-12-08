@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>class notes on Alex lan</title><link>http://localhost:1313/docs/learm/%E4%B8%8A%E8%AF%BE/</link><description>Recent content in class notes on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/docs/learm/%E4%B8%8A%E8%AF%BE/index.xml" rel="self" type="application/rss+xml"/><item><title>java</title><link>http://localhost:1313/docs/learm/%E4%B8%8A%E8%AF%BE/java/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/learm/%E4%B8%8A%E8%AF%BE/java/</guid><description>&lt;h3 id="数据类型">
+ 数据类型
+ &lt;a class="anchor" href="#%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b">#&lt;/a>
+&lt;/h3>
+&lt;p>分为基本数据类型和引用数据类型&lt;/p>
+&lt;p>基本数据类型分为数值型、浮点型、字符型、布尔型
+引用数据类型：接口（interface）、数组、类（class）。&lt;/p>
+&lt;h3 id="程序结构">
+ 程序结构
+ &lt;a class="anchor" href="#%e7%a8%8b%e5%ba%8f%e7%bb%93%e6%9e%84">#&lt;/a>
+&lt;/h3>
+&lt;ul>
+&lt;li>顺序结构&lt;/li>
+&lt;li>选择结构&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>if&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">int&lt;/span> i&lt;span style="color:#f92672">=&lt;/span>3;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">if&lt;/span> (i&lt;span style="color:#f92672">&amp;gt;&lt;/span>2) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;i&amp;gt;2&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	}&lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;i&amp;lt;=2&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>switch&lt;/li>
+&lt;/ol>
+&lt;blockquote>
+&lt;p>记得使用break&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">int&lt;/span> i&lt;span style="color:#f92672">=&lt;/span>3;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">switch&lt;/span> (i) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">case&lt;/span> 1:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;1&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			&lt;span style="color:#66d9ef">break&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">case&lt;/span> 2:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;2&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			&lt;span style="color:#66d9ef">break&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#66d9ef">default&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;其他&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>			&lt;span style="color:#66d9ef">break&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>循环结构&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>for 循环&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> 1; i &lt;span style="color:#f92672">&amp;lt;=&lt;/span> 9; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(i);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>while 循环&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">int&lt;/span> i&lt;span style="color:#f92672">=&lt;/span>0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">while&lt;/span> (i&lt;span style="color:#f92672">&amp;lt;&lt;/span>10) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(i);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		i&lt;span style="color:#f92672">++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
+&lt;li>do while 循环&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">int&lt;/span> i&lt;span style="color:#f92672">=&lt;/span>0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">do&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(i);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		i&lt;span style="color:#f92672">++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	} &lt;span style="color:#66d9ef">while&lt;/span> (i&lt;span style="color:#f92672">&amp;lt;&lt;/span>10);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="定义函数">
+ 定义函数
+ &lt;a class="anchor" href="#%e5%ae%9a%e4%b9%89%e5%87%bd%e6%95%b0">#&lt;/a>
+&lt;/h3>
+&lt;p>这个简单吧，
+&lt;code>public&lt;/code> 的意思就是公开的，谁都可以调用，更多的用处可以在后面的学习讲到
+&lt;code>int&lt;/code> 就是代表这个函数返回值的类型
+&lt;code>add&lt;/code> 就是函数名
+&lt;code>(int x, int y)&lt;/code> 括号里面就是参数, &lt;code>int x&lt;/code> 整形的变量, 参数名为&lt;code>x&lt;/code>, 同理&lt;code>y&lt;/code>也是一样&lt;/p></description></item><item><title>linux</title><link>http://localhost:1313/docs/learm/%E4%B8%8A%E8%AF%BE/linux/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/learm/%E4%B8%8A%E8%AF%BE/linux/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>hostname xxx &lt;span style="color:#75715e">#临时修改&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hostnamectl xxx &lt;span style="color:#75715e">#永久生效&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hostname &lt;span style="color:#75715e">#查看hostname&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>uname -a &lt;span style="color:#75715e"># Linux 一些信息&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="目录">
+ 目录
+ &lt;a class="anchor" href="#%e7%9b%ae%e5%bd%95">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>pwd &lt;span style="color:#75715e">#当前目录的完整路径&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd xx &lt;span style="color:#75715e"># 切换的xx 目录 (相对路径和绝对路径)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>ls&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>ls &lt;span style="color:#f92672">[&lt;/span>-aAdfFhilnrRSt&lt;span style="color:#f92672">]&lt;/span> 文件名或目录名称.. 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ls &lt;span style="color:#f92672">[&lt;/span>--color&lt;span style="color:#f92672">={&lt;/span>never,auto,always&lt;span style="color:#f92672">}]&lt;/span> 文件名或目录名称..
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ls &lt;span style="color:#f92672">[&lt;/span>--full-time&lt;span style="color:#f92672">]&lt;/span> 文件名或目录名称..
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-a	all， 显示所有文件及目录 &lt;span style="color:#f92672">(&lt;/span>. 开头的隐藏文件也会列出&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-A	同-a ，但不列出 “.” &lt;span style="color:#f92672">(&lt;/span>目前目录&lt;span style="color:#f92672">)&lt;/span> 及 “…” &lt;span style="color:#f92672">(&lt;/span>父目录&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-l	以长格式显示目录下的内容列表，包括文件的权限、链接数、所有者名称和组所有者、文件大小、最后修改日期时间和文件/目录名称
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-r	reverse，将排序结果反向输出，例如：原本文件名由小到大，反向则为由大到小
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-R	–recursive，连同子目录内容一起列出来，等于该目录下的所有文件都会显示出来
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-S	sort by file size。根据文件大小排序，而不是文件名
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-t	sort by modification time，以文件修改时间排序（从最新开始排）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-d	仅列出目录本身，而不是列出目录内的文件数据（常用）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-f	直接列出结果，而不进行排序 （ls 默认以文件名排序）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-F	根据文件、目录等信息，给予附加数据结构，例如：*:代表可可执行文件； /:代表目录； &lt;span style="color:#f92672">=&lt;/span>:代表 socket 文件； |:代表 FIFO 文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-g	像-l，但是不列出所有者
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-G,	no-group, 不列出任何有关于组的信息
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>–author	打印出每一个文件的作者
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-n	类似-l，用数字UID和GID代替名称
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-h	将文件大小以人类较易读的方式（例如 GB KB 等等）列
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-c	输出文件的ctime（文件状态最后更改的时间），并根据ctime排序
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-C	由上至下的列出项目
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>--full-time	显示完整时间格式
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>--time	输出 access 时间或改变权限属性时间 （ctime）而非内容变更时间 （modification time）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>--color&lt;span style="color:#f92672">=&lt;/span>never	不要依据文件特性给予颜色显示
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>--color&lt;span style="color:#f92672">=&lt;/span>always	显示颜色
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>cat&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>cat &lt;span style="color:#75715e">#命令用于连接和打印文件内容，支持显示行号、非空行号、特殊字符等。常用参数包括：&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-n：显示行号，会在输出的每一行前加上行号。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-b：显示行号，但只对非空行进行编号。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-s：压缩连续的空行，只显示一个空行。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-E：在每一行的末尾显示$符号。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-T：将Tab字符显示为^I。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-v：显示一些非打印字符。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>cat 反向输出&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>tac
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="组与用户">
+ 组与用户
+ &lt;a class="anchor" href="#%e7%bb%84%e4%b8%8e%e7%94%a8%e6%88%b7">#&lt;/a>
+&lt;/h3>
+&lt;ul>
+&lt;li>相关文件&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code># 用户配置文件
+/etc/passwd
+
+#密码信息配置文件
+/etc/shadow
+
+# 组信息配置文件
+/etc/group
+
+# 系统用户组信息
+/etc/group
+
+groupname:password:GID:user_list
+ 
+组名 密码 GID 用户列表
+
+# 用户组密码信息
+/etc/gshadow
+&lt;/code>&lt;/pre>&lt;h4 id="查询命令">
+ 查询命令
+ &lt;a class="anchor" href="#%e6%9f%a5%e8%af%a2%e5%91%bd%e4%bb%a4">#&lt;/a>
+&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 查询当前登录用户信息&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>whoami
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 查询指定用户信息&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>id username
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 查询所有用户信息&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cat /etc/passwd
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 查询所有用户组信息&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>getent group
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 查询用户所属的用户组&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>groups username
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 查询用户的主用户组&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>id -g -n username
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="用户名令">
+ 用户名令
+ &lt;a class="anchor" href="#%e7%94%a8%e6%88%b7%e5%90%8d%e4%bb%a4">#&lt;/a>
+&lt;/h4>
+&lt;ul>
+&lt;li>创建用户&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>useradd &lt;span style="color:#f92672">[&lt;/span>选项&lt;span style="color:#f92672">]&lt;/span> name
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>-c 指定一段注释性描述。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-d 目录 指定用户主目录，如果此目录不存在，则同时使用-m选项，可以创建主目录。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-g 用户组 指定用户所属的用户组。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-G 用户组，用户组 指定用户所属的附加组。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-s Shell文件 指定用户的登录Shell。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-u 指定UID
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>设置密码&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>passwd &lt;span style="color:#f92672">[&lt;/span>选项&lt;span style="color:#f92672">]&lt;/span> name
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>-d 清空密码
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-l 锁定
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-u 解锁
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-S 查看锁定状态
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>修改用户属性&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>usermod &lt;span style="color:#f92672">[&lt;/span>选项&lt;span style="color:#f92672">]&lt;/span> name
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>删除用户账户&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>userdel   name
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>-r 删除账户并且将用户的宿主目录删除
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="组的命令">
+ 组的命令
+ &lt;a class="anchor" href="#%e7%bb%84%e7%9a%84%e5%91%bd%e4%bb%a4">#&lt;/a>
+&lt;/h4>
+&lt;ul>
+&lt;li>组的创建&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>groupadd &lt;span style="color:#f92672">[&lt;/span>选项&lt;span style="color:#f92672">]&lt;/span> groupname
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>-g 指定GID创建用户组
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>组的删除&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>groupdel groupname
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>修改GID&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>groupmod -g GID groupname
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>组添加用户&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>gpasswd &lt;span style="color:#f92672">[&lt;/span>选项&lt;span style="color:#f92672">]&lt;/span> 用户名 组名
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>-a 添加用户
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-d 删除用户
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-M 定义组内用户的列表
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="权限">
+ 权限
+ &lt;a class="anchor" href="#%e6%9d%83%e9%99%90">#&lt;/a>
+&lt;/h3>
+&lt;ul>
+&lt;li>Linux系统上对文件的权限有着严格的控制，如果想对某个文件执行某种操作，必须具有对应的权限方可执行成功。&lt;/li>
+&lt;li>Linux下文件的权限类型一般包括读，写，执行。对应字母为 r、w、x。&lt;/li>
+&lt;li>Linux下权限的粒度有 &lt;strong>拥有者 、群组 、其它组&lt;/strong> 三种。每个文件都可以针对三个粒度，设置不同的rwx(读写执行)权限。通常情况下，一个文件只能归属于一个用户和组， 如果其它的用户想有这个文件的权限，则可以将该用户加入具备权限的群组，一个用户可以同时归属于多个组。&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>rwx 对于目录和文件的区别&lt;/p></description></item><item><title>信息安全</title><link>http://localhost:1313/docs/learm/%E4%B8%8A%E8%AF%BE/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/learm/%E4%B8%8A%E8%AF%BE/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</guid><description>&lt;h3 id="第一节课">
+ 第一节课
+ &lt;a class="anchor" href="#%e7%ac%ac%e4%b8%80%e8%8a%82%e8%af%be">#&lt;/a>
+&lt;/h3>
+&lt;blockquote>
+&lt;p>arp 欺骗&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>伪造ip地址和mac 地址的对应关系&lt;/li>
+&lt;li>错误的mac 地址或错误的对应关系&lt;/li>
+&lt;/ul></description></item><item><title>局域网 思科 pt</title><link>http://localhost:1313/docs/learm/%E4%B8%8A%E8%AF%BE/%E5%B1%80%E5%9F%9F%E7%BD%91-%E6%80%9D%E7%A7%91-pt/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/learm/%E4%B8%8A%E8%AF%BE/%E5%B1%80%E5%9F%9F%E7%BD%91-%E6%80%9D%E7%A7%91-pt/</guid><description>&lt;p>![[Pasted image 20240909162940.png]]&lt;/p>
+&lt;h3 id="第二节课">
+ 第二节课
+ &lt;a class="anchor" href="#%e7%ac%ac%e4%ba%8c%e8%8a%82%e8%af%be">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>enable
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>conf t
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hostname xxx
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>配置线连 PC 连 RS 232 连 交换机Console
+直通线&lt;/p>
+&lt;h3 id="第三节课">
+ 第三节课
+ &lt;a class="anchor" href="#%e7%ac%ac%e4%b8%89%e8%8a%82%e8%af%be">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>en &lt;span style="color:#75715e">#进入特权模式&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>conf t &lt;span style="color:#75715e">#进入配置模式&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>enable password xxx &lt;span style="color:#75715e"># 在配置模式下设置进入特权模式的密码xxx&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>show run &lt;span style="color:#75715e"># 查看运行过的命令&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>no xxx xxx &lt;span style="color:#75715e"># 取消某一条命令或者配置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>no en pa &lt;span style="color:#75715e"># 取消密码&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="vlan-配置">
+ vlan 配置
+ &lt;a class="anchor" href="#vlan-%e9%85%8d%e7%bd%ae">#&lt;/a>
+&lt;/h4>
+&lt;p>配置模式&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>int vlan &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#75715e"># 进入vlan 1 接口(vlan 是虚拟接口)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ip address 192.168.1.1 255.255.255.0 &lt;span style="color:#75715e"># 设置ip地址&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>no shutdown &lt;span style="color:#75715e"># 打开接口&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>远程登录，进入配置模式&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>line vty &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>password &lt;span style="color:#ae81ff">123&lt;/span> &lt;span style="color:#75715e"># 设置密码&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>login &lt;span style="color:#75715e"># 开启&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>end &lt;span style="color:#75715e"># 推出&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>pc 打开终端&lt;/p></description></item><item><title>算法与数据结构笔记</title><link>http://localhost:1313/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/</guid><description>&lt;h1 id="数据结构与算法笔记">
+ 数据结构与算法笔记
+ &lt;a class="anchor" href="#%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e4%b8%8e%e7%ae%97%e6%b3%95%e7%ac%94%e8%ae%b0">#&lt;/a>
+&lt;/h1>
+&lt;p>&lt;img src="https://gitee.com/wugenqiang/PictureBed/raw/master/NoteBook/20200613211202.png" alt="image-20200613211201429" />&lt;/p>
+&lt;h2 id="第一章-引论">
+ 第一章 引论
+ &lt;a class="anchor" href="#%e7%ac%ac%e4%b8%80%e7%ab%a0-%e5%bc%95%e8%ae%ba">#&lt;/a>
+&lt;/h2>
+&lt;p>如果说编程语言是程序员的招式，那么数据结构和算法就相当于程序员的内功。所以要学好数据结构和算法，写这篇笔记的目的是为了自我不断积累。不积跬步，无以至千里！&lt;/p>
+&lt;h3 id="11-数学知识复习">
+ 1.1 数学知识复习
+ &lt;a class="anchor" href="#11-%e6%95%b0%e5%ad%a6%e7%9f%a5%e8%af%86%e5%a4%8d%e4%b9%a0">#&lt;/a>
+&lt;/h3>
+&lt;h4 id="111-指数">
+ 1.1.1 指数
+ &lt;a class="anchor" href="#111-%e6%8c%87%e6%95%b0">#&lt;/a>
+&lt;/h4>
+&lt;p>&lt;img src="https://gitee.com/wugenqiang/PictureBed/raw/master/CS-Notes/20200428180521.png" alt="image-20200402115827829" />&lt;/p>
+&lt;h4 id="112-对数">
+ 1.1.2 对数
+ &lt;a class="anchor" href="#112-%e5%af%b9%e6%95%b0">#&lt;/a>
+&lt;/h4>
+&lt;blockquote>
+&lt;p>在计算机科学中，除非有特别的声明，所有的对数都是以 2 为底的&lt;/p>
+&lt;/blockquote>
+&lt;p>记住：log 1 = 0，log 2 = 1，log 1024 = 10， log 1048576 = 20&lt;/p>
+&lt;h4 id="113-级数">
+ 1.1.3 级数
+ &lt;a class="anchor" href="#113-%e7%ba%a7%e6%95%b0">#&lt;/a>
+&lt;/h4>
+&lt;p>&lt;img src="https://gitee.com/wugenqiang/PictureBed/raw/master/CS-Notes/20200428180512.png" alt="image-20200402120447323" />&lt;/p>
+&lt;h4 id="114-模运算">
+ 1.1.4 模运算
+ &lt;a class="anchor" href="#114-%e6%a8%a1%e8%bf%90%e7%ae%97">#&lt;/a>
+&lt;/h4>
+&lt;p>如果 N 整除 A - B，那么就说 A 与 B 模 N 同余，记为 A ≡ B（mod N）&lt;/p>
+&lt;h4 id="115-证明方法">
+ 1.1.5 证明方法
+ &lt;a class="anchor" href="#115-%e8%af%81%e6%98%8e%e6%96%b9%e6%b3%95">#&lt;/a>
+&lt;/h4>
+&lt;blockquote>
+&lt;p>证明数据结构分析中的结论的两个最常用的方法是归纳法和反证法，证明一个定理不成立的最好的方法是举出一个反例。&lt;/p></description></item><item><title>网页制作</title><link>http://localhost:1313/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/</guid><description>&lt;h1 id="html学习笔记">
+ HTML学习笔记
+ &lt;a class="anchor" href="#html%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0">#&lt;/a>
+&lt;/h1>
+&lt;h3 id="一协议">
+ 一、协议
+ &lt;a class="anchor" href="#%e4%b8%80%e5%8d%8f%e8%ae%ae">#&lt;/a>
+&lt;/h3>
+&lt;h4 id="首先说明我的文本遵从的是html协议">
+ 首先说明我的文本遵从的是html协议
+ &lt;a class="anchor" href="#%e9%a6%96%e5%85%88%e8%af%b4%e6%98%8e%e6%88%91%e7%9a%84%e6%96%87%e6%9c%ac%e9%81%b5%e4%bb%8e%e7%9a%84%e6%98%afhtml%e5%8d%8f%e8%ae%ae">#&lt;/a>
+&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&amp;lt;!doctype html&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="二html解析的范围">
+ 二、html解析的范围
+ &lt;a class="anchor" href="#%e4%ba%8chtml%e8%a7%a3%e6%9e%90%e7%9a%84%e8%8c%83%e5%9b%b4">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">html&lt;/span>&amp;gt; &amp;lt;&lt;span style="color:#f92672">html&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="三head标签">
+ 三、head标签
+ &lt;a class="anchor" href="#%e4%b8%89head%e6%a0%87%e7%ad%be">#&lt;/a>
+&lt;/h3>
+&lt;p>这里一般会写上编码格式(li)&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">head&lt;/span>&amp;gt;&amp;lt;&lt;span style="color:#f92672">meta&lt;/span> &lt;span style="color:#a6e22e">charset&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;utf=-8&amp;#34;&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">head&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="四标签段落链接-图像">
+ 四、标签，段落，链接, 图像
+ &lt;a class="anchor" href="#%e5%9b%9b%e6%a0%87%e7%ad%be%e6%ae%b5%e8%90%bd%e9%93%be%e6%8e%a5-%e5%9b%be%e5%83%8f">#&lt;/a>
+&lt;/h3>
+&lt;h4 id="标签">
+ 标签
+ &lt;a class="anchor" href="#%e6%a0%87%e7%ad%be">#&lt;/a>
+&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">h1&lt;/span>&amp;gt;标签分为h1到h6&amp;lt;/&lt;span style="color:#f92672">h1&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="段落">
+ 段落
+ &lt;a class="anchor" href="#%e6%ae%b5%e8%90%bd">#&lt;/a>
+&lt;/h4>
+&lt;p>​	注意，如果不想在开启段落进行换行是加入标签&lt;!-- raw HTML omitted -->&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">p&lt;/span>&amp;gt;段落&amp;lt;/&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="链接">
+ 链接
+ &lt;a class="anchor" href="#%e9%93%be%e6%8e%a5">#&lt;/a>
+&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>链接语法：
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">a&lt;/span> &lt;span style="color:#a6e22e">href&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;url&amp;#34;&lt;/span>&amp;gt;链接文本&amp;lt;/&lt;span style="color:#f92672">a&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>例子:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">a&lt;/span> &lt;span style="color:#a6e22e">href&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;https://www.baidu.com&amp;#34;&lt;/span>&amp;gt;这里相当于链接的按键&amp;lt;/&lt;span style="color:#f92672">a&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="图像">
+ 图像
+ &lt;a class="anchor" href="#%e5%9b%be%e5%83%8f">#&lt;/a>
+&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">img&lt;/span> &lt;span style="color:#a6e22e">loading&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;lazy&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">src&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;图片路径&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">width&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;宽&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">height&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;高&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="五加粗以及上下标斜体换行">
+ 五、加粗以及上下标斜体,换行
+ &lt;a class="anchor" href="#%e4%ba%94%e5%8a%a0%e7%b2%97%e4%bb%a5%e5%8f%8a%e4%b8%8a%e4%b8%8b%e6%a0%87%e6%96%9c%e4%bd%93%e6%8d%a2%e8%a1%8c">#&lt;/a>
+&lt;/h3>
+&lt;h4 id="加粗">
+ 加粗
+ &lt;a class="anchor" href="#%e5%8a%a0%e7%b2%97">#&lt;/a>
+&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">big&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">big&lt;/span>&amp;gt;（放大字体）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">smart&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">smart&lt;/span>&amp;gt;(缩小字体)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">b&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">b&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">strong&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">strongs&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="斜体">
+ 斜体
+ &lt;a class="anchor" href="#%e6%96%9c%e4%bd%93">#&lt;/a>
+&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">em&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">em&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="上标">
+ 上标
+ &lt;a class="anchor" href="#%e4%b8%8a%e6%a0%87">#&lt;/a>
+&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">sup&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">sup&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="下标">
+ 下标
+ &lt;a class="anchor" href="#%e4%b8%8b%e6%a0%87">#&lt;/a>
+&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">sub&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">sub&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="换行">
+ 换行
+ &lt;a class="anchor" href="#%e6%8d%a2%e8%a1%8c">#&lt;/a>
+&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">br&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="六对空行进行控制">
+ 六、对空行进行控制
+ &lt;a class="anchor" href="#%e5%85%ad%e5%af%b9%e7%a9%ba%e8%a1%8c%e8%bf%9b%e8%a1%8c%e6%8e%a7%e5%88%b6">#&lt;/a>
+&lt;/h3>
+&lt;h4 id="空行控制">
+ 空行控制
+ &lt;a class="anchor" href="#%e7%a9%ba%e8%a1%8c%e6%8e%a7%e5%88%b6">#&lt;/a>
+&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">pre&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">pre&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="七地址">
+ 七、地址，
+ &lt;a class="anchor" href="#%e4%b8%83%e5%9c%b0%e5%9d%80">#&lt;/a>
+&lt;/h3>
+&lt;h4 id="填写信息的标签">
+ 填写信息的标签
+ &lt;a class="anchor" href="#%e5%a1%ab%e5%86%99%e4%bf%a1%e6%81%af%e7%9a%84%e6%a0%87%e7%ad%be">#&lt;/a>
+&lt;/h4>
+&lt;!-- raw HTML omitted -->
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">address&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Written by &amp;lt;&lt;span style="color:#f92672">a&lt;/span> &lt;span style="color:#a6e22e">href&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;mailto:webmaster@example.com&amp;#34;&lt;/span>&amp;gt;Jon Doe&amp;lt;/&lt;span style="color:#f92672">a&lt;/span>&amp;gt;.&amp;lt;&lt;span style="color:#f92672">br&lt;/span>&amp;gt; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Visit us at:&amp;lt;&lt;span style="color:#f92672">br&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Example.com&amp;lt;&lt;span style="color:#f92672">br&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Box 564, Disneyland&amp;lt;&lt;span style="color:#f92672">br&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>USA
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">address&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="隐藏显示显示内容">
+ 隐藏显示显示内容
+ &lt;a class="anchor" href="#%e9%9a%90%e8%97%8f%e6%98%be%e7%a4%ba%e6%98%be%e7%a4%ba%e5%86%85%e5%ae%b9">#&lt;/a>
+&lt;/h4>
+&lt;p>相当于将鼠标移动到文字上，会显示隐藏内容.&lt;/p></description></item><item><title/><link>http://localhost:1313/docs/learm/%E4%B8%8A%E8%AF%BE/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/docs/learm/%E4%B8%8A%E8%AF%BE/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid><description/></item></channel></rss>

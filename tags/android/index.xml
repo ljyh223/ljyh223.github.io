@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Android on Alex lan</title><link>http://localhost:1313/tags/android/</link><description>Recent content in Android on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/android/index.xml" rel="self" type="application/rss+xml"/><item><title>Android ui</title><link>http://localhost:1313/docs/code/android/ui/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/code/android/ui/</guid><description>&lt;h3 id="控件">
+ 控件
+ &lt;a class="anchor" href="#%e6%8e%a7%e4%bb%b6">#&lt;/a>
+&lt;/h3>
+&lt;p>不讲&lt;/p>
+&lt;h2 id="布局">
+ 布局
+ &lt;a class="anchor" href="#%e5%b8%83%e5%b1%80">#&lt;/a>
+&lt;/h2>
+&lt;p>3种基本布局&lt;/p>
+&lt;ol>
+&lt;li>LinearLayout
+&lt;ol>
+&lt;li>线性布局，可使用android:orientation来控制排列方向&lt;/li>
+&lt;li>layout_weight，权重，根据父权进行分配，常配合0dp使用&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>RelativeLayout
+&lt;ol>
+&lt;li>相对布局，其属相之多，但简单&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>FrameLayout
+&lt;ol>
+&lt;li>帧布局，不讲，用得少&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>常见关键字
+&lt;ul>
+&lt;li>match_parent, 当前控件多的大小和父布局的大小一样&lt;/li>
+&lt;li>warp_content, 当前控件的大小能够刚好好汉里面的内容，由控件内容决定其大小&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="自定义控件">
+ 自定义控件
+ &lt;a class="anchor" href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e6%8e%a7%e4%bb%b6">#&lt;/a>
+&lt;/h2></description></item><item><title>Android 协程-retrofit</title><link>http://localhost:1313/docs/code/android/%E5%8D%8F%E7%A8%8B-retrofit/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/code/android/%E5%8D%8F%E7%A8%8B-retrofit/</guid><description>&lt;h3 id="导入">
+ 导入
+ &lt;a class="anchor" href="#%e5%af%bc%e5%85%a5">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>dependencies {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	implementation &amp;#39;com.squareup.retrofit2:retrofit:2.6.1&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	implementation &amp;#39;com.squareup.retrofit2:converter-gson:2.6.1&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="第一个协程">
+ 第一个协程
+ &lt;a class="anchor" href="#%e7%ac%ac%e4%b8%80%e4%b8%aa%e5%8d%8f%e7%a8%8b">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">MainActivity&lt;/span> : AppCompatActivity() { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">override&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">onCreate&lt;/span>(savedInstanceState: Bundle?) { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">super&lt;/span>.onCreate(savedInstanceState) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> setContentView(&lt;span style="color:#a6e22e">R&lt;/span>.layout.activity_main) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> getAppDataBtn.setOnClickListener { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">val&lt;/span> retrofit = &lt;span style="color:#a6e22e">Retrofit&lt;/span>.Builder() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .baseUrl(&lt;span style="color:#e6db74">&amp;#34;http://10.0.2.2/&amp;#34;&lt;/span>) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .addConverterFactory(&lt;span style="color:#a6e22e">GsonConverterFactory&lt;/span>.create()) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .build() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">val&lt;/span> appService = retrofit.create(AppService&lt;span style="color:#f92672">::&lt;/span>&lt;span style="color:#66d9ef">class&lt;/span>.java) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> appService.getAppData().enqueue(&lt;span style="color:#66d9ef">object&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">: &lt;/span>&lt;span style="color:#a6e22e">Callback&lt;/span>&amp;lt;List&amp;lt;App&amp;gt;&amp;gt; { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">override&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">onResponse&lt;/span>(call: Call&amp;lt;List&amp;lt;App&amp;gt;&amp;gt;, 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> response: Response&amp;lt;List&amp;lt;App&amp;gt;&amp;gt;) { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">val&lt;/span> list = response.body() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (list &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (app &lt;span style="color:#66d9ef">in&lt;/span> list) { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Log&lt;/span>.d(&lt;span style="color:#e6db74">&amp;#34;MainActivity&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;id is &lt;/span>&lt;span style="color:#e6db74">${app.id}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Log&lt;/span>.d(&lt;span style="color:#e6db74">&amp;#34;MainActivity&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;name is &lt;/span>&lt;span style="color:#e6db74">${app.name}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Log&lt;/span>.d(&lt;span style="color:#e6db74">&amp;#34;MainActivity&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;version is &lt;/span>&lt;span style="color:#e6db74">${app.version}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">override&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">onFailure&lt;/span>(call: Call&amp;lt;List&amp;lt;App&amp;gt;&amp;gt;, t: Throwable) { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> t.printStackTrace() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="定义接口">
+ 定义接口
+ &lt;a class="anchor" href="#%e5%ae%9a%e4%b9%89%e6%8e%a5%e5%8f%a3">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">AppService&lt;/span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#75715e">//静态
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>	&lt;span style="color:#a6e22e">@GET&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;get_data.json&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">getData&lt;/span>(): Call&amp;lt;Data&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#75715e">//动态参数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>	&lt;span style="color:#a6e22e">@GET&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;page/{page}/get_data.json&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">getPageData&lt;/span>(&lt;span style="color:#a6e22e">@Path&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;page&amp;#34;&lt;/span>) page:Int): Call&amp;lt;Data&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#75715e">//get 带参数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>	&lt;span style="color:#a6e22e">@GET&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;user/login&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">login&lt;/span>(&lt;span style="color:#a6e22e">@Query&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;username&amp;#34;&lt;/span>) username:String,&lt;span style="color:#a6e22e">@Query&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;password&amp;#34;&lt;/span>) password:String): Call&amp;lt;ResponseBody&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#75715e">//post
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>	&lt;span style="color:#a6e22e">@POST&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;user/login&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">login&lt;/span>(&lt;span style="color:#a6e22e">@Body&lt;/span> &lt;span style="color:#66d9ef">data&lt;/span>:Data): Call&amp;lt;ResponseBody&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#75715e">//指定静态header呢
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>	&lt;span style="color:#a6e22e">@Header&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;sign: 123&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#75715e">//动态Header
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>	&lt;span style="color:#a6e22e">@POST&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;user/login&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">login&lt;/span>(&lt;span style="color:#a6e22e">@Header&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;sign&amp;#34;&lt;/span>) sign:String,&lt;span style="color:#a6e22e">@Body&lt;/span> &lt;span style="color:#66d9ef">data&lt;/span>:Data): Call&amp;lt;ResponseBody&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="论retrofit构建起的最佳写法">
+ 论Retrofit构建起的最佳写法
+ &lt;a class="anchor" href="#%e8%ae%baretrofit%e6%9e%84%e5%bb%ba%e8%b5%b7%e7%9a%84%e6%9c%80%e4%bd%b3%e5%86%99%e6%b3%95">#&lt;/a>
+&lt;/h3>
+&lt;p>先写一个ServiceCretaor单例类&lt;/p></description></item><item><title>Android 广播</title><link>http://localhost:1313/docs/code/android/%E5%B9%BF%E6%92%AD/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/code/android/%E5%B9%BF%E6%92%AD/</guid><description/></item><item><title>Android 比赛</title><link>http://localhost:1313/docs/code/android/%E6%AF%94%E8%B5%9B/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/code/android/%E6%AF%94%E8%B5%9B/</guid><description>&lt;h3 id="协程构建一个mvvm的frame">
+ 协程，构建，一个MVVM的frame
+ &lt;a class="anchor" href="#%e5%8d%8f%e7%a8%8b%e6%9e%84%e5%bb%ba%e4%b8%80%e4%b8%aamvvm%e7%9a%84frame">#&lt;/a>
+&lt;/h3>
+&lt;p>先是构建器&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">object&lt;/span> &lt;span style="color:#a6e22e">ServiceCreator&lt;/span> { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">val&lt;/span> BASE_URL=&lt;span style="color:#e6db74">&amp;#34;http://124.93.196.45:10001&amp;#34;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">val&lt;/span> retrofot: Retrofit = &lt;span style="color:#a6e22e">Retrofit&lt;/span>.Builder() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .baseUrl(BASE_URL) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .addConverterFactory(&lt;span style="color:#a6e22e">GsonConverterFactory&lt;/span>.create()) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .build() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fun&lt;/span> &amp;lt;&lt;span style="color:#a6e22e">T&lt;/span>&amp;gt; &lt;span style="color:#a6e22e">create&lt;/span>(serviceClass:Class&amp;lt;T&amp;gt;): T= retrofot.create(serviceClass) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">inline&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &amp;lt;&lt;span style="color:#66d9ef">reified&lt;/span> &lt;span style="color:#a6e22e">T&lt;/span>&amp;gt;&lt;span style="color:#a6e22e">create&lt;/span>():T= create(T&lt;span style="color:#f92672">::&lt;/span>&lt;span style="color:#66d9ef">class&lt;/span>.java) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后是接口&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">NewsService&lt;/span> { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@GET&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;/prod-api/press/category/list&amp;#34;&lt;/span>) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">getNewsType&lt;/span>(): Call&amp;lt;NewsType&amp;gt; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@GET&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;/prod-api/press/press/list&amp;#34;&lt;/span>) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">getNewsList&lt;/span>(&lt;span style="color:#a6e22e">@Query&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;id&amp;#34;&lt;/span>) id:String,&lt;span style="color:#a6e22e">@Query&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;hot&amp;#34;&lt;/span>) hot:String):Call&amp;lt;NewsList&amp;gt; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>写一个Network&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">object&lt;/span> &lt;span style="color:#a6e22e">SmartCityNetwork&lt;/span> { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">val&lt;/span> userService= &lt;span style="color:#a6e22e">ServiceCreator&lt;/span>.create&amp;lt;UserService&amp;gt;() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">suspend&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">login&lt;/span>(&lt;span style="color:#66d9ef">data&lt;/span>: LoginData) = userService.loginService(&lt;span style="color:#66d9ef">data&lt;/span>).await() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">val&lt;/span> AdvService=&lt;span style="color:#a6e22e">ServiceCreator&lt;/span>.create&amp;lt;MetroService&amp;gt;() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">suspend&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">getAdv&lt;/span>()=&lt;span style="color:#a6e22e">AdvService&lt;/span>.getAdv().await() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">val&lt;/span> newsService=&lt;span style="color:#a6e22e">ServiceCreator&lt;/span>.create&amp;lt;NewsService&amp;gt;() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">suspend&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">getNewsType&lt;/span>()=newsService.getNewsType().await() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">suspend&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">getNewsList&lt;/span>(id :String,hot:String)= newsService.getNewsList(id,hot).await() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">suspend&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &amp;lt;&lt;span style="color:#a6e22e">T&lt;/span>&amp;gt; &lt;span style="color:#a6e22e">Call&lt;/span>&amp;lt;T&amp;gt;.await(): T { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> suspendCoroutine { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> enqueue(&lt;span style="color:#66d9ef">object&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">: &lt;/span>&lt;span style="color:#a6e22e">Callback&lt;/span>&amp;lt;T&amp;gt; { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">override&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">onResponse&lt;/span>(call: Call&amp;lt;T&amp;gt;, response: Response&amp;lt;T&amp;gt;) { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">val&lt;/span> body = response.body() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (body &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) &lt;span style="color:#66d9ef">it&lt;/span>.resume(body) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span> &lt;span style="color:#66d9ef">it&lt;/span>.resumeWithException(RuntimeException(&lt;span style="color:#e6db74">&amp;#34;response body is null&amp;#34;&lt;/span>)) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">override&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">onFailure&lt;/span>(call: Call&amp;lt;T&amp;gt;, t: Throwable) { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">it&lt;/span>.resumeWithException(t) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }) } 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>处理返回数据，其实可以分开写不同的接口&lt;/p></description></item><item><title>android 碎念</title><link>http://localhost:1313/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</guid><description>&lt;p>安卓 实现卡片&lt;/p>
+&lt;p>圆角程度 cardCornerRadius
+阴影: cardElevation&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xml" data-lang="xml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;androidx.cardview.widget.CardView&lt;/span> &lt;span style="color:#a6e22e">xmlns:android=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://schemas.android.com/apk/res/android&amp;#34;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xmlns:app=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://schemas.android.com/apk/res-auto&amp;#34;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">app:cardCornerRadius=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;20dp&amp;#34;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">android:layout_marginBottom=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;20dp&amp;#34;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">android:layout_height=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;wrap_content&amp;#34;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">android:layout_width=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;match_parent&amp;#34;&lt;/span>&lt;span style="color:#f92672">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;/androidx.cardview.widget.CardView&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Android 网络请求</title><link>http://localhost:1313/docs/code/android/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/code/android/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/</guid><description>&lt;p>异步get请求&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">asyncGet&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">val&lt;/span> url = &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//创建request请求对象
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">val&lt;/span> request = &lt;span style="color:#a6e22e">Request&lt;/span>.Builder()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .url(url)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//.method()方法与.get()方法选取1种即可
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> .method(&lt;span style="color:#e6db74">&amp;#34;GET&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">null&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .build()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//创建call并调用enqueue()方法实现网络请求
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> OkHttpClient().newCall(request)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .enqueue(&lt;span style="color:#66d9ef">object&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">: &lt;/span>&lt;span style="color:#a6e22e">Callback&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">override&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">onFailure&lt;/span>(call: Call, e: IOException) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">override&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">onResponse&lt;/span>(call: Call, response: Response) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> })
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>异步post请求&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">asyncPost&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">val&lt;/span> url = &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//添加post请求参数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">val&lt;/span> requestBody = &lt;span style="color:#a6e22e">FormBody&lt;/span>.Builder()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .add(&lt;span style="color:#e6db74">&amp;#34;userName&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;name&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .add(&lt;span style="color:#e6db74">&amp;#34;passWord&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;pass&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .build()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>		&lt;span style="color:#75715e">//发送josn
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>		&lt;span style="color:#75715e">//var jsonObject = JSONObject() 
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>	 &lt;span style="color:#75715e">//jsonObject.put(&amp;#34;studentNumber&amp;#34;,&amp;#34;1713630001&amp;#34;) 
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>	 &lt;span style="color:#75715e">//jsonObject.put(&amp;#34;password&amp;#34;,&amp;#34;123456&amp;#34;) 
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>	 &lt;span style="color:#75715e">//val requestBody=jsonObject.toString().toRequestBody(&amp;#34;application/json&amp;#34;.toMediaType()) 
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//创建request请求对象
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">val&lt;/span> request = &lt;span style="color:#a6e22e">Request&lt;/span>.Builder()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .url(url)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .post(requestBody)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .build()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//创建call并调用enqueue()方法实现网络请求
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> OkHttpClient().newCall(request)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .enqueue(&lt;span style="color:#66d9ef">object&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">: &lt;/span>&lt;span style="color:#a6e22e">Callback&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">override&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">onFailure&lt;/span>(call: Call, e: IOException) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">override&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">onResponse&lt;/span>(call: Call, response: Response) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> })
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>post json&lt;/p></description></item><item><title>Android 适配器</title><link>http://localhost:1313/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E9%80%82%E9%85%8D%E5%99%A8/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E9%80%82%E9%85%8D%E5%99%A8/</guid><description>&lt;p>由于是安卓原生开发，肯定是少不了写适配器的&lt;/p>
+&lt;p>考虑到即使是cv也很费时间，所以写一个通用的适配器&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">GenericAdapter&lt;/span>&amp;lt;T&amp;gt;(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">val&lt;/span> items: List&amp;lt;T&amp;gt;,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">val&lt;/span> layoutId: Int,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">val&lt;/span> bind: (View, T) &lt;span style="color:#f92672">-&amp;gt;&lt;/span> Unit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>) : &lt;span style="color:#a6e22e">RecyclerView&lt;/span>.Adapter&amp;lt;&lt;span style="color:#a6e22e">GenericAdapter&lt;/span>.GenericViewHolder&amp;gt;() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">GenericViewHolder&lt;/span>(itemView: View) : &lt;span style="color:#a6e22e">RecyclerView&lt;/span>.ViewHolder(itemView)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">override&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">onCreateViewHolder&lt;/span>(parent: ViewGroup, viewType: Int): GenericViewHolder {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">val&lt;/span> view = &lt;span style="color:#a6e22e">LayoutInflater&lt;/span>.from(parent.context).inflate(layoutId, parent, &lt;span style="color:#66d9ef">false&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> GenericViewHolder(view)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">override&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">onBindViewHolder&lt;/span>(holder: GenericViewHolder, position: Int) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bind(holder.itemView, items[position])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">override&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">getItemCount&lt;/span>() = items.size
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>use&lt;/p>
+&lt;blockquote>
+&lt;p>需要设置每行的个数 &lt;code>binding.welfareType.layoutManager = GridLayoutManager(requireContext(),2)&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">val&lt;/span> adapter = GenericAdapter(listOf(&lt;span style="color:#e6db74">&amp;#34;Item 1&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Item 2&amp;#34;&lt;/span>), &lt;span style="color:#a6e22e">R&lt;/span>.layout.item_layout) { view, item &lt;span style="color:#f92672">-&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">val&lt;/span> textView: TextView = view.findViewById(&lt;span style="color:#a6e22e">R&lt;/span>.id.textView)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> textView.text = item
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>recyclerView.adapter = adapter
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Android-网络请求</title><link>http://localhost:1313/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/</guid><description>&lt;p>依旧是网络请求大头,以最快的方式写&lt;/p>
+&lt;h3 id="协程-retrofit">
+ 协程 Retrofit
+ &lt;a class="anchor" href="#%e5%8d%8f%e7%a8%8b-retrofit">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Auth&lt;/span>(&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">val&lt;/span> token: String) : Interceptor { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">override&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">intercept&lt;/span>(chain: &lt;span style="color:#a6e22e">Interceptor&lt;/span>.Chain): Response { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">val&lt;/span> request = chain.request() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .newBuilder() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .addHeader(&lt;span style="color:#e6db74">&amp;#34;Authorization&amp;#34;&lt;/span>,&lt;span style="color:#e6db74">&amp;#34;Bearer &lt;/span>&lt;span style="color:#e6db74">$token&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .build() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> chain.proceed( request) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">createRetrofitWithAuth&lt;/span>() :Retrofit{ 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">Retrofit&lt;/span>.Builder() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .baseUrl(&lt;span style="color:#e6db74">&amp;#34;http://124.93.196.45:10193/&amp;#34;&lt;/span>) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .addConverterFactory(&lt;span style="color:#a6e22e">GsonConverterFactory&lt;/span>.create()) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .build() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">createRetrofitWithAuth&lt;/span>(token:String) :Retrofit{ 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">val&lt;/span> client=&lt;span style="color:#a6e22e">OkHttpClient&lt;/span>.Builder() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .addInterceptor(Auth(token)) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .build() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">Retrofit&lt;/span>.Builder() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .baseUrl(&lt;span style="color:#e6db74">&amp;#34;http://124.93.196.45:10193/&amp;#34;&lt;/span>) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .addConverterFactory(&lt;span style="color:#a6e22e">GsonConverterFactory&lt;/span>.create()) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .client(client) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .build() 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>定义接口&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">ApiService&lt;/span> { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@GET&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;/prod-api/api/public-welfare/public-welfare-type/list&amp;#34;&lt;/span>) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">suspend&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">WelfareType&lt;/span>(): WelfareType 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@POST&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;/prod-api/api/login&amp;#34;&lt;/span>) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">suspend&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">Login&lt;/span>(&lt;span style="color:#a6e22e">@Body&lt;/span> body:LoginBody): Login 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@GET&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;/prod-api/api/public-welfare/ad-banner/list&amp;#34;&lt;/span>) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">suspend&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">Banner&lt;/span>(): Banner 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>viewmodel&lt;/p></description></item><item><title>反编译</title><link>http://localhost:1313/docs/re/%E5%8F%8D%E7%BC%96%E8%AF%91/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/re/%E5%8F%8D%E7%BC%96%E8%AF%91/</guid><description>&lt;h1 id="签名">
+ 签名
+ &lt;a class="anchor" href="#%e7%ad%be%e5%90%8d">#&lt;/a>
+&lt;/h1>
+&lt;p>生成jks文件&lt;/p>
+&lt;pre tabindex="0">&lt;code>keytool -genkeypair -alias ljyhljyh -keypass ljyhljyh -keyalg RSA -keysize 1024 -validity 365 -keystore filename.jks -storepass ljyhljyh
+&lt;/code>&lt;/pre>&lt;p>重新签名&lt;/p>
+&lt;pre tabindex="0">&lt;code>jarsigner -verbose -keystore filename.jks -storepass 501937 -signedjar ai3.apk -digestalg SHA1 -sigalg MD5withRSA ai2.apk filename
+&lt;/code>&lt;/pre>&lt;h1 id="apktool">
+ apktool
+ &lt;a class="anchor" href="#apktool">#&lt;/a>
+&lt;/h1>
+&lt;p>反编译&lt;/p>
+&lt;pre tabindex="0">&lt;code>apktool d apk_name
+&lt;/code>&lt;/pre>&lt;p>重新打包&lt;/p>
+&lt;pre tabindex="0">&lt;code>apktool b 文件 -o apk_name
+&lt;/code>&lt;/pre></description></item><item><title>flutter</title><link>http://localhost:1313/posts/flutter/</link><pubDate>Sun, 03 Sep 2023 22:50:37 +0000</pubDate><guid>http://localhost:1313/posts/flutter/</guid><description>&lt;h2 id="起因">
+ 起因
+ &lt;a class="anchor" href="#%e8%b5%b7%e5%9b%a0">#&lt;/a>
+&lt;/h2>
+&lt;p>放假在家闲的皮爆，有空学习写了个（其实在很久之前就有打算了）
+因为网易云音乐下载有很多但是加密的，虽然可以解密，但是也不方便管理，所以就有了这个软件，可以嵌入元数据（mp3和flac），包括歌词封面等。同步网易云歌单，可以删除本地文件&lt;/p>
+&lt;h2 id="开发">
+ 开发
+ &lt;a class="anchor" href="#%e5%bc%80%e5%8f%91">#&lt;/a>
+&lt;/h2>
+&lt;p>至于学习flutter，最开始知道flutter是因为逆向系列了解到的，听说写ui很方便，之前也有用过java开发。java的语法还也不是很喜欢。
+网易云的api 参考: &lt;a href="https://github.com/Binaryify/NeteaseCloudMusicApi">NeteaseCloudMusicApi&lt;/a>&lt;/p>
+&lt;p>学习编程语言我不是很喜欢看视频来，慢得很，需要什么直接去搜代码就行了。
+先看看官方的文档，demo，自己需要什么功能直接百度
+虽然可能了解不深刻，但是跟着视频写代码更烦人&lt;/p>
+&lt;h2 id="使用">
+ 使用
+ &lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8">#&lt;/a>
+&lt;/h2>
+&lt;p>设置里面要先设置cookie，只需要cookie中的MUSIC_U的部分，以及保存路径，这个保存路径是歌单的保存路径，如果下载的话会根据歌单名为文件夹保存在下级。&lt;/p>
+&lt;p>元数据默认嵌入所有&lt;/p>
+&lt;p>先根据歌单id获取歌曲，若要下载需要收藏歌单，下载完成会检测本地歌单中多余歌曲并徐闻是否删除。&lt;/p>
+&lt;p>似乎就这点鸟功能&lt;/p></description></item><item><title>某H视频-mls</title><link>http://localhost:1313/posts/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</link><pubDate>Sat, 07 Jan 2023 13:15:37 +0000</pubDate><guid>http://localhost:1313/posts/%E6%9F%90h%E8%A7%86%E9%A2%91-mls/</guid><description>&lt;h2 id="分析流程">
+ 分析流程
+ &lt;a class="anchor" href="#%e5%88%86%e6%9e%90%e6%b5%81%e7%a8%8b">#&lt;/a>
+&lt;/h2>
+&lt;p>这个软件呢，其实分析主要就是想要看他拉人获得vip的操作&lt;/p>
+&lt;p>抓包可以找到一个api&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-apl" data-lang="apl">&lt;span style="display:flex;">&lt;span>api&lt;span style="color:#a6e22e">/&lt;/span>user&lt;span style="color:#a6e22e">/&lt;/span>traveler
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这之前token还没有得到，参数&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;deviceId&amp;#34;&lt;/span>: &lt;span style="color:#960050;background-color:#1e0010">device&lt;/span>, &lt;span style="color:#f92672">&amp;#34;dev&amp;#34;&lt;/span>: &lt;span style="color:#960050;background-color:#1e0010">随机&lt;/span>&lt;span style="color:#ae81ff">3&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">字符&lt;/span>, &lt;span style="color:#f92672">&amp;#34;code&amp;#34;&lt;/span>: &lt;span style="color:#960050;background-color:#1e0010">&amp;#39;&lt;/span>{&lt;span style="color:#f92672">&amp;#34;p&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;PDTVPD&amp;#34;&lt;/span>}&lt;span style="color:#960050;background-color:#1e0010">&amp;#39;&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;p>这个code参数其实开始我也不知道是啥，走了一遍拉人的流程，发现app给我们的邀请链接有p参数，就是邀请码&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-apl" data-lang="apl">&lt;span style="display:flex;">&lt;span>https:&lt;span style="color:#a6e22e">//&lt;/span>z6mhir31k&lt;span style="color:#a6e22e">.&lt;/span>xyz&lt;span style="color:#f92672">?&lt;/span>p&lt;span style="color:#f92672">=&lt;/span>PDTVPD
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在进到网页中点击下载软件会将邀请码复制到我们的粘贴板上&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;p&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;PDTVPD&amp;#34;&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>当你进入app时，读取粘贴板的第一条数据&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> String &lt;span style="color:#a6e22e">u&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ClipData v0 &lt;span style="color:#f92672">=&lt;/span> FragmentAnim.&lt;span style="color:#a6e22e">f&lt;/span>.&lt;span style="color:#a6e22e">getSystemService&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;clipboard&amp;#34;&lt;/span>).&lt;span style="color:#a6e22e">getPrimaryClip&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String v1 &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(v0 &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span> &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> v0.&lt;span style="color:#a6e22e">getItemCount&lt;/span>() &lt;span style="color:#f92672">&amp;gt;&lt;/span> 0) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> CharSequence v0_1 &lt;span style="color:#f92672">=&lt;/span> v0.&lt;span style="color:#a6e22e">getItemAt&lt;/span>(0).&lt;span style="color:#a6e22e">getText&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(TextUtils.&lt;span style="color:#a6e22e">isEmpty&lt;/span>(v0_1)) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> v1;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> v0_1.&lt;span style="color:#a6e22e">toString&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> v1;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="deviceid">
+ deviceId
+ &lt;a class="anchor" href="#deviceid">#&lt;/a>
+&lt;/h3>
+&lt;p>顺着上去就发现了deviceId的生成&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">C&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String v0_2;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String v3_1;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String v1 &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;everb&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String v2 &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(a.&lt;span style="color:#a6e22e">a&lt;/span>.&lt;span style="color:#a6e22e">exists&lt;/span>()) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ObjectInputStream v0_1 &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ObjectInputStream(&lt;span style="color:#66d9ef">new&lt;/span> FileInputStream(a.&lt;span style="color:#a6e22e">a&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Object v3 &lt;span style="color:#f92672">=&lt;/span> v0_1.&lt;span style="color:#a6e22e">readObject&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> v0_1.&lt;span style="color:#a6e22e">close&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">goto&lt;/span> label_21;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">catch&lt;/span>(Exception v0) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">catch&lt;/span>(Exception v0) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> v3_1 &lt;span style="color:#f92672">=&lt;/span> v2;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Log.&lt;span style="color:#a6e22e">d&lt;/span>(v1, v0.&lt;span style="color:#a6e22e">toString&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> v3_1 &lt;span style="color:#f92672">=&lt;/span> v2;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> label_21:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(v3_1 &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Log.&lt;span style="color:#a6e22e">d&lt;/span>(v1, &lt;span style="color:#e6db74">&amp;#34;data == null&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> v3_1 &lt;span style="color:#f92672">=&lt;/span> v2;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(TextUtils.&lt;span style="color:#a6e22e">isEmpty&lt;/span>(((CharSequence)v3_1))) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> v0_2 &lt;span style="color:#f92672">=&lt;/span> String.&lt;span style="color:#a6e22e">valueOf&lt;/span>(System.&lt;span style="color:#a6e22e">currentTimeMillis&lt;/span>() &lt;span style="color:#f92672">+&lt;/span> UUID.&lt;span style="color:#a6e22e">randomUUID&lt;/span>().&lt;span style="color:#a6e22e">getLeastSignificantBits&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">byte&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> v0_4 &lt;span style="color:#f92672">=&lt;/span> MessageDigest.&lt;span style="color:#a6e22e">getInstance&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;MD5&amp;#34;&lt;/span>).&lt;span style="color:#a6e22e">digest&lt;/span>(v0_2.&lt;span style="color:#a6e22e">getBytes&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> StringBuilder v1_1 &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> StringBuilder();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> v5;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span>(v5 &lt;span style="color:#f92672">=&lt;/span> 0; v5 &lt;span style="color:#f92672">&amp;lt;&lt;/span> v0_4.&lt;span style="color:#a6e22e">length&lt;/span>; &lt;span style="color:#f92672">++&lt;/span>v5) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String v6 &lt;span style="color:#f92672">=&lt;/span> Integer.&lt;span style="color:#a6e22e">toHexString&lt;/span>(v0_4&lt;span style="color:#f92672">[&lt;/span>v5&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">&amp;amp;&lt;/span> 0xFF);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(v6.&lt;span style="color:#a6e22e">length&lt;/span>() &lt;span style="color:#f92672">&amp;lt;&lt;/span> 2) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> v1_1.&lt;span style="color:#a6e22e">append&lt;/span>(0);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> v1_1.&lt;span style="color:#a6e22e">append&lt;/span>(v6);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> v3_1 &lt;span style="color:#f92672">=&lt;/span> v1_1.&lt;span style="color:#a6e22e">toString&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>他会打开是个名为.CAD的文件，把deviceid写进去,如果像要看一遍生成新device，记得删除这个文件&lt;/p></description></item></channel></rss>

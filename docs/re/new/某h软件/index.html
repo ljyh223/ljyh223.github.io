@@ -1,0 +1,201 @@
+<!doctype html><html lang=en dir=ltr><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="某个视频软件,我拿到最初的版本是有各类防护的(检测root,代理,抓包)
+但是在网上找到一个版本好像都给干掉了,下面是用来刷vip的
+ai
+
+from hashlib import md5
+import time
+import requests
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad, unpad
+import base64,json
+import random
+MODE = AES.MODE_ECB
+PAD_STYLE = 'pkcs7'
+ENCODING = 'UTF-8'
+key='l8N2iooyp07M9IWa'
+url='http://apichlove.com'
+def encrypt(plaintext: str, key: str) -> str:
+    key_bytes = key.encode(ENCODING)
+    cipher = AES.new(key_bytes, MODE)
+    plaintext_bytes = plaintext.encode(ENCODING)
+    plaintext_bytes_padded = pad(plaintext_bytes, AES.block_size, PAD_STYLE)
+    ciphertext_bytes = cipher.encrypt(plaintext_bytes_padded)
+    ciphertext_base64_bytes = base64.b64encode(ciphertext_bytes) 
+    ciphertext = ciphertext_base64_bytes.decode(ENCODING)
+    return ciphertext
+def decrypt(ciphertext: str, key: str) -> str:
+    key_bytes = key.encode(ENCODING)
+    decrypter = AES.new(key_bytes, MODE)
+    ciphertext_base64_bytes = ciphertext.encode(ENCODING)
+    ciphertext_bytes = base64.b64decode(ciphertext_base64_bytes)
+    plaintext_bytes_padded = decrypter.decrypt(ciphertext_bytes)
+    plaintext_bytes = unpad(plaintext_bytes_padded, AES.block_size, PAD_STYLE)
+    plaintext = plaintext_bytes.decode(ENCODING)
+    return plaintext
+def x_t(url):
+    a = []
+    b = []
+    # url = 'app/api/auth/login/device'
+    v1 = str(int(time.time()))
+    v2 = md5(v1.encode()).hexdigest()[:8]
+    a.append('md5')
+    a.append(key)
+    a.append(v1)
+    a.append(v2)
+    a.append(url)
+    v3 = '|'.join(a)
+    v3 = md5(v3.encode()).hexdigest()
+    b.append('md5')
+    b.append(v1)
+    b.append(v2)
+    b.append(v3)
+    return '|'.join(b)
+def getRandom(randomlength=16):
+    digits='0123456789'
+    ascii_letters='abcdefghigklmnopqrstuvwxyz'
+    str_list =[random.choice(digits +ascii_letters) for i in range(randomlength)]
+    random_str =''.join(str_list)
+    return random_str
+def Token():
+    device_id='b2ad30fc-0301-3d50-a97f-'+getRandom(12)
+    data = json.dumps({&#34;channel&#34;: &#34;&#34;, &#34;code&#34;: &#34;&#34;, &#34;device_no&#34;: device_id,&#34;device_type&#34;: &#34;A&#34;, &#34;version&#34;: &#34;1.0.0&#34;})
+    data={'data':encrypt(data,key),'handshake':'v20200429'}
+    header = {'X-JSL-API-AUTH': x_t('/app/api/auth/login/device')}
+    result = requests.post(url+'/app/api/auth/login/device', json=data, headers=header).json()
+    msg=decrypt(result['data'],key)
+    # print(msg)
+    return json.loads(msg)['auth']['token'],device_id
+def x_token(device_id,token):
+    Json=json.dumps({&#34;device_no&#34;:device_id,&#34;device_type&#34;:&#34;A&#34;,&#34;token&#34;:token,&#34;version&#34;:&#34;1.0.0&#34;})
+    return encrypt(Json,key)
+def parent(code):
+    token,device_id=Token()
+    data={'data':encrypt(json.dumps({'code':code}),key),'handshake':'v20200429'}
+    header={'X-JSL-API-AUTH':x_t('/app/api/user/bindcode'),'X-TOKEN':x_token(device_id=device_id,token=token)}
+    result=requests.post(url+'/app/api/user/bindcode',json=data,headers=header).json()
+    print(result)
+    print(decrypt(result['data'],key))
+    header['X-JSL-API-AUTH']=x_t('/app/api/user/info')
+    # 你的X-TOKEN
+    # header['X-TOKEN']='4LJnAngoza8TZIz2otKTe52PhqbrW8GULUYVUu87AjDKzXQWPzNCDiHTohcbTWRcJ5V+mdgxrLVskUbLae90njTJJk4bG8tqYcgDX/fhwwG0VkkB11CY0wLhlxPfSkfMSlqmArvVTbrJ7UiydzotGh9nUHVrBqxMbDy9+iuhq9pFmucuV1SRKd/1pGxDNI0UX9nA5mpYMfYih0N/vR3A6+AdHQASRqBpeXSfMj3M7fHY/5W4fj0esNHkw93KjsnWM2FJWdNCYrkZC3tHWipUqKTk7zvbx20zaWo/c78VuePh8OeiCV2Htt9ah8+MNvAu+o6TERNF13aavGJkxeptaZs/+PFbBa397NVD4zQ28QDhkuOthPwHbpvOL/cWm9rjoL7TH7BdKGqjbYzHTvUnpWHQtJhGTPXRdNdSklDv4UDW/nsKTVVcv1LQAU1Oo5EnMwfZF2wmTtIRMRTPIi9zYFVhTYlJeFroe2fWrl8H9afzxz+fP+tm5aGSa7Ll0RBitPmN364On3xaWrRIiYGvfYsqckb6+BRQyDMXI+nHUMOAR2EcT6U3BMUCN5VJnkX8atWL76jdqPlFZzS9zyo5yaeiNLnQzVYm9wxNPuzb9ZMgvRQ4TnXfBGE5t8BiE4jAPJczvQhvWseHNy3M3wCd5b7CavKAVznoovCoLaqJpRX+bOWnttUWMLqdYxBnweL3'
+    # result=requests.post(url+'/app/api/user/info',data='{&#34;handshake&#34;:&#34;v20200429&#34;}',headers=header).json()
+    # print(json.loads(decrypt(result['data'],key))['vip_expired'])
+
+
+# 邀请码
+for i in range(5):
+    parent('RWK6IF')
+mls"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://localhost:1313/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6/"><meta property="og:site_name" content="Alex lan"><meta property="og:title" content="某h软件"><meta property="og:description" content="某个视频软件,我拿到最初的版本是有各类防护的(检测root,代理,抓包)
+但是在网上找到一个版本好像都给干掉了,下面是用来刷vip的
+ai
+from hashlib import md5 import time import requests from Crypto.Cipher import AES from Crypto.Util.Padding import pad, unpad import base64,json import random MODE = AES.MODE_ECB PAD_STYLE = 'pkcs7' ENCODING = 'UTF-8' key='l8N2iooyp07M9IWa' url='http://apichlove.com' def encrypt(plaintext: str, key: str) -> str: key_bytes = key.encode(ENCODING) cipher = AES.new(key_bytes, MODE) plaintext_bytes = plaintext.encode(ENCODING) plaintext_bytes_padded = pad(plaintext_bytes, AES.block_size, PAD_STYLE) ciphertext_bytes = cipher.encrypt(plaintext_bytes_padded) ciphertext_base64_bytes = base64.b64encode(ciphertext_bytes) ciphertext = ciphertext_base64_bytes.decode(ENCODING) return ciphertext def decrypt(ciphertext: str, key: str) -> str: key_bytes = key.encode(ENCODING) decrypter = AES.new(key_bytes, MODE) ciphertext_base64_bytes = ciphertext.encode(ENCODING) ciphertext_bytes = base64.b64decode(ciphertext_base64_bytes) plaintext_bytes_padded = decrypter.decrypt(ciphertext_bytes) plaintext_bytes = unpad(plaintext_bytes_padded, AES.block_size, PAD_STYLE) plaintext = plaintext_bytes.decode(ENCODING) return plaintext def x_t(url): a = [] b = [] # url = 'app/api/auth/login/device' v1 = str(int(time.time())) v2 = md5(v1.encode()).hexdigest()[:8] a.append('md5') a.append(key) a.append(v1) a.append(v2) a.append(url) v3 = '|'.join(a) v3 = md5(v3.encode()).hexdigest() b.append('md5') b.append(v1) b.append(v2) b.append(v3) return '|'.join(b) def getRandom(randomlength=16): digits='0123456789' ascii_letters='abcdefghigklmnopqrstuvwxyz' str_list =[random.choice(digits +ascii_letters) for i in range(randomlength)] random_str =''.join(str_list) return random_str def Token(): device_id='b2ad30fc-0301-3d50-a97f-'+getRandom(12) data = json.dumps({&#34;channel&#34;: &#34;&#34;, &#34;code&#34;: &#34;&#34;, &#34;device_no&#34;: device_id,&#34;device_type&#34;: &#34;A&#34;, &#34;version&#34;: &#34;1.0.0&#34;}) data={'data':encrypt(data,key),'handshake':'v20200429'} header = {'X-JSL-API-AUTH': x_t('/app/api/auth/login/device')} result = requests.post(url+'/app/api/auth/login/device', json=data, headers=header).json() msg=decrypt(result['data'],key) # print(msg) return json.loads(msg)['auth']['token'],device_id def x_token(device_id,token): Json=json.dumps({&#34;device_no&#34;:device_id,&#34;device_type&#34;:&#34;A&#34;,&#34;token&#34;:token,&#34;version&#34;:&#34;1.0.0&#34;}) return encrypt(Json,key) def parent(code): token,device_id=Token() data={'data':encrypt(json.dumps({'code':code}),key),'handshake':'v20200429'} header={'X-JSL-API-AUTH':x_t('/app/api/user/bindcode'),'X-TOKEN':x_token(device_id=device_id,token=token)} result=requests.post(url+'/app/api/user/bindcode',json=data,headers=header).json() print(result) print(decrypt(result['data'],key)) header['X-JSL-API-AUTH']=x_t('/app/api/user/info') # 你的X-TOKEN # header['X-TOKEN']='4LJnAngoza8TZIz2otKTe52PhqbrW8GULUYVUu87AjDKzXQWPzNCDiHTohcbTWRcJ5V+mdgxrLVskUbLae90njTJJk4bG8tqYcgDX/fhwwG0VkkB11CY0wLhlxPfSkfMSlqmArvVTbrJ7UiydzotGh9nUHVrBqxMbDy9+iuhq9pFmucuV1SRKd/1pGxDNI0UX9nA5mpYMfYih0N/vR3A6+AdHQASRqBpeXSfMj3M7fHY/5W4fj0esNHkw93KjsnWM2FJWdNCYrkZC3tHWipUqKTk7zvbx20zaWo/c78VuePh8OeiCV2Htt9ah8+MNvAu+o6TERNF13aavGJkxeptaZs/+PFbBa397NVD4zQ28QDhkuOthPwHbpvOL/cWm9rjoL7TH7BdKGqjbYzHTvUnpWHQtJhGTPXRdNdSklDv4UDW/nsKTVVcv1LQAU1Oo5EnMwfZF2wmTtIRMRTPIi9zYFVhTYlJeFroe2fWrl8H9afzxz+fP+tm5aGSa7Ll0RBitPmN364On3xaWrRIiYGvfYsqckb6+BRQyDMXI+nHUMOAR2EcT6U3BMUCN5VJnkX8atWL76jdqPlFZzS9zyo5yaeiNLnQzVYm9wxNPuzb9ZMgvRQ4TnXfBGE5t8BiE4jAPJczvQhvWseHNy3M3wCd5b7CavKAVznoovCoLaqJpRX+bOWnttUWMLqdYxBnweL3' # result=requests.post(url+'/app/api/user/info',data='{&#34;handshake&#34;:&#34;v20200429&#34;}',headers=header).json() # print(json.loads(decrypt(result['data'],key))['vip_expired']) # 邀请码 for i in range(5): parent('RWK6IF') mls"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:published_time" content="2024-12-08T14:03:24+08:00"><meta property="article:modified_time" content="2024-12-08T14:03:24+08:00"><meta property="article:tag" content="Re"><title>某h软件 | Alex lan</title>
+<link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://localhost:1313/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6/><link rel=stylesheet href=/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.c290d52f387bc8e8a0bd57b2126cae6de6c478944752e1d9608ba90f1c1a9220.js integrity="sha256-wpDVLzh7yOigvVeyEmyubebEeJRHUuHZYIupDxwakiA=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Alex lan</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li><input type=checkbox id=section-867144600acf9658ad1e030dba887392 class=toggle>
+<label for=section-867144600acf9658ad1e030dba887392 class="flex justify-between"><a role=button>code</a></label><ul><li><input type=checkbox id=section-bad47914f28bea05b9a99cdd87cd69fb class=toggle>
+<label for=section-bad47914f28bea05b9a99cdd87cd69fb class="flex justify-between"><a role=button>Android</a></label><ul><li><a href=/docs/code/android/ui/>Android ui</a></li><li><a href=/docs/code/android/%E5%8D%8F%E7%A8%8B-retrofit/>Android 协程-retrofit</a></li><li><a href=/docs/code/android/%E6%AF%94%E8%B5%9B/>Android 比赛</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%A2%8E%E7%A2%8E%E5%BF%B5/>android 碎念</a></li><li><a href=/docs/code/android/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android 网络请求</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E9%80%82%E9%85%8D%E5%99%A8/>Android 适配器</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android-网络请求</a></li></ul></li><li><input type=checkbox id=section-4c67168a533057d7cb02259caca8884d class=toggle>
+<label for=section-4c67168a533057d7cb02259caca8884d class="flex justify-between"><a role=button>linux</a></label><ul><li><a href=/docs/code/linux/screen/>linux screen</a></li></ul></li><li><input type=checkbox id=section-227bbb535145acab9a03ddf223110bf7 class=toggle>
+<label for=section-227bbb535145acab9a03ddf223110bf7 class="flex justify-between"><a role=button>鸿蒙</a></label><ul><li><a href=/docs/code/harmony/tabbar/>鸿蒙开发-TbaBar</a></li><li><a href=/docs/code/harmony/%E5%85%A5%E9%97%A8/>鸿蒙开发-入门</a></li><li><a href=/docs/code/harmony/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/>鸿蒙开发-状态管理</a></li><li><a href=/docs/code/harmony/%E7%BD%91%E7%BB%9C/>鸿蒙开发-网络请求</a></li></ul></li><li><input type=checkbox id=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class=toggle>
+<label for=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class="flex justify-between"><a role=button>ee</a></label><ul><li><a href=/docs/code/new/autotakepic_flask/>Auto Take Pic Flask</a></li><li><a href=/docs/code/new/c_%E7%94%9C%E7%94%9C%E5%9C%88/>C 甜甜圈</a></li><li><a href=/docs/code/new/rust/%E6%9F%90%E5%9B%BE/>某图</a></li><li><a href=/docs/code/new/%E4%BD%9C%E4%B8%9A2023.10.10/>作业2023.10.10</a></li><li><a href=/docs/code/new/%E6%98%9F%E4%BA%91%E5%8A%A0%E9%80%9F%E5%99%A8/>星云加速器</a></li><li><a href=/docs/code/new/%E6%9C%A8%E9%A9%AC%E7%99%BB%E9%99%86/>木马登陆</a></li><li><a href=/docs/code/new/%E6%9F%90update/>某update</a></li><li><a href=/docs/code/new/%E6%9F%90%E5%88%B7%E8%AF%BE/>某刷课</a></li><li><a href=/docs/code/new/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/>某洗衣小程序</a></li><li><a href=/docs/code/new/%E9%82%A3%E4%BA%9B%E9%AA%9A%E6%93%8D%E4%BD%9C/>那些骚操作</a></li></ul></li><li><a href=/docs/code/arch-linux/>arch linux</a></li><li><a href=/docs/code/avaloniaui/>avaloniaui</a></li><li><a href=/docs/code/c%23/>c#</a></li><li><a href=/docs/code/java_mysql/>Java_mysql</a></li><li><a href=/docs/code/linux%E7%9F%A5%E8%AF%86/>linux知识</a></li><li><a href=/docs/code/mqtt--%E4%B8%B2%E5%8F%A3--4055/>MQTT && 串口</a></li><li><a href=/docs/code/python/>Python</a></li><li><a href=/docs/code/rust/>rust</a></li><li><a href=/docs/code/cmd/>Cmd</a></li><li><a href=/docs/code/dart/>Dart</a></li><li><a href=/docs/code/%E6%95%B0%E6%8D%AE%E5%BA%93/>数据库</a></li></ul></li><li><input type=checkbox id=section-a88931adc275b5db7ba2257eca8098f2 class=toggle>
+<label for=section-a88931adc275b5db7ba2257eca8098f2 class="flex justify-between"><a role=button>e .wp</a></label><ul><li><a href=/docs/wp/bili_22_1024/>bili_22_1024</a></li><li><a href=/docs/wp/love_math/>LOVE_math</a></li><li><a href=/docs/wp/webexercise/ruby_cookie/>ruby_cookie</a></li></ul></li><li><input type=checkbox id=section-d633b3f91ad6faec5e15f38ac64d5024 class=toggle>
+<label for=section-d633b3f91ad6faec5e15f38ac64d5024 class="flex justify-between"><a role=button>good good study</a></label><ul><li><input type=checkbox id=section-ad1d0d6744ceb9d7276a26afbd49c97f class=toggle>
+<label for=section-ad1d0d6744ceb9d7276a26afbd49c97f class="flex justify-between"><a role=button>class notes</a></label><ul><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/java/>java</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/linux/>linux</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/>信息安全</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E5%B1%80%E5%9F%9F%E7%BD%91-%E6%80%9D%E7%A7%91-pt/>局域网 思科 pt</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/>算法与数据结构笔记</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/>网页制作</a></li></ul></li><li><input type=checkbox id=section-297a8c491188fdc1e4d5049993bd118b class=toggle>
+<label for=section-297a8c491188fdc1e4d5049993bd118b class="flex justify-between"><a role=button>english</a></label><ul><li><a href=/docs/learm/english/%E4%B8%80%E8%88%AC%E7%8E%B0%E5%9C%A8%E6%97%B6/>一般现在时</a></li><li><a href=/docs/learm/english/%E7%8E%B0%E5%9C%A8%E8%BF%9B%E8%A1%8C%E6%97%B6/>现在进行时</a></li></ul></li><li><input type=checkbox id=section-d273ec3342c86bd09d8e0a595cc7603e class=toggle>
+<label for=section-d273ec3342c86bd09d8e0a595cc7603e class="flex justify-between"><a role=button>math</a></label><ul><li><a href=/docs/learm/math/%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>公式测试</a></li><li><a href=/docs/learm/math/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86/>基本积分</a></li><li><a href=/docs/learm/math/%E5%AF%BC%E6%95%B0/>导数</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%88%97/>数列</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>数学公式测试</a></li><li><a href=/docs/learm/math/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F/>泰勒公式</a></li><li><a href=/docs/learm/math/%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/>等价无穷小</a></li><li><a href=/docs/learm/math/%E9%B8%A1%E6%9D%82%E5%85%AC%E5%BC%8F/>鸡杂公式</a></li></ul></li></ul></li><li><input type=checkbox id=section-bc5bfc4ab3726cdac08770524fbd5e52 class=toggle>
+<label for=section-bc5bfc4ab3726cdac08770524fbd5e52 class="flex justify-between"><a role=button>hack</a></label><ul><li><a href=/docs/hack/msf/>msf</a></li><li><a href=/docs/hack/thefatrat/>TheFatRat</a></li></ul></li><li><input type=checkbox id=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class=toggle checked>
+<label for=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class="flex justify-between"><a href=/docs/re/>re</a></label><ul><li><input type=checkbox id=section-59835f29e02875febbf77853a8373c43 class=toggle checked>
+<label for=section-59835f29e02875febbf77853a8373c43 class="flex justify-between"><a href=/docs/re/new/>demo</a></label><ul><li><a href=/docs/re/new/%E6%9F%90h%E8%A7%86%E9%A2%91%E8%BD%AF%E4%BB%B6/>Android 比赛</a></li><li><a href=/docs/re/new/u%E5%87%80/>u净</a></li><li><a href=/docs/re/new/%E5%A4%A7%E5%AD%A6%E6%90%9C%E9%A2%98%E9%85%B1/>大学搜题</a></li><li><a href=/docs/re/new/%E5%B1%B1%E8%A5%BF%E6%81%92%E5%AE%89%E5%88%B7%E8%AF%BE%E4%BB%A5%E5%8F%8A%E8%80%83%E8%AF%95/>山西恒安刷课以及考试</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6/ class=active>某h软件</a></li><li><a href=/docs/re/new/bika/>某h软件 bika</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6-2/>某h软件-2</a></li><li><a href=/docs/re/new/%E6%B7%98%E9%87%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E9%99%86/>淘金社区登陆</a></li><li><a href=/docs/re/new/%E7%88%B1%E5%A4%9A%E5%A4%9A-%E5%88%86%E6%9E%90/>爱多多 分析</a></li><li><a href=/docs/re/new/%E7%A5%9E%E5%9B%BE%E5%A3%81%E7%BA%B8/>神图壁纸</a></li></ul></li><li><a href=/docs/re/arm%E6%B1%87%E7%BC%96/>arm 汇编</a></li><li><a href=/docs/re/flutter---blutter/>flutter - blutter</a></li><li><a href=/docs/re/flutter/>flutter 初探</a></li><li><a href=/docs/re/frida/>frida</a></li><li><a href=/docs/re/ida%E5%8A%A8%E8%B0%83so/>ida 动态调试so</a></li><li><a href=/docs/re/%E5%8F%8D%E7%BC%96%E8%AF%91/>反编译</a></li><li><a href=/docs/re/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91/>小程序 逆向</a></li></ul></li><li><input type=checkbox id=section-18930a98ed98865a0f74f8bc6e5f9129 class=toggle>
+<label for=section-18930a98ed98865a0f74f8bc6e5f9129 class="flex justify-between"><a role=button>网络安全</a></label><ul><li><input type=checkbox id=section-651b79d602e2b6fd9e11ffc5f6867235 class=toggle>
+<label for=section-651b79d602e2b6fd9e11ffc5f6867235 class="flex justify-between"><a role=button>java</a></label><ul><li><a href=/docs/network-security/java/sql%E6%B3%A8%E5%85%A5/>java sql 注入</a></li><li><a href=/docs/network-security/java/web-inf%E8%AF%BB%E5%8F%96/>WEB-INF 读取</a></li><li><a href=/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>反序列化</a></li></ul></li><li><input type=checkbox id=section-a44367811822bf6f468461f4b263fc52 class=toggle>
+<label for=section-a44367811822bf6f468461f4b263fc52 class="flex justify-between"><a role=button>node</a></label><ul><li><a href=/docs/network-security/node/%E5%8E%9F%E5%BD%A2%E9%93%BE%E6%B1%A1%E6%9F%93/>node 原型链污染</a></li></ul></li><li><input type=checkbox id=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class=toggle>
+<label for=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class="flex justify-between"><a role=button>other</a></label><ul><li><a href=/docs/network-security/other/linux/>linux 知识点</a></li><li><a href=/docs/network-security/other/xpath%E6%B3%A8%E5%85%A5/>xpath 注入</a></li><li><a href=/docs/network-security/other/xxe/>XXE</a></li><li><a href=/docs/network-security/other/%E5%8F%8D%E5%BC%B9shll/>反弹shell</a></li><li><a href=/docs/network-security/other/%E7%AB%AF%E5%8F%A3/>常见端口</a></li></ul></li><li><input type=checkbox id=section-40d2a42f189bda5f49dc4cec9d080122 class=toggle>
+<label for=section-40d2a42f189bda5f49dc4cec9d080122 class="flex justify-between"><a role=button>php</a></label><ul><li><a href=/docs/network-security/php/php/>php</a></li><li><a href=/docs/network-security/php/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>php</a></li><li><a href=/docs/network-security/php/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8Clinux%E7%BB%95%E8%BF%87/>php命令执行linux绕过</a></li><li><a href=/docs/network-security/php/readflag/>readflag</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/regexp%E7%9B%B2%E6%B3%A8/>regexp盲注</a></li><li><a href=/docs/network-security/php/session%E4%BC%AA%E9%80%A0/>session伪造</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/>堆叠注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5/>字符型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/>报错注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%95%B4%E5%9E%8B%E6%B3%A8%E5%85%A5/>整型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/>时间注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E7%9B%B2%E6%B3%A8/>盲注</a></li><li><a href=/docs/network-security/php/htaccess%E7%9A%84%E5%88%A9%E7%94%A8/>Htaccess的利用</a></li><li><a href=/docs/network-security/php/md5%E7%A2%B0%E6%92%9E/>Md5碰撞</a></li><li><a href=/docs/network-security/php/%E4%BC%AA%E5%8D%8F%E8%AE%AE/>伪协议</a></li><li><a href=/docs/network-security/php/%E5%87%BD%E6%95%B0%E6%BC%8F%E6%B4%9E/>函数漏洞</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/>文件上传</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/>文件包含</a></li></ul></li><li><input type=checkbox id=section-00e8dd07f7030a556feb24211f954773 class=toggle>
+<label for=section-00e8dd07f7030a556feb24211f954773 class="flex justify-between"><a role=button>python</a></label><ul><li><a href=/docs/network-security/python/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>pickle反序列化</a></li><li><a href=/docs/network-security/python/python-session%E4%BC%AA%E9%80%A0/>python session伪造</a></li><li><a href=/docs/network-security/python/ssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/>SSTI模板注入</a></li></ul></li><li><input type=checkbox id=section-e32c44d2f36aa533e1dcd6f636ecb361 class=toggle>
+<label for=section-e32c44d2f36aa533e1dcd6f636ecb361 class="flex justify-between"><a role=button>tools</a></label><ul><li><a href=/docs/network-security/tools/fake-mysql/>fake-mysql</a></li></ul></li></ul></li></ul><ul><li><a href=/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label><h3>某h软件</h3><label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents></nav></aside></header><article class="markdown book-article"><p>某个视频软件,我拿到最初的版本是有各类防护的(检测root,代理,抓包)</p><p>但是在网上找到一个版本好像都给干掉了,下面是用来刷vip的</p><p>ai</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> hashlib <span style=color:#f92672>import</span> md5
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> time
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> requests
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> Crypto.Cipher <span style=color:#f92672>import</span> AES
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> Crypto.Util.Padding <span style=color:#f92672>import</span> pad, unpad
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> base64<span style=color:#f92672>,</span>json
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> random
+</span></span><span style=display:flex><span>MODE <span style=color:#f92672>=</span> AES<span style=color:#f92672>.</span>MODE_ECB
+</span></span><span style=display:flex><span>PAD_STYLE <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;pkcs7&#39;</span>
+</span></span><span style=display:flex><span>ENCODING <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;UTF-8&#39;</span>
+</span></span><span style=display:flex><span>key<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;l8N2iooyp07M9IWa&#39;</span>
+</span></span><span style=display:flex><span>url<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;http://apichlove.com&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>encrypt</span>(plaintext: str, key: str) <span style=color:#f92672>-&gt;</span> str:
+</span></span><span style=display:flex><span>    key_bytes <span style=color:#f92672>=</span> key<span style=color:#f92672>.</span>encode(ENCODING)
+</span></span><span style=display:flex><span>    cipher <span style=color:#f92672>=</span> AES<span style=color:#f92672>.</span>new(key_bytes, MODE)
+</span></span><span style=display:flex><span>    plaintext_bytes <span style=color:#f92672>=</span> plaintext<span style=color:#f92672>.</span>encode(ENCODING)
+</span></span><span style=display:flex><span>    plaintext_bytes_padded <span style=color:#f92672>=</span> pad(plaintext_bytes, AES<span style=color:#f92672>.</span>block_size, PAD_STYLE)
+</span></span><span style=display:flex><span>    ciphertext_bytes <span style=color:#f92672>=</span> cipher<span style=color:#f92672>.</span>encrypt(plaintext_bytes_padded)
+</span></span><span style=display:flex><span>    ciphertext_base64_bytes <span style=color:#f92672>=</span> base64<span style=color:#f92672>.</span>b64encode(ciphertext_bytes) 
+</span></span><span style=display:flex><span>    ciphertext <span style=color:#f92672>=</span> ciphertext_base64_bytes<span style=color:#f92672>.</span>decode(ENCODING)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> ciphertext
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>decrypt</span>(ciphertext: str, key: str) <span style=color:#f92672>-&gt;</span> str:
+</span></span><span style=display:flex><span>    key_bytes <span style=color:#f92672>=</span> key<span style=color:#f92672>.</span>encode(ENCODING)
+</span></span><span style=display:flex><span>    decrypter <span style=color:#f92672>=</span> AES<span style=color:#f92672>.</span>new(key_bytes, MODE)
+</span></span><span style=display:flex><span>    ciphertext_base64_bytes <span style=color:#f92672>=</span> ciphertext<span style=color:#f92672>.</span>encode(ENCODING)
+</span></span><span style=display:flex><span>    ciphertext_bytes <span style=color:#f92672>=</span> base64<span style=color:#f92672>.</span>b64decode(ciphertext_base64_bytes)
+</span></span><span style=display:flex><span>    plaintext_bytes_padded <span style=color:#f92672>=</span> decrypter<span style=color:#f92672>.</span>decrypt(ciphertext_bytes)
+</span></span><span style=display:flex><span>    plaintext_bytes <span style=color:#f92672>=</span> unpad(plaintext_bytes_padded, AES<span style=color:#f92672>.</span>block_size, PAD_STYLE)
+</span></span><span style=display:flex><span>    plaintext <span style=color:#f92672>=</span> plaintext_bytes<span style=color:#f92672>.</span>decode(ENCODING)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> plaintext
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>x_t</span>(url):
+</span></span><span style=display:flex><span>    a <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>    b <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>    <span style=color:#75715e># url = &#39;app/api/auth/login/device&#39;</span>
+</span></span><span style=display:flex><span>    v1 <span style=color:#f92672>=</span> str(int(time<span style=color:#f92672>.</span>time()))
+</span></span><span style=display:flex><span>    v2 <span style=color:#f92672>=</span> md5(v1<span style=color:#f92672>.</span>encode())<span style=color:#f92672>.</span>hexdigest()[:<span style=color:#ae81ff>8</span>]
+</span></span><span style=display:flex><span>    a<span style=color:#f92672>.</span>append(<span style=color:#e6db74>&#39;md5&#39;</span>)
+</span></span><span style=display:flex><span>    a<span style=color:#f92672>.</span>append(key)
+</span></span><span style=display:flex><span>    a<span style=color:#f92672>.</span>append(v1)
+</span></span><span style=display:flex><span>    a<span style=color:#f92672>.</span>append(v2)
+</span></span><span style=display:flex><span>    a<span style=color:#f92672>.</span>append(url)
+</span></span><span style=display:flex><span>    v3 <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;|&#39;</span><span style=color:#f92672>.</span>join(a)
+</span></span><span style=display:flex><span>    v3 <span style=color:#f92672>=</span> md5(v3<span style=color:#f92672>.</span>encode())<span style=color:#f92672>.</span>hexdigest()
+</span></span><span style=display:flex><span>    b<span style=color:#f92672>.</span>append(<span style=color:#e6db74>&#39;md5&#39;</span>)
+</span></span><span style=display:flex><span>    b<span style=color:#f92672>.</span>append(v1)
+</span></span><span style=display:flex><span>    b<span style=color:#f92672>.</span>append(v2)
+</span></span><span style=display:flex><span>    b<span style=color:#f92672>.</span>append(v3)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#39;|&#39;</span><span style=color:#f92672>.</span>join(b)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>getRandom</span>(randomlength<span style=color:#f92672>=</span><span style=color:#ae81ff>16</span>):
+</span></span><span style=display:flex><span>    digits<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;0123456789&#39;</span>
+</span></span><span style=display:flex><span>    ascii_letters<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;abcdefghigklmnopqrstuvwxyz&#39;</span>
+</span></span><span style=display:flex><span>    str_list <span style=color:#f92672>=</span>[random<span style=color:#f92672>.</span>choice(digits <span style=color:#f92672>+</span>ascii_letters) <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(randomlength)]
+</span></span><span style=display:flex><span>    random_str <span style=color:#f92672>=</span><span style=color:#e6db74>&#39;&#39;</span><span style=color:#f92672>.</span>join(str_list)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> random_str
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>Token</span>():
+</span></span><span style=display:flex><span>    device_id<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;b2ad30fc-0301-3d50-a97f-&#39;</span><span style=color:#f92672>+</span>getRandom(<span style=color:#ae81ff>12</span>)
+</span></span><span style=display:flex><span>    data <span style=color:#f92672>=</span> json<span style=color:#f92672>.</span>dumps({<span style=color:#e6db74>&#34;channel&#34;</span>: <span style=color:#e6db74>&#34;&#34;</span>, <span style=color:#e6db74>&#34;code&#34;</span>: <span style=color:#e6db74>&#34;&#34;</span>, <span style=color:#e6db74>&#34;device_no&#34;</span>: device_id,<span style=color:#e6db74>&#34;device_type&#34;</span>: <span style=color:#e6db74>&#34;A&#34;</span>, <span style=color:#e6db74>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;1.0.0&#34;</span>})
+</span></span><span style=display:flex><span>    data<span style=color:#f92672>=</span>{<span style=color:#e6db74>&#39;data&#39;</span>:encrypt(data,key),<span style=color:#e6db74>&#39;handshake&#39;</span>:<span style=color:#e6db74>&#39;v20200429&#39;</span>}
+</span></span><span style=display:flex><span>    header <span style=color:#f92672>=</span> {<span style=color:#e6db74>&#39;X-JSL-API-AUTH&#39;</span>: x_t(<span style=color:#e6db74>&#39;/app/api/auth/login/device&#39;</span>)}
+</span></span><span style=display:flex><span>    result <span style=color:#f92672>=</span> requests<span style=color:#f92672>.</span>post(url<span style=color:#f92672>+</span><span style=color:#e6db74>&#39;/app/api/auth/login/device&#39;</span>, json<span style=color:#f92672>=</span>data, headers<span style=color:#f92672>=</span>header)<span style=color:#f92672>.</span>json()
+</span></span><span style=display:flex><span>    msg<span style=color:#f92672>=</span>decrypt(result[<span style=color:#e6db74>&#39;data&#39;</span>],key)
+</span></span><span style=display:flex><span>    <span style=color:#75715e># print(msg)</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> json<span style=color:#f92672>.</span>loads(msg)[<span style=color:#e6db74>&#39;auth&#39;</span>][<span style=color:#e6db74>&#39;token&#39;</span>],device_id
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>x_token</span>(device_id,token):
+</span></span><span style=display:flex><span>    Json<span style=color:#f92672>=</span>json<span style=color:#f92672>.</span>dumps({<span style=color:#e6db74>&#34;device_no&#34;</span>:device_id,<span style=color:#e6db74>&#34;device_type&#34;</span>:<span style=color:#e6db74>&#34;A&#34;</span>,<span style=color:#e6db74>&#34;token&#34;</span>:token,<span style=color:#e6db74>&#34;version&#34;</span>:<span style=color:#e6db74>&#34;1.0.0&#34;</span>})
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> encrypt(Json,key)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>parent</span>(code):
+</span></span><span style=display:flex><span>    token,device_id<span style=color:#f92672>=</span>Token()
+</span></span><span style=display:flex><span>    data<span style=color:#f92672>=</span>{<span style=color:#e6db74>&#39;data&#39;</span>:encrypt(json<span style=color:#f92672>.</span>dumps({<span style=color:#e6db74>&#39;code&#39;</span>:code}),key),<span style=color:#e6db74>&#39;handshake&#39;</span>:<span style=color:#e6db74>&#39;v20200429&#39;</span>}
+</span></span><span style=display:flex><span>    header<span style=color:#f92672>=</span>{<span style=color:#e6db74>&#39;X-JSL-API-AUTH&#39;</span>:x_t(<span style=color:#e6db74>&#39;/app/api/user/bindcode&#39;</span>),<span style=color:#e6db74>&#39;X-TOKEN&#39;</span>:x_token(device_id<span style=color:#f92672>=</span>device_id,token<span style=color:#f92672>=</span>token)}
+</span></span><span style=display:flex><span>    result<span style=color:#f92672>=</span>requests<span style=color:#f92672>.</span>post(url<span style=color:#f92672>+</span><span style=color:#e6db74>&#39;/app/api/user/bindcode&#39;</span>,json<span style=color:#f92672>=</span>data,headers<span style=color:#f92672>=</span>header)<span style=color:#f92672>.</span>json()
+</span></span><span style=display:flex><span>    print(result)
+</span></span><span style=display:flex><span>    print(decrypt(result[<span style=color:#e6db74>&#39;data&#39;</span>],key))
+</span></span><span style=display:flex><span>    header[<span style=color:#e6db74>&#39;X-JSL-API-AUTH&#39;</span>]<span style=color:#f92672>=</span>x_t(<span style=color:#e6db74>&#39;/app/api/user/info&#39;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 你的X-TOKEN</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># header[&#39;X-TOKEN&#39;]=&#39;4LJnAngoza8TZIz2otKTe52PhqbrW8GULUYVUu87AjDKzXQWPzNCDiHTohcbTWRcJ5V+mdgxrLVskUbLae90njTJJk4bG8tqYcgDX/fhwwG0VkkB11CY0wLhlxPfSkfMSlqmArvVTbrJ7UiydzotGh9nUHVrBqxMbDy9+iuhq9pFmucuV1SRKd/1pGxDNI0UX9nA5mpYMfYih0N/vR3A6+AdHQASRqBpeXSfMj3M7fHY/5W4fj0esNHkw93KjsnWM2FJWdNCYrkZC3tHWipUqKTk7zvbx20zaWo/c78VuePh8OeiCV2Htt9ah8+MNvAu+o6TERNF13aavGJkxeptaZs/+PFbBa397NVD4zQ28QDhkuOthPwHbpvOL/cWm9rjoL7TH7BdKGqjbYzHTvUnpWHQtJhGTPXRdNdSklDv4UDW/nsKTVVcv1LQAU1Oo5EnMwfZF2wmTtIRMRTPIi9zYFVhTYlJeFroe2fWrl8H9afzxz+fP+tm5aGSa7Ll0RBitPmN364On3xaWrRIiYGvfYsqckb6+BRQyDMXI+nHUMOAR2EcT6U3BMUCN5VJnkX8atWL76jdqPlFZzS9zyo5yaeiNLnQzVYm9wxNPuzb9ZMgvRQ4TnXfBGE5t8BiE4jAPJczvQhvWseHNy3M3wCd5b7CavKAVznoovCoLaqJpRX+bOWnttUWMLqdYxBnweL3&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># result=requests.post(url+&#39;/app/api/user/info&#39;,data=&#39;{&#34;handshake&#34;:&#34;v20200429&#34;}&#39;,headers=header).json()</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># print(json.loads(decrypt(result[&#39;data&#39;],key))[&#39;vip_expired&#39;])</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 邀请码</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>5</span>):
+</span></span><span style=display:flex><span>    parent(<span style=color:#e6db74>&#39;RWK6IF&#39;</span>)
+</span></span></code></pre></div><p>mls</p><pre tabindex=0><code>api/user/traveler
+
+JhbGciOiJIUzI1Ni
+{&#34;p&#34;:&#34;9EYS4F&#34;}
+</code></pre><p>逆向过程</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents></nav></div></aside></main></body></html>

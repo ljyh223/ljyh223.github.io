@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Flutter on Alex lan</title><link>http://localhost:1313/tags/flutter/</link><description>Recent content in Flutter on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/flutter/index.xml" rel="self" type="application/rss+xml"/><item><title>flutter - blutter</title><link>http://localhost:1313/docs/re/flutter---blutter/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/re/flutter---blutter/</guid><description>&lt;h3 id="0x1">
+ 0x1
+ &lt;a class="anchor" href="#0x1">#&lt;/a>
+&lt;/h3>
+&lt;p>手把手带你逆向flutter。&lt;/p>
+&lt;p>如今flutter的逆向光靠使用reflutter已经有些不行了，在逛github的时候发现了一个项目 &lt;a href="https://github.com/worawit/blutter">worawit/blutter：Flutter移动应用程序逆向工程工具&lt;/a>&lt;/p>
+&lt;p>根据作者的步骤来。&lt;/p>
+&lt;p>win，先把Visual Studio 2022 给安装上，配置好C/C++的开发环境。&lt;/p>
+&lt;p>期间因为需要访问github，所以最好使挂上代理，注意将port替换为你代理的端口&lt;/p>
+&lt;pre tabindex="0">&lt;code>set HTTP_PROXY=http://127.0.0.1:port
+set HTTPS_PROXY=http://127.0.0.1:port
+&lt;/code>&lt;/pre>&lt;p>克隆下来&lt;/p>
+&lt;pre tabindex="0">&lt;code>git clone https://github.com/worawit/blutter.git
+cd blutter
+&lt;/code>&lt;/pre>&lt;p>安装所需的库文件&lt;/p>
+&lt;pre tabindex="0">&lt;code>python scripts\init_env_win.py
+&lt;/code>&lt;/pre>&lt;p>然后把flutter软件里的lib文件夹提出来，如arm64-v8a文件夹，注意两个文件都需要（libapp.so、libflutter.so）&lt;/p>
+&lt;p>在win的所有应用里面找到Visual Studio 2022 里面的 x64 Native Tools Command Prompt for VS 2022&lt;/p>
+&lt;p>在里面输入，注意在此终端仍建议挂上代理（需下载很多），一定注意代理&lt;/p>
+&lt;pre tabindex="0">&lt;code>python blutter.py ./app/lib/arm64-v8a ./output
+&lt;/code>&lt;/pre>&lt;p>会有相当多的需要编译，cpu都给干烧了&lt;/p>
+&lt;pre tabindex="0">&lt;code>C:\Users\jinchuan\Desktop\2\blutter&amp;gt;python blutter.py ./demo ./output
+Dart version: 2.19.3, Snapshot: adb4292f3ec25074ca70abcd2d5c7251, Target: android arm64
+Cloning into &amp;#39;C:\Users\jinchuan\Desktop\2\blutter\dartsdk\v2.19.3&amp;#39;...
+remote: Enumerating objects: 2361, done.
+remote: Counting objects: 100% (2361/2361), done.
+remote: Compressing objects: 100% (1912/1912), done.
+remote: Total 2361 (delta 82), reused 1427 (delta 63), pack-reused 0
+Receiving objects: 100% (2361/2361), 1.34 MiB | 197.00 KiB/s, done.
+Resolving deltas: 100% (82/82), done.
+remote: Enumerating objects: 23, done.
+remote: Counting objects: 100% (23/23), done.
+remote: Compressing objects: 100% (22/22), done.
+remote: Total 23 (delta 0), reused 7 (delta 0), pack-reused 0
+Receiving objects: 100% (23/23), 119.77 KiB | 257.00 KiB/s, done.
+Updating files: 100% (23/23), done.
+remote: Enumerating objects: 3424, done.
+remote: Counting objects: 100% (3424/3424), done.
+remote: Compressing objects: 100% (2343/2343), done.
+remote: Total 3424 (delta 1159), reused 2165 (delta 1048), pack-reused 0
+Receiving objects: 100% (3424/3424), 8.90 MiB | 4.09 MiB/s, done.
+Resolving deltas: 100% (1159/1159), done.
+Updating files: 100% (3886/3886), done.
+-- Configuring done (4.8s)
+-- Generating done (0.1s)
+-- Build files have been written to: C:/Users/jinchuan/Desktop/2/blutter/build/dartvm2.19.3_android_arm64
+[124/268] Building CXX object CMakeFiles\dartvm2.19.3_android_arm64.dir\runtime\vm\profiler_service.cc.obj
+C:\Users\jinchuan\Desktop\2\blutter\dartsdk\v2.19.3\runtime\vm/scope_timer.h(38): warning C4566: 由通用字符名称“\u00B5”表示的字符不能在当前代码页(936)中表示出来
+[133/268] Building CXX object CMakeFiles\dartvm2.19.3_android_arm64.dir\runtime\vm\regexp_assembler.cc.obj
+C:\Users\jinchuan\Desktop\2\blutter\external\icu-windows\include\unicode/stringoptions.h(1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+C:\Users\jinchuan\Desktop\2\blutter\external\icu-windows\include\unicode/uchar.h(3156): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+//省略n多
+C:\Users\jinchuan\Desktop\2\blutter\dartsdk\v2.19.3\runtime\vm/timer.h(156): warning C4566: 由通用字符名称“\u00B5”表示的字符不能在当前代码页(936)中表示出来
+[268/268] Linking CXX static library dartvm2.19.3_android_arm64.lib
+-- Install configuration: &amp;#34;Release&amp;#34;
+-- Installing: C:/Users/jinchuan/Desktop/2/blutter/dartsdk/v2.19.3/../../packages/lib/dartvm2.19.3_android_arm64.lib
+-- Installing: C:/Users/jinchuan/Desktop/2/blutter/dartsdk/v2.19.3/../../packages/include/dartvm2.19.3
+-- Installing: C:/Users/jinchuan/Desktop/2/blutter/dartsdk/v2.19.3/../../packages/include/dartvm2.19.3/include
+-- Installing: C:/Users/jinchuan/Desktop/2/blutter/dartsdk/v2.19.3/../../packages/include/dartvm2.19.3/include/analyze_snapshot_api.h
+//省略n多
+-- Installing: C:/Users/jinchuan/Desktop/2/blutter/dartsdk/v2.19.3/../../packages/include/dartvm2.19.3/platform/utils_win.h
+-- Installing: C:/Users/jinchuan/Desktop/2/blutter/dartsdk/v2.19.3/../../packages/include/dartvm2.19.3/vm
+-- Installing: C:/Users/jinchuan/Desktop/2/blutter/dartsdk/v2.19.3/../../packages/include/dartvm2.19.3/vm/allocation.h
+-- Installing: C:/Users/jinchuan/Desktop/2/blutter/dartsdk/v2.19.3/../../packages/include/dartvm2.19.3/vm/app_snapshot.h
+-- Installing: C:/Users/jinchuan/Desktop/2/blutter/dartsdk/v2.19.3/../../packages/include/dartvm2.19.3/vm/base64.h
+-- Installing: C:/Users/jinchuan/Desktop/2/blutter/dartsdk/v2.19.3/../../packages/include/dartvm2.19.3/vm/base_isolate.h
+
+-- Installing: C:/Users/jinchuan/Desktop/2/blutter/dartsdk/v2.19.3/../../packages/include/dartvm2.19.3/vm/zone_text_buffer.h
+-- Installing: C:/Users/jinchuan/Desktop/2/blutter/dartsdk/v2.19.3/../../packages/lib/cmake/dartvm2.19.3_android_arm64/dartvmTarget.cmake
+-- Installing: C:/Users/jinchuan/Desktop/2/blutter/dartsdk/v2.19.3/../../packages/lib/cmake/dartvm2.19.3_android_arm64/dartvmTarget-release.cmake
+-- Installing: C:/Users/jinchuan/Desktop/2/blutter/dartsdk/v2.19.3/../../packages/lib/cmake/dartvm2.19.3_android_arm64/dartvm2.19.3_android_arm64Config.cmake
+-- Installing: C:/Users/jinchuan/Desktop/2/blutter/dartsdk/v2.19.3/../../packages/lib/cmake/dartvm2.19.3_android_arm64/dartvm2.19.3_android_arm64ConfigVersion.cmake
+-- Configuring done (1.6s)
+-- Generating done (0.0s)
+-- Build files have been written to: C:/Users/jinchuan/Desktop/2/blutter/build/blutter_dartvm2.19.3_android_arm64
+[22/22] Linking CXX executable blutter_dartvm2.19.3_android_arm64.exe
+-- Install configuration: &amp;#34;Release&amp;#34;
+&lt;/code>&lt;/pre>&lt;p>以上为编译成功&lt;/p></description></item><item><title>flutter 初探</title><link>http://localhost:1313/docs/re/flutter/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/re/flutter/</guid><description>&lt;h2 id="安装">
+ 安装
+ &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85">#&lt;/a>
+&lt;/h2>
+&lt;p>首先我们手搓一个flutter apk来&lt;/p>
+&lt;p>去官网下载flutter 解压，配置环境bin目录&lt;/p>
+&lt;p>考虑网络因素，配置国内源，环境变量清华源&lt;/p>
+&lt;pre tabindex="0">&lt;code>export PUB_HOSTED_URL=https://mirrors.tuna.tsinghua.edu.cn/dart-pub
+export FLUTTER_STORAGE_BASE_URL=https://mirrors.tuna.tsinghua.edu.cn/flutter
+&lt;/code>&lt;/pre>&lt;h2 id="配置">
+ 配置
+ &lt;a class="anchor" href="#%e9%85%8d%e7%bd%ae">#&lt;/a>
+&lt;/h2>
+&lt;p>使用vscode，插件安装flutter，配置flutter sdk的路径&lt;/p>
+&lt;p>安装dart插件。&lt;/p>
+&lt;p>ctrl+shift+P 输入flutter 选择 new project，选择application，会生成项目&lt;/p>
+&lt;p>在里面随便加点加密&lt;/p>
+&lt;p>在文件pubspec.yaml文件中 dependencies节点下添加依赖&lt;/p>
+&lt;pre tabindex="0">&lt;code>crypto: ^3.0.3
+&lt;/code>&lt;/pre>&lt;p>随后在项目的根目录下执行&lt;/p>
+&lt;pre tabindex="0">&lt;code>flutter packages get
+&lt;/code>&lt;/pre>&lt;p>main.dart文件&lt;/p>
+&lt;pre tabindex="0">&lt;code>import &amp;#39;package:crypto/crypto.dart&amp;#39;;
+import &amp;#39;dart:convert&amp;#39;;
+&lt;/code>&lt;/pre>&lt;p>md5加密&lt;/p>
+&lt;pre tabindex="0">&lt;code>md5.convert(utf8.encode(&amp;#34;hello&amp;#34;)).toString()
+&lt;/code>&lt;/pre>&lt;p>先测试一下是否正常安装，随后打包release版本&lt;/p>
+&lt;p>打包&lt;/p>
+&lt;pre tabindex="0">&lt;code>flutter build apk
+&lt;/code>&lt;/pre>&lt;h2 id="反编译">
+ 反编译
+ &lt;a class="anchor" href="#%e5%8f%8d%e7%bc%96%e8%af%91">#&lt;/a>
+&lt;/h2>
+&lt;p>使用&lt;code>reflutter&lt;/code>来获取dart文件，其中包含了……，&lt;a href="https://github.com/Impact-I/reFlutter">使用详见&lt;/a>&lt;/p>
+&lt;p>记得将apk重新签名一遍&lt;/p>
+&lt;p>打开，在app 数据目录，找到dump.dart文件&lt;/p>
+&lt;p>当你满脸欢喜的打开，搜索md5，诶，我函数呢，妈的。&lt;/p></description></item><item><title>淘金社区登陆</title><link>http://localhost:1313/docs/re/new/%E6%B7%98%E9%87%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E9%99%86/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/re/new/%E6%B7%98%E9%87%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E9%99%86/</guid><description>&lt;p>某个淘金社区，登陆有md5加密&lt;/p>
+&lt;p>用blutter 解析一下，找到hash_update的地址，放到frida的脚本中，在console的下面加一句&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;hexdump&amp;#39;&lt;/span>&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#a6e22e">hexdump&lt;/span>(&lt;span style="color:#a6e22e">args&lt;/span>[&lt;span style="color:#ae81ff">0&lt;/span>]))
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>打印出来4个uint32List，虽然看不懂，但是我们打印了hex&lt;/p>
+&lt;p>多看几次知道有随机的东西，在多看几次就知道应该是时间戳末尾在控制，反复测试得到所有出现过的字符，易得脚本&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> requests
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> hashlib
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> time
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">get_data&lt;/span>(p):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    A&lt;span style="color:#f92672">=&lt;/span>[&lt;span style="color:#e6db74">&amp;#39;gcw7eeh5&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;eegc15nnccccoqh5r7&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;15gcnncc&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;h5ccccgc15nnee/i&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;15gcnnq4oq/ih5oqccccee&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;15cc/ir7oqnnq4oqh5&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;nncc/i&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;h515r7q4oqcc&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;oqoqnnr7q4/i&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;h5nn&amp;#39;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    B&lt;span style="color:#f92672">=&lt;/span>[&lt;span style="color:#e6db74">&amp;#39;eeoqh5&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;h5ccoqeer7&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;oqr7&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;r7&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;oqccgc&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;oqccgcoqh515r7oqq4&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;oqgcoqnn/i&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;h515oqcc&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;oq&amp;#39;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    C&lt;span style="color:#f92672">=&lt;/span>[&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;/iq4&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;q4&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;op&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;gc&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;2115oqr7q4/ioqccgc&amp;#39;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#75715e"># 16位时间戳&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    t&lt;span style="color:#f92672">=&lt;/span>str(int(time&lt;span style="color:#f92672">.&lt;/span>time()&lt;span style="color:#f92672">*&lt;/span>&lt;span style="color:#ae81ff">1000000&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    k&lt;span style="color:#f92672">=&lt;/span>int(t[&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#75715e"># B164D0C43EDB3BAD89D1A073EBE9691D&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#75715e"># 为固定值，可能跟随app版本所迭代&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#75715e">#一下情况特殊出现，需要对换位置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#66d9ef">if&lt;/span> k&lt;span style="color:#f92672">==&lt;/span>&lt;span style="color:#ae81ff">8&lt;/span> &lt;span style="color:#f92672">or&lt;/span> k&lt;span style="color:#f92672">==&lt;/span>&lt;span style="color:#ae81ff">5&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>        message&lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;action=sendcode&amp;amp;phone=&lt;/span>&lt;span style="color:#e6db74">{}&lt;/span>&lt;span style="color:#e6db74">&amp;amp;verifytoken=&lt;/span>&lt;span style="color:#e6db74">{}&lt;/span>&lt;span style="color:#e6db74">&amp;amp;verifycodes=&lt;/span>&lt;span style="color:#e6db74">{}{}&lt;/span>&lt;span style="color:#e6db74">B164D0C43EDB3BAD89D1A073EBE9691D..&lt;/span>&lt;span style="color:#e6db74">{}&lt;/span>&lt;span style="color:#e6db74">W1W2W3W4W5W6W7W8W901020304050607..&lt;/span>&lt;span style="color:#e6db74">{}{}&lt;/span>&lt;span style="color:#e6db74">&amp;#39;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>format(p,&lt;span style="color:#e6db74">&amp;#39;{system::verifytoken}&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;{system::verifytoken}&amp;#39;&lt;/span>,A[k],B[k],C[k],t)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>        message&lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;action=sendcode&amp;amp;phone=&lt;/span>&lt;span style="color:#e6db74">{}&lt;/span>&lt;span style="color:#e6db74">&amp;amp;verifytoken=&lt;/span>&lt;span style="color:#e6db74">{}&lt;/span>&lt;span style="color:#e6db74">&amp;amp;verifycodes=&lt;/span>&lt;span style="color:#e6db74">{}{}&lt;/span>&lt;span style="color:#e6db74">W1W2W3W4W5W6W7W8W901020304050607..&lt;/span>&lt;span style="color:#e6db74">{}&lt;/span>&lt;span style="color:#e6db74">B164D0C43EDB3BAD89D1A073EBE9691D..&lt;/span>&lt;span style="color:#e6db74">{}{}&lt;/span>&lt;span style="color:#e6db74">&amp;#39;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>format(p,&lt;span style="color:#e6db74">&amp;#39;{system::verifytoken}&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;{system::verifytoken}&amp;#39;&lt;/span>,A[k],B[k],C[k],t)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#75715e"># print(message)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#66d9ef">return&lt;/span> {&lt;span style="color:#e6db74">&amp;#39;action&amp;#39;&lt;/span>:&lt;span style="color:#e6db74">&amp;#39;sendcode&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;phone&amp;#39;&lt;/span>:p,&lt;span style="color:#e6db74">&amp;#39;verifytoken&amp;#39;&lt;/span>:hashlib&lt;span style="color:#f92672">.&lt;/span>md5(message&lt;span style="color:#f92672">.&lt;/span>encode())&lt;span style="color:#f92672">.&lt;/span>hexdigest(),&lt;span style="color:#e6db74">&amp;#39;verifycodes&amp;#39;&lt;/span>:t}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>data&lt;span style="color:#f92672">=&lt;/span>get_data(&lt;span style="color:#e6db74">&amp;#39;19999994444&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>resp&lt;span style="color:#f92672">=&lt;/span>requests&lt;span style="color:#f92672">.&lt;/span>get(&lt;span style="color:#e6db74">&amp;#39;http://bbs.taojingdaohang.cn/index.php&amp;#39;&lt;/span>,params&lt;span style="color:#f92672">=&lt;/span>data)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(resp&lt;span style="color:#f92672">.&lt;/span>text)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>测试正常发送短信&lt;/p></description></item><item><title>flutter 逆向小计</title><link>http://localhost:1313/posts/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</link><pubDate>Mon, 23 Oct 2023 22:59:16 +0000</pubDate><guid>http://localhost:1313/posts/flutter-%E9%80%86%E5%90%91%E5%B0%8F%E8%AE%A1/</guid><description>&lt;p>某个淘金社区，登陆有md5加密&lt;/p>
+&lt;p>用blutter 解析一下，找到hash_update的地址，放到frida的脚本中，在console的下面加一句&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;hexdump&amp;#39;&lt;/span>&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#a6e22e">hexdump&lt;/span>(&lt;span style="color:#a6e22e">args&lt;/span>[&lt;span style="color:#ae81ff">0&lt;/span>]))
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>打印出来4个uint32List，虽然看不懂，但是我们打印了hex&lt;/p>
+&lt;p>多看几次知道有随机的东西，在多看几次就知道应该是时间戳末尾在控制，反复测试得到所有出现过的字符，易得脚本&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> requests
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> hashlib
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> time
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">get_data&lt;/span>(p):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    A&lt;span style="color:#f92672">=&lt;/span>[&lt;span style="color:#e6db74">&amp;#39;gcw7eeh5&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;eegc15nnccccoqh5r7&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;15gcnncc&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;h5ccccgc15nnee/i&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;15gcnnq4oq/ih5oqccccee&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;15cc/ir7oqnnq4oqh5&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;nncc/i&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;h515r7q4oqcc&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;oqoqnnr7q4/i&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;h5nn&amp;#39;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    B&lt;span style="color:#f92672">=&lt;/span>[&lt;span style="color:#e6db74">&amp;#39;eeoqh5&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;h5ccoqeer7&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;oqr7&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;r7&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;oqccgc&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;oqccgcoqh515r7oqq4&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;oqgcoqnn/i&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;h515oqcc&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;oq&amp;#39;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    C&lt;span style="color:#f92672">=&lt;/span>[&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;/iq4&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;q4&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;op&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;gc&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;2115oqr7q4/ioqccgc&amp;#39;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#75715e"># 16位时间戳&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    t&lt;span style="color:#f92672">=&lt;/span>str(int(time&lt;span style="color:#f92672">.&lt;/span>time()&lt;span style="color:#f92672">*&lt;/span>&lt;span style="color:#ae81ff">1000000&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    k&lt;span style="color:#f92672">=&lt;/span>int(t[&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#75715e"># B164D0C43EDB3BAD89D1A073EBE9691D&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#75715e"># 为固定值，可能跟随app版本所迭代&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#75715e">#一下情况特殊出现，需要对换位置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#66d9ef">if&lt;/span> k&lt;span style="color:#f92672">==&lt;/span>&lt;span style="color:#ae81ff">8&lt;/span> &lt;span style="color:#f92672">or&lt;/span> k&lt;span style="color:#f92672">==&lt;/span>&lt;span style="color:#ae81ff">5&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>        message&lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;action=sendcode&amp;amp;phone=&lt;/span>&lt;span style="color:#e6db74">{}&lt;/span>&lt;span style="color:#e6db74">&amp;amp;verifytoken=&lt;/span>&lt;span style="color:#e6db74">{}&lt;/span>&lt;span style="color:#e6db74">&amp;amp;verifycodes=&lt;/span>&lt;span style="color:#e6db74">{}{}&lt;/span>&lt;span style="color:#e6db74">B164D0C43EDB3BAD89D1A073EBE9691D..&lt;/span>&lt;span style="color:#e6db74">{}&lt;/span>&lt;span style="color:#e6db74">W1W2W3W4W5W6W7W8W901020304050607..&lt;/span>&lt;span style="color:#e6db74">{}{}&lt;/span>&lt;span style="color:#e6db74">&amp;#39;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>format(p,&lt;span style="color:#e6db74">&amp;#39;{system::verifytoken}&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;{system::verifytoken}&amp;#39;&lt;/span>,A[k],B[k],C[k],t)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>        message&lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;action=sendcode&amp;amp;phone=&lt;/span>&lt;span style="color:#e6db74">{}&lt;/span>&lt;span style="color:#e6db74">&amp;amp;verifytoken=&lt;/span>&lt;span style="color:#e6db74">{}&lt;/span>&lt;span style="color:#e6db74">&amp;amp;verifycodes=&lt;/span>&lt;span style="color:#e6db74">{}{}&lt;/span>&lt;span style="color:#e6db74">W1W2W3W4W5W6W7W8W901020304050607..&lt;/span>&lt;span style="color:#e6db74">{}&lt;/span>&lt;span style="color:#e6db74">B164D0C43EDB3BAD89D1A073EBE9691D..&lt;/span>&lt;span style="color:#e6db74">{}{}&lt;/span>&lt;span style="color:#e6db74">&amp;#39;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>format(p,&lt;span style="color:#e6db74">&amp;#39;{system::verifytoken}&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;{system::verifytoken}&amp;#39;&lt;/span>,A[k],B[k],C[k],t)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#75715e"># print(message)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    &lt;span style="color:#66d9ef">return&lt;/span> {&lt;span style="color:#e6db74">&amp;#39;action&amp;#39;&lt;/span>:&lt;span style="color:#e6db74">&amp;#39;sendcode&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;phone&amp;#39;&lt;/span>:p,&lt;span style="color:#e6db74">&amp;#39;verifytoken&amp;#39;&lt;/span>:hashlib&lt;span style="color:#f92672">.&lt;/span>md5(message&lt;span style="color:#f92672">.&lt;/span>encode())&lt;span style="color:#f92672">.&lt;/span>hexdigest(),&lt;span style="color:#e6db74">&amp;#39;verifycodes&amp;#39;&lt;/span>:t}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>data&lt;span style="color:#f92672">=&lt;/span>get_data(&lt;span style="color:#e6db74">&amp;#39;19999994444&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>resp&lt;span style="color:#f92672">=&lt;/span>requests&lt;span style="color:#f92672">.&lt;/span>get(&lt;span style="color:#e6db74">&amp;#39;http://bbs.taojingdaohang.cn/index.php&amp;#39;&lt;/span>,params&lt;span style="color:#f92672">=&lt;/span>data)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(resp&lt;span style="color:#f92672">.&lt;/span>text)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>测试正常发送短信&lt;/p></description></item><item><title>flutter</title><link>http://localhost:1313/posts/flutter/</link><pubDate>Sun, 03 Sep 2023 22:50:37 +0000</pubDate><guid>http://localhost:1313/posts/flutter/</guid><description>&lt;h2 id="起因">
+ 起因
+ &lt;a class="anchor" href="#%e8%b5%b7%e5%9b%a0">#&lt;/a>
+&lt;/h2>
+&lt;p>放假在家闲的皮爆，有空学习写了个（其实在很久之前就有打算了）
+因为网易云音乐下载有很多但是加密的，虽然可以解密，但是也不方便管理，所以就有了这个软件，可以嵌入元数据（mp3和flac），包括歌词封面等。同步网易云歌单，可以删除本地文件&lt;/p>
+&lt;h2 id="开发">
+ 开发
+ &lt;a class="anchor" href="#%e5%bc%80%e5%8f%91">#&lt;/a>
+&lt;/h2>
+&lt;p>至于学习flutter，最开始知道flutter是因为逆向系列了解到的，听说写ui很方便，之前也有用过java开发。java的语法还也不是很喜欢。
+网易云的api 参考: &lt;a href="https://github.com/Binaryify/NeteaseCloudMusicApi">NeteaseCloudMusicApi&lt;/a>&lt;/p>
+&lt;p>学习编程语言我不是很喜欢看视频来，慢得很，需要什么直接去搜代码就行了。
+先看看官方的文档，demo，自己需要什么功能直接百度
+虽然可能了解不深刻，但是跟着视频写代码更烦人&lt;/p>
+&lt;h2 id="使用">
+ 使用
+ &lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8">#&lt;/a>
+&lt;/h2>
+&lt;p>设置里面要先设置cookie，只需要cookie中的MUSIC_U的部分，以及保存路径，这个保存路径是歌单的保存路径，如果下载的话会根据歌单名为文件夹保存在下级。&lt;/p>
+&lt;p>元数据默认嵌入所有&lt;/p>
+&lt;p>先根据歌单id获取歌曲，若要下载需要收藏歌单，下载完成会检测本地歌单中多余歌曲并徐闻是否删除。&lt;/p>
+&lt;p>似乎就这点鸟功能&lt;/p></description></item></channel></rss>

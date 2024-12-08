@@ -1,0 +1,220 @@
+<!doctype html><html lang=en dir=ltr><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content='
+  前言
+  #
+
+放假了，得去挣点学费，遂进厂，厂里的app，越权漏洞和信息泄露，以及基础的逆向分析
+注：以下内容仅供学习和参考，请勿用于违法行为活动
+
+  登陆
+  #
+
+应该是加密了，并且有key，app有壳，xx御安全，我用的frida-dexdump -FU脱几个dex出来
+用jadx打开不错，改用GDA，网上有免费版
+这里一个一个dex的搜，出现在classes02.dex中
+
+其中key是由你的工号，用异变凯撒变换，工号和密码在so中完成加密
+
+可以先hook看一下传进去的值，在GDA这个工具中可以直接右键函数可以直接hook，还是比较方便的（提前在adb中启动frida）这里打一下码，见谅
+
+所里面非常简单，没有混淆之类，但是把传进去的key又做了一次异变凯撒变换，再进行des cbc加密
+看到一个字符串，不免想到是iv，（函数名就是DESencypt）
+
+不过后来我试图重写时发现，加密内容非8整倍用0字节填充，结果不一样（但不影响下文）
+用py复写整个登陆，可以上号，我发现返回包中尽然没有任何维持身份的东西（就很奇怪，登陆就是个摆设？）
+
+  信息泄露
+  #
+
+
+
+身份信息泄露
+在访问我的资料，发现从服务器上请求中参数值需要工号（注意，以下信息量爆炸，统统码住）
+注：据我像老员工打听，工号就是按照顺序来的，工号起初设计应是考虑了1000w的人（已离职工号是已使用，不会在重启工号给别人使用，该洞即可遍历所有工号，但是是一个工程量巨大的事情）
+
+
+
+薪资卡信息
+访问薪资卡，会要求我们输入登陆密码，还有一个摆设本地验证码，获取信息，请求如下
+
+同样工号加密了，搜索易得java 层DES加密，key is fga2dfe@
+
+拿到key，对返回结果一统解密，泄露银行卡卡号（个人），开户行，姓名，这里就不放图片了，很暴力
+
+
+人脸图像
+进入厂区有些时候需要刷脸，也可刷厂牌，用户可以自己在app中采集人脸，（进厂前已收集一张）
+先获取图片路径和图片绑定的uuid（码住）
+
+随后向接口getImageByUrl获取图片，我试图尝试任意文件读取漏洞，但是似乎失败了，fuzz读取/etc/passwd和/etc/shadow返回空，其他404
+人脸图片在app中不是每个用户都有（有的自己删除了），影响：都有了你的sfz_id和name、phone，再加个人脸图附魔不过分吧，别人可能干一些非法认证，绑定一些人脸业务
+
+
+
+  越权
+  #
+
+额，我也不知道这算不算越权
+回到头来分析，好像楼掉了些甚么，看了看验证码，修改忘记密码之类
+其中忘记密码是在登陆界面，会先输入你的工号，会想服务器获取工号绑定的手机号，app上是对手机号的中间4位打了"*&ldquo;号，我一看包，卧槽，这么暴力吗，响应包中就是完整的手机号（又是一个任意信息泄露），
+你以为就这，之后向服务器请求发送验证码，发送过来的验证码我发现竟然在请求包中（即验证码在本地随机产生一个6位数）
+
+我马上即想到任意用户密码修改，因为验证码由我们所控制，后来我发现根本没必要
+接下来重置密码（只需要填写新密码），发现新大陆（超级暴力）
+请求包中的内容pwd和EmpNo（工号）是上文提到的so中的加密方式，key也同理的
+
+那么就出现了，任意用户密码重置，实测我朋友已成功
+
+  更加暴力的
+  #
+
+众所周知，厂里是有储物柜的，有电子锁和自带钥匙的那种'><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://localhost:1313/docs/re/new/%E7%88%B1%E5%A4%9A%E5%A4%9A-%E5%88%86%E6%9E%90/"><meta property="og:site_name" content="Alex lan"><meta property="og:title" content="爱多多 分析"><meta property="og:description" content='前言#放假了，得去挣点学费，遂进厂，厂里的app，越权漏洞和信息泄露，以及基础的逆向分析
+注：以下内容仅供学习和参考，请勿用于违法行为活动
+登陆#应该是加密了，并且有key，app有壳，xx御安全，我用的frida-dexdump -FU脱几个dex出来
+用jadx打开不错，改用GDA，网上有免费版
+这里一个一个dex的搜，出现在classes02.dex中
+其中key是由你的工号，用异变凯撒变换，工号和密码在so中完成加密
+可以先hook看一下传进去的值，在GDA这个工具中可以直接右键函数可以直接hook，还是比较方便的（提前在adb中启动frida）这里打一下码，见谅
+所里面非常简单，没有混淆之类，但是把传进去的key又做了一次异变凯撒变换，再进行des cbc加密
+看到一个字符串，不免想到是iv，（函数名就是DESencypt）
+不过后来我试图重写时发现，加密内容非8整倍用0字节填充，结果不一样（但不影响下文）
+用py复写整个登陆，可以上号，我发现返回包中尽然没有任何维持身份的东西（就很奇怪，登陆就是个摆设？）
+信息泄露#身份信息泄露
+在访问我的资料，发现从服务器上请求中参数值需要工号（注意，以下信息量爆炸，统统码住）
+注：据我像老员工打听，工号就是按照顺序来的，工号起初设计应是考虑了1000w的人（已离职工号是已使用，不会在重启工号给别人使用，该洞即可遍历所有工号，但是是一个工程量巨大的事情）
+薪资卡信息
+访问薪资卡，会要求我们输入登陆密码，还有一个摆设本地验证码，获取信息，请求如下
+同样工号加密了，搜索易得java 层DES加密，key is fga2dfe@
+拿到key，对返回结果一统解密，泄露银行卡卡号（个人），开户行，姓名，这里就不放图片了，很暴力
+人脸图像
+进入厂区有些时候需要刷脸，也可刷厂牌，用户可以自己在app中采集人脸，（进厂前已收集一张）
+先获取图片路径和图片绑定的uuid（码住）
+随后向接口getImageByUrl获取图片，我试图尝试任意文件读取漏洞，但是似乎失败了，fuzz读取/etc/passwd和/etc/shadow返回空，其他404
+人脸图片在app中不是每个用户都有（有的自己删除了），影响：都有了你的sfz_id和name、phone，再加个人脸图附魔不过分吧，别人可能干一些非法认证，绑定一些人脸业务
+越权#额，我也不知道这算不算越权
+回到头来分析，好像楼掉了些甚么，看了看验证码，修改忘记密码之类
+其中忘记密码是在登陆界面，会先输入你的工号，会想服务器获取工号绑定的手机号，app上是对手机号的中间4位打了"*“号，我一看包，卧槽，这么暴力吗，响应包中就是完整的手机号（又是一个任意信息泄露），
+你以为就这，之后向服务器请求发送验证码，发送过来的验证码我发现竟然在请求包中（即验证码在本地随机产生一个6位数）
+我马上即想到任意用户密码修改，因为验证码由我们所控制，后来我发现根本没必要
+接下来重置密码（只需要填写新密码），发现新大陆（超级暴力）
+请求包中的内容pwd和EmpNo（工号）是上文提到的so中的加密方式，key也同理的
+那么就出现了，任意用户密码重置，实测我朋友已成功
+更加暴力的#众所周知，厂里是有储物柜的，有电子锁和自带钥匙的那种'><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:published_time" content="2024-12-08T14:03:24+08:00"><meta property="article:modified_time" content="2024-12-08T14:03:24+08:00"><meta property="article:tag" content="Re"><title>爱多多 分析 | Alex lan</title>
+<link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://localhost:1313/docs/re/new/%E7%88%B1%E5%A4%9A%E5%A4%9A-%E5%88%86%E6%9E%90/><link rel=stylesheet href=/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.c290d52f387bc8e8a0bd57b2126cae6de6c478944752e1d9608ba90f1c1a9220.js integrity="sha256-wpDVLzh7yOigvVeyEmyubebEeJRHUuHZYIupDxwakiA=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Alex lan</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li><input type=checkbox id=section-867144600acf9658ad1e030dba887392 class=toggle>
+<label for=section-867144600acf9658ad1e030dba887392 class="flex justify-between"><a role=button>code</a></label><ul><li><input type=checkbox id=section-bad47914f28bea05b9a99cdd87cd69fb class=toggle>
+<label for=section-bad47914f28bea05b9a99cdd87cd69fb class="flex justify-between"><a role=button>Android</a></label><ul><li><a href=/docs/code/android/ui/>Android ui</a></li><li><a href=/docs/code/android/%E5%8D%8F%E7%A8%8B-retrofit/>Android 协程-retrofit</a></li><li><a href=/docs/code/android/%E6%AF%94%E8%B5%9B/>Android 比赛</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%A2%8E%E7%A2%8E%E5%BF%B5/>android 碎念</a></li><li><a href=/docs/code/android/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android 网络请求</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E9%80%82%E9%85%8D%E5%99%A8/>Android 适配器</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android-网络请求</a></li></ul></li><li><input type=checkbox id=section-4c67168a533057d7cb02259caca8884d class=toggle>
+<label for=section-4c67168a533057d7cb02259caca8884d class="flex justify-between"><a role=button>linux</a></label><ul><li><a href=/docs/code/linux/screen/>linux screen</a></li></ul></li><li><input type=checkbox id=section-227bbb535145acab9a03ddf223110bf7 class=toggle>
+<label for=section-227bbb535145acab9a03ddf223110bf7 class="flex justify-between"><a role=button>鸿蒙</a></label><ul><li><a href=/docs/code/harmony/tabbar/>鸿蒙开发-TbaBar</a></li><li><a href=/docs/code/harmony/%E5%85%A5%E9%97%A8/>鸿蒙开发-入门</a></li><li><a href=/docs/code/harmony/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/>鸿蒙开发-状态管理</a></li><li><a href=/docs/code/harmony/%E7%BD%91%E7%BB%9C/>鸿蒙开发-网络请求</a></li></ul></li><li><input type=checkbox id=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class=toggle>
+<label for=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class="flex justify-between"><a role=button>ee</a></label><ul><li><a href=/docs/code/new/autotakepic_flask/>Auto Take Pic Flask</a></li><li><a href=/docs/code/new/c_%E7%94%9C%E7%94%9C%E5%9C%88/>C 甜甜圈</a></li><li><a href=/docs/code/new/rust/%E6%9F%90%E5%9B%BE/>某图</a></li><li><a href=/docs/code/new/%E4%BD%9C%E4%B8%9A2023.10.10/>作业2023.10.10</a></li><li><a href=/docs/code/new/%E6%98%9F%E4%BA%91%E5%8A%A0%E9%80%9F%E5%99%A8/>星云加速器</a></li><li><a href=/docs/code/new/%E6%9C%A8%E9%A9%AC%E7%99%BB%E9%99%86/>木马登陆</a></li><li><a href=/docs/code/new/%E6%9F%90update/>某update</a></li><li><a href=/docs/code/new/%E6%9F%90%E5%88%B7%E8%AF%BE/>某刷课</a></li><li><a href=/docs/code/new/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/>某洗衣小程序</a></li><li><a href=/docs/code/new/%E9%82%A3%E4%BA%9B%E9%AA%9A%E6%93%8D%E4%BD%9C/>那些骚操作</a></li></ul></li><li><a href=/docs/code/arch-linux/>arch linux</a></li><li><a href=/docs/code/avaloniaui/>avaloniaui</a></li><li><a href=/docs/code/c%23/>c#</a></li><li><a href=/docs/code/java_mysql/>Java_mysql</a></li><li><a href=/docs/code/linux%E7%9F%A5%E8%AF%86/>linux知识</a></li><li><a href=/docs/code/mqtt--%E4%B8%B2%E5%8F%A3--4055/>MQTT && 串口</a></li><li><a href=/docs/code/python/>Python</a></li><li><a href=/docs/code/rust/>rust</a></li><li><a href=/docs/code/cmd/>Cmd</a></li><li><a href=/docs/code/dart/>Dart</a></li><li><a href=/docs/code/%E6%95%B0%E6%8D%AE%E5%BA%93/>数据库</a></li></ul></li><li><input type=checkbox id=section-a88931adc275b5db7ba2257eca8098f2 class=toggle>
+<label for=section-a88931adc275b5db7ba2257eca8098f2 class="flex justify-between"><a role=button>e .wp</a></label><ul><li><a href=/docs/wp/bili_22_1024/>bili_22_1024</a></li><li><a href=/docs/wp/love_math/>LOVE_math</a></li><li><a href=/docs/wp/webexercise/ruby_cookie/>ruby_cookie</a></li></ul></li><li><input type=checkbox id=section-d633b3f91ad6faec5e15f38ac64d5024 class=toggle>
+<label for=section-d633b3f91ad6faec5e15f38ac64d5024 class="flex justify-between"><a role=button>good good study</a></label><ul><li><input type=checkbox id=section-ad1d0d6744ceb9d7276a26afbd49c97f class=toggle>
+<label for=section-ad1d0d6744ceb9d7276a26afbd49c97f class="flex justify-between"><a role=button>class notes</a></label><ul><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/java/>java</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/linux/>linux</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/>信息安全</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E5%B1%80%E5%9F%9F%E7%BD%91-%E6%80%9D%E7%A7%91-pt/>局域网 思科 pt</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/>算法与数据结构笔记</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/>网页制作</a></li></ul></li><li><input type=checkbox id=section-297a8c491188fdc1e4d5049993bd118b class=toggle>
+<label for=section-297a8c491188fdc1e4d5049993bd118b class="flex justify-between"><a role=button>english</a></label><ul><li><a href=/docs/learm/english/%E4%B8%80%E8%88%AC%E7%8E%B0%E5%9C%A8%E6%97%B6/>一般现在时</a></li><li><a href=/docs/learm/english/%E7%8E%B0%E5%9C%A8%E8%BF%9B%E8%A1%8C%E6%97%B6/>现在进行时</a></li></ul></li><li><input type=checkbox id=section-d273ec3342c86bd09d8e0a595cc7603e class=toggle>
+<label for=section-d273ec3342c86bd09d8e0a595cc7603e class="flex justify-between"><a role=button>math</a></label><ul><li><a href=/docs/learm/math/%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>公式测试</a></li><li><a href=/docs/learm/math/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86/>基本积分</a></li><li><a href=/docs/learm/math/%E5%AF%BC%E6%95%B0/>导数</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%88%97/>数列</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>数学公式测试</a></li><li><a href=/docs/learm/math/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F/>泰勒公式</a></li><li><a href=/docs/learm/math/%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/>等价无穷小</a></li><li><a href=/docs/learm/math/%E9%B8%A1%E6%9D%82%E5%85%AC%E5%BC%8F/>鸡杂公式</a></li></ul></li></ul></li><li><input type=checkbox id=section-bc5bfc4ab3726cdac08770524fbd5e52 class=toggle>
+<label for=section-bc5bfc4ab3726cdac08770524fbd5e52 class="flex justify-between"><a role=button>hack</a></label><ul><li><a href=/docs/hack/msf/>msf</a></li><li><a href=/docs/hack/thefatrat/>TheFatRat</a></li></ul></li><li><input type=checkbox id=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class=toggle checked>
+<label for=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class="flex justify-between"><a href=/docs/re/>re</a></label><ul><li><input type=checkbox id=section-59835f29e02875febbf77853a8373c43 class=toggle checked>
+<label for=section-59835f29e02875febbf77853a8373c43 class="flex justify-between"><a href=/docs/re/new/>demo</a></label><ul><li><a href=/docs/re/new/%E6%9F%90h%E8%A7%86%E9%A2%91%E8%BD%AF%E4%BB%B6/>Android 比赛</a></li><li><a href=/docs/re/new/u%E5%87%80/>u净</a></li><li><a href=/docs/re/new/%E5%A4%A7%E5%AD%A6%E6%90%9C%E9%A2%98%E9%85%B1/>大学搜题</a></li><li><a href=/docs/re/new/%E5%B1%B1%E8%A5%BF%E6%81%92%E5%AE%89%E5%88%B7%E8%AF%BE%E4%BB%A5%E5%8F%8A%E8%80%83%E8%AF%95/>山西恒安刷课以及考试</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6/>某h软件</a></li><li><a href=/docs/re/new/bika/>某h软件 bika</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6-2/>某h软件-2</a></li><li><a href=/docs/re/new/%E6%B7%98%E9%87%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E9%99%86/>淘金社区登陆</a></li><li><a href=/docs/re/new/%E7%88%B1%E5%A4%9A%E5%A4%9A-%E5%88%86%E6%9E%90/ class=active>爱多多 分析</a></li><li><a href=/docs/re/new/%E7%A5%9E%E5%9B%BE%E5%A3%81%E7%BA%B8/>神图壁纸</a></li></ul></li><li><a href=/docs/re/arm%E6%B1%87%E7%BC%96/>arm 汇编</a></li><li><a href=/docs/re/flutter---blutter/>flutter - blutter</a></li><li><a href=/docs/re/flutter/>flutter 初探</a></li><li><a href=/docs/re/frida/>frida</a></li><li><a href=/docs/re/ida%E5%8A%A8%E8%B0%83so/>ida 动态调试so</a></li><li><a href=/docs/re/%E5%8F%8D%E7%BC%96%E8%AF%91/>反编译</a></li><li><a href=/docs/re/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91/>小程序 逆向</a></li></ul></li><li><input type=checkbox id=section-18930a98ed98865a0f74f8bc6e5f9129 class=toggle>
+<label for=section-18930a98ed98865a0f74f8bc6e5f9129 class="flex justify-between"><a role=button>网络安全</a></label><ul><li><input type=checkbox id=section-651b79d602e2b6fd9e11ffc5f6867235 class=toggle>
+<label for=section-651b79d602e2b6fd9e11ffc5f6867235 class="flex justify-between"><a role=button>java</a></label><ul><li><a href=/docs/network-security/java/sql%E6%B3%A8%E5%85%A5/>java sql 注入</a></li><li><a href=/docs/network-security/java/web-inf%E8%AF%BB%E5%8F%96/>WEB-INF 读取</a></li><li><a href=/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>反序列化</a></li></ul></li><li><input type=checkbox id=section-a44367811822bf6f468461f4b263fc52 class=toggle>
+<label for=section-a44367811822bf6f468461f4b263fc52 class="flex justify-between"><a role=button>node</a></label><ul><li><a href=/docs/network-security/node/%E5%8E%9F%E5%BD%A2%E9%93%BE%E6%B1%A1%E6%9F%93/>node 原型链污染</a></li></ul></li><li><input type=checkbox id=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class=toggle>
+<label for=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class="flex justify-between"><a role=button>other</a></label><ul><li><a href=/docs/network-security/other/linux/>linux 知识点</a></li><li><a href=/docs/network-security/other/xpath%E6%B3%A8%E5%85%A5/>xpath 注入</a></li><li><a href=/docs/network-security/other/xxe/>XXE</a></li><li><a href=/docs/network-security/other/%E5%8F%8D%E5%BC%B9shll/>反弹shell</a></li><li><a href=/docs/network-security/other/%E7%AB%AF%E5%8F%A3/>常见端口</a></li></ul></li><li><input type=checkbox id=section-40d2a42f189bda5f49dc4cec9d080122 class=toggle>
+<label for=section-40d2a42f189bda5f49dc4cec9d080122 class="flex justify-between"><a role=button>php</a></label><ul><li><a href=/docs/network-security/php/php/>php</a></li><li><a href=/docs/network-security/php/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>php</a></li><li><a href=/docs/network-security/php/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8Clinux%E7%BB%95%E8%BF%87/>php命令执行linux绕过</a></li><li><a href=/docs/network-security/php/readflag/>readflag</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/regexp%E7%9B%B2%E6%B3%A8/>regexp盲注</a></li><li><a href=/docs/network-security/php/session%E4%BC%AA%E9%80%A0/>session伪造</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/>堆叠注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5/>字符型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/>报错注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%95%B4%E5%9E%8B%E6%B3%A8%E5%85%A5/>整型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/>时间注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E7%9B%B2%E6%B3%A8/>盲注</a></li><li><a href=/docs/network-security/php/htaccess%E7%9A%84%E5%88%A9%E7%94%A8/>Htaccess的利用</a></li><li><a href=/docs/network-security/php/md5%E7%A2%B0%E6%92%9E/>Md5碰撞</a></li><li><a href=/docs/network-security/php/%E4%BC%AA%E5%8D%8F%E8%AE%AE/>伪协议</a></li><li><a href=/docs/network-security/php/%E5%87%BD%E6%95%B0%E6%BC%8F%E6%B4%9E/>函数漏洞</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/>文件上传</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/>文件包含</a></li></ul></li><li><input type=checkbox id=section-00e8dd07f7030a556feb24211f954773 class=toggle>
+<label for=section-00e8dd07f7030a556feb24211f954773 class="flex justify-between"><a role=button>python</a></label><ul><li><a href=/docs/network-security/python/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>pickle反序列化</a></li><li><a href=/docs/network-security/python/python-session%E4%BC%AA%E9%80%A0/>python session伪造</a></li><li><a href=/docs/network-security/python/ssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/>SSTI模板注入</a></li></ul></li><li><input type=checkbox id=section-e32c44d2f36aa533e1dcd6f636ecb361 class=toggle>
+<label for=section-e32c44d2f36aa533e1dcd6f636ecb361 class="flex justify-between"><a role=button>tools</a></label><ul><li><a href=/docs/network-security/tools/fake-mysql/>fake-mysql</a></li></ul></li></ul></li></ul><ul><li><a href=/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label><h3>爱多多 分析</h3><label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><ul><li><a href=#前言>前言</a></li><li><a href=#登陆>登陆</a></li><li><a href=#信息泄露>信息泄露</a></li><li><a href=#越权>越权</a></li><li><a href=#更加暴力的>更加暴力的</a></li><li><a href=#后记>后记</a></li></ul></li><li><a href=#2024-8-13-晚>2024 8 13 晚</a><ul><li><a href=#java-des-cbc-pkcs5>java DES CBC Pkcs5</a></li><li><a href=#api>API</a></li><li><a href=#柜子>柜子</a></li></ul></li></ul></nav></aside></header><article class="markdown book-article"><h3 id=前言>前言
+<a class=anchor href=#%e5%89%8d%e8%a8%80>#</a></h3><p>放假了，得去挣点学费，遂进厂，厂里的app，越权漏洞和信息泄露，以及基础的逆向分析</p><p>注：以下内容仅供学习和参考，请勿用于违法行为活动</p><h3 id=登陆>登陆
+<a class=anchor href=#%e7%99%bb%e9%99%86>#</a></h3><p>应该是加密了，并且有key，app有壳，xx御安全，我用的frida-dexdump -FU脱几个dex出来</p><p>用jadx打开不错，改用GDA，网上有免费版</p><p>这里一个一个dex的搜，出现在classes02.dex中</p><p><img src=https://s2.loli.net/2024/01/13/FBdQabGu3exUjqS.png alt=image-20230509091845206></p><p>其中key是由你的工号，用异变凯撒变换，工号和密码在so中完成加密</p><p><img src=https://s2.loli.net/2024/01/13/dIpUsKSghfu2MCV.png alt=image-20230509092050306></p><p>可以先hook看一下传进去的值，在GDA这个工具中可以直接右键函数可以直接hook，还是比较方便的（提前在adb中启动frida）这里打一下码，见谅</p><p><img src=https://s2.loli.net/2024/01/13/DzCgEPWJKrLfvMO.png alt></p><p>所里面非常简单，没有混淆之类，但是把传进去的key又做了一次异变凯撒变换，再进行des cbc加密</p><p>看到一个字符串，不免想到是iv，（函数名就是DESencypt）</p><p><img src=https://s2.loli.net/2024/01/13/UyLtlaSWCvIjPi3.png alt=image-20230509092527547></p><p>不过后来我试图重写时发现，加密内容非8整倍用0字节填充，结果不一样（但不影响下文）</p><p>用py复写整个登陆，可以上号，我发现返回包中尽然没有任何维持身份的东西（就很奇怪，登陆就是个摆设？）</p><h3 id=信息泄露>信息泄露
+<a class=anchor href=#%e4%bf%a1%e6%81%af%e6%b3%84%e9%9c%b2>#</a></h3><ol><li><p>身份信息泄露</p><p>在访问我的资料，发现从服务器上请求中参数值需要工号（注意，以下信息量爆炸，统统码住）</p><p>注：据我像老员工打听，工号就是按照顺序来的，工号起初设计应是考虑了1000w的人（已离职工号是已使用，不会在重启工号给别人使用，该洞即可遍历所有工号，但是是一个工程量巨大的事情）</p><p><img src=https://s2.loli.net/2024/01/13/rCqioAzBfWjyeRt.png alt=image-20230509093801861></p></li><li><p>薪资卡信息</p><p>访问薪资卡，会要求我们输入登陆密码，还有一个摆设本地验证码，获取信息，请求如下</p><p><img src=https://s2.loli.net/2024/01/13/MIVB7skqfWOjbEY.png alt=image-20230509094613960></p><p>同样工号加密了，搜索易得java 层DES加密，key is <code>fga2dfe@</code></p><p><img src=https://s2.loli.net/2024/01/13/huRzlnvWtGyYiVF.png alt=image-20230509095013721></p><p>拿到key，对返回结果一统解密，泄露银行卡卡号（个人），开户行，姓名，这里就不放图片了，很暴力</p></li><li><p>人脸图像</p><p>进入厂区有些时候需要刷脸，也可刷厂牌，用户可以自己在app中采集人脸，（进厂前已收集一张）</p><p>先获取图片路径和图片绑定的uuid（码住）</p><p><img src=https://s2.loli.net/2024/01/13/TbDchoSeC3k7AYL.png alt=image-20230509103521432></p><p>随后向接口getImageByUrl获取图片，我试图尝试任意文件读取漏洞，但是似乎失败了，fuzz读取/etc/passwd和/etc/shadow返回空，其他404</p><p>人脸图片在app中不是每个用户都有（有的自己删除了），影响：都有了你的sfz_id和name、phone，再加个人脸图附魔不过分吧，别人可能干一些非法认证，绑定一些人脸业务</p></li></ol><h3 id=越权>越权
+<a class=anchor href=#%e8%b6%8a%e6%9d%83>#</a></h3><p>额，我也不知道这算不算越权</p><p>回到头来分析，好像楼掉了些甚么，看了看验证码，修改忘记密码之类</p><p>其中忘记密码是在登陆界面，会先输入你的工号，会想服务器获取工号绑定的手机号，app上是对手机号的中间4位打了"*&ldquo;号，我一看包，卧槽，这么暴力吗，响应包中就是完整的手机号（又是一个任意信息泄露），</p><p>你以为就这，之后向服务器请求发送验证码，发送过来的验证码我发现竟然在请求包中（即验证码在本地随机产生一个6位数）</p><p><img src=https://s2.loli.net/2024/01/13/AmFsfiYcgNrHjo1.png alt=image-20230509100448703></p><p>我马上即想到任意用户密码修改，因为验证码由我们所控制，后来我发现根本没必要</p><p>接下来重置密码（只需要填写新密码），发现新大陆（超级暴力）</p><p>请求包中的内容pwd和EmpNo（工号）是上文提到的so中的加密方式，key也同理的</p><p><img src=https://s2.loli.net/2024/01/13/ovxLkO7Y3aIscZU.png alt=image-20230509100811427></p><p>那么就出现了，任意用户密码重置，实测我朋友已成功</p><h3 id=更加暴力的>更加暴力的
+<a class=anchor href=#%e6%9b%b4%e5%8a%a0%e6%9a%b4%e5%8a%9b%e7%9a%84>#</a></h3><p>众所周知，厂里是有储物柜的，有电子锁和自带钥匙的那种</p><p>这个厂有部分员工是在使用电子锁，开锁方式（厂牌和手机上的这个app远程开锁）</p><p>结合上面我们已经有了任意用户密码重置的漏洞，网络黑客直接侵入现实</p><ol><li><p>获取储物柜位置</p><p>像服务器发包，只需工号，返回储物柜位置，没有则null</p></li><li><p>开柜</p><p>原来没有那么复杂，开柜需要输入密码，密码是本地校验（逆天？）,后像服务器发送开柜指令（只需工号），原来是我多想了</p><p><img src=https://s2.loli.net/2024/01/13/DeQzTs2oKtvN5VA.png alt=image-20230509102905236></p></li></ol><h3 id=后记>后记
+<a class=anchor href=#%e5%90%8e%e8%ae%b0>#</a></h3><p>这个app现在对我而言基本没什么安全所言了，而这些信息都是在进厂前就被收集了的，但是厂商对待你们的信息那完全就不当回事</p><p>如果有看官看出来了是哪个厂，也请莫要声张，厂商大概是不会去修复这些漏洞的，以免造成大规模的信息泄露及物理安全</p><p>有出现错别字见谅，因为要睡觉了</p><p>以上内容仅供学习和参考，请勿用于违法行为</p><h2 id=2024-8-13-晚>2024 8 13 晚
+<a class=anchor href=#2024-8-13-%e6%99%9a>#</a></h2><p>分析爱多多，发现稍有变化，但不大。数据仍然可取，稍有提高安全意识</p><p>现简要记录一下</p><h3 id=java-des-cbc-pkcs5>java DES CBC Pkcs5
+<a class=anchor href=#java-des-cbc-pkcs5>#</a></h3><p>固定key1 <code>fga2dfe@</code>，iv相同</p><p>变化key2 异变凯撒编码，初始offset <code>10</code> 得到key，iv相同</p><h3 id=api>API
+<a class=anchor href=#api>#</a></h3><h4 id=base-info>base info
+<a class=anchor href=#base-info>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>
+</span></span><span style=display:flex><span>curl --request POST <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --url https://b2e.aservice.foxconn.com/APPService/UserInfoService.asmx/GetEmpBaseInfoV002 <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Accept-Encoding: gzip&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Connection: Keep-Alive&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Content-Type: application/x-www-form-urlencoded; charset=UTF-8&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;User-Agent: Dalvik/2.1.0 (Linux; U; Android 14; 23013RK75C Build/UKQ1.230804.001)&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;charset: utf-8&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data <span style=color:#e6db74>&#39;strKey=MBE?AG@F&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data strModuleName<span style=color:#f92672>=</span>f74cf1512eada1cdd16a42b2e7bca585 <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data strFactory<span style=color:#f92672>=</span><span style=color:#ae81ff>7300</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data strEmpNo<span style=color:#f92672>=</span>AkaoqKxxHLI0aDwTOFI9Ag<span style=color:#f92672>==</span>
+</span></span></code></pre></div><p>部分参数解释：</p><p>strKey 上文key2
+strModuleName <code>EMPINFO</code> md5
+strFactory 随意4位数，已验证，不校验
+strEmpNo 上文des使用key2加密</p><p>得到部分隐私信息，cardid 被打码了，通过下面两个api可得</p><hr><p>strkey 固定
+工号</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>curl --request POST <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --url https://b2e.aservice.foxconn.com/APPService/EpidemicProtocolService.asmx/GetEmpBaseInfo <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Accept-Encoding: gzip&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Connection: Keep-Alive&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Content-Type: application/x-www-form-urlencoded; charset=UTF-8&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;User-Agent: Dalvik/2.1.0 (Linux; U; Android 14; 23013RK75C Build/UKQ1.230804.001)&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;charset: utf-8&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data strKey<span style=color:#f92672>=</span>qEUNqLLMOwcDuFwwPngLfZiet6zhdWGzLUPPaJIptvM<span style=color:#f92672>=</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data strEmpNo<span style=color:#f92672>=</span>C7949572
+</span></span></code></pre></div><hr><p>strFac 上文随机4位数，只不过加密，des，key1
+strProjectName name des key1（name 来自与上下文得到，已知一个<code>SMT-NPI-DC/DV/DJ</code>,可以用来测试）
+strEmpNo 工号 des key1</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>curl --request POST <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --url https://b2e.aservice.foxconn.com/APPService/NewNDAService.asmx/GetEmpBaseInfoNew <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Accept-Encoding: gzip&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Connection: Keep-Alive&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Content-Type: application/x-www-form-urlencoded; charset=UTF-8&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;User-Agent: Dalvik/2.1.0 (Linux; U; Android 14; 23013RK75C Build/UKQ1.230804.001)&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;charset: utf-8&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data <span style=color:#e6db74>&#39;strFac=+GfFCIBe9qs=
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data strProjectName<span style=color:#f92672>=</span>jtJI/32rr2YKxl4Je6jCyDWT0vKA9gF/ <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data <span style=color:#e6db74>&#39;strEmpNo=Rdk1m+3s59mSnkSUUlS+zQ==&#39;</span>
+</span></span></code></pre></div><h4 id=nda-协议-列表>nda 协议 列表
+<a class=anchor href=#nda-%e5%8d%8f%e8%ae%ae-%e5%88%97%e8%a1%a8>#</a></h4><p>des key1</p><p>得到的同样des key1 解开，去掉前面的序号啥的，再加密回去，用作上文<code>GetEmpBaseInfoNew</code> 的参数</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>curl --request POST <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --url https://b2e.aservice.foxconn.com/APPService/NewNDAService.asmx/GetEmpProjectStatusNew <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Accept-Encoding: gzip&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Connection: Keep-Alive&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Content-Type: application/x-www-form-urlencoded; charset=UTF-8&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;User-Agent: Dalvik/2.1.0 (Linux; U; Android 14; 23013RK75C Build/UKQ1.230804.001)&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;charset: utf-8&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data <span style=color:#e6db74>&#39;factory=+GfFCIBe9qs=
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data <span style=color:#e6db74>&#39;strEmpNo=Rdk1m+3s59mSnkSUUlS+zQ==
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#39;</span>
+</span></span></code></pre></div><h3 id=柜子>柜子
+<a class=anchor href=#%e6%9f%9c%e5%ad%90>#</a></h3><p>开柜子，
+emp_no用 key1
+token 固定</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>curl --request POST <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --url https://b2e.aservice.foxconn.com/APPService/CDLockerService.asmx/OpenLoker <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Accept-Encoding: gzip&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Connection: Keep-Alive&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Content-Type: application/x-www-form-urlencoded; charset=UTF-8&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;User-Agent: Dalvik/2.1.0 (Linux; U; Android 14; 23013RK75C Build/UKQ1.230804.001)&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;charset: utf-8&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data emp_no<span style=color:#f92672>=</span>aEjJuoP3GWoorfnsI6Z47A<span style=color:#f92672>==</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data <span style=color:#e6db74>&#39;accessToken=vNeYI2_w#tWQotRwQ&#39;</span>
+</span></span></code></pre></div><p>开柜子 api1</p><p>参数要的比较多</p><p>emp_no key2
+accessToken 固定
+auhToken 需要密码，通过另一个api给的，本地持久化，可以说是增强的一点了。并且看不出来是什么加密或者编码的token</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>curl --request POST <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --url https://b2e.aservice.foxconn.com/APPService/CDLockerService.asmx/OpenLokerV001 <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Accept-Encoding: gzip&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Connection: Keep-Alive&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Content-Type: application/x-www-form-urlencoded; charset=UTF-8&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;User-Agent: Dalvik/2.1.0 (Linux; U; Android 14; 23013RK75C Build/UKQ1.230804.001)&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;charset: utf-8&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data strAuth<span style=color:#f92672>=</span>MBEAGDFH <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data <span style=color:#e6db74>&#39;emp_no=26Sc7u31sW2Qkyz4rCrNCg==
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data <span style=color:#e6db74>&#39;accessToken=vNeYI2_w#tWQotRwQ&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data authToken<span style=color:#f92672>=</span>Vzxurzz281Rb8rNkmrtYpvVsMI8/fROS2pAaZSPUVsL9Bejde9Q3mg<span style=color:#f92672>==</span><span style=color:#ae81ff>21936136</span>
+</span></span></code></pre></div><p>获取柜子信息
+参数上文同理</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>curl --request POST <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --url https://b2e.aservice.foxconn.com/APPService/CDLockerService.asmx/GetEmpLokerData <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Accept-Encoding: gzip&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Connection: Keep-Alive&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;Content-Type: application/x-www-form-urlencoded; charset=UTF-8&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;User-Agent: Dalvik/2.1.0 (Linux; U; Android 14; 23013RK75C Build/UKQ1.230804.001)&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --header <span style=color:#e6db74>&#39;charset: utf-8&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data <span style=color:#e6db74>&#39;emp_no=Rdk1m+3s59mSnkSUUlS+zQ==
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --data <span style=color:#e6db74>&#39;accessToken=vNeYI2_w#tWQotRwQ&#39;</span>
+</span></span></code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><ul><li><a href=#前言>前言</a></li><li><a href=#登陆>登陆</a></li><li><a href=#信息泄露>信息泄露</a></li><li><a href=#越权>越权</a></li><li><a href=#更加暴力的>更加暴力的</a></li><li><a href=#后记>后记</a></li></ul></li><li><a href=#2024-8-13-晚>2024 8 13 晚</a><ul><li><a href=#java-des-cbc-pkcs5>java DES CBC Pkcs5</a></li><li><a href=#api>API</a></li><li><a href=#柜子>柜子</a></li></ul></li></ul></nav></div></aside></main></body></html>

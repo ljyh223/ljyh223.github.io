@@ -1,0 +1,787 @@
+<!doctype html><html lang=en dir=ltr><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
+  自定义构建函数
+  #
+
+
+  @Builder
+  #
+
+@Builder
+
+组件内
+
+@Builder MyBuilderFunction() {}
+
+this.MyBuilderFunction()
+
+全局
+
+@Builder function MyGlobalBuilderFunction() {}
+
+MyGlobalBuilderFunction()
+
+参数传递
+
+@Builder MyBuilderFunction( title: string ) {}
+
+this.MyBuilderFunction('Title')
+反正就跟自定义控件差不多太多？
+使用支持传参使其更加灵活
+MyBuilderFunction(params: { title: string }){}
+
+  @BuilderParam
+  #
+
+这个简单, 跟compose 差不多太多
+@Component
+struct PanelComp {
+  title: string
+  more: string
+  @BuilderParam
+  panelContent: () => void
+  @BuilderParam
+  panelFooter: () => void
+
+  build() {
+    Column() {
+      Row() {
+        Text(this.title)
+          .layoutWeight(1)
+          .fontWeight(600)
+        Row() {
+          Text(this.more)
+            .fontSize(14)
+            .fontColor('#666666')
+          Image($r('app.media.ic_public_arrow_right'))
+            .width(16)
+            .fillColor('#666666')
+        }
+      }
+      .padding(10)
+
+      Row() {
+        this.panelContent()
+      }
+      .height(100)
+      Row() {
+        this.panelFooter()
+      }
+      .height(50)
+    }
+    .borderRadius(12)
+    .backgroundColor('#fff')
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @Builder
+  ContentBuilderA() {
+    Text('评价内容')
+  }
+  @Builder
+  FooterBuilderA() {
+    Text('评价底部')
+  }
+
+  build() {
+    Column() {
+      GridRow({ columns: 2, gutter: 15 }) {
+        GridCol({ span: 2 }) {
+          PanelComp({
+            title: '评价（2000+）',
+            more: '好评率98%',
+            panelFooter: this.FooterBuilderA,
+            panelContent: this.ContentBuilderA
+          })
+        }
+
+        // GridCol() {
+        //   PanelComp({ title: '推荐', more: '查看全部' }){
+        //     Text('推荐内容')
+        //   }
+        // }
+        //
+        // GridCol() {
+        //   PanelComp({ title: '体验', more: '4 条测评' }){
+        //     Text('体验内容')
+        //   }
+        // }
+      }
+    }
+    .height('100%')
+    .padding(15)
+    .backgroundColor('#f5f5f5')
+  }
+}
+
+  状态共享
+  #
+
+
+  父子单向
+  #
+
+@Prop 装饰的变量可以和父组件建立单向的同步关系。可变，但是不会传回父组件"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://localhost:1313/docs/code/harmony/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/"><meta property="og:site_name" content="Alex lan"><meta property="og:title" content="鸿蒙开发-状态管理"><meta property="og:description" content="自定义构建函数#@Builder#@Builder
+组件内 @Builder MyBuilderFunction() {} this.MyBuilderFunction() 全局 @Builder function MyGlobalBuilderFunction() {} MyGlobalBuilderFunction() 参数传递 @Builder MyBuilderFunction( title: string ) {} this.MyBuilderFunction('Title') 反正就跟自定义控件差不多太多？ 使用支持传参使其更加灵活
+MyBuilderFunction(params: { title: string }){} @BuilderParam#这个简单, 跟compose 差不多太多
+@Component struct PanelComp { title: string more: string @BuilderParam panelContent: () => void @BuilderParam panelFooter: () => void build() { Column() { Row() { Text(this.title) .layoutWeight(1) .fontWeight(600) Row() { Text(this.more) .fontSize(14) .fontColor('#666666') Image($r('app.media.ic_public_arrow_right')) .width(16) .fillColor('#666666') } } .padding(10) Row() { this.panelContent() } .height(100) Row() { this.panelFooter() } .height(50) } .borderRadius(12) .backgroundColor('#fff') } } @Entry @Component struct Index { @Builder ContentBuilderA() { Text('评价内容') } @Builder FooterBuilderA() { Text('评价底部') } build() { Column() { GridRow({ columns: 2, gutter: 15 }) { GridCol({ span: 2 }) { PanelComp({ title: '评价（2000+）', more: '好评率98%', panelFooter: this.FooterBuilderA, panelContent: this.ContentBuilderA }) } // GridCol() { // PanelComp({ title: '推荐', more: '查看全部' }){ // Text('推荐内容') // } // } // // GridCol() { // PanelComp({ title: '体验', more: '4 条测评' }){ // Text('体验内容') // } // } } } .height('100%') .padding(15) .backgroundColor('#f5f5f5') } } 状态共享#父子单向#@Prop 装饰的变量可以和父组件建立单向的同步关系。可变，但是不会传回父组件"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:published_time" content="2024-12-08T14:03:24+08:00"><meta property="article:modified_time" content="2024-12-08T14:03:24+08:00"><meta property="article:tag" content="鸿蒙"><title>鸿蒙开发-状态管理 | Alex lan</title>
+<link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://localhost:1313/docs/code/harmony/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/><link rel=stylesheet href=/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.c290d52f387bc8e8a0bd57b2126cae6de6c478944752e1d9608ba90f1c1a9220.js integrity="sha256-wpDVLzh7yOigvVeyEmyubebEeJRHUuHZYIupDxwakiA=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Alex lan</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li><input type=checkbox id=section-867144600acf9658ad1e030dba887392 class=toggle checked>
+<label for=section-867144600acf9658ad1e030dba887392 class="flex justify-between"><a role=button>code</a></label><ul><li><input type=checkbox id=section-bad47914f28bea05b9a99cdd87cd69fb class=toggle>
+<label for=section-bad47914f28bea05b9a99cdd87cd69fb class="flex justify-between"><a role=button>Android</a></label><ul><li><a href=/docs/code/android/ui/>Android ui</a></li><li><a href=/docs/code/android/%E5%8D%8F%E7%A8%8B-retrofit/>Android 协程-retrofit</a></li><li><a href=/docs/code/android/%E6%AF%94%E8%B5%9B/>Android 比赛</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%A2%8E%E7%A2%8E%E5%BF%B5/>android 碎念</a></li><li><a href=/docs/code/android/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android 网络请求</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E9%80%82%E9%85%8D%E5%99%A8/>Android 适配器</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android-网络请求</a></li></ul></li><li><input type=checkbox id=section-4c67168a533057d7cb02259caca8884d class=toggle>
+<label for=section-4c67168a533057d7cb02259caca8884d class="flex justify-between"><a role=button>linux</a></label><ul><li><a href=/docs/code/linux/screen/>linux screen</a></li></ul></li><li><input type=checkbox id=section-227bbb535145acab9a03ddf223110bf7 class=toggle checked>
+<label for=section-227bbb535145acab9a03ddf223110bf7 class="flex justify-between"><a role=button>鸿蒙</a></label><ul><li><a href=/docs/code/harmony/tabbar/>鸿蒙开发-TbaBar</a></li><li><a href=/docs/code/harmony/%E5%85%A5%E9%97%A8/>鸿蒙开发-入门</a></li><li><a href=/docs/code/harmony/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/ class=active>鸿蒙开发-状态管理</a></li><li><a href=/docs/code/harmony/%E7%BD%91%E7%BB%9C/>鸿蒙开发-网络请求</a></li></ul></li><li><input type=checkbox id=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class=toggle>
+<label for=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class="flex justify-between"><a role=button>ee</a></label><ul><li><a href=/docs/code/new/autotakepic_flask/>Auto Take Pic Flask</a></li><li><a href=/docs/code/new/c_%E7%94%9C%E7%94%9C%E5%9C%88/>C 甜甜圈</a></li><li><a href=/docs/code/new/rust/%E6%9F%90%E5%9B%BE/>某图</a></li><li><a href=/docs/code/new/%E4%BD%9C%E4%B8%9A2023.10.10/>作业2023.10.10</a></li><li><a href=/docs/code/new/%E6%98%9F%E4%BA%91%E5%8A%A0%E9%80%9F%E5%99%A8/>星云加速器</a></li><li><a href=/docs/code/new/%E6%9C%A8%E9%A9%AC%E7%99%BB%E9%99%86/>木马登陆</a></li><li><a href=/docs/code/new/%E6%9F%90update/>某update</a></li><li><a href=/docs/code/new/%E6%9F%90%E5%88%B7%E8%AF%BE/>某刷课</a></li><li><a href=/docs/code/new/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/>某洗衣小程序</a></li><li><a href=/docs/code/new/%E9%82%A3%E4%BA%9B%E9%AA%9A%E6%93%8D%E4%BD%9C/>那些骚操作</a></li></ul></li><li><a href=/docs/code/arch-linux/>arch linux</a></li><li><a href=/docs/code/avaloniaui/>avaloniaui</a></li><li><a href=/docs/code/c%23/>c#</a></li><li><a href=/docs/code/java_mysql/>Java_mysql</a></li><li><a href=/docs/code/linux%E7%9F%A5%E8%AF%86/>linux知识</a></li><li><a href=/docs/code/mqtt--%E4%B8%B2%E5%8F%A3--4055/>MQTT && 串口</a></li><li><a href=/docs/code/python/>Python</a></li><li><a href=/docs/code/rust/>rust</a></li><li><a href=/docs/code/cmd/>Cmd</a></li><li><a href=/docs/code/dart/>Dart</a></li><li><a href=/docs/code/%E6%95%B0%E6%8D%AE%E5%BA%93/>数据库</a></li></ul></li><li><input type=checkbox id=section-a88931adc275b5db7ba2257eca8098f2 class=toggle>
+<label for=section-a88931adc275b5db7ba2257eca8098f2 class="flex justify-between"><a role=button>e .wp</a></label><ul><li><a href=/docs/wp/bili_22_1024/>bili_22_1024</a></li><li><a href=/docs/wp/love_math/>LOVE_math</a></li><li><a href=/docs/wp/webexercise/ruby_cookie/>ruby_cookie</a></li></ul></li><li><input type=checkbox id=section-d633b3f91ad6faec5e15f38ac64d5024 class=toggle>
+<label for=section-d633b3f91ad6faec5e15f38ac64d5024 class="flex justify-between"><a role=button>good good study</a></label><ul><li><input type=checkbox id=section-ad1d0d6744ceb9d7276a26afbd49c97f class=toggle>
+<label for=section-ad1d0d6744ceb9d7276a26afbd49c97f class="flex justify-between"><a role=button>class notes</a></label><ul><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/java/>java</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/linux/>linux</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/>信息安全</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E5%B1%80%E5%9F%9F%E7%BD%91-%E6%80%9D%E7%A7%91-pt/>局域网 思科 pt</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/>算法与数据结构笔记</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/>网页制作</a></li></ul></li><li><input type=checkbox id=section-297a8c491188fdc1e4d5049993bd118b class=toggle>
+<label for=section-297a8c491188fdc1e4d5049993bd118b class="flex justify-between"><a role=button>english</a></label><ul><li><a href=/docs/learm/english/%E4%B8%80%E8%88%AC%E7%8E%B0%E5%9C%A8%E6%97%B6/>一般现在时</a></li><li><a href=/docs/learm/english/%E7%8E%B0%E5%9C%A8%E8%BF%9B%E8%A1%8C%E6%97%B6/>现在进行时</a></li></ul></li><li><input type=checkbox id=section-d273ec3342c86bd09d8e0a595cc7603e class=toggle>
+<label for=section-d273ec3342c86bd09d8e0a595cc7603e class="flex justify-between"><a role=button>math</a></label><ul><li><a href=/docs/learm/math/%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>公式测试</a></li><li><a href=/docs/learm/math/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86/>基本积分</a></li><li><a href=/docs/learm/math/%E5%AF%BC%E6%95%B0/>导数</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%88%97/>数列</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>数学公式测试</a></li><li><a href=/docs/learm/math/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F/>泰勒公式</a></li><li><a href=/docs/learm/math/%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/>等价无穷小</a></li><li><a href=/docs/learm/math/%E9%B8%A1%E6%9D%82%E5%85%AC%E5%BC%8F/>鸡杂公式</a></li></ul></li></ul></li><li><input type=checkbox id=section-bc5bfc4ab3726cdac08770524fbd5e52 class=toggle>
+<label for=section-bc5bfc4ab3726cdac08770524fbd5e52 class="flex justify-between"><a role=button>hack</a></label><ul><li><a href=/docs/hack/msf/>msf</a></li><li><a href=/docs/hack/thefatrat/>TheFatRat</a></li></ul></li><li><input type=checkbox id=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class=toggle>
+<label for=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class="flex justify-between"><a href=/docs/re/>re</a></label><ul><li><input type=checkbox id=section-59835f29e02875febbf77853a8373c43 class=toggle>
+<label for=section-59835f29e02875febbf77853a8373c43 class="flex justify-between"><a href=/docs/re/new/>demo</a></label><ul><li><a href=/docs/re/new/%E6%9F%90h%E8%A7%86%E9%A2%91%E8%BD%AF%E4%BB%B6/>Android 比赛</a></li><li><a href=/docs/re/new/u%E5%87%80/>u净</a></li><li><a href=/docs/re/new/%E5%A4%A7%E5%AD%A6%E6%90%9C%E9%A2%98%E9%85%B1/>大学搜题</a></li><li><a href=/docs/re/new/%E5%B1%B1%E8%A5%BF%E6%81%92%E5%AE%89%E5%88%B7%E8%AF%BE%E4%BB%A5%E5%8F%8A%E8%80%83%E8%AF%95/>山西恒安刷课以及考试</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6/>某h软件</a></li><li><a href=/docs/re/new/bika/>某h软件 bika</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6-2/>某h软件-2</a></li><li><a href=/docs/re/new/%E6%B7%98%E9%87%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E9%99%86/>淘金社区登陆</a></li><li><a href=/docs/re/new/%E7%88%B1%E5%A4%9A%E5%A4%9A-%E5%88%86%E6%9E%90/>爱多多 分析</a></li><li><a href=/docs/re/new/%E7%A5%9E%E5%9B%BE%E5%A3%81%E7%BA%B8/>神图壁纸</a></li></ul></li><li><a href=/docs/re/arm%E6%B1%87%E7%BC%96/>arm 汇编</a></li><li><a href=/docs/re/flutter---blutter/>flutter - blutter</a></li><li><a href=/docs/re/flutter/>flutter 初探</a></li><li><a href=/docs/re/frida/>frida</a></li><li><a href=/docs/re/ida%E5%8A%A8%E8%B0%83so/>ida 动态调试so</a></li><li><a href=/docs/re/%E5%8F%8D%E7%BC%96%E8%AF%91/>反编译</a></li><li><a href=/docs/re/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91/>小程序 逆向</a></li></ul></li><li><input type=checkbox id=section-18930a98ed98865a0f74f8bc6e5f9129 class=toggle>
+<label for=section-18930a98ed98865a0f74f8bc6e5f9129 class="flex justify-between"><a role=button>网络安全</a></label><ul><li><input type=checkbox id=section-651b79d602e2b6fd9e11ffc5f6867235 class=toggle>
+<label for=section-651b79d602e2b6fd9e11ffc5f6867235 class="flex justify-between"><a role=button>java</a></label><ul><li><a href=/docs/network-security/java/sql%E6%B3%A8%E5%85%A5/>java sql 注入</a></li><li><a href=/docs/network-security/java/web-inf%E8%AF%BB%E5%8F%96/>WEB-INF 读取</a></li><li><a href=/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>反序列化</a></li></ul></li><li><input type=checkbox id=section-a44367811822bf6f468461f4b263fc52 class=toggle>
+<label for=section-a44367811822bf6f468461f4b263fc52 class="flex justify-between"><a role=button>node</a></label><ul><li><a href=/docs/network-security/node/%E5%8E%9F%E5%BD%A2%E9%93%BE%E6%B1%A1%E6%9F%93/>node 原型链污染</a></li></ul></li><li><input type=checkbox id=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class=toggle>
+<label for=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class="flex justify-between"><a role=button>other</a></label><ul><li><a href=/docs/network-security/other/linux/>linux 知识点</a></li><li><a href=/docs/network-security/other/xpath%E6%B3%A8%E5%85%A5/>xpath 注入</a></li><li><a href=/docs/network-security/other/xxe/>XXE</a></li><li><a href=/docs/network-security/other/%E5%8F%8D%E5%BC%B9shll/>反弹shell</a></li><li><a href=/docs/network-security/other/%E7%AB%AF%E5%8F%A3/>常见端口</a></li></ul></li><li><input type=checkbox id=section-40d2a42f189bda5f49dc4cec9d080122 class=toggle>
+<label for=section-40d2a42f189bda5f49dc4cec9d080122 class="flex justify-between"><a role=button>php</a></label><ul><li><a href=/docs/network-security/php/php/>php</a></li><li><a href=/docs/network-security/php/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>php</a></li><li><a href=/docs/network-security/php/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8Clinux%E7%BB%95%E8%BF%87/>php命令执行linux绕过</a></li><li><a href=/docs/network-security/php/readflag/>readflag</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/regexp%E7%9B%B2%E6%B3%A8/>regexp盲注</a></li><li><a href=/docs/network-security/php/session%E4%BC%AA%E9%80%A0/>session伪造</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/>堆叠注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5/>字符型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/>报错注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%95%B4%E5%9E%8B%E6%B3%A8%E5%85%A5/>整型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/>时间注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E7%9B%B2%E6%B3%A8/>盲注</a></li><li><a href=/docs/network-security/php/htaccess%E7%9A%84%E5%88%A9%E7%94%A8/>Htaccess的利用</a></li><li><a href=/docs/network-security/php/md5%E7%A2%B0%E6%92%9E/>Md5碰撞</a></li><li><a href=/docs/network-security/php/%E4%BC%AA%E5%8D%8F%E8%AE%AE/>伪协议</a></li><li><a href=/docs/network-security/php/%E5%87%BD%E6%95%B0%E6%BC%8F%E6%B4%9E/>函数漏洞</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/>文件上传</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/>文件包含</a></li></ul></li><li><input type=checkbox id=section-00e8dd07f7030a556feb24211f954773 class=toggle>
+<label for=section-00e8dd07f7030a556feb24211f954773 class="flex justify-between"><a role=button>python</a></label><ul><li><a href=/docs/network-security/python/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>pickle反序列化</a></li><li><a href=/docs/network-security/python/python-session%E4%BC%AA%E9%80%A0/>python session伪造</a></li><li><a href=/docs/network-security/python/ssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/>SSTI模板注入</a></li></ul></li><li><input type=checkbox id=section-e32c44d2f36aa533e1dcd6f636ecb361 class=toggle>
+<label for=section-e32c44d2f36aa533e1dcd6f636ecb361 class="flex justify-between"><a role=button>tools</a></label><ul><li><a href=/docs/network-security/tools/fake-mysql/>fake-mysql</a></li></ul></li></ul></li></ul><ul><li><a href=/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label><h3>鸿蒙开发-状态管理</h3><label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><ul><li><a href=#自定义构建函数>自定义构建函数</a></li><li><a href=#状态共享>状态共享</a></li><li><a href=#应用状态>应用状态</a></li></ul></li></ul></nav></aside></header><article class="markdown book-article"><h3 id=自定义构建函数>自定义构建函数
+<a class=anchor href=#%e8%87%aa%e5%ae%9a%e4%b9%89%e6%9e%84%e5%bb%ba%e5%87%bd%e6%95%b0>#</a></h3><h4 id=builder>@Builder
+<a class=anchor href=#builder>#</a></h4><p>@Builder</p><ul><li>组件内</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>@Builder</span> <span style=color:#a6e22e>MyBuilderFunction() {</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>MyBuilderFunction</span>()
+</span></span></code></pre></div><ul><li>全局</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>@Builder</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>MyGlobalBuilderFunction() {</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>MyGlobalBuilderFunction</span>()
+</span></span></code></pre></div><ul><li>参数传递</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>@Builder</span> <span style=color:#a6e22e>MyBuilderFunction</span>( <span style=color:#a6e22e>title</span>: <span style=color:#66d9ef>string</span> ) {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>MyBuilderFunction</span>(<span style=color:#e6db74>&#39;Title&#39;</span>)
+</span></span></code></pre></div><p>反正就跟自定义控件差不多太多？
+使用支持传参使其更加灵活</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#a6e22e>MyBuilderFunction</span>(<span style=color:#a6e22e>params</span><span style=color:#f92672>:</span> { <span style=color:#a6e22e>title</span>: <span style=color:#66d9ef>string</span> }){}
+</span></span></code></pre></div><h4 id=builderparam>@BuilderParam
+<a class=anchor href=#builderparam>#</a></h4><p>这个简单, 跟compose 差不多太多</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>PanelComp</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>title</span>: <span style=color:#66d9ef>string</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>more</span>: <span style=color:#66d9ef>string</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@BuilderParam</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>panelContent</span><span style=color:#f92672>:</span> () <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>void</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@BuilderParam</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>panelFooter</span><span style=color:#f92672>:</span> () <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>void</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column() {</span>
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Row() {</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>Text</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>title</span>)
+</span></span><span style=display:flex><span>          .<span style=color:#a6e22e>layoutWeight</span>(<span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>          .<span style=color:#a6e22e>fontWeight</span>(<span style=color:#ae81ff>600</span>)
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>Row() {</span>
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>Text</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>more</span>)
+</span></span><span style=display:flex><span>            .<span style=color:#a6e22e>fontSize</span>(<span style=color:#ae81ff>14</span>)
+</span></span><span style=display:flex><span>            .<span style=color:#a6e22e>fontColor</span>(<span style=color:#e6db74>&#39;#666666&#39;</span>)
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>Image</span>(<span style=color:#a6e22e>$r</span>(<span style=color:#e6db74>&#39;app.media.ic_public_arrow_right&#39;</span>))
+</span></span><span style=display:flex><span>            .<span style=color:#a6e22e>width</span>(<span style=color:#ae81ff>16</span>)
+</span></span><span style=display:flex><span>            .<span style=color:#a6e22e>fillColor</span>(<span style=color:#e6db74>&#39;#666666&#39;</span>)
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>padding</span>(<span style=color:#ae81ff>10</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Row() {</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>panelContent</span>()
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>height</span>(<span style=color:#ae81ff>100</span>)
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Row() {</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>panelFooter</span>()
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>height</span>(<span style=color:#ae81ff>50</span>)
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>borderRadius</span>(<span style=color:#ae81ff>12</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>backgroundColor</span>(<span style=color:#e6db74>&#39;#fff&#39;</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@Builder</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>ContentBuilderA() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;评价内容&#39;</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@Builder</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>FooterBuilderA() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;评价底部&#39;</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column() {</span>
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>GridRow</span>({ <span style=color:#a6e22e>columns</span>: <span style=color:#66d9ef>2</span>, <span style=color:#a6e22e>gutter</span>: <span style=color:#66d9ef>15</span> }) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>GridCol</span>({ <span style=color:#a6e22e>span</span>: <span style=color:#66d9ef>2</span> }) {
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>PanelComp</span>({
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>title</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;评价（2000+）&#39;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>more</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;好评率98%&#39;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>panelFooter</span>: <span style=color:#66d9ef>this.FooterBuilderA</span>,
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>panelContent</span>: <span style=color:#66d9ef>this.ContentBuilderA</span>
+</span></span><span style=display:flex><span>          })
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// GridCol() {
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>//   PanelComp({ title: &#39;推荐&#39;, more: &#39;查看全部&#39; }){
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>//     Text(&#39;推荐内容&#39;)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>//   }
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>// }
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>//
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>// GridCol() {
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>//   PanelComp({ title: &#39;体验&#39;, more: &#39;4 条测评&#39; }){
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>//     Text(&#39;体验内容&#39;)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>//   }
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>// }
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>height</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>padding</span>(<span style=color:#ae81ff>15</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>backgroundColor</span>(<span style=color:#e6db74>&#39;#f5f5f5&#39;</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=状态共享>状态共享
+<a class=anchor href=#%e7%8a%b6%e6%80%81%e5%85%b1%e4%ba%ab>#</a></h3><h4 id=父子单向>父子单向
+<a class=anchor href=#%e7%88%b6%e5%ad%90%e5%8d%95%e5%90%91>#</a></h4><p><code>@Prop</code> 装饰的变量可以和父组件建立单向的同步关系。可变，但是不会传回父组件</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@State</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>money</span>: <span style=color:#66d9ef>number</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>({ <span style=color:#a6e22e>space</span>: <span style=color:#66d9ef>20</span> }){
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;父组件：&#39;</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>money</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>money</span> <span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Child</span>({ <span style=color:#a6e22e>money</span>: <span style=color:#66d9ef>this.money</span> })
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>height</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>alignItems</span>(<span style=color:#a6e22e>HorizontalAlign</span>.<span style=color:#a6e22e>Center</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>justifyContent</span>(<span style=color:#a6e22e>FlexAlign</span>.<span style=color:#a6e22e>Center</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Child</span> {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@Prop</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>money</span>: <span style=color:#66d9ef>number</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;子组件：&#39;</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>money</span>)
+</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>money</span> <span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>      })
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>注意:
+<code>@Prop</code>支持类型 <code>string、number、boolean、enum</code> 类型</p><h4 id=父子共享>父子共享
+<a class=anchor href=#%e7%88%b6%e5%ad%90%e5%85%b1%e4%ba%ab>#</a></h4><p>子组件中被<code>@Link</code>装饰的变量与其父组件中对应的数据源建立双向数据绑定。</p><ol><li>简单类型 <code>string number boolean enum</code></li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@State</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>money</span>: <span style=color:#66d9ef>number</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>({ <span style=color:#a6e22e>space</span>: <span style=color:#66d9ef>20</span> }){
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;父组件：&#39;</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>money</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>money</span> <span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Child</span>({ <span style=color:#a6e22e>money</span>: <span style=color:#66d9ef>$money</span> })
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>height</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>alignItems</span>(<span style=color:#a6e22e>HorizontalAlign</span>.<span style=color:#a6e22e>Center</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>justifyContent</span>(<span style=color:#a6e22e>FlexAlign</span>.<span style=color:#a6e22e>Center</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Child</span> {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@Link</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>money</span>: <span style=color:#66d9ef>number</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;子组件：&#39;</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>money</span>)
+</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>money</span> <span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>      })
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><ol start=2><li>复杂类型 <code>Object class</code></li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Person</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span>: <span style=color:#66d9ef>string</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>number</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@State</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>person</span>: <span style=color:#66d9ef>Person</span> <span style=color:#f92672>=</span> { <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;jack&#39;</span>, <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>18</span> }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>({ <span style=color:#a6e22e>space</span>: <span style=color:#66d9ef>20</span> }){
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;父组件：&#39;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>person</span>.<span style=color:#a6e22e>name</span><span style=color:#e6db74>}</span><span style=color:#e6db74> 今年 </span><span style=color:#e6db74>${</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>person</span>.<span style=color:#a6e22e>age</span> <span style=color:#e6db74>}</span><span style=color:#e6db74> 岁`</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>person</span>.<span style=color:#a6e22e>age</span> <span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Child</span>({ <span style=color:#a6e22e>person</span>: <span style=color:#66d9ef>$person</span> })
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>height</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>alignItems</span>(<span style=color:#a6e22e>HorizontalAlign</span>.<span style=color:#a6e22e>Center</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>justifyContent</span>(<span style=color:#a6e22e>FlexAlign</span>.<span style=color:#a6e22e>Center</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Child</span> {
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@Link</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>person</span>: <span style=color:#66d9ef>Person</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;子组件：&#39;</span> <span style=color:#f92672>+</span>  <span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>person</span>.<span style=color:#a6e22e>name</span><span style=color:#e6db74>}</span><span style=color:#e6db74> 今年 </span><span style=color:#e6db74>${</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>person</span>.<span style=color:#a6e22e>age</span> <span style=color:#e6db74>}</span><span style=color:#e6db74> 岁`</span>)
+</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>person</span>.<span style=color:#a6e22e>age</span> <span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>      })
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>注意: <strong>父组件传值的时候需要 <code>this.</code> 改成 <code>$</code>，子组件 <code>@Link</code> 修饰数据</strong></p><h4 id=后代组件>后代组件
+<a class=anchor href=#%e5%90%8e%e4%bb%a3%e7%bb%84%e4%bb%b6>#</a></h4><p><code>@Provide</code> 和 <code>@Consume</code>，应用于与后代组件的双向数据同步，应用于状态数据在多个层级之间传递的场景。</p><ul><li>通过相同的变量名绑定</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@Provide</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>money</span>: <span style=color:#66d9ef>number</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>({ <span style=color:#a6e22e>space</span>: <span style=color:#66d9ef>20</span> }) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;父组件：&#39;</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>money</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>money</span><span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Parent</span>()
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>height</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>justifyContent</span>(<span style=color:#a6e22e>FlexAlign</span>.<span style=color:#a6e22e>Center</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Parent</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@Consume</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>money</span>: <span style=color:#66d9ef>number</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>({ <span style=color:#a6e22e>space</span>: <span style=color:#66d9ef>20</span> }) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;父组件：&#39;</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>money</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>money</span><span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Child</span>()
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Child</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@Consume</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>money</span>: <span style=color:#66d9ef>number</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;子组件：&#39;</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>money</span>)
+</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>money</span><span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>      })
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h4 id=状态监听器>状态监听器
+<a class=anchor href=#%e7%8a%b6%e6%80%81%e7%9b%91%e5%90%ac%e5%99%a8>#</a></h4><p>如果开发者需要关注某个状态变量的值是否改变，可以使用 <code>@Watch</code> 为状态变量设置回调函数。</p><ul><li><code>@State、@Prop、@Link</code> 等装饰器在 <code>@Watch</code> 装饰之前</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>promptAction</span> <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#39;@ohos.promptAction&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Child</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@Prop</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@Watch</span>(<span style=color:#e6db74>&#39;onActiveIndex&#39;</span>)
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>activeIndex</span>: <span style=color:#66d9ef>number</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>onActiveIndex() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>promptAction</span>.<span style=color:#a6e22e>showToast</span>({ <span style=color:#a6e22e>message</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;监听变化&#39;</span> })
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column() {</span>
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;Child&#39;</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>activeIndex</span>)
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@State</span> <span style=color:#a6e22e>activeIndex</span>: <span style=color:#66d9ef>number</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>onChange</span> (<span style=color:#a6e22e>index</span>: <span style=color:#66d9ef>number</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>activeIndex</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>index</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>promptAction</span>.<span style=color:#a6e22e>showToast</span>({ <span style=color:#a6e22e>message</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;点击&#39;</span> })
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Navigation() {</span>
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Child</span>({ <span style=color:#a6e22e>activeIndex</span>: <span style=color:#66d9ef>this.activeIndex</span> })
+</span></span><span style=display:flex><span>    }.<span style=color:#a6e22e>toolBar</span>({
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>items</span><span style=color:#f92672>:</span> [
+</span></span><span style=display:flex><span>        { <span style=color:#a6e22e>value</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;首页&#39;</span>, <span style=color:#a6e22e>action</span><span style=color:#f92672>:</span> () <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>onChange</span>(<span style=color:#ae81ff>0</span>) },
+</span></span><span style=display:flex><span>        { <span style=color:#a6e22e>value</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;我的&#39;</span>, <span style=color:#a6e22e>action</span><span style=color:#f92672>:</span> () <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>onChange</span>(<span style=color:#ae81ff>1</span>) },
+</span></span><span style=display:flex><span>      ]
+</span></span><span style=display:flex><span>    })
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>tip: <strong>在第一次初始化的时候，@Watch装饰的方法不会被调用</strong></p><h4 id=observed与objectlink>@Observed与@ObjectLink
+<a class=anchor href=#observed%e4%b8%8eobjectlink>#</a></h4><p>修改嵌套对象的数据了更新UI</p><ul><li>类 <code>class</code> 数据模拟需要定义通过构造函数，使用 <code>@Observed</code> 修饰这个类</li><li>初始化数据：需要通过初始化构造函数的方式添加</li><li>通过 <code>@ObjectLink</code> 关联对象，可以直接修改被关联对象来更新UI</li></ul><p>来看看我自己写的一个沟施例子吧</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>students</span> <span style=color:#f92672>=</span> [
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Student</span>({
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;张三&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>gender</span>: <span style=color:#66d9ef>1</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>12</span>
+</span></span><span style=display:flex><span>    }),
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Student</span>({
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;李四&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>gender</span>: <span style=color:#66d9ef>1</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>13</span>
+</span></span><span style=display:flex><span>    }),
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Student</span>({
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;小红&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>gender</span>: <span style=color:#66d9ef>0</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>13</span>
+</span></span><span style=display:flex><span>    })
+</span></span><span style=display:flex><span>  ]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column() {</span>
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>ForEach</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>students</span>, (<span style=color:#a6e22e>s</span>: <span style=color:#66d9ef>Student</span>) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>Item</span>({<span style=color:#a6e22e>s</span>})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      })
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Item</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@ObjectLink</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>s</span>: <span style=color:#66d9ef>Student</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>OnLike() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>s</span>.<span style=color:#a6e22e>age</span><span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Row() {</span>
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>`姓名: </span><span style=color:#e6db74>${</span><span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>s</span>.<span style=color:#a6e22e>name</span><span style=color:#e6db74>}</span><span style=color:#e6db74> 年龄: </span><span style=color:#e6db74>${</span><span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>s</span>.<span style=color:#a6e22e>age</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>OnLike</span>()
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>    }.<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>backgroundColor</span>(<span style=color:#e6db74>&#34;#f5f5f5&#34;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>borderRadius</span>(<span style=color:#ae81ff>5</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Observed</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Student</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>gender</span>: <span style=color:#66d9ef>number</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>number</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span>: <span style=color:#66d9ef>string</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>constructor</span>(<span style=color:#a6e22e>s</span>: <span style=color:#66d9ef>Student</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>key</span> <span style=color:#66d9ef>in</span> <span style=color:#a6e22e>s</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>this</span>[<span style=color:#a6e22e>key</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>s</span>[<span style=color:#a6e22e>key</span>]
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=应用状态>应用状态
+<a class=anchor href=#%e5%ba%94%e7%94%a8%e7%8a%b6%e6%80%81>#</a></h3><h4 id=uiability内状态-localstorage>UIAbility内状态-LocalStorage
+<a class=anchor href=#uiability%e5%86%85%e7%8a%b6%e6%80%81-localstorage>#</a></h4><p><code>LocalStorage</code> 是页面级的UI状态存储，通过 <code>@Entry</code> 装饰器接收的参数可以在页面内共享同一个 <code>LocalStorage</code> 实例。 <code>LocalStorage</code> 也可以在 <code>UIAbility</code> 内，页面间共享状态。</p><ol><li>页面内共享</li></ol><ul><li>创建 <code>LocalStorage</code> 实例：<code>const storage = new LocalStorage({ key: value })</code></li><li>单向 <code>@LocalStorageProp('user')</code> 组件内可变</li><li>双向 <code>@LocalStorageLink('user')</code> 全</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>User</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name?</span>: <span style=color:#66d9ef>string</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>age?</span>: <span style=color:#66d9ef>number</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>storage</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>LocalStorage</span>({
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>user</span><span style=color:#f92672>:</span> { <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;jack&#39;</span>, <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>18</span> }
+</span></span><span style=display:flex><span>})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>(<span style=color:#a6e22e>storage</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@LocalStorageProp</span>(<span style=color:#e6db74>&#39;user&#39;</span>)
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>user</span>: <span style=color:#66d9ef>User</span> <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>({ <span style=color:#a6e22e>space</span>: <span style=color:#66d9ef>15</span> }){
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;Index：&#39;</span>)
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>name</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>age</span>)
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Divider</span>()
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>ChildA</span>()
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Divider</span>()
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>ChildB</span>()
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>height</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>justifyContent</span>(<span style=color:#a6e22e>FlexAlign</span>.<span style=color:#a6e22e>Center</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>ChildA</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@LocalStorageProp</span>(<span style=color:#e6db74>&#39;user&#39;</span>)
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>user</span>: <span style=color:#66d9ef>User</span> <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>({ <span style=color:#a6e22e>space</span>: <span style=color:#66d9ef>15</span> }){
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;ChildA：&#39;</span>)
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>name</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>age</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(()<span style=color:#f92672>=&gt;</span>{
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>age</span> <span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>ChildB</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@LocalStorageLink</span>(<span style=color:#e6db74>&#39;user&#39;</span>)
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>user</span>: <span style=color:#66d9ef>User</span> <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>({ <span style=color:#a6e22e>space</span>: <span style=color:#66d9ef>15</span> }){
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;ChildB：&#39;</span>)
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>name</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>age</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(()<span style=color:#f92672>=&gt;</span>{
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>age</span> <span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><ol start=2><li>页面间共享</li></ol><ul><li>在 <code>UIAbility</code> 创建 <code>LocalStorage</code> 通过 <code>loadContent</code> 提供给加载的窗口</li><li>在页面使用 <code>const storage = LocalStorage.GetShared()</code> 得到实例，通过 <code>@Entry(storage)</code> 传入页面</li></ul><p><code>entryAbility/EntryAbility.ts</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#f92672>+</span>  <span style=color:#a6e22e>storage</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>LocalStorage</span>({
+</span></span><span style=display:flex><span><span style=color:#f92672>+</span>    <span style=color:#a6e22e>user</span><span style=color:#f92672>:</span> { <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;jack&#39;</span>, <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>18</span> }
+</span></span><span style=display:flex><span><span style=color:#f92672>+</span>  })
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>onWindowStageCreate</span>(<span style=color:#a6e22e>windowStage</span>: <span style=color:#66d9ef>window.WindowStage</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Main window is created, set main page for this ability
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>hilog</span>.<span style=color:#a6e22e>info</span>(<span style=color:#ae81ff>0x0000</span>, <span style=color:#e6db74>&#39;testTag&#39;</span>, <span style=color:#e6db74>&#39;%{public}s&#39;</span>, <span style=color:#e6db74>&#39;Ability onWindowStageCreate&#39;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>+</span>    <span style=color:#a6e22e>windowStage</span>.<span style=color:#a6e22e>loadContent</span>(<span style=color:#e6db74>&#39;pages/Index&#39;</span>, <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>storage</span> , (<span style=color:#a6e22e>err</span>, <span style=color:#a6e22e>data</span>) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>err</span>.<span style=color:#a6e22e>code</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>hilog</span>.<span style=color:#a6e22e>error</span>(<span style=color:#ae81ff>0x0000</span>, <span style=color:#e6db74>&#39;testTag&#39;</span>, <span style=color:#e6db74>&#39;Failed to load the content. Cause: %{public}s&#39;</span>, <span style=color:#a6e22e>JSON</span>.<span style=color:#a6e22e>stringify</span>(<span style=color:#a6e22e>err</span>) <span style=color:#f92672>??</span> <span style=color:#e6db74>&#39;&#39;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span>;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>hilog</span>.<span style=color:#a6e22e>info</span>(<span style=color:#ae81ff>0x0000</span>, <span style=color:#e6db74>&#39;testTag&#39;</span>, <span style=color:#e6db74>&#39;Succeeded in loading the content. Data: %{public}s&#39;</span>, <span style=color:#a6e22e>JSON</span>.<span style=color:#a6e22e>stringify</span>(<span style=color:#a6e22e>data</span>) <span style=color:#f92672>??</span> <span style=color:#e6db74>&#39;&#39;</span>);
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><p><code>models/index.ets</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>User</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name?</span>: <span style=color:#66d9ef>string</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>age?</span>: <span style=color:#66d9ef>number</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><code>pages/Index.ets</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>User</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#39;../models&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>storage</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>LocalStorage</span>.<span style=color:#a6e22e>GetShared</span>()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>(<span style=color:#a6e22e>storage</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@LocalStorageProp</span>(<span style=color:#e6db74>&#39;user&#39;</span>)
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>user</span>: <span style=color:#66d9ef>User</span> <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>({ <span style=color:#a6e22e>space</span>: <span style=color:#66d9ef>15</span> }) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;Index：&#39;</span>)
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>name</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>age</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(()<span style=color:#f92672>=&gt;</span>{
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>age</span> <span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Navigator</span>({ <span style=color:#a6e22e>target</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;pages/OtherPage&#39;</span> }){
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;Go Other Page&#39;</span>)
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>height</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>justifyContent</span>(<span style=color:#a6e22e>FlexAlign</span>.<span style=color:#a6e22e>Center</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><code>pages/OtherPage.ets</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>User</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#39;../models&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>storage</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>LocalStorage</span>.<span style=color:#a6e22e>GetShared</span>()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>(<span style=color:#a6e22e>storage</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>OtherPage</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@LocalStorageLink</span>(<span style=color:#e6db74>&#39;user&#39;</span>)
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>user</span>: <span style=color:#66d9ef>User</span> <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>({ <span style=color:#a6e22e>space</span>: <span style=color:#66d9ef>15</span> }) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;OtherPage：&#39;</span>)
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>name</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>age</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(()<span style=color:#f92672>=&gt;</span>{
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>age</span> <span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>height</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>justifyContent</span>(<span style=color:#a6e22e>FlexAlign</span>.<span style=color:#a6e22e>Center</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h4 id=应用状态-appstorage>应用状态-AppStorage
+<a class=anchor href=#%e5%ba%94%e7%94%a8%e7%8a%b6%e6%80%81-appstorage>#</a></h4><p><code>AppStorage</code> 是应用全局的UI状态存储，是和应用的进程绑定的，由UI框架在应用程序启动时创建，为应用程序UI状态属性提供中央存储。</p><ul><li>如果是初始化使用 <code>AppStorage.SetOrCreate(key,value)</code></li><li>单向 <code>@StorageProp('user')</code> 组件内可变</li><li>双向 <code>@StorageLink('user')</code> 全局均可变</li></ul><ol><li>通过UI装饰器使用</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>User</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#39;../models&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>AppStorage</span>.<span style=color:#a6e22e>SetOrCreate</span>&lt;<span style=color:#f92672>User</span>&gt;(<span style=color:#e6db74>&#39;user&#39;</span>, { <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;jack&#39;</span>, <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>18</span> })
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@StorageProp</span>(<span style=color:#e6db74>&#39;user&#39;</span>)
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 可忽略，编辑器类型错误
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>user</span>: <span style=color:#66d9ef>User</span> <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>({ <span style=color:#a6e22e>space</span>: <span style=color:#66d9ef>15</span> }) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;Index：&#39;</span>)
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>name</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>age</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>age</span><span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Divider</span>()
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>ChildA</span>()
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>height</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>justifyContent</span>(<span style=color:#a6e22e>FlexAlign</span>.<span style=color:#a6e22e>Center</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>ChildA</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@StorageLink</span>(<span style=color:#e6db74>&#39;user&#39;</span>)
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>user</span>: <span style=color:#66d9ef>User</span> <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>({ <span style=color:#a6e22e>space</span>: <span style=color:#66d9ef>15</span> }){
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;ChildA：&#39;</span>)
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>name</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>age</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(()<span style=color:#f92672>=&gt;</span>{
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>age</span> <span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><ol start=2><li>通过逻辑使用</li></ol><ul><li><code>AppStorage.Get&lt;ValueType>(key)</code> 获取数据</li><li><code>AppStorage.Set&lt;ValueType>(key,value)</code> 覆盖数据</li><li><code>const link: SubscribedAbstractProperty&lt;ValueType> = AppStorage.Link(key)</code> 覆盖数据<ul><li><code>link.set(value)</code> 修改</li><li><code>link.get()</code> 获取</li></ul></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>promptAction</span> <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#39;@ohos.promptAction&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>User</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#39;../models&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>AppStorage</span>.<span style=color:#a6e22e>SetOrCreate</span>&lt;<span style=color:#f92672>User</span>&gt;(<span style=color:#e6db74>&#39;user&#39;</span>, { <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;jack&#39;</span>, <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>18</span> })
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@StorageLink</span>(<span style=color:#e6db74>&#39;user&#39;</span>)
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>user</span>: <span style=color:#66d9ef>User</span> <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>({ <span style=color:#a6e22e>space</span>: <span style=color:#66d9ef>15</span> }) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;Index：&#39;</span>)
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>name</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>age</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>user</span>.<span style=color:#a6e22e>age</span><span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Divider</span>()
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;Get()&#39;</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>          <span style=color:#75715e>// 仅获取
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>          <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>user</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>AppStorage</span>.<span style=color:#a6e22e>Get</span>&lt;<span style=color:#f92672>User</span>&gt;(<span style=color:#e6db74>&#39;user&#39;</span>)
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>promptAction</span>.<span style=color:#a6e22e>showToast</span>({
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>message</span>: <span style=color:#66d9ef>JSON.stringify</span>(<span style=color:#a6e22e>user</span>)
+</span></span><span style=display:flex><span>          })
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;Set()&#39;</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>          <span style=color:#75715e>// 直接设置
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>          <span style=color:#a6e22e>AppStorage</span>.<span style=color:#a6e22e>Set</span>&lt;<span style=color:#f92672>User</span>&gt;(<span style=color:#e6db74>&#39;user&#39;</span>, {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;tom&#39;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>100</span>
+</span></span><span style=display:flex><span>          })
+</span></span><span style=display:flex><span>          <span style=color:#75715e>// 观察页面更新没
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        })
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;Link()&#39;</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>          <span style=color:#75715e>// 获取user的prop
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>          <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>user</span>: <span style=color:#66d9ef>SubscribedAbstractProperty</span>&lt;<span style=color:#f92672>User</span>&gt; <span style=color:#f92672>=</span> <span style=color:#a6e22e>AppStorage</span>.<span style=color:#a6e22e>Link</span>(<span style=color:#e6db74>&#39;user&#39;</span>)
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>user</span>.<span style=color:#66d9ef>set</span>({
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>name</span>: <span style=color:#66d9ef>user.get</span>().<span style=color:#a6e22e>name</span>,
+</span></span><span style=display:flex><span>            <span style=color:#75715e>// 获取后修改
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>user.get</span>().<span style=color:#a6e22e>age</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>          })
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>height</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>justifyContent</span>(<span style=color:#a6e22e>FlexAlign</span>.<span style=color:#a6e22e>Center</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h4 id=状态持久化-persistentstorage>状态持久化-PersistentStorage
+<a class=anchor href=#%e7%8a%b6%e6%80%81%e6%8c%81%e4%b9%85%e5%8c%96-persistentstorage>#</a></h4><p><code>PersistentStorage</code> 将选定的 <code>AppStorage</code> 属性保留在设备磁盘上。</p><p>DETAILS
+<em>UI和业务逻辑不直接访问 <code>PersistentStorage</code> 中的属性，所有属性访问都是对 <code>AppStorage</code> 的访问，<code>AppStorage</code> 中的更改会自动同步到 <code>PersistentStorage</code>。</em></p><p><em>WARNING</em></p><ul><li>支持：number, string, boolean, enum 等简单类型;</li><li>如果：要支持对象类型，可以转换成json字符串</li><li>持久化变量最好是小于2kb的数据，如果开发者需要存储大量的数据，建议使用数据库api。</li></ul><ol><li>简单数据类型的持久化，和获取和修改</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>User</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#39;../models&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>PersistentStorage</span>.<span style=color:#a6e22e>PersistProp</span>(<span style=color:#e6db74>&#39;count&#39;</span>, <span style=color:#ae81ff>100</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@StorageLink</span>(<span style=color:#e6db74>&#39;count&#39;</span>)
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>count</span>: <span style=color:#66d9ef>number</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>({ <span style=color:#a6e22e>space</span>: <span style=color:#66d9ef>15</span> }) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>count</span>.<span style=color:#a6e22e>toString</span>())
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>count</span><span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>height</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>justifyContent</span>(<span style=color:#a6e22e>FlexAlign</span>.<span style=color:#a6e22e>Center</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><ol start=2><li>复杂数据类型的持久化，和获取和修改</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>User</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#39;../models&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>PersistentStorage</span>.<span style=color:#a6e22e>PersistProp</span>(<span style=color:#e6db74>&#39;count&#39;</span>, <span style=color:#ae81ff>100</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@StorageLink</span>(<span style=color:#e6db74>&#39;count&#39;</span>)
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>count</span>: <span style=color:#66d9ef>number</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>({ <span style=color:#a6e22e>space</span>: <span style=color:#66d9ef>15</span> }) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>count</span>.<span style=color:#a6e22e>toString</span>())
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>count</span><span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>height</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
+</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>justifyContent</span>(<span style=color:#a6e22e>FlexAlign</span>.<span style=color:#a6e22e>Center</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><ul><li><a href=#自定义构建函数>自定义构建函数</a></li><li><a href=#状态共享>状态共享</a></li><li><a href=#应用状态>应用状态</a></li></ul></li></ul></nav></div></aside></main></body></html>
