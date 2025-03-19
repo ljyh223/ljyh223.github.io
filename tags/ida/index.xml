@@ -1,30 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ida on Alex lan</title><link>http://localhost:1313/tags/ida/</link><description>Recent content in Ida on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/ida/index.xml" rel="self" type="application/rss+xml"/><item><title>ida 动态调试so</title><link>http://localhost:1313/docs/re/ida%E5%8A%A8%E8%B0%83so/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/re/ida%E5%8A%A8%E8%B0%83so/</guid><description>&lt;p>ida 动态调试 so文件&lt;/p>
-&lt;p>在ida目录下有dbgsrv文件夹,选择合适的&lt;/p>
-&lt;p>真机用android_server/android_server64,模拟器用android_x86_server/android_x64_server&lt;/p>
-&lt;pre tabindex="0">&lt;code>adb push android_x64_server /data/local/tmp
-&lt;/code>&lt;/pre>&lt;p>进入adb shell&lt;/p>
-&lt;pre tabindex="0">&lt;code>adb shell
-su
-chmod 777 /data/local/tmp/android_x64_server
-./data/local/tmp/android_x64_server
-&lt;/code>&lt;/pre>&lt;p>转发端口，ida默认端口是23946&lt;/p>
-&lt;pre tabindex="0">&lt;code>adb forward tcp:23946 tcp:23946
-&lt;/code>&lt;/pre>&lt;p>手机/模拟器打开app&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>方法1&lt;/p>
-&lt;p>先打开so文件，debug-&amp;gt;Remote linux -&amp;gt;Process option 中host 127.0.0.1&lt;/p>
-&lt;p>再attch附加&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>方法2&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;p>​	打开需调试文件对应的ida,degun-&amp;gt;attch&lt;/p>
-&lt;p>​	模拟器选Remote linux,真机用Remote ARM android/Linux&lt;/p>
-&lt;p>在列表中找到包名，可用快捷键ctrl+F 搜索&lt;/p>
-&lt;p>打开后，在右侧 找到Module 找到so需调试的so文件，找不到的注意java代码中的，让他加载有就有了&lt;/p>
-&lt;pre tabindex="0">&lt;code>static {
- System.loadLibrary(&amp;#34;JniLib&amp;#34;);
- }
-&lt;/code>&lt;/pre>&lt;p>注: 在apk lib中有多个文件夹如v8,v7,x86,x84,如遇到ida 反编译不便解读，可尝试换不同的so文件&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ida on Alex lan</title>
+    <link>http://localhost:1313/tags/ida/</link>
+    <description>Recent content in Ida on Alex lan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ida/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ida 动态调试so</title>
+      <link>http://localhost:1313/docs/re/ida%E5%8A%A8%E8%B0%83so/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/re/ida%E5%8A%A8%E8%B0%83so/</guid>
+      <description>&lt;p&gt;ida 动态调试 so文件&lt;/p&gt;&#xA;&lt;p&gt;在ida目录下有dbgsrv文件夹,选择合适的&lt;/p&gt;&#xA;&lt;p&gt;真机用android_server/android_server64,模拟器用android_x86_server/android_x64_server&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb push android_x64_server /data/local/tmp&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;进入adb shell&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb shell&#xA;su&#xA;chmod 777 /data/local/tmp/android_x64_server&#xA;./data/local/tmp/android_x64_server&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;转发端口，ida默认端口是23946&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb forward tcp:23946 tcp:23946&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;手机/模拟器打开app&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;方法1&lt;/p&gt;&#xA;&lt;p&gt;先打开so文件，debug-&amp;gt;Remote linux -&amp;gt;Process option 中host 127.0.0.1&lt;/p&gt;&#xA;&lt;p&gt;再attch附加&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;方法2&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;​&#x9;打开需调试文件对应的ida,degun-&amp;gt;attch&lt;/p&gt;&#xA;&lt;p&gt;​&#x9;模拟器选Remote linux,真机用Remote ARM android/Linux&lt;/p&gt;&#xA;&lt;p&gt;在列表中找到包名，可用快捷键ctrl+F 搜索&lt;/p&gt;&#xA;&lt;p&gt;打开后，在右侧 找到Module 找到so需调试的so文件，找不到的注意java代码中的，让他加载有就有了&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;static {&#xA;        System.loadLibrary(&amp;#34;JniLib&amp;#34;);&#xA;    }&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;注: 在apk lib中有多个文件夹如v8,v7,x86,x84,如遇到ida 反编译不便解读，可尝试换不同的so文件&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

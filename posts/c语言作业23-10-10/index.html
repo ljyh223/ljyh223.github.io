@@ -1,21 +1,26 @@
-<!doctype html><html lang=en dir=ltr><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content='
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
   编程题7
   #
 
-#include <stdio.h>  
+#include &lt;stdio.h&gt;  
   
 int main() {  
     int num, a, b, c, d;  
-    printf("请输入一个四位数：");  
-    scanf("%d", &amp;num);  
-    if (num >= 1000 && num <= 9999) {  
+    printf(&#34;请输入一个四位数：&#34;);  
+    scanf(&#34;%d&#34;, &amp;num);  
+    if (num &gt;= 1000 &amp;&amp; num &lt;= 9999) {  
         a = num % 10;  
         b = num / 100 % 10;  
         c = num / 10 % 10;  
         d = num / 1000;  
-        printf("个位：%d,十位：%d,百位：%d,千位：%d", a, c, b, d);  
+        printf(&#34;个位：%d,十位：%d,百位：%d,千位：%d&#34;, a, c, b, d);  
     } else {  
-        printf("重新输入");  
+        printf(&#34;重新输入&#34;);  
     }  
     return 0;  
   
@@ -25,14 +30,14 @@ int main() {
   编程题8
   #
 
-#include <stdio.h>  
+#include &lt;stdio.h&gt;  
 #define PAI 3.1415926  
 int main()  
 {  
     int r;  
-    printf("请输入半径:");  
-    scanf("%d",&amp;r);  
-    printf("圆的半径=%d, 圆的直径=%d, 圆的周长=%.2f",  
+    printf(&#34;请输入半径:&#34;);  
+    scanf(&#34;%d&#34;,&amp;r);  
+    printf(&#34;圆的半径=%d, 圆的直径=%d, 圆的周长=%.2f&#34;,  
         r,  
         2*r,  
         PAI*r*2  
@@ -43,14 +48,14 @@ int main()
   编程题9
   #
 
-#include <stdio.h>
+#include &lt;stdio.h&gt;
 #define PAI 3.1415926
 int main()
 {
     int r;
-    printf("请输入半径:");
-    scanf("%d",&amp;r);
-    printf("半径=%d, 周长=%.2f, 面积=%.2f",
+    printf(&#34;请输入半径:&#34;);
+    scanf(&#34;%d&#34;,&amp;r);
+    printf(&#34;半径=%d, 周长=%.2f, 面积=%.2f&#34;,
         r,
         2* PAI*r,
         PAI*r*r
@@ -61,34 +66,34 @@ int main()
   编程题11
   #
 
-#include <stdio.h>
-#include <math.h>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
 int  main()
 {
     double  a=3,b=4,c=6;
     double p,s;
-    if (a+b>c && a+c>b && b+c>a)
+    if (a&#43;b&gt;c &amp;&amp; a&#43;c&gt;b &amp;&amp; b&#43;c&gt;a)
     {
-        p=(a+b+c)/2;
+        p=(a&#43;b&#43;c)/2;
         s= sqrt (p*(p-a)*(p-b)*(p-c));
-        printf ( "面积为%lf\n" , s);
+        printf ( &#34;面积为%lf\n&#34; , s);
     }
-    else  printf ( "无法构成三角形\n" );
+    else  printf ( &#34;无法构成三角形\n&#34; );
     return  0;
 }
 
   编程题12
   #
 
-#include <stdio.h>
-#include <math.h>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
 int  main()
 {
     int a,b;
-    puts("请输入两个整数");
-    scanf("%d,%d",&amp;a,&amp;b);
-    printf("和=%d,差=%d,积=%d,商=%.2f,余数=%d",
-        a+b,
+    puts(&#34;请输入两个整数&#34;);
+    scanf(&#34;%d,%d&#34;,&amp;a,&amp;b);
+    printf(&#34;和=%d,差=%d,积=%d,商=%.2f,余数=%d&#34;,
+        a&#43;b,
         a-b,
         a*b,
         a/(float)b,
@@ -99,8 +104,8 @@ int  main()
   编程题13
   #
 
-#include <stdio.h>
-#include <math.h>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
 #define PAI 3.1415926
 //圆面积
 #define get_round_area(r) PAI * r * r
@@ -115,9 +120,9 @@ int  main()
 int main() {
     
     float r,h;
-    printf("请输入圆的半径和圆柱的高\n");
-    scanf("%f,%f",&amp;r,&amp;h);
-    printf("半径=%.2f，周长=%.2f，面积=%.2f，圆球表面积=%.2f，圆球体积=%.2f，圆柱体积=%.2f",
+    printf(&#34;请输入圆的半径和圆柱的高\n&#34;);
+    scanf(&#34;%f,%f&#34;,&amp;r,&amp;h);
+    printf(&#34;半径=%.2f，周长=%.2f，面积=%.2f，圆球表面积=%.2f，圆球体积=%.2f，圆柱体积=%.2f&#34;,
         r,
         get_round_perimeter(r),
         get_round_area(r),
@@ -131,220 +136,2264 @@ int main() {
   编程题14
   #
 
-#include <stdio.h>  
+#include &lt;stdio.h&gt;  
 #define PAI 3.1415926  
   
 int main()  
 {  
     int r;  
-    puts("请输入半径");  
-    scanf("%d",&amp;r);  
-    printf("直径=%d, 周长=%.2f",2*r,PAI*r*2);  
+    puts(&#34;请输入半径&#34;);  
+    scanf(&#34;%d&#34;,&amp;r);  
+    printf(&#34;直径=%d, 周长=%.2f&#34;,2*r,PAI*r*2);  
     return 0;  
 }
 
   编程题15
   #
 
-#include <stdio.h>
+#include &lt;stdio.h&gt;
 
 int main()
 {
     int a,b;
-    puts("请输入两个整数");
+    puts(&#34;请输入两个整数&#34;);
     
-    scanf("%d,%d",&amp;a,&amp;b);
-    printf("a=%d, b=%d",a,b);
+    scanf(&#34;%d,%d&#34;,&amp;a,&amp;b);
+    printf(&#34;a=%d, b=%d&#34;,a,b);
     return 0;
 }
 
   编程题16
   #
 
-'><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://localhost:1313/posts/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/"><meta property="og:site_name" content="Alex lan"><meta property="og:title" content="c语言作业23/10/10"><meta property="og:description" content='编程题7##include <stdio.h> int main() { int num, a, b, c, d; printf("请输入一个四位数："); scanf("%d", &amp;num); if (num >= 1000 && num <= 9999) { a = num % 10; b = num / 100 % 10; c = num / 10 % 10; d = num / 1000; printf("个位：%d,十位：%d,百位：%d,千位：%d", a, c, b, d); } else { printf("重新输入"); } return 0; } 编程题8##include <stdio.h> #define PAI 3.1415926 int main() { int r; printf("请输入半径:"); scanf("%d",&amp;r); printf("圆的半径=%d, 圆的直径=%d, 圆的周长=%.2f", r, 2*r, PAI*r*2 ); return 0; } 编程题9##include <stdio.h> #define PAI 3.1415926 int main() { int r; printf("请输入半径:"); scanf("%d",&amp;r); printf("半径=%d, 周长=%.2f, 面积=%.2f", r, 2* PAI*r, PAI*r*r ); return 0; } 编程题11##include <stdio.h> #include <math.h> int main() { double a=3,b=4,c=6; double p,s; if (a+b>c && a+c>b && b+c>a) { p=(a+b+c)/2; s= sqrt (p*(p-a)*(p-b)*(p-c)); printf ( "面积为%lf\n" , s); } else printf ( "无法构成三角形\n" ); return 0; } 编程题12##include <stdio.h> #include <math.h> int main() { int a,b; puts("请输入两个整数"); scanf("%d,%d",&amp;a,&amp;b); printf("和=%d,差=%d,积=%d,商=%.2f,余数=%d", a+b, a-b, a*b, a/(float)b, a%b ); } 编程题13##include <stdio.h> #include <math.h> #define PAI 3.1415926 //圆面积 #define get_round_area(r) PAI * r * r //圆周长 #define get_round_perimeter(r) 2 * PAI * r //球体表面积 #define get_sphere_Sarea(r) 4 * PAI * r *4 * PAI* r //球体体积 #define get_sphere_volume(r) 4.0 / 3 * PAI * r * r * r //圆柱体积 #define get_cylinder_vloume(r,h) get_round_area(r) * h int main() { float r,h; printf("请输入圆的半径和圆柱的高\n"); scanf("%f,%f",&amp;r,&amp;h); printf("半径=%.2f，周长=%.2f，面积=%.2f，圆球表面积=%.2f，圆球体积=%.2f，圆柱体积=%.2f", r, get_round_perimeter(r), get_round_area(r), get_sphere_Sarea(r), get_sphere_volume(r), get_cylinder_vloume(r,h) ); return 0; } 编程题14##include <stdio.h> #define PAI 3.1415926 int main() { int r; puts("请输入半径"); scanf("%d",&amp;r); printf("直径=%d, 周长=%.2f",2*r,PAI*r*2); return 0; } 编程题15##include <stdio.h> int main() { int a,b; puts("请输入两个整数"); scanf("%d,%d",&amp;a,&amp;b); printf("a=%d, b=%d",a,b); return 0; } 编程题16#'><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-10-23T23:04:34+00:00"><meta property="article:modified_time" content="2023-10-23T23:04:34+00:00"><meta property="article:tag" content="C"><title>c语言作业23/10/10 | Alex lan</title>
-<link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://localhost:1313/posts/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/><link rel=stylesheet href=/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.c290d52f387bc8e8a0bd57b2126cae6de6c478944752e1d9608ba90f1c1a9220.js integrity="sha256-wpDVLzh7yOigvVeyEmyubebEeJRHUuHZYIupDxwakiA=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Alex lan</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li><input type=checkbox id=section-867144600acf9658ad1e030dba887392 class=toggle>
-<label for=section-867144600acf9658ad1e030dba887392 class="flex justify-between"><a role=button>code</a></label><ul><li><input type=checkbox id=section-bad47914f28bea05b9a99cdd87cd69fb class=toggle>
-<label for=section-bad47914f28bea05b9a99cdd87cd69fb class="flex justify-between"><a role=button>Android</a></label><ul><li><a href=/docs/code/android/ui/>Android ui</a></li><li><a href=/docs/code/android/%E5%8D%8F%E7%A8%8B-retrofit/>Android 协程-retrofit</a></li><li><a href=/docs/code/android/%E6%AF%94%E8%B5%9B/>Android 比赛</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%A2%8E%E7%A2%8E%E5%BF%B5/>android 碎念</a></li><li><a href=/docs/code/android/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android 网络请求</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E9%80%82%E9%85%8D%E5%99%A8/>Android 适配器</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android-网络请求</a></li></ul></li><li><input type=checkbox id=section-4c67168a533057d7cb02259caca8884d class=toggle>
-<label for=section-4c67168a533057d7cb02259caca8884d class="flex justify-between"><a role=button>linux</a></label><ul><li><a href=/docs/code/linux/screen/>linux screen</a></li></ul></li><li><input type=checkbox id=section-227bbb535145acab9a03ddf223110bf7 class=toggle>
-<label for=section-227bbb535145acab9a03ddf223110bf7 class="flex justify-between"><a role=button>鸿蒙</a></label><ul><li><a href=/docs/code/harmony/tabbar/>鸿蒙开发-TbaBar</a></li><li><a href=/docs/code/harmony/%E5%85%A5%E9%97%A8/>鸿蒙开发-入门</a></li><li><a href=/docs/code/harmony/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/>鸿蒙开发-状态管理</a></li><li><a href=/docs/code/harmony/%E7%BD%91%E7%BB%9C/>鸿蒙开发-网络请求</a></li></ul></li><li><input type=checkbox id=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class=toggle>
-<label for=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class="flex justify-between"><a role=button>ee</a></label><ul><li><a href=/docs/code/new/autotakepic_flask/>Auto Take Pic Flask</a></li><li><a href=/docs/code/new/c_%E7%94%9C%E7%94%9C%E5%9C%88/>C 甜甜圈</a></li><li><a href=/docs/code/new/rust/%E6%9F%90%E5%9B%BE/>某图</a></li><li><a href=/docs/code/new/%E4%BD%9C%E4%B8%9A2023.10.10/>作业2023.10.10</a></li><li><a href=/docs/code/new/%E6%98%9F%E4%BA%91%E5%8A%A0%E9%80%9F%E5%99%A8/>星云加速器</a></li><li><a href=/docs/code/new/%E6%9C%A8%E9%A9%AC%E7%99%BB%E9%99%86/>木马登陆</a></li><li><a href=/docs/code/new/%E6%9F%90update/>某update</a></li><li><a href=/docs/code/new/%E6%9F%90%E5%88%B7%E8%AF%BE/>某刷课</a></li><li><a href=/docs/code/new/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/>某洗衣小程序</a></li><li><a href=/docs/code/new/%E9%82%A3%E4%BA%9B%E9%AA%9A%E6%93%8D%E4%BD%9C/>那些骚操作</a></li></ul></li><li><a href=/docs/code/arch-linux/>arch linux</a></li><li><a href=/docs/code/avaloniaui/>avaloniaui</a></li><li><a href=/docs/code/c%23/>c#</a></li><li><a href=/docs/code/java_mysql/>Java_mysql</a></li><li><a href=/docs/code/linux%E7%9F%A5%E8%AF%86/>linux知识</a></li><li><a href=/docs/code/mqtt--%E4%B8%B2%E5%8F%A3--4055/>MQTT && 串口</a></li><li><a href=/docs/code/python/>Python</a></li><li><a href=/docs/code/rust/>rust</a></li><li><a href=/docs/code/cmd/>Cmd</a></li><li><a href=/docs/code/dart/>Dart</a></li><li><a href=/docs/code/%E6%95%B0%E6%8D%AE%E5%BA%93/>数据库</a></li></ul></li><li><input type=checkbox id=section-a88931adc275b5db7ba2257eca8098f2 class=toggle>
-<label for=section-a88931adc275b5db7ba2257eca8098f2 class="flex justify-between"><a role=button>e .wp</a></label><ul><li><a href=/docs/wp/bili_22_1024/>bili_22_1024</a></li><li><a href=/docs/wp/love_math/>LOVE_math</a></li><li><a href=/docs/wp/webexercise/ruby_cookie/>ruby_cookie</a></li></ul></li><li><input type=checkbox id=section-d633b3f91ad6faec5e15f38ac64d5024 class=toggle>
-<label for=section-d633b3f91ad6faec5e15f38ac64d5024 class="flex justify-between"><a role=button>good good study</a></label><ul><li><input type=checkbox id=section-ad1d0d6744ceb9d7276a26afbd49c97f class=toggle>
-<label for=section-ad1d0d6744ceb9d7276a26afbd49c97f class="flex justify-between"><a role=button>class notes</a></label><ul><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/java/>java</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/linux/>linux</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/>信息安全</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E5%B1%80%E5%9F%9F%E7%BD%91-%E6%80%9D%E7%A7%91-pt/>局域网 思科 pt</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/>算法与数据结构笔记</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/>网页制作</a></li></ul></li><li><input type=checkbox id=section-297a8c491188fdc1e4d5049993bd118b class=toggle>
-<label for=section-297a8c491188fdc1e4d5049993bd118b class="flex justify-between"><a role=button>english</a></label><ul><li><a href=/docs/learm/english/%E4%B8%80%E8%88%AC%E7%8E%B0%E5%9C%A8%E6%97%B6/>一般现在时</a></li><li><a href=/docs/learm/english/%E7%8E%B0%E5%9C%A8%E8%BF%9B%E8%A1%8C%E6%97%B6/>现在进行时</a></li></ul></li><li><input type=checkbox id=section-d273ec3342c86bd09d8e0a595cc7603e class=toggle>
-<label for=section-d273ec3342c86bd09d8e0a595cc7603e class="flex justify-between"><a role=button>math</a></label><ul><li><a href=/docs/learm/math/%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>公式测试</a></li><li><a href=/docs/learm/math/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86/>基本积分</a></li><li><a href=/docs/learm/math/%E5%AF%BC%E6%95%B0/>导数</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%88%97/>数列</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>数学公式测试</a></li><li><a href=/docs/learm/math/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F/>泰勒公式</a></li><li><a href=/docs/learm/math/%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/>等价无穷小</a></li><li><a href=/docs/learm/math/%E9%B8%A1%E6%9D%82%E5%85%AC%E5%BC%8F/>鸡杂公式</a></li></ul></li></ul></li><li><input type=checkbox id=section-bc5bfc4ab3726cdac08770524fbd5e52 class=toggle>
-<label for=section-bc5bfc4ab3726cdac08770524fbd5e52 class="flex justify-between"><a role=button>hack</a></label><ul><li><a href=/docs/hack/msf/>msf</a></li><li><a href=/docs/hack/thefatrat/>TheFatRat</a></li></ul></li><li><input type=checkbox id=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class=toggle>
-<label for=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class="flex justify-between"><a href=/docs/re/>re</a></label><ul><li><input type=checkbox id=section-59835f29e02875febbf77853a8373c43 class=toggle>
-<label for=section-59835f29e02875febbf77853a8373c43 class="flex justify-between"><a href=/docs/re/new/>demo</a></label><ul><li><a href=/docs/re/new/%E6%9F%90h%E8%A7%86%E9%A2%91%E8%BD%AF%E4%BB%B6/>Android 比赛</a></li><li><a href=/docs/re/new/u%E5%87%80/>u净</a></li><li><a href=/docs/re/new/%E5%A4%A7%E5%AD%A6%E6%90%9C%E9%A2%98%E9%85%B1/>大学搜题</a></li><li><a href=/docs/re/new/%E5%B1%B1%E8%A5%BF%E6%81%92%E5%AE%89%E5%88%B7%E8%AF%BE%E4%BB%A5%E5%8F%8A%E8%80%83%E8%AF%95/>山西恒安刷课以及考试</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6/>某h软件</a></li><li><a href=/docs/re/new/bika/>某h软件 bika</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6-2/>某h软件-2</a></li><li><a href=/docs/re/new/%E6%B7%98%E9%87%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E9%99%86/>淘金社区登陆</a></li><li><a href=/docs/re/new/%E7%88%B1%E5%A4%9A%E5%A4%9A-%E5%88%86%E6%9E%90/>爱多多 分析</a></li><li><a href=/docs/re/new/%E7%A5%9E%E5%9B%BE%E5%A3%81%E7%BA%B8/>神图壁纸</a></li></ul></li><li><a href=/docs/re/arm%E6%B1%87%E7%BC%96/>arm 汇编</a></li><li><a href=/docs/re/flutter---blutter/>flutter - blutter</a></li><li><a href=/docs/re/flutter/>flutter 初探</a></li><li><a href=/docs/re/frida/>frida</a></li><li><a href=/docs/re/ida%E5%8A%A8%E8%B0%83so/>ida 动态调试so</a></li><li><a href=/docs/re/%E5%8F%8D%E7%BC%96%E8%AF%91/>反编译</a></li><li><a href=/docs/re/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91/>小程序 逆向</a></li></ul></li><li><input type=checkbox id=section-18930a98ed98865a0f74f8bc6e5f9129 class=toggle>
-<label for=section-18930a98ed98865a0f74f8bc6e5f9129 class="flex justify-between"><a role=button>网络安全</a></label><ul><li><input type=checkbox id=section-651b79d602e2b6fd9e11ffc5f6867235 class=toggle>
-<label for=section-651b79d602e2b6fd9e11ffc5f6867235 class="flex justify-between"><a role=button>java</a></label><ul><li><a href=/docs/network-security/java/sql%E6%B3%A8%E5%85%A5/>java sql 注入</a></li><li><a href=/docs/network-security/java/web-inf%E8%AF%BB%E5%8F%96/>WEB-INF 读取</a></li><li><a href=/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>反序列化</a></li></ul></li><li><input type=checkbox id=section-a44367811822bf6f468461f4b263fc52 class=toggle>
-<label for=section-a44367811822bf6f468461f4b263fc52 class="flex justify-between"><a role=button>node</a></label><ul><li><a href=/docs/network-security/node/%E5%8E%9F%E5%BD%A2%E9%93%BE%E6%B1%A1%E6%9F%93/>node 原型链污染</a></li></ul></li><li><input type=checkbox id=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class=toggle>
-<label for=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class="flex justify-between"><a role=button>other</a></label><ul><li><a href=/docs/network-security/other/linux/>linux 知识点</a></li><li><a href=/docs/network-security/other/xpath%E6%B3%A8%E5%85%A5/>xpath 注入</a></li><li><a href=/docs/network-security/other/xxe/>XXE</a></li><li><a href=/docs/network-security/other/%E5%8F%8D%E5%BC%B9shll/>反弹shell</a></li><li><a href=/docs/network-security/other/%E7%AB%AF%E5%8F%A3/>常见端口</a></li></ul></li><li><input type=checkbox id=section-40d2a42f189bda5f49dc4cec9d080122 class=toggle>
-<label for=section-40d2a42f189bda5f49dc4cec9d080122 class="flex justify-between"><a role=button>php</a></label><ul><li><a href=/docs/network-security/php/php/>php</a></li><li><a href=/docs/network-security/php/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>php</a></li><li><a href=/docs/network-security/php/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8Clinux%E7%BB%95%E8%BF%87/>php命令执行linux绕过</a></li><li><a href=/docs/network-security/php/readflag/>readflag</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/regexp%E7%9B%B2%E6%B3%A8/>regexp盲注</a></li><li><a href=/docs/network-security/php/session%E4%BC%AA%E9%80%A0/>session伪造</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/>堆叠注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5/>字符型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/>报错注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%95%B4%E5%9E%8B%E6%B3%A8%E5%85%A5/>整型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/>时间注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E7%9B%B2%E6%B3%A8/>盲注</a></li><li><a href=/docs/network-security/php/htaccess%E7%9A%84%E5%88%A9%E7%94%A8/>Htaccess的利用</a></li><li><a href=/docs/network-security/php/md5%E7%A2%B0%E6%92%9E/>Md5碰撞</a></li><li><a href=/docs/network-security/php/%E4%BC%AA%E5%8D%8F%E8%AE%AE/>伪协议</a></li><li><a href=/docs/network-security/php/%E5%87%BD%E6%95%B0%E6%BC%8F%E6%B4%9E/>函数漏洞</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/>文件上传</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/>文件包含</a></li></ul></li><li><input type=checkbox id=section-00e8dd07f7030a556feb24211f954773 class=toggle>
-<label for=section-00e8dd07f7030a556feb24211f954773 class="flex justify-between"><a role=button>python</a></label><ul><li><a href=/docs/network-security/python/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>pickle反序列化</a></li><li><a href=/docs/network-security/python/python-session%E4%BC%AA%E9%80%A0/>python session伪造</a></li><li><a href=/docs/network-security/python/ssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/>SSTI模板注入</a></li></ul></li><li><input type=checkbox id=section-e32c44d2f36aa533e1dcd6f636ecb361 class=toggle>
-<label for=section-e32c44d2f36aa533e1dcd6f636ecb361 class="flex justify-between"><a role=button>tools</a></label><ul><li><a href=/docs/network-security/tools/fake-mysql/>fake-mysql</a></li></ul></li></ul></li></ul><ul><li><a href=/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label><h3>c语言作业23/10/10</h3><label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><ul><li><a href=#编程题7>编程题7</a></li><li><a href=#编程题8>编程题8</a></li><li><a href=#编程题9>编程题9</a></li><li><a href=#编程题11>编程题11</a></li><li><a href=#编程题12>编程题12</a></li><li><a href=#编程题13>编程题13</a></li><li><a href=#编程题14>编程题14</a></li><li><a href=#编程题15>编程题15</a></li><li><a href=#编程题16>编程题16</a></li><li><a href=#编程题17>编程题17</a></li><li><a href=#编程题18>编程题18</a></li></ul></li></ul></nav></aside></header><article class="markdown book-post"><h2>c语言作业23/10/10</h2><div class="flex align-center text-small book-post-date"><img src=/svg/calendar.svg class=book-icon alt>
-<span>October 23, 2023</span></div><div class=text-small><a href=/tags/c/>C</a></div><div class=book-post-content><h3 id=编程题7>编程题7
-<a class=anchor href=#%e7%bc%96%e7%a8%8b%e9%a2%987>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;  </span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  
-</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>() {  
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> num, a, b, c, d;  
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;请输入一个四位数：&#34;</span>);  
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>scanf</span>(<span style=color:#e6db74>&#34;%d&#34;</span>, <span style=color:#f92672>&amp;</span>num);  
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (num <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>1000</span> <span style=color:#f92672>&amp;&amp;</span> num <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>9999</span>) {  
-</span></span><span style=display:flex><span>        a <span style=color:#f92672>=</span> num <span style=color:#f92672>%</span> <span style=color:#ae81ff>10</span>;  
-</span></span><span style=display:flex><span>        b <span style=color:#f92672>=</span> num <span style=color:#f92672>/</span> <span style=color:#ae81ff>100</span> <span style=color:#f92672>%</span> <span style=color:#ae81ff>10</span>;  
-</span></span><span style=display:flex><span>        c <span style=color:#f92672>=</span> num <span style=color:#f92672>/</span> <span style=color:#ae81ff>10</span> <span style=color:#f92672>%</span> <span style=color:#ae81ff>10</span>;  
-</span></span><span style=display:flex><span>        d <span style=color:#f92672>=</span> num <span style=color:#f92672>/</span> <span style=color:#ae81ff>1000</span>;  
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;个位：%d,十位：%d,百位：%d,千位：%d&#34;</span>, a, c, b, d);  
-</span></span><span style=display:flex><span>    } <span style=color:#66d9ef>else</span> {  
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;重新输入&#34;</span>);  
-</span></span><span style=display:flex><span>    }  
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;  
-</span></span><span style=display:flex><span>  
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=编程题8>编程题8
-<a class=anchor href=#%e7%bc%96%e7%a8%8b%e9%a2%988>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;  </span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e>#define PAI 3.1415926  
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>()  
-</span></span><span style=display:flex><span>{  
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> r;  
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;请输入半径:&#34;</span>);  
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>scanf</span>(<span style=color:#e6db74>&#34;%d&#34;</span>,<span style=color:#f92672>&amp;</span>r);  
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;圆的半径=%d, 圆的直径=%d, 圆的周长=%.2f&#34;</span>,  
-</span></span><span style=display:flex><span>        r,  
-</span></span><span style=display:flex><span>        <span style=color:#ae81ff>2</span><span style=color:#f92672>*</span>r,  
-</span></span><span style=display:flex><span>        PAI<span style=color:#f92672>*</span>r<span style=color:#f92672>*</span><span style=color:#ae81ff>2</span>  
-</span></span><span style=display:flex><span>        );  
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;  
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=编程题9>编程题9
-<a class=anchor href=#%e7%bc%96%e7%a8%8b%e9%a2%989>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e>#define PAI 3.1415926
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>()
-</span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> r;
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;请输入半径:&#34;</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>scanf</span>(<span style=color:#e6db74>&#34;%d&#34;</span>,<span style=color:#f92672>&amp;</span>r);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;半径=%d, 周长=%.2f, 面积=%.2f&#34;</span>,
-</span></span><span style=display:flex><span>        r,
-</span></span><span style=display:flex><span>        <span style=color:#ae81ff>2</span><span style=color:#f92672>*</span> PAI<span style=color:#f92672>*</span>r,
-</span></span><span style=display:flex><span>        PAI<span style=color:#f92672>*</span>r<span style=color:#f92672>*</span>r
-</span></span><span style=display:flex><span>        );
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=编程题11>编程题11
-<a class=anchor href=#%e7%bc%96%e7%a8%8b%e9%a2%9811>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;math.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>int</span>  <span style=color:#a6e22e>main</span>()
-</span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>double</span>  a<span style=color:#f92672>=</span><span style=color:#ae81ff>3</span>,b<span style=color:#f92672>=</span><span style=color:#ae81ff>4</span>,c<span style=color:#f92672>=</span><span style=color:#ae81ff>6</span>;
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>double</span> p,s;
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (a<span style=color:#f92672>+</span>b<span style=color:#f92672>&gt;</span>c <span style=color:#f92672>&amp;&amp;</span> a<span style=color:#f92672>+</span>c<span style=color:#f92672>&gt;</span>b <span style=color:#f92672>&amp;&amp;</span> b<span style=color:#f92672>+</span>c<span style=color:#f92672>&gt;</span>a)
-</span></span><span style=display:flex><span>    {
-</span></span><span style=display:flex><span>        p<span style=color:#f92672>=</span>(a<span style=color:#f92672>+</span>b<span style=color:#f92672>+</span>c)<span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>;
-</span></span><span style=display:flex><span>        s<span style=color:#f92672>=</span> <span style=color:#a6e22e>sqrt</span> (p<span style=color:#f92672>*</span>(p<span style=color:#f92672>-</span>a)<span style=color:#f92672>*</span>(p<span style=color:#f92672>-</span>b)<span style=color:#f92672>*</span>(p<span style=color:#f92672>-</span>c));
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>printf</span> ( <span style=color:#e6db74>&#34;面积为%lf</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span> , s);
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>  <span style=color:#a6e22e>printf</span> ( <span style=color:#e6db74>&#34;无法构成三角形</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span> );
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span>  <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=编程题12>编程题12
-<a class=anchor href=#%e7%bc%96%e7%a8%8b%e9%a2%9812>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;math.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>int</span>  <span style=color:#a6e22e>main</span>()
-</span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> a,b;
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>puts</span>(<span style=color:#e6db74>&#34;请输入两个整数&#34;</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>scanf</span>(<span style=color:#e6db74>&#34;%d,%d&#34;</span>,<span style=color:#f92672>&amp;</span>a,<span style=color:#f92672>&amp;</span>b);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;和=%d,差=%d,积=%d,商=%.2f,余数=%d&#34;</span>,
-</span></span><span style=display:flex><span>        a<span style=color:#f92672>+</span>b,
-</span></span><span style=display:flex><span>        a<span style=color:#f92672>-</span>b,
-</span></span><span style=display:flex><span>        a<span style=color:#f92672>*</span>b,
-</span></span><span style=display:flex><span>        a<span style=color:#f92672>/</span>(<span style=color:#66d9ef>float</span>)b,
-</span></span><span style=display:flex><span>        a<span style=color:#f92672>%</span>b
-</span></span><span style=display:flex><span>    );
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=编程题13>编程题13
-<a class=anchor href=#%e7%bc%96%e7%a8%8b%e9%a2%9813>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;math.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e>#define PAI 3.1415926
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>//圆面积
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#define get_round_area(r) PAI * r * r
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>//圆周长
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#define get_round_perimeter(r) 2 * PAI * r
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>//球体表面积
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#define get_sphere_Sarea(r) 4 * PAI * r *4 * PAI*  r
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>//球体体积
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#define get_sphere_volume(r) 4.0 / 3 * PAI * r * r * r
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>//圆柱体积
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#define get_cylinder_vloume(r,h) get_round_area(r) * h
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>() {
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>float</span> r,h;
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;请输入圆的半径和圆柱的高</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>scanf</span>(<span style=color:#e6db74>&#34;%f,%f&#34;</span>,<span style=color:#f92672>&amp;</span>r,<span style=color:#f92672>&amp;</span>h);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;半径=%.2f，周长=%.2f，面积=%.2f，圆球表面积=%.2f，圆球体积=%.2f，圆柱体积=%.2f&#34;</span>,
-</span></span><span style=display:flex><span>        r,
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>get_round_perimeter</span>(r),
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>get_round_area</span>(r),
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>get_sphere_Sarea</span>(r),
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>get_sphere_volume</span>(r),
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>get_cylinder_vloume</span>(r,h)
-</span></span><span style=display:flex><span>        );
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=编程题14>编程题14
-<a class=anchor href=#%e7%bc%96%e7%a8%8b%e9%a2%9814>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;  </span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e>#define PAI 3.1415926  
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  
-</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>()  
-</span></span><span style=display:flex><span>{  
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> r;  
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>puts</span>(<span style=color:#e6db74>&#34;请输入半径&#34;</span>);  
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>scanf</span>(<span style=color:#e6db74>&#34;%d&#34;</span>,<span style=color:#f92672>&amp;</span>r);  
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;直径=%d, 周长=%.2f&#34;</span>,<span style=color:#ae81ff>2</span><span style=color:#f92672>*</span>r,PAI<span style=color:#f92672>*</span>r<span style=color:#f92672>*</span><span style=color:#ae81ff>2</span>);  
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;  
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=编程题15>编程题15
-<a class=anchor href=#%e7%bc%96%e7%a8%8b%e9%a2%9815>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>()
-</span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> a,b;
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>puts</span>(<span style=color:#e6db74>&#34;请输入两个整数&#34;</span>);
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>scanf</span>(<span style=color:#e6db74>&#34;%d,%d&#34;</span>,<span style=color:#f92672>&amp;</span>a,<span style=color:#f92672>&amp;</span>b);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;a=%d, b=%d&#34;</span>,a,b);
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=编程题16>编程题16
-<a class=anchor href=#%e7%bc%96%e7%a8%8b%e9%a2%9816>#</a></h3><p><img src=https://p.sda1.dev/13/ed13f1a0c9015ec868673b4623c40671/6489ECC1BEDFE767DA12392988C4570A.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;math.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>()
-</span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> r<span style=color:#f92672>=</span><span style=color:#ae81ff>8</span>;
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;面积=%.2f&#34;</span>,M_PI<span style=color:#f92672>*</span>r<span style=color:#f92672>*</span>r);
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=编程题17>编程题17
-<a class=anchor href=#%e7%bc%96%e7%a8%8b%e9%a2%9817>#</a></h3><p><img src=https://p.sda1.dev/13/9711dff4426206b973a15bf6211f124f/9AC6CA37EA1594962B3A517D289D0382.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;math.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>()
-</span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> r<span style=color:#f92672>=</span><span style=color:#ae81ff>5</span>;
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;周长=%.2f&#34;</span>,M_PI<span style=color:#f92672>*</span>r<span style=color:#f92672>*</span><span style=color:#ae81ff>2</span>);
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=编程题18>编程题18
-<a class=anchor href=#%e7%bc%96%e7%a8%8b%e9%a2%9818>#</a></h3><p><img src=https://p.sda1.dev/13/cb445e98520f3a3fee63653ea20290ee/2D955151D95CAB2CC6EB7E2A668EF86F.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;math.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>()
-</span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> r;
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>puts</span>(<span style=color:#e6db74>&#34;请输入半径&#34;</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>scanf</span>(<span style=color:#e6db74>&#34;%d&#34;</span>,<span style=color:#f92672>&amp;</span>r);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;周长=%.2f,面积=%.2f&#34;</span>,M_PI<span style=color:#f92672>*</span>r<span style=color:#f92672>*</span><span style=color:#ae81ff>2</span>,M_PI<span style=color:#f92672>*</span>r<span style=color:#f92672>*</span>r);
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><ul><li><a href=#编程题7>编程题7</a></li><li><a href=#编程题8>编程题8</a></li><li><a href=#编程题9>编程题9</a></li><li><a href=#编程题11>编程题11</a></li><li><a href=#编程题12>编程题12</a></li><li><a href=#编程题13>编程题13</a></li><li><a href=#编程题14>编程题14</a></li><li><a href=#编程题15>编程题15</a></li><li><a href=#编程题16>编程题16</a></li><li><a href=#编程题17>编程题17</a></li><li><a href=#编程题18>编程题18</a></li></ul></li></ul></nav></div></aside></main></body></html>
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/">
+  <meta property="og:site_name" content="Alex lan">
+  <meta property="og:title" content="c语言作业23/10/10">
+  <meta property="og:description" content="编程题7##include &lt;stdio.h&gt; int main() { int num, a, b, c, d; printf(&#34;请输入一个四位数：&#34;); scanf(&#34;%d&#34;, &amp;num); if (num &gt;= 1000 &amp;&amp; num &lt;= 9999) { a = num % 10; b = num / 100 % 10; c = num / 10 % 10; d = num / 1000; printf(&#34;个位：%d,十位：%d,百位：%d,千位：%d&#34;, a, c, b, d); } else { printf(&#34;重新输入&#34;); } return 0; } 编程题8##include &lt;stdio.h&gt; #define PAI 3.1415926 int main() { int r; printf(&#34;请输入半径:&#34;); scanf(&#34;%d&#34;,&amp;r); printf(&#34;圆的半径=%d, 圆的直径=%d, 圆的周长=%.2f&#34;, r, 2*r, PAI*r*2 ); return 0; } 编程题9##include &lt;stdio.h&gt; #define PAI 3.1415926 int main() { int r; printf(&#34;请输入半径:&#34;); scanf(&#34;%d&#34;,&amp;r); printf(&#34;半径=%d, 周长=%.2f, 面积=%.2f&#34;, r, 2* PAI*r, PAI*r*r ); return 0; } 编程题11##include &lt;stdio.h&gt; #include &lt;math.h&gt; int main() { double a=3,b=4,c=6; double p,s; if (a&#43;b&gt;c &amp;&amp; a&#43;c&gt;b &amp;&amp; b&#43;c&gt;a) { p=(a&#43;b&#43;c)/2; s= sqrt (p*(p-a)*(p-b)*(p-c)); printf ( &#34;面积为%lf\n&#34; , s); } else printf ( &#34;无法构成三角形\n&#34; ); return 0; } 编程题12##include &lt;stdio.h&gt; #include &lt;math.h&gt; int main() { int a,b; puts(&#34;请输入两个整数&#34;); scanf(&#34;%d,%d&#34;,&amp;a,&amp;b); printf(&#34;和=%d,差=%d,积=%d,商=%.2f,余数=%d&#34;, a&#43;b, a-b, a*b, a/(float)b, a%b ); } 编程题13##include &lt;stdio.h&gt; #include &lt;math.h&gt; #define PAI 3.1415926 //圆面积 #define get_round_area(r) PAI * r * r //圆周长 #define get_round_perimeter(r) 2 * PAI * r //球体表面积 #define get_sphere_Sarea(r) 4 * PAI * r *4 * PAI* r //球体体积 #define get_sphere_volume(r) 4.0 / 3 * PAI * r * r * r //圆柱体积 #define get_cylinder_vloume(r,h) get_round_area(r) * h int main() { float r,h; printf(&#34;请输入圆的半径和圆柱的高\n&#34;); scanf(&#34;%f,%f&#34;,&amp;r,&amp;h); printf(&#34;半径=%.2f，周长=%.2f，面积=%.2f，圆球表面积=%.2f，圆球体积=%.2f，圆柱体积=%.2f&#34;, r, get_round_perimeter(r), get_round_area(r), get_sphere_Sarea(r), get_sphere_volume(r), get_cylinder_vloume(r,h) ); return 0; } 编程题14##include &lt;stdio.h&gt; #define PAI 3.1415926 int main() { int r; puts(&#34;请输入半径&#34;); scanf(&#34;%d&#34;,&amp;r); printf(&#34;直径=%d, 周长=%.2f&#34;,2*r,PAI*r*2); return 0; } 编程题15##include &lt;stdio.h&gt; int main() { int a,b; puts(&#34;请输入两个整数&#34;); scanf(&#34;%d,%d&#34;,&amp;a,&amp;b); printf(&#34;a=%d, b=%d&#34;,a,b); return 0; } 编程题16#">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-10-23T23:04:34+00:00">
+    <meta property="article:modified_time" content="2023-10-23T23:04:34+00:00">
+    <meta property="article:tag" content="C">
+<title>c语言作业23/10/10 | Alex lan</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/posts/c%E8%AF%AD%E8%A8%80%E4%BD%9C%E4%B8%9A23-10-10/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.a389106ec8847d561d666791d134c44fe525dae19e4a1107009df60a9bb4c157.js" integrity="sha256-o4kQbsiEfVYdZmeR0TTET&#43;Ul2uGeShEHAJ32Cpu0wVc=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Alex lan</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-867144600acf9658ad1e030dba887392" class="toggle"  />
+    <label for="section-867144600acf9658ad1e030dba887392" class="flex justify-between">
+      <a role="button" class="">code</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bad47914f28bea05b9a99cdd87cd69fb" class="toggle"  />
+    <label for="section-bad47914f28bea05b9a99cdd87cd69fb" class="flex justify-between">
+      <a role="button" class="">Android</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/ui/" class="">Android ui</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/%E5%8D%8F%E7%A8%8B-retrofit/" class="">Android 协程-retrofit</a>
+  
+
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/%E6%AF%94%E8%B5%9B/" class="">Android 比赛</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%A2%8E%E7%A2%8E%E5%BF%B5/" class="">android 碎念</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/" class="">Android 网络请求</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E9%80%82%E9%85%8D%E5%99%A8/" class="">Android 适配器</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/" class="">Android-网络请求</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4c67168a533057d7cb02259caca8884d" class="toggle"  />
+    <label for="section-4c67168a533057d7cb02259caca8884d" class="flex justify-between">
+      <a role="button" class="">linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/linux/screen/" class="">linux screen</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-227bbb535145acab9a03ddf223110bf7" class="toggle"  />
+    <label for="section-227bbb535145acab9a03ddf223110bf7" class="flex justify-between">
+      <a role="button" class="">鸿蒙</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/harmony/tabbar/" class="">鸿蒙开发-TbaBar</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/harmony/%E5%85%A5%E9%97%A8/" class="">鸿蒙开发-入门</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/harmony/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" class="">鸿蒙开发-状态管理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/harmony/%E7%BD%91%E7%BB%9C/" class="">鸿蒙开发-网络请求</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7" class="toggle"  />
+    <label for="section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7" class="flex justify-between">
+      <a role="button" class="">ee</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/autotakepic_flask/" class="">Auto Take Pic Flask</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/c_%E7%94%9C%E7%94%9C%E5%9C%88/" class="">C 甜甜圈</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/rust/%E6%9F%90%E5%9B%BE/" class="">某图</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E4%BD%9C%E4%B8%9A2023.10.10/" class="">作业2023.10.10</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E6%98%9F%E4%BA%91%E5%8A%A0%E9%80%9F%E5%99%A8/" class="">星云加速器</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E6%9C%A8%E9%A9%AC%E7%99%BB%E9%99%86/" class="">木马登陆</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E6%9F%90update/" class="">某update</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E6%9F%90%E5%88%B7%E8%AF%BE/" class="">某刷课</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="">某洗衣小程序</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E9%82%A3%E4%BA%9B%E9%AA%9A%E6%93%8D%E4%BD%9C/" class="">那些骚操作</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/arch-linux/" class="">arch linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/avaloniaui/" class="">avaloniaui</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/c-sharp/" class="">c#</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/java_mysql/" class="">Java_mysql</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/linux%E7%9F%A5%E8%AF%86/" class="">linux知识</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/mqtt--%E4%B8%B2%E5%8F%A3--4055/" class="">MQTT &amp;&amp; 串口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/python/" class="">Python</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/rust/" class="">rust</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/cmd/" class="">Cmd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/dart/" class="">Dart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="">数据库</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a88931adc275b5db7ba2257eca8098f2" class="toggle"  />
+    <label for="section-a88931adc275b5db7ba2257eca8098f2" class="flex justify-between">
+      <a role="button" class="">e .wp</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wp/bili_22_1024/" class="">bili_22_1024</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wp/love_math/" class="">LOVE_math</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wp/webexercise/ruby_cookie/" class="">ruby_cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bc5bfc4ab3726cdac08770524fbd5e52" class="toggle"  />
+    <label for="section-bc5bfc4ab3726cdac08770524fbd5e52" class="flex justify-between">
+      <a role="button" class="">hack</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/hack/msf/" class="">msf</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/hack/thefatrat/" class="">TheFatRat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c809dbac7a9b531c0deb3f94bb3a5eb9" class="toggle"  />
+    <label for="section-c809dbac7a9b531c0deb3f94bb3a5eb9" class="flex justify-between">
+      <a href="/docs/re/" class="">re</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-59835f29e02875febbf77853a8373c43" class="toggle"  />
+    <label for="section-59835f29e02875febbf77853a8373c43" class="flex justify-between">
+      <a href="/docs/re/new/" class="">demo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E6%9F%90h%E8%A7%86%E9%A2%91%E8%BD%AF%E4%BB%B6/" class="">Android 比赛</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/u%E5%87%80/" class="">u净</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E5%A4%A7%E5%AD%A6%E6%90%9C%E9%A2%98%E9%85%B1/" class="">大学搜题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E5%B1%B1%E8%A5%BF%E6%81%92%E5%AE%89%E5%88%B7%E8%AF%BE%E4%BB%A5%E5%8F%8A%E8%80%83%E8%AF%95/" class="">山西恒安刷课以及考试</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6/" class="">某h软件</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/bika/" class="">某h软件 bika</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6-2/" class="">某h软件-2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E6%B7%98%E9%87%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E9%99%86/" class="">淘金社区登陆</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E7%88%B1%E5%A4%9A%E5%A4%9A-%E5%88%86%E6%9E%90/" class="">爱多多 分析</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E7%A5%9E%E5%9B%BE%E5%A3%81%E7%BA%B8/" class="">神图壁纸</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/arm%E6%B1%87%E7%BC%96/" class="">arm 汇编</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/flutter---blutter/" class="">flutter - blutter</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/flutter/" class="">flutter 初探</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/frida/" class="">frida</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/ida%E5%8A%A8%E8%B0%83so/" class="">ida 动态调试so</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/%E5%8F%8D%E7%BC%96%E8%AF%91/" class="">反编译</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91/" class="">小程序 逆向</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d633b3f91ad6faec5e15f38ac64d5024" class="toggle"  />
+    <label for="section-d633b3f91ad6faec5e15f38ac64d5024" class="flex justify-between">
+      <a href="/docs/learm/" class="">学习</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-297a8c491188fdc1e4d5049993bd118b" class="toggle"  />
+    <label for="section-297a8c491188fdc1e4d5049993bd118b" class="flex justify-between">
+      <a role="button" class="">english</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/english/%E4%B8%80%E8%88%AC%E7%8E%B0%E5%9C%A8%E6%97%B6/" class="">一般现在时</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/english/%E7%8E%B0%E5%9C%A8%E8%BF%9B%E8%A1%8C%E6%97%B6/" class="">现在进行时</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d273ec3342c86bd09d8e0a595cc7603e" class="toggle"  />
+    <label for="section-d273ec3342c86bd09d8e0a595cc7603e" class="flex justify-between">
+      <a role="button" class="">math</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/" class="">公式测试</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86/" class="">基本积分</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E5%AF%BC%E6%95%B0/" class="">导数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E6%95%B0%E5%88%97/" class="">数列</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/" class="">数学公式测试</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F/" class="">泰勒公式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/" class="">等价无穷小</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E9%B8%A1%E6%9D%82%E5%85%AC%E5%BC%8F/" class="">鸡杂公式</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ea5b2994c4cca97c0834172637987408" class="toggle"  />
+    <label for="section-ea5b2994c4cca97c0834172637987408" class="flex justify-between">
+      <a role="button" class="">上课</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/java/" class="">java</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/linux/" class="">linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" class="">信息安全</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/%E5%B1%80%E5%9F%9F%E7%BD%91-%E6%80%9D%E7%A7%91-pt/" class="">局域网 思科 pt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/" class="">算法与数据结构笔记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/" class="">网页制作</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a9ce434c78e2b2b70812ee1671233fb4" class="toggle"  />
+    <label for="section-a9ce434c78e2b2b70812ee1671233fb4" class="flex justify-between">
+      <a role="button" class="">网络安全</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3bf12ad5664ebca7e9060559169913cd" class="toggle"  />
+    <label for="section-3bf12ad5664ebca7e9060559169913cd" class="flex justify-between">
+      <a role="button" class="">java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/java/sql%E6%B3%A8%E5%85%A5/" class="">java sql 注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/java/web-inf%E8%AF%BB%E5%8F%96/" class="">WEB-INF 读取</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="">反序列化</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c7fff2b0fc43407720940cd3bd5fa3fa" class="toggle"  />
+    <label for="section-c7fff2b0fc43407720940cd3bd5fa3fa" class="flex justify-between">
+      <a role="button" class="">node</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/node/%E5%8E%9F%E5%BD%A2%E9%93%BE%E6%B1%A1%E6%9F%93/" class="">node 原型链污染</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5385b8bcbe311a5d908dc263de46f07f" class="toggle"  />
+    <label for="section-5385b8bcbe311a5d908dc263de46f07f" class="flex justify-between">
+      <a role="button" class="">other</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/other/linux/" class="">linux 知识点</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/other/xpath%E6%B3%A8%E5%85%A5/" class="">xpath 注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/other/xxe/" class="">XXE</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/other/%E5%8F%8D%E5%BC%B9shll/" class="">反弹shell</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/other/%E7%AB%AF%E5%8F%A3/" class="">常见端口</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-46a6c3a4b470bf639b30aeb9a16a1257" class="toggle"  />
+    <label for="section-46a6c3a4b470bf639b30aeb9a16a1257" class="flex justify-between">
+      <a role="button" class="">php</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/php/" class="">php</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="">php</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8Clinux%E7%BB%95%E8%BF%87/" class="">php命令执行linux绕过</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/readflag/" class="">readflag</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/regexp%E7%9B%B2%E6%B3%A8/" class="">regexp盲注</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/session%E4%BC%AA%E9%80%A0/" class="">session伪造</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/" class="">堆叠注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5/" class="">字符型注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/" class="">报错注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%95%B4%E5%9E%8B%E6%B3%A8%E5%85%A5/" class="">整型注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/" class="">时间注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E7%9B%B2%E6%B3%A8/" class="">盲注</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/htaccess%E7%9A%84%E5%88%A9%E7%94%A8/" class="">Htaccess的利用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/md5%E7%A2%B0%E6%92%9E/" class="">Md5碰撞</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/%E4%BC%AA%E5%8D%8F%E8%AE%AE/" class="">伪协议</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/%E5%87%BD%E6%95%B0%E6%BC%8F%E6%B4%9E/" class="">函数漏洞</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="">文件上传</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" class="">文件包含</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dbfc22e2e7caa67fee4f381ec66fd790" class="toggle"  />
+    <label for="section-dbfc22e2e7caa67fee4f381ec66fd790" class="flex justify-between">
+      <a role="button" class="">python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/python/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="">pickle反序列化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/python/python-session%E4%BC%AA%E9%80%A0/" class="">python session伪造</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/python/ssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/" class="">SSTI模板注入</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-27bef856708365c3f954dc367d1bca66" class="toggle"  />
+    <label for="section-27bef856708365c3f954dc367d1bca66" class="flex justify-between">
+      <a role="button" class="">tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/tools/fake-mysql/" class="">fake-mysql</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-02af837b39c34c4496ee7c45850c4389" class="toggle"  />
+    <label for="section-02af837b39c34c4496ee7c45850c4389" class="flex justify-between">
+      <a role="button" class="">index</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>c语言作业23/10/10</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#编程题7">编程题7</a></li>
+        <li><a href="#编程题8">编程题8</a></li>
+        <li><a href="#编程题9">编程题9</a></li>
+        <li><a href="#编程题11">编程题11</a></li>
+        <li><a href="#编程题12">编程题12</a></li>
+        <li><a href="#编程题13">编程题13</a></li>
+        <li><a href="#编程题14">编程题14</a></li>
+        <li><a href="#编程题15">编程题15</a></li>
+        <li><a href="#编程题16">编程题16</a></li>
+        <li><a href="#编程题17">编程题17</a></li>
+        <li><a href="#编程题18">编程题18</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h2>
+    c语言作业23/10/10
+  </h2>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/svg/calendar.svg" class="book-icon " alt="" />
+    <span>October 23, 2023</span>
+  </div>
+
+
+
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/c/">C</a>
+  </div>
+  
+
+
+  <div class="book-post-content"><h3 id="编程题7">
+  编程题7
+  <a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%987">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;  </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> num, a, b, c, d;  
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;请输入一个四位数：&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">scanf</span>(<span style="color:#e6db74">&#34;%d&#34;</span>, <span style="color:#f92672">&amp;</span>num);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (num <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1000</span> <span style="color:#f92672">&amp;&amp;</span> num <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">9999</span>) {  
+</span></span><span style="display:flex;"><span>        a <span style="color:#f92672">=</span> num <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>;  
+</span></span><span style="display:flex;"><span>        b <span style="color:#f92672">=</span> num <span style="color:#f92672">/</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>;  
+</span></span><span style="display:flex;"><span>        c <span style="color:#f92672">=</span> num <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>;  
+</span></span><span style="display:flex;"><span>        d <span style="color:#f92672">=</span> num <span style="color:#f92672">/</span> <span style="color:#ae81ff">1000</span>;  
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;个位：%d,十位：%d,百位：%d,千位：%d&#34;</span>, a, c, b, d);  
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {  
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;重新输入&#34;</span>);  
+</span></span><span style="display:flex;"><span>    }  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h3 id="编程题8">
+  编程题8
+  <a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%988">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;  </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define PAI 3.1415926  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()  
+</span></span><span style="display:flex;"><span>{  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> r;  
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;请输入半径:&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">scanf</span>(<span style="color:#e6db74">&#34;%d&#34;</span>,<span style="color:#f92672">&amp;</span>r);  
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;圆的半径=%d, 圆的直径=%d, 圆的周长=%.2f&#34;</span>,  
+</span></span><span style="display:flex;"><span>        r,  
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>r,  
+</span></span><span style="display:flex;"><span>        PAI<span style="color:#f92672">*</span>r<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>  
+</span></span><span style="display:flex;"><span>        );  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;  
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="编程题9">
+  编程题9
+  <a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%989">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define PAI 3.1415926
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> r;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;请输入半径:&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">scanf</span>(<span style="color:#e6db74">&#34;%d&#34;</span>,<span style="color:#f92672">&amp;</span>r);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;半径=%d, 周长=%.2f, 面积=%.2f&#34;</span>,
+</span></span><span style="display:flex;"><span>        r,
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span> PAI<span style="color:#f92672">*</span>r,
+</span></span><span style="display:flex;"><span>        PAI<span style="color:#f92672">*</span>r<span style="color:#f92672">*</span>r
+</span></span><span style="display:flex;"><span>        );
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="编程题11">
+  编程题11
+  <a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%9811">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;math.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span>  <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span>  a<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,b<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>,c<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> p,s;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (a<span style="color:#f92672">+</span>b<span style="color:#f92672">&gt;</span>c <span style="color:#f92672">&amp;&amp;</span> a<span style="color:#f92672">+</span>c<span style="color:#f92672">&gt;</span>b <span style="color:#f92672">&amp;&amp;</span> b<span style="color:#f92672">+</span>c<span style="color:#f92672">&gt;</span>a)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        p<span style="color:#f92672">=</span>(a<span style="color:#f92672">+</span>b<span style="color:#f92672">+</span>c)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>        s<span style="color:#f92672">=</span> <span style="color:#a6e22e">sqrt</span> (p<span style="color:#f92672">*</span>(p<span style="color:#f92672">-</span>a)<span style="color:#f92672">*</span>(p<span style="color:#f92672">-</span>b)<span style="color:#f92672">*</span>(p<span style="color:#f92672">-</span>c));
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span> ( <span style="color:#e6db74">&#34;面积为%lf</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> , s);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>  <span style="color:#a6e22e">printf</span> ( <span style="color:#e6db74">&#34;无法构成三角形</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> );
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>  <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="编程题12">
+  编程题12
+  <a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%9812">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;math.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span>  <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> a,b;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">puts</span>(<span style="color:#e6db74">&#34;请输入两个整数&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">scanf</span>(<span style="color:#e6db74">&#34;%d,%d&#34;</span>,<span style="color:#f92672">&amp;</span>a,<span style="color:#f92672">&amp;</span>b);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;和=%d,差=%d,积=%d,商=%.2f,余数=%d&#34;</span>,
+</span></span><span style="display:flex;"><span>        a<span style="color:#f92672">+</span>b,
+</span></span><span style="display:flex;"><span>        a<span style="color:#f92672">-</span>b,
+</span></span><span style="display:flex;"><span>        a<span style="color:#f92672">*</span>b,
+</span></span><span style="display:flex;"><span>        a<span style="color:#f92672">/</span>(<span style="color:#66d9ef">float</span>)b,
+</span></span><span style="display:flex;"><span>        a<span style="color:#f92672">%</span>b
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="编程题13">
+  编程题13
+  <a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%9813">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;math.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define PAI 3.1415926
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">//圆面积
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define get_round_area(r) PAI * r * r
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">//圆周长
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define get_round_perimeter(r) 2 * PAI * r
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">//球体表面积
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define get_sphere_Sarea(r) 4 * PAI * r *4 * PAI*  r
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">//球体体积
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define get_sphere_volume(r) 4.0 / 3 * PAI * r * r * r
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">//圆柱体积
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define get_cylinder_vloume(r,h) get_round_area(r) * h
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> r,h;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;请输入圆的半径和圆柱的高</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">scanf</span>(<span style="color:#e6db74">&#34;%f,%f&#34;</span>,<span style="color:#f92672">&amp;</span>r,<span style="color:#f92672">&amp;</span>h);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;半径=%.2f，周长=%.2f，面积=%.2f，圆球表面积=%.2f，圆球体积=%.2f，圆柱体积=%.2f&#34;</span>,
+</span></span><span style="display:flex;"><span>        r,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">get_round_perimeter</span>(r),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">get_round_area</span>(r),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">get_sphere_Sarea</span>(r),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">get_sphere_volume</span>(r),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">get_cylinder_vloume</span>(r,h)
+</span></span><span style="display:flex;"><span>        );
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="编程题14">
+  编程题14
+  <a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%9814">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;  </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define PAI 3.1415926  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()  
+</span></span><span style="display:flex;"><span>{  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> r;  
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">puts</span>(<span style="color:#e6db74">&#34;请输入半径&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">scanf</span>(<span style="color:#e6db74">&#34;%d&#34;</span>,<span style="color:#f92672">&amp;</span>r);  
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;直径=%d, 周长=%.2f&#34;</span>,<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>r,PAI<span style="color:#f92672">*</span>r<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;  
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="编程题15">
+  编程题15
+  <a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%9815">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> a,b;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">puts</span>(<span style="color:#e6db74">&#34;请输入两个整数&#34;</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">scanf</span>(<span style="color:#e6db74">&#34;%d,%d&#34;</span>,<span style="color:#f92672">&amp;</span>a,<span style="color:#f92672">&amp;</span>b);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;a=%d, b=%d&#34;</span>,a,b);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="编程题16">
+  编程题16
+  <a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%9816">#</a>
+</h3>
+<p><img src="https://p.sda1.dev/13/ed13f1a0c9015ec868673b4623c40671/6489ECC1BEDFE767DA12392988C4570A.png" alt="" /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;math.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> r<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;面积=%.2f&#34;</span>,M_PI<span style="color:#f92672">*</span>r<span style="color:#f92672">*</span>r);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="编程题17">
+  编程题17
+  <a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%9817">#</a>
+</h3>
+<p><img src="https://p.sda1.dev/13/9711dff4426206b973a15bf6211f124f/9AC6CA37EA1594962B3A517D289D0382.png" alt="" /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;math.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> r<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;周长=%.2f&#34;</span>,M_PI<span style="color:#f92672">*</span>r<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="编程题18">
+  编程题18
+  <a class="anchor" href="#%e7%bc%96%e7%a8%8b%e9%a2%9818">#</a>
+</h3>
+<p><img src="https://p.sda1.dev/13/cb445e98520f3a3fee63653ea20290ee/2D955151D95CAB2CC6EB7E2A668EF86F.png" alt="" /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;math.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> r;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">puts</span>(<span style="color:#e6db74">&#34;请输入半径&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">scanf</span>(<span style="color:#e6db74">&#34;%d&#34;</span>,<span style="color:#f92672">&amp;</span>r);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;周长=%.2f,面积=%.2f&#34;</span>,M_PI<span style="color:#f92672">*</span>r<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>,M_PI<span style="color:#f92672">*</span>r<span style="color:#f92672">*</span>r);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#编程题7">编程题7</a></li>
+        <li><a href="#编程题8">编程题8</a></li>
+        <li><a href="#编程题9">编程题9</a></li>
+        <li><a href="#编程题11">编程题11</a></li>
+        <li><a href="#编程题12">编程题12</a></li>
+        <li><a href="#编程题13">编程题13</a></li>
+        <li><a href="#编程题14">编程题14</a></li>
+        <li><a href="#编程题15">编程题15</a></li>
+        <li><a href="#编程题16">编程题16</a></li>
+        <li><a href="#编程题17">编程题17</a></li>
+        <li><a href="#编程题18">编程题18</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

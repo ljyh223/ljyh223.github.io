@@ -1,132 +1,68 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>math on Alex lan</title><link>http://localhost:1313/docs/learm/math/</link><description>Recent content in math on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/docs/learm/math/index.xml" rel="self" type="application/rss+xml"/><item><title>公式测试</title><link>http://localhost:1313/docs/learm/math/%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/learm/math/%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/</guid><description>&lt;p>$$
-{x|x=2n,-2&amp;lt;n&amp;lt;6,n\neq0}
-$$&lt;/p></description></item><item><title>基本积分</title><link>http://localhost:1313/docs/learm/math/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/learm/math/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86/</guid><description>&lt;p>![[Pasted image 20240121093020.png]]
-![[Pasted image 20240121093034.png]]&lt;/p></description></item><item><title>导数</title><link>http://localhost:1313/docs/learm/math/%E5%AF%BC%E6%95%B0/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/learm/math/%E5%AF%BC%E6%95%B0/</guid><description>&lt;h2 id="导数真的帅">
- 导数真的帅
- &lt;a class="anchor" href="#%e5%af%bc%e6%95%b0%e7%9c%9f%e7%9a%84%e5%b8%85">#&lt;/a>
-&lt;/h2>
-&lt;p>测试题，求导&lt;/p>
-&lt;p>$$
-\ln(e^x+\sqrt{1+e^{2x}})'
-\\=
-\frac{1}{e^x+\sqrt{1+e^{2x}}} \cdot (e^x+\sqrt{1+e^{2x}})'
-$$&lt;/p>
-&lt;p>先求&lt;/p>
-&lt;p>$$
-(e^x+\sqrt{1+e^{2x}})'
-\=
-e^x+\frac{1}{2} \cdot \frac{1}{\sqrt{1+e^{2x}} } \cdot e^{2x} \cdot 2 \qquad //链式法则
-\=
-e^x+\frac{e^{2x}}{\sqrt{1+e^{2x}}}
-$$&lt;/p>
-&lt;p>化简&lt;/p>
-&lt;p>$$
-\frac{e^x+\frac{e^{2x}}{\sqrt{1+e^{2x}}}}{e^x+\sqrt{1+e^{2x}}}
-\\
-分子：e^x+\frac{e^{2x}}{\sqrt{1+e^{2x}}}=\frac{e^{2x} \cdot \sqrt{1+e^{2x}}+e^{2x}}{\sqrt{1+e^{2x}}}
-\\
-原式：=\frac{\frac{e^x \cdot \sqrt{1+e^{2x}}+e^{2x}}{\sqrt{1+e^{2x}}}}{e^x+\sqrt{1+e^{2x}}}
-\\=
-\frac{e^x \cdot \sqrt{1+e^{2x}}+e^{2x}}{(e^x+\sqrt{1+e^{2x}}) \cdot \sqrt{1+e^{2x}}}
-\\分子提取e^x：
-\frac{e^x( \sqrt{1+e^{2x}}+e^x)}{(e^x+\sqrt{1+e^{2x}}) \cdot \sqrt{1+e^{2x}}}
-\\上下约分：
-\frac{e^x}{\sqrt{1+e^{2x}}}
-$$&lt;/p>
-&lt;p>结果&lt;/p>
-&lt;p>$$
-\frac{e^x}{\sqrt{1+e^{2x}}}
-$$&lt;/p>
-&lt;p>$$
-\ln(e^x+\sqrt{1+e^{2x}})'
-$$&lt;/p></description></item><item><title>数列</title><link>http://localhost:1313/docs/learm/math/%E6%95%B0%E5%88%97/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/learm/math/%E6%95%B0%E5%88%97/</guid><description>&lt;h2 id="等差数列">
- 等差数列
- &lt;a class="anchor" href="#%e7%ad%89%e5%b7%ae%e6%95%b0%e5%88%97">#&lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>
-&lt;p>通项公式&lt;/p>
-&lt;p>$$
-A_n=A_1+(n-1)*d
-$$&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>求和公式&lt;/p>
-&lt;p>$$
-S_n=\frac{(A_1+A_{n-1})*n}{2}
-$$&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;h2 id="等比数列">
- 等比数列
- &lt;a class="anchor" href="#%e7%ad%89%e6%af%94%e6%95%b0%e5%88%97">#&lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>
-&lt;p>通项公式&lt;/p>
-&lt;p>$$
-A_n=A_1*q^{n-1}
-$$&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>求和公式&lt;/p>
-&lt;p>$$
-S_n=a_1\frac{1-q^n}{1-q}
-$$&lt;/p>
-&lt;/li>
-&lt;/ul></description></item><item><title>数学公式测试</title><link>http://localhost:1313/docs/learm/math/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/learm/math/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/</guid><description>&lt;p>$$
-\begin{aligned}
-\lim_{x\rightarrow 0} \frac {tanx -sinx} {x^3}
-\frac {sinx}{cosx} -sinx
-\\
-\frac {sinx}{cosx} - \frac {sin^2x}{sinx}
-\\
-\frac { sin^2x -cosx * sin^2x} {sinx * cosx}
-\\
-\frac {sinx(1-cosx)} {cosx}
-\\
-\frac {sinx(1-cosx)} {cosx * x^3}
-\\
-\frac {\frac{x^3}{x}}{cosx ~ x^3}
-\\
-\frac {x^3}{2} ~\frac{1}{cosx * x^3}
-\\
-\frac {1}{2cosx}
-\\&lt;/p>
-&lt;p>\lim_{x\rightarrow 0} \frac {tanx -sinx} {x^3}=\frac {1}{2}
-\end{aligned}&lt;/p>
-&lt;p>$$&lt;/p></description></item><item><title>泰勒公式</title><link>http://localhost:1313/docs/learm/math/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/learm/math/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F/</guid><description>&lt;p>常见泰勒公式，展就完了&lt;/p>
-&lt;p>$$
-\begin{aligned}
-e^x=1+x+\frac{1}{2!}x^2+\frac{1}{3!}x^3+o(x^3)
-\
-\\
-\ln(1+x)=x-\frac{1}{2}x^2+\frac{1}{3}x^3+o(x^3)
-\\
-\sin{x}=x-\frac{x^3}{3!}+o(x^3)
-\\
-\cos{x}=1-\frac{x^2}{2!}+\frac{x^4}{4!}+o(x^4)
-\
-\arcsin{x}=x+\frac{x^3}{3!}+o(x^3)
-\
-\tan{x}=x-\frac{x^3}{3}+o(x^3)
-\
-\arctan=x-\frac{x^3}{3}+o(x^3)
-\
-(1+x)^n=1+nx+\frac{n(n-1)}{2}x^2+o(x^2)
-\end{aligned}&lt;/p>
-&lt;p>$$&lt;/p>
-&lt;p> &lt;/p></description></item><item><title>等价无穷小</title><link>http://localhost:1313/docs/learm/math/%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/learm/math/%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/</guid><description>&lt;p>等价无穷小&lt;/p>
-&lt;p>&lt;img src="C:%5cUsers%5cjinchuan%5cOneDrive%5cnotes%5cmath%5cassets%5cimage-20230831082530335.png" alt="image-20230831082530335" />&lt;/p></description></item><item><title>鸡杂公式</title><link>http://localhost:1313/docs/learm/math/%E9%B8%A1%E6%9D%82%E5%85%AC%E5%BC%8F/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/learm/math/%E9%B8%A1%E6%9D%82%E5%85%AC%E5%BC%8F/</guid><description>&lt;h2 id="指数">
- 指数
- &lt;a class="anchor" href="#%e6%8c%87%e6%95%b0">#&lt;/a>
-&lt;/h2>
-&lt;p>$$
-\begin{aligned}&lt;/p>
-&lt;p>a^m=b , m=\log_{a}{b}
-\\
-a^{\log_a{b}}=b
-\\
-x^m=e^{\ln x^m}=e^{m\ln x}
-\end{aligned}
-$$&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>math on Alex lan</title>
+    <link>http://localhost:1313/docs/learm/math/</link>
+    <description>Recent content in math on Alex lan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/learm/math/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>公式测试</title>
+      <link>http://localhost:1313/docs/learm/math/%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/learm/math/%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/</guid>
+      <description>&lt;p&gt;$$&#xA;{x|x=2n,-2&amp;lt;n&amp;lt;6,n\neq0}&#xA;$$&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>基本积分</title>
+      <link>http://localhost:1313/docs/learm/math/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/learm/math/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86/</guid>
+      <description>&lt;p&gt;![[Pasted image 20240121093020.png]]&#xA;![[Pasted image 20240121093034.png]]&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>导数</title>
+      <link>http://localhost:1313/docs/learm/math/%E5%AF%BC%E6%95%B0/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/learm/math/%E5%AF%BC%E6%95%B0/</guid>
+      <description>&lt;h2 id=&#34;导数真的帅&#34;&gt;&#xD;&#xA;  导数真的帅&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e5%af%bc%e6%95%b0%e7%9c%9f%e7%9a%84%e5%b8%85&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;测试题，求导&lt;/p&gt;&#xA;&#xD;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://localhost:1313/katex/katex.min.css&#34; /&gt;&#xD;&#xA;&lt;script defer src=&#34;http://localhost:1313/katex/katex.min.js&#34;&gt;&lt;/script&gt;&#xD;&#xA;&lt;script defer src=&#34;http://localhost:1313/katex/auto-render.min.js&#34; onload=&#34;renderMathInElement(document.body);&#34;&gt;&lt;/script&gt;&lt;span&gt;&#xD;&#xA;  \[&#xA;f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi&#xA;\]&#xD;&#xA;&lt;/span&gt;&#xD;&#xA;&#xA;&lt;p&gt;$$&#xA;\ln(e^x+\sqrt{1+e^{2x}})&#39;&#xA;\\=&#xA;\frac{1}{e^x+\sqrt{1+e^{2x}}} \cdot (e^x+\sqrt{1+e^{2x}})&#39;&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;先求&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;(e^x+\sqrt{1+e^{2x}})&#39;&#xA;\=&#xA;e^x+\frac{1}{2} \cdot \frac{1}{\sqrt{1+e^{2x}} } \cdot e^{2x} \cdot 2 \qquad //链式法则&#xA;\=&#xA;e^x+\frac{e^{2x}}{\sqrt{1+e^{2x}}}&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;化简&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;\frac{e^x+\frac{e^{2x}}{\sqrt{1+e^{2x}}}}{e^x+\sqrt{1+e^{2x}}}&#xA;\\&#xA;分子：e^x+\frac{e^{2x}}{\sqrt{1+e^{2x}}}=\frac{e^{2x} \cdot \sqrt{1+e^{2x}}+e^{2x}}{\sqrt{1+e^{2x}}}&#xA;\\&#xA;原式：=\frac{\frac{e^x \cdot \sqrt{1+e^{2x}}+e^{2x}}{\sqrt{1+e^{2x}}}}{e^x+\sqrt{1+e^{2x}}}&#xA;\\=&#xA;\frac{e^x \cdot \sqrt{1+e^{2x}}+e^{2x}}{(e^x+\sqrt{1+e^{2x}}) \cdot \sqrt{1+e^{2x}}}&#xA;\\分子提取e^x：&#xA;\frac{e^x( \sqrt{1+e^{2x}}+e^x)}{(e^x+\sqrt{1+e^{2x}}) \cdot \sqrt{1+e^{2x}}}&#xA;\\上下约分：&#xA;\frac{e^x}{\sqrt{1+e^{2x}}}&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;结果&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;\frac{e^x}{\sqrt{1+e^{2x}}}&#xA;$$&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>数列</title>
+      <link>http://localhost:1313/docs/learm/math/%E6%95%B0%E5%88%97/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/learm/math/%E6%95%B0%E5%88%97/</guid>
+      <description>&lt;h2 id=&#34;等差数列&#34;&gt;&#xD;&#xA;  等差数列&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e7%ad%89%e5%b7%ae%e6%95%b0%e5%88%97&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;通项公式&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;A_n=A_1+(n-1)*d&#xA;$$&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;求和公式&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;S_n=\frac{(A_1+A_{n-1})*n}{2}&#xA;$$&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;等比数列&#34;&gt;&#xD;&#xA;  等比数列&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e7%ad%89%e6%af%94%e6%95%b0%e5%88%97&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;通项公式&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;A_n=A_1*q^{n-1}&#xA;$$&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;求和公式&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;S_n=a_1\frac{1-q^n}{1-q}&#xA;$$&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>数学公式测试</title>
+      <link>http://localhost:1313/docs/learm/math/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/learm/math/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/</guid>
+      <description>&lt;p&gt;$$&#xA;\begin{aligned}&#xA;\lim_{x\rightarrow 0} \frac {tanx -sinx} {x^3}&#xA;\frac {sinx}{cosx} -sinx&#xA;\\&#xA;\frac {sinx}{cosx} - \frac {sin^2x}{sinx}&#xA;\\&#xA;\frac { sin^2x -cosx * sin^2x} {sinx * cosx}&#xA;\\&#xA;\frac {sinx(1-cosx)} {cosx}&#xA;\\&#xA;\frac {sinx(1-cosx)} {cosx * x^3}&#xA;\\&#xA;\frac {\frac{x^3}{x}}{cosx ~ x^3}&#xA;\\&#xA;\frac {x^3}{2} ~\frac{1}{cosx * x^3}&#xA;\\&#xA;\frac {1}{2cosx}&#xA;\\&lt;/p&gt;&#xA;&lt;p&gt;\lim_{x\rightarrow 0}  \frac {tanx -sinx} {x^3}=\frac {1}{2}&#xA;\end{aligned}&lt;/p&gt;&#xA;&lt;p&gt;$$&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>泰勒公式</title>
+      <link>http://localhost:1313/docs/learm/math/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/learm/math/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F/</guid>
+      <description>&lt;p&gt;常见泰勒公式，展就完了&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;\begin{aligned}&#xA;e^x=1+x+\frac{1}{2!}x^2+\frac{1}{3!}x^3+o(x^3)&#xA;\&#xA;\\&#xA;\ln(1+x)=x-\frac{1}{2}x^2+\frac{1}{3}x^3+o(x^3)&#xA;\\&#xA;\sin{x}=x-\frac{x^3}{3!}+o(x^3)&#xA;\\&#xA;\cos{x}=1-\frac{x^2}{2!}+\frac{x^4}{4!}+o(x^4)&#xA;\&#xA;\arcsin{x}=x+\frac{x^3}{3!}+o(x^3)&#xA;\&#xA;\tan{x}=x-\frac{x^3}{3}+o(x^3)&#xA;\&#xA;\arctan=x-\frac{x^3}{3}+o(x^3)&#xA;\&#xA;(1+x)^n=1+nx+\frac{n(n-1)}{2}x^2+o(x^2)&#xA;\end{aligned}&lt;/p&gt;&#xA;&lt;p&gt;$$&lt;/p&gt;&#xA;&lt;p&gt; &lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>等价无穷小</title>
+      <link>http://localhost:1313/docs/learm/math/%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/learm/math/%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/</guid>
+      <description>&lt;p&gt;等价无穷小&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cjinchuan%5cOneDrive%5cnotes%5cmath%5cassets%5cimage-20230831082530335.png&#34; alt=&#34;image-20230831082530335&#34; /&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>鸡杂公式</title>
+      <link>http://localhost:1313/docs/learm/math/%E9%B8%A1%E6%9D%82%E5%85%AC%E5%BC%8F/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/learm/math/%E9%B8%A1%E6%9D%82%E5%85%AC%E5%BC%8F/</guid>
+      <description>&lt;h2 id=&#34;指数&#34;&gt;&#xD;&#xA;  指数&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e6%8c%87%e6%95%b0&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;$$&#xA;\begin{aligned}&lt;/p&gt;&#xA;&lt;p&gt;a^m=b , m=\log_{a}{b}&#xA;\\&#xA;a^{\log_a{b}}=b&#xA;\\&#xA;x^m=e^{\ln x^m}=e^{m\ln x}&#xA;\end{aligned}&#xA;$$&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

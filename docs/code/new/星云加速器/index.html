@@ -1,4 +1,9 @@
-<!doctype html><html lang=en dir=ltr><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content='一个加速器，新用户免费送1一个小时，注册有滑块，秒了，其他没啥,都是固定，或者uuid秒了，不用特地改
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="一个加速器，新用户免费送1一个小时，注册有滑块，秒了，其他没啥,都是固定，或者uuid秒了，不用特地改
 import requests,time,base64
 import cv2
 import numpy as np
@@ -31,9 +36,9 @@ def simulate_slider_trajectory(start_pos, end_pos, steps, duration):
     dy = (end_y - start_y) / steps
 
     trajectory = []
-    for i in range(steps + 1):  # 包含起点和终点
-        x = start_x + i * dx
-        y = start_y + i * dy
+    for i in range(steps &#43; 1):  # 包含起点和终点
+        x = start_x &#43; i * dx
+        y = start_y &#43; i * dy
         t = i * time_interval
         trajectory.append({&#39;x&#39;:round(x), &#39;y&#39;:round(y),&#39;t&#39;: round(t*1000)})
 
@@ -43,16 +48,16 @@ def simulate_slider_trajectory(start_pos, end_pos, steps, duration):
 
 
 def _tran_canny(image):
-    """消除噪声"""
+    &#34;&#34;&#34;消除噪声&#34;&#34;&#34;
     image = cv2.GaussianBlur(image, (3, 3), 0)
     return cv2.Canny(image, 50, 150)
 
 def detect_displacement():
-    """detect displacement"""
+    &#34;&#34;&#34;detect displacement&#34;&#34;&#34;
     # # 参数0是灰度模式
-    # "./img/b_img.png", "./img/s_img.png"
-    image = cv2.imread("./img/s_img.png", 0)
-    template = cv2.imread("./img/b_img.png", 0)
+    # &#34;./img/b_img.png&#34;, &#34;./img/s_img.png&#34;
+    image = cv2.imread(&#34;./img/s_img.png&#34;, 0)
+    template = cv2.imread(&#34;./img/b_img.png&#34;, 0)
 
     # 寻找最佳匹配
     res = cv2.matchTemplate(_tran_canny(image), _tran_canny(template), cv2.TM_CCOEFF_NORMED)
@@ -71,13 +76,13 @@ def login():
 def verify(sid,x):
     track =track = simulate_slider_trajectory([0,0], [x,20], 80, 1)
     url=&#39;http://api.xyunjiasu.com/captchas/slider/check&#39;
-    data={"header":{"channelCode":"gw","channelName":"gw","proxyNetBarId":"","appId":3,"versionCode":1,"versionName":"1.0.0","apiVersion":"1.0","msgId":"a9a4ba53-1e31-48ba-8ebc-3108409e1f19","token":"","dk":"ac2d9f0925b03b2fa47b934c8b4bd3b5","sendTime":int(time.time()*1000),"deviceType":3,"imei":"865304048714552","oaid":"ff3fcf86-b7ff-e639-e5fe-ffffeda7a281","uuid":"undefined","idfa":"","openudid":"","deviceModel":"","systemType":"","isConfirm":0,"webVersionName":"0.0.0","distinctId":""},"body":{"imageCaptchaTrack":{"bgImageWidth":x+110,"bgImageHeight":205,"sliderImageWidth":63,"sliderImageHeight":205,"startSlidingTime":"2024-02-19T12:19:54.471Z","entSlidingTime":"2024-02-19T12:19:55.395Z","trackList":track,"id":sid}}}
+    data={&#34;header&#34;:{&#34;channelCode&#34;:&#34;gw&#34;,&#34;channelName&#34;:&#34;gw&#34;,&#34;proxyNetBarId&#34;:&#34;&#34;,&#34;appId&#34;:3,&#34;versionCode&#34;:1,&#34;versionName&#34;:&#34;1.0.0&#34;,&#34;apiVersion&#34;:&#34;1.0&#34;,&#34;msgId&#34;:&#34;a9a4ba53-1e31-48ba-8ebc-3108409e1f19&#34;,&#34;token&#34;:&#34;&#34;,&#34;dk&#34;:&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;,&#34;sendTime&#34;:int(time.time()*1000),&#34;deviceType&#34;:3,&#34;imei&#34;:&#34;865304048714552&#34;,&#34;oaid&#34;:&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;,&#34;uuid&#34;:&#34;undefined&#34;,&#34;idfa&#34;:&#34;&#34;,&#34;openudid&#34;:&#34;&#34;,&#34;deviceModel&#34;:&#34;&#34;,&#34;systemType&#34;:&#34;&#34;,&#34;isConfirm&#34;:0,&#34;webVersionName&#34;:&#34;0.0.0&#34;,&#34;distinctId&#34;:&#34;&#34;},&#34;body&#34;:{&#34;imageCaptchaTrack&#34;:{&#34;bgImageWidth&#34;:x&#43;110,&#34;bgImageHeight&#34;:205,&#34;sliderImageWidth&#34;:63,&#34;sliderImageHeight&#34;:205,&#34;startSlidingTime&#34;:&#34;2024-02-19T12:19:54.471Z&#34;,&#34;entSlidingTime&#34;:&#34;2024-02-19T12:19:55.395Z&#34;,&#34;trackList&#34;:track,&#34;id&#34;:sid}}}
     
     result=requests.post(url,params={&#39;id&#39;:sid},json=data).json()
     print(result)
 def sms(sid,phone):
     url=&#39;http://api.xyunjiasu.com/sendMessage/sendSms&#39;
-    data={"header":{"channelCode":"gw","channelName":"gw","proxyNetBarId":"","appId":3,"versionCode":1,"versionName":"1.0.0","apiVersion":"1.0","msgId":"11d82337-ecfb-485f-8c0d-08da1b86d9cc","token":"","dk":"ac2d9f0925b03b2fa47b934c8b4bd3b5","sendTime":int(time.time()*1000),"deviceType":3,"imei":"865304048714554","oaid":"ff3fcf86-b7ff-e639-e5fe-ffffeda7a281","uuid":"undefined","idfa":"","openudid":"","deviceModel":"","systemType":"","isConfirm":0,"webVersionName":"0.0.0","distinctId":""},"body":{"account":phone,"codeType":1,"sliderCaptchaId":sid}}
+    data={&#34;header&#34;:{&#34;channelCode&#34;:&#34;gw&#34;,&#34;channelName&#34;:&#34;gw&#34;,&#34;proxyNetBarId&#34;:&#34;&#34;,&#34;appId&#34;:3,&#34;versionCode&#34;:1,&#34;versionName&#34;:&#34;1.0.0&#34;,&#34;apiVersion&#34;:&#34;1.0&#34;,&#34;msgId&#34;:&#34;11d82337-ecfb-485f-8c0d-08da1b86d9cc&#34;,&#34;token&#34;:&#34;&#34;,&#34;dk&#34;:&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;,&#34;sendTime&#34;:int(time.time()*1000),&#34;deviceType&#34;:3,&#34;imei&#34;:&#34;865304048714554&#34;,&#34;oaid&#34;:&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;,&#34;uuid&#34;:&#34;undefined&#34;,&#34;idfa&#34;:&#34;&#34;,&#34;openudid&#34;:&#34;&#34;,&#34;deviceModel&#34;:&#34;&#34;,&#34;systemType&#34;:&#34;&#34;,&#34;isConfirm&#34;:0,&#34;webVersionName&#34;:&#34;0.0.0&#34;,&#34;distinctId&#34;:&#34;&#34;},&#34;body&#34;:{&#34;account&#34;:phone,&#34;codeType&#34;:1,&#34;sliderCaptchaId&#34;:sid}}
 
     result=requests.post(url,json=data).json()
     print(result)
@@ -87,7 +92,7 @@ def main():
     sid=gen()
     x=detect_displacement()
     verify(sid,x)
-    sms(sid,"17628828009")
+    sms(sid,&#34;17628828009&#34;)
 
 
 
@@ -100,148 +105,2095 @@ http://api.xyunjiasu.com/captchas/slider/gen
 
 http://api.xyunjiasu.com/captchas/slider/check?id=9e6c216f4ee74b6f8e6a239a38bd507d
 
-{"header":{"channelCode":"gw","channelName":"gw","proxyNetBarId":"","appId":3,"versionCode":1,"versionName":"1.0.0","apiVersion":"1.0","msgId":"a9a4ba53-1e31-48ba-8ebc-3108409e1f19","token":"","dk":"ac2d9f0925b03b2fa47b934c8b4bd3b5","sendTime":1708345195396,"deviceType":3,"imei":"865304048714554","oaid":"ff3fcf86-b7ff-e639-e5fe-ffffeda7a281","uuid":"undefined","idfa":"","openudid":"","deviceModel":"","systemType":"","isConfirm":0,"webVersionName":"0.0.0","distinctId":""},"body":{"imageCaptchaTrack":{"bgImageWidth":336,"bgImageHeight":205,"sliderImageWidth":63,"sliderImageHeight":205,"startSlidingTime":"2024-02-19T12:19:54.471Z","entSlidingTime":"2024-02-19T12:19:55.395Z","trackList":[{"x":1,"y":1,"t":8},{"x":2,"y":1,"t":14},{"x":3,"y":1,"t":21},{"x":4,"y":1,"t":27},{"x":5,"y":1,"t":32},{"x":7,"y":1,"t":38},{"x":8,"y":1,"t":45},{"x":9,"y":2,"t":51},{"x":12,"y":2,"t":57},{"x":13,"y":3,"t":63},{"x":16,"y":3,"t":69},{"x":19,"y":3,"t":75},{"x":20,"y":3,"t":81},{"x":24,"y":3,"t":88},{"x":27,"y":4,"t":93},{"x":29,"y":4,"t":99},{"x":32,"y":4,"t":105},{"x":35,"y":4,"t":112},{"x":37,"y":4,"t":117},{"x":42,"y":5,"t":124},{"x":47,"y":5,"t":130},{"x":52,"y":5,"t":136},{"x":57,"y":5,"t":142},{"x":63,"y":5,"t":148},{"x":68,"y":6,"t":153},{"x":75,"y":7,"t":159},{"x":80,"y":7,"t":166},{"x":85,"y":7,"t":172},{"x":91,"y":8,"t":178},{"x":98,"y":8,"t":185},{"x":101,"y":9,"t":190},{"x":109,"y":9,"t":196},{"x":116,"y":9,"t":202},{"x":122,"y":9,"t":208},{"x":131,"y":9,"t":215},{"x":135,"y":10,"t":220},{"x":141,"y":10,"t":226},{"x":147,"y":11,"t":233},{"x":151,"y":11,"t":239},{"x":154,"y":11,"t":245},{"x":157,"y":11,"t":250},{"x":160,"y":11,"t":257},{"x":163,"y":11,"t":263},{"x":165,"y":11,"t":269},{"x":169,"y":11,"t":276},{"x":171,"y":11,"t":281},{"x":175,"y":12,"t":287},{"x":179,"y":12,"t":293},{"x":184,"y":12,"t":299},{"x":189,"y":12,"t":305},{"x":194,"y":12,"t":311},{"x":197,"y":12,"t":317},{"x":203,"y":13,"t":324},{"x":206,"y":13,"t":329},{"x":210,"y":13,"t":336},{"x":213,"y":13,"t":341},{"x":215,"y":13,"t":347},{"x":217,"y":13,"t":354},{"x":217,"y":13,"t":360},{"x":218,"y":13,"t":366},{"x":219,"y":13,"t":372},{"x":219,"y":13,"t":543},{"x":220,"y":13,"t":548},{"x":221,"y":13,"t":555},{"x":222,"y":13,"t":560},{"x":223,"y":14,"t":566},{"x":225,"y":15,"t":572},{"x":225,"y":15,"t":578},{"x":227,"y":15,"t":584},{"x":227,"y":15,"t":590},{"x":228,"y":15,"t":597},{"x":229,"y":15,"t":608},{"x":229,"y":16,"t":614},{"x":230,"y":16,"t":626},{"x":231,"y":16,"t":651},{"x":231,"y":17,"t":656},{"x":231,"y":17,"t":663},{"x":232,"y":17,"t":669},{"x":232,"y":17,"t":688}],"id":"9e6c216f4ee74b6f8e6a239a38bd507d"}}}
+{&#34;header&#34;:{&#34;channelCode&#34;:&#34;gw&#34;,&#34;channelName&#34;:&#34;gw&#34;,&#34;proxyNetBarId&#34;:&#34;&#34;,&#34;appId&#34;:3,&#34;versionCode&#34;:1,&#34;versionName&#34;:&#34;1.0.0&#34;,&#34;apiVersion&#34;:&#34;1.0&#34;,&#34;msgId&#34;:&#34;a9a4ba53-1e31-48ba-8ebc-3108409e1f19&#34;,&#34;token&#34;:&#34;&#34;,&#34;dk&#34;:&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;,&#34;sendTime&#34;:1708345195396,&#34;deviceType&#34;:3,&#34;imei&#34;:&#34;865304048714554&#34;,&#34;oaid&#34;:&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;,&#34;uuid&#34;:&#34;undefined&#34;,&#34;idfa&#34;:&#34;&#34;,&#34;openudid&#34;:&#34;&#34;,&#34;deviceModel&#34;:&#34;&#34;,&#34;systemType&#34;:&#34;&#34;,&#34;isConfirm&#34;:0,&#34;webVersionName&#34;:&#34;0.0.0&#34;,&#34;distinctId&#34;:&#34;&#34;},&#34;body&#34;:{&#34;imageCaptchaTrack&#34;:{&#34;bgImageWidth&#34;:336,&#34;bgImageHeight&#34;:205,&#34;sliderImageWidth&#34;:63,&#34;sliderImageHeight&#34;:205,&#34;startSlidingTime&#34;:&#34;2024-02-19T12:19:54.471Z&#34;,&#34;entSlidingTime&#34;:&#34;2024-02-19T12:19:55.395Z&#34;,&#34;trackList&#34;:[{&#34;x&#34;:1,&#34;y&#34;:1,&#34;t&#34;:8},{&#34;x&#34;:2,&#34;y&#34;:1,&#34;t&#34;:14},{&#34;x&#34;:3,&#34;y&#34;:1,&#34;t&#34;:21},{&#34;x&#34;:4,&#34;y&#34;:1,&#34;t&#34;:27},{&#34;x&#34;:5,&#34;y&#34;:1,&#34;t&#34;:32},{&#34;x&#34;:7,&#34;y&#34;:1,&#34;t&#34;:38},{&#34;x&#34;:8,&#34;y&#34;:1,&#34;t&#34;:45},{&#34;x&#34;:9,&#34;y&#34;:2,&#34;t&#34;:51},{&#34;x&#34;:12,&#34;y&#34;:2,&#34;t&#34;:57},{&#34;x&#34;:13,&#34;y&#34;:3,&#34;t&#34;:63},{&#34;x&#34;:16,&#34;y&#34;:3,&#34;t&#34;:69},{&#34;x&#34;:19,&#34;y&#34;:3,&#34;t&#34;:75},{&#34;x&#34;:20,&#34;y&#34;:3,&#34;t&#34;:81},{&#34;x&#34;:24,&#34;y&#34;:3,&#34;t&#34;:88},{&#34;x&#34;:27,&#34;y&#34;:4,&#34;t&#34;:93},{&#34;x&#34;:29,&#34;y&#34;:4,&#34;t&#34;:99},{&#34;x&#34;:32,&#34;y&#34;:4,&#34;t&#34;:105},{&#34;x&#34;:35,&#34;y&#34;:4,&#34;t&#34;:112},{&#34;x&#34;:37,&#34;y&#34;:4,&#34;t&#34;:117},{&#34;x&#34;:42,&#34;y&#34;:5,&#34;t&#34;:124},{&#34;x&#34;:47,&#34;y&#34;:5,&#34;t&#34;:130},{&#34;x&#34;:52,&#34;y&#34;:5,&#34;t&#34;:136},{&#34;x&#34;:57,&#34;y&#34;:5,&#34;t&#34;:142},{&#34;x&#34;:63,&#34;y&#34;:5,&#34;t&#34;:148},{&#34;x&#34;:68,&#34;y&#34;:6,&#34;t&#34;:153},{&#34;x&#34;:75,&#34;y&#34;:7,&#34;t&#34;:159},{&#34;x&#34;:80,&#34;y&#34;:7,&#34;t&#34;:166},{&#34;x&#34;:85,&#34;y&#34;:7,&#34;t&#34;:172},{&#34;x&#34;:91,&#34;y&#34;:8,&#34;t&#34;:178},{&#34;x&#34;:98,&#34;y&#34;:8,&#34;t&#34;:185},{&#34;x&#34;:101,&#34;y&#34;:9,&#34;t&#34;:190},{&#34;x&#34;:109,&#34;y&#34;:9,&#34;t&#34;:196},{&#34;x&#34;:116,&#34;y&#34;:9,&#34;t&#34;:202},{&#34;x&#34;:122,&#34;y&#34;:9,&#34;t&#34;:208},{&#34;x&#34;:131,&#34;y&#34;:9,&#34;t&#34;:215},{&#34;x&#34;:135,&#34;y&#34;:10,&#34;t&#34;:220},{&#34;x&#34;:141,&#34;y&#34;:10,&#34;t&#34;:226},{&#34;x&#34;:147,&#34;y&#34;:11,&#34;t&#34;:233},{&#34;x&#34;:151,&#34;y&#34;:11,&#34;t&#34;:239},{&#34;x&#34;:154,&#34;y&#34;:11,&#34;t&#34;:245},{&#34;x&#34;:157,&#34;y&#34;:11,&#34;t&#34;:250},{&#34;x&#34;:160,&#34;y&#34;:11,&#34;t&#34;:257},{&#34;x&#34;:163,&#34;y&#34;:11,&#34;t&#34;:263},{&#34;x&#34;:165,&#34;y&#34;:11,&#34;t&#34;:269},{&#34;x&#34;:169,&#34;y&#34;:11,&#34;t&#34;:276},{&#34;x&#34;:171,&#34;y&#34;:11,&#34;t&#34;:281},{&#34;x&#34;:175,&#34;y&#34;:12,&#34;t&#34;:287},{&#34;x&#34;:179,&#34;y&#34;:12,&#34;t&#34;:293},{&#34;x&#34;:184,&#34;y&#34;:12,&#34;t&#34;:299},{&#34;x&#34;:189,&#34;y&#34;:12,&#34;t&#34;:305},{&#34;x&#34;:194,&#34;y&#34;:12,&#34;t&#34;:311},{&#34;x&#34;:197,&#34;y&#34;:12,&#34;t&#34;:317},{&#34;x&#34;:203,&#34;y&#34;:13,&#34;t&#34;:324},{&#34;x&#34;:206,&#34;y&#34;:13,&#34;t&#34;:329},{&#34;x&#34;:210,&#34;y&#34;:13,&#34;t&#34;:336},{&#34;x&#34;:213,&#34;y&#34;:13,&#34;t&#34;:341},{&#34;x&#34;:215,&#34;y&#34;:13,&#34;t&#34;:347},{&#34;x&#34;:217,&#34;y&#34;:13,&#34;t&#34;:354},{&#34;x&#34;:217,&#34;y&#34;:13,&#34;t&#34;:360},{&#34;x&#34;:218,&#34;y&#34;:13,&#34;t&#34;:366},{&#34;x&#34;:219,&#34;y&#34;:13,&#34;t&#34;:372},{&#34;x&#34;:219,&#34;y&#34;:13,&#34;t&#34;:543},{&#34;x&#34;:220,&#34;y&#34;:13,&#34;t&#34;:548},{&#34;x&#34;:221,&#34;y&#34;:13,&#34;t&#34;:555},{&#34;x&#34;:222,&#34;y&#34;:13,&#34;t&#34;:560},{&#34;x&#34;:223,&#34;y&#34;:14,&#34;t&#34;:566},{&#34;x&#34;:225,&#34;y&#34;:15,&#34;t&#34;:572},{&#34;x&#34;:225,&#34;y&#34;:15,&#34;t&#34;:578},{&#34;x&#34;:227,&#34;y&#34;:15,&#34;t&#34;:584},{&#34;x&#34;:227,&#34;y&#34;:15,&#34;t&#34;:590},{&#34;x&#34;:228,&#34;y&#34;:15,&#34;t&#34;:597},{&#34;x&#34;:229,&#34;y&#34;:15,&#34;t&#34;:608},{&#34;x&#34;:229,&#34;y&#34;:16,&#34;t&#34;:614},{&#34;x&#34;:230,&#34;y&#34;:16,&#34;t&#34;:626},{&#34;x&#34;:231,&#34;y&#34;:16,&#34;t&#34;:651},{&#34;x&#34;:231,&#34;y&#34;:17,&#34;t&#34;:656},{&#34;x&#34;:231,&#34;y&#34;:17,&#34;t&#34;:663},{&#34;x&#34;:232,&#34;y&#34;:17,&#34;t&#34;:669},{&#34;x&#34;:232,&#34;y&#34;:17,&#34;t&#34;:688}],&#34;id&#34;:&#34;9e6c216f4ee74b6f8e6a239a38bd507d&#34;}}}
 
 
 http://api.xyunjiasu.com/sendMessage/sendSms
 
-{"header":{"channelCode":"gw","channelName":"gw","proxyNetBarId":"","appId":3,"versionCode":1,"versionName":"1.0.0","apiVersion":"1.0","msgId":"11d82337-ecfb-485f-8c0d-08da1b86d9cc","token":"","dk":"ac2d9f0925b03b2fa47b934c8b4bd3b5","sendTime":1708345195496,"deviceType":3,"imei":"865304048714554","oaid":"ff3fcf86-b7ff-e639-e5fe-ffffeda7a281","uuid":"undefined","idfa":"","openudid":"","deviceModel":"","systemType":"","isConfirm":0,"webVersionName":"0.0.0","distinctId":""},"body":{"account":"17628818007","codeType":1,"sliderCaptchaId":"9e6c216f4ee74b6f8e6a239a38bd507d"}}
+{&#34;header&#34;:{&#34;channelCode&#34;:&#34;gw&#34;,&#34;channelName&#34;:&#34;gw&#34;,&#34;proxyNetBarId&#34;:&#34;&#34;,&#34;appId&#34;:3,&#34;versionCode&#34;:1,&#34;versionName&#34;:&#34;1.0.0&#34;,&#34;apiVersion&#34;:&#34;1.0&#34;,&#34;msgId&#34;:&#34;11d82337-ecfb-485f-8c0d-08da1b86d9cc&#34;,&#34;token&#34;:&#34;&#34;,&#34;dk&#34;:&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;,&#34;sendTime&#34;:1708345195496,&#34;deviceType&#34;:3,&#34;imei&#34;:&#34;865304048714554&#34;,&#34;oaid&#34;:&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;,&#34;uuid&#34;:&#34;undefined&#34;,&#34;idfa&#34;:&#34;&#34;,&#34;openudid&#34;:&#34;&#34;,&#34;deviceModel&#34;:&#34;&#34;,&#34;systemType&#34;:&#34;&#34;,&#34;isConfirm&#34;:0,&#34;webVersionName&#34;:&#34;0.0.0&#34;,&#34;distinctId&#34;:&#34;&#34;},&#34;body&#34;:{&#34;account&#34;:&#34;17628818007&#34;,&#34;codeType&#34;:1,&#34;sliderCaptchaId&#34;:&#34;9e6c216f4ee74b6f8e6a239a38bd507d&#34;}}
 
 http://api.xyunjiasu.com/user/login
 
-{"header":{"channelCode":"gw","channelName":"gw","proxyNetBarId":"","appId":3,"versionCode":1,"versionName":"1.0.0","apiVersion":"1.0","msgId":"4ec87158-0984-4976-a3f7-44819fc02cea","token":"","dk":"ac2d9f0925b03b2fa47b934c8b4bd3b5","sendTime":1708345283287,"deviceType":3,"imei":"865304048714554","oaid":"ff3fcf86-b7ff-e639-e5fe-ffffeda7a281","uuid":"undefined","idfa":"","openudid":"","deviceModel":"","systemType":"","isConfirm":0,"webVersionName":"0.0.0","distinctId":""},"body":{"account":"17628818007","yzm":"3005","loginType":1,"codeType":1,"autoLogin":true}}
-'><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://localhost:1313/docs/code/new/%E6%98%9F%E4%BA%91%E5%8A%A0%E9%80%9F%E5%99%A8/"><meta property="og:site_name" content="Alex lan"><meta property="og:title" content="Alex lan"><meta property="og:description" content='一个加速器，新用户免费送1一个小时，注册有滑块，秒了，其他没啥,都是固定，或者uuid秒了，不用特地改
-import requests,time,base64 import cv2 import numpy as np def gen(): url=&#39;http://api.xyunjiasu.com/captchas/slider/gen&#39; result=requests.get(url).json() b_img=result[&#39;body&#39;][&#39;captchaResponse&#39;][&#39;captcha&#39;][&#39;backgroundImage&#39;].split(&#39;,&#39;)[1] s_img=result[&#39;body&#39;][&#39;captchaResponse&#39;][&#39;captcha&#39;][&#39;sliderImage&#39;].split(&#39;,&#39;)[1] sid=result[&#39;body&#39;][&#39;captchaResponse&#39;][&#39;id&#39;] with open(&#39;./img/b_img.png&#39;,&#39;wb&#39;) as f: f.write(base64.b64decode(b_img)) with open(&#39;./img/s_img.png&#39;,&#39;wb&#39;) as f: f.write(base64.b64decode(s_img)) return sid def simulate_slider_trajectory(start_pos, end_pos, steps, duration): # 起始和结束坐标 start_x, start_y = start_pos end_x, end_y = end_pos # 总步数和每一步对应的时间间隔 time_interval = duration / steps # 计算每次移动的距离 dx = (end_x - start_x) / steps dy = (end_y - start_y) / steps trajectory = [] for i in range(steps + 1): # 包含起点和终点 x = start_x + i * dx y = start_y + i * dy t = i * time_interval trajectory.append({&#39;x&#39;:round(x), &#39;y&#39;:round(y),&#39;t&#39;: round(t*1000)}) return trajectory def _tran_canny(image): """消除噪声""" image = cv2.GaussianBlur(image, (3, 3), 0) return cv2.Canny(image, 50, 150) def detect_displacement(): """detect displacement""" # # 参数0是灰度模式 # "./img/b_img.png", "./img/s_img.png" image = cv2.imread("./img/s_img.png", 0) template = cv2.imread("./img/b_img.png", 0) # 寻找最佳匹配 res = cv2.matchTemplate(_tran_canny(image), _tran_canny(template), cv2.TM_CCOEFF_NORMED) # 最小值，最大值，并得到最小值, 最大值的索引 min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res) top_left = max_loc[0] # 横坐标 return top_left def login(): pass def verify(sid,x): track =track = simulate_slider_trajectory([0,0], [x,20], 80, 1) url=&#39;http://api.xyunjiasu.com/captchas/slider/check&#39; data={"header":{"channelCode":"gw","channelName":"gw","proxyNetBarId":"","appId":3,"versionCode":1,"versionName":"1.0.0","apiVersion":"1.0","msgId":"a9a4ba53-1e31-48ba-8ebc-3108409e1f19","token":"","dk":"ac2d9f0925b03b2fa47b934c8b4bd3b5","sendTime":int(time.time()*1000),"deviceType":3,"imei":"865304048714552","oaid":"ff3fcf86-b7ff-e639-e5fe-ffffeda7a281","uuid":"undefined","idfa":"","openudid":"","deviceModel":"","systemType":"","isConfirm":0,"webVersionName":"0.0.0","distinctId":""},"body":{"imageCaptchaTrack":{"bgImageWidth":x+110,"bgImageHeight":205,"sliderImageWidth":63,"sliderImageHeight":205,"startSlidingTime":"2024-02-19T12:19:54.471Z","entSlidingTime":"2024-02-19T12:19:55.395Z","trackList":track,"id":sid}}} result=requests.post(url,params={&#39;id&#39;:sid},json=data).json() print(result) def sms(sid,phone): url=&#39;http://api.xyunjiasu.com/sendMessage/sendSms&#39; data={"header":{"channelCode":"gw","channelName":"gw","proxyNetBarId":"","appId":3,"versionCode":1,"versionName":"1.0.0","apiVersion":"1.0","msgId":"11d82337-ecfb-485f-8c0d-08da1b86d9cc","token":"","dk":"ac2d9f0925b03b2fa47b934c8b4bd3b5","sendTime":int(time.time()*1000),"deviceType":3,"imei":"865304048714554","oaid":"ff3fcf86-b7ff-e639-e5fe-ffffeda7a281","uuid":"undefined","idfa":"","openudid":"","deviceModel":"","systemType":"","isConfirm":0,"webVersionName":"0.0.0","distinctId":""},"body":{"account":phone,"codeType":1,"sliderCaptchaId":sid}} result=requests.post(url,json=data).json() print(result) def main(): sid=gen() x=detect_displacement() verify(sid,x) sms(sid,"17628828009") for i in range(10): main() http://api.xyunjiasu.com/captchas/slider/gen http://api.xyunjiasu.com/captchas/slider/check?id=9e6c216f4ee74b6f8e6a239a38bd507d {"header":{"channelCode":"gw","channelName":"gw","proxyNetBarId":"","appId":3,"versionCode":1,"versionName":"1.0.0","apiVersion":"1.0","msgId":"a9a4ba53-1e31-48ba-8ebc-3108409e1f19","token":"","dk":"ac2d9f0925b03b2fa47b934c8b4bd3b5","sendTime":1708345195396,"deviceType":3,"imei":"865304048714554","oaid":"ff3fcf86-b7ff-e639-e5fe-ffffeda7a281","uuid":"undefined","idfa":"","openudid":"","deviceModel":"","systemType":"","isConfirm":0,"webVersionName":"0.0.0","distinctId":""},"body":{"imageCaptchaTrack":{"bgImageWidth":336,"bgImageHeight":205,"sliderImageWidth":63,"sliderImageHeight":205,"startSlidingTime":"2024-02-19T12:19:54.471Z","entSlidingTime":"2024-02-19T12:19:55.395Z","trackList":[{"x":1,"y":1,"t":8},{"x":2,"y":1,"t":14},{"x":3,"y":1,"t":21},{"x":4,"y":1,"t":27},{"x":5,"y":1,"t":32},{"x":7,"y":1,"t":38},{"x":8,"y":1,"t":45},{"x":9,"y":2,"t":51},{"x":12,"y":2,"t":57},{"x":13,"y":3,"t":63},{"x":16,"y":3,"t":69},{"x":19,"y":3,"t":75},{"x":20,"y":3,"t":81},{"x":24,"y":3,"t":88},{"x":27,"y":4,"t":93},{"x":29,"y":4,"t":99},{"x":32,"y":4,"t":105},{"x":35,"y":4,"t":112},{"x":37,"y":4,"t":117},{"x":42,"y":5,"t":124},{"x":47,"y":5,"t":130},{"x":52,"y":5,"t":136},{"x":57,"y":5,"t":142},{"x":63,"y":5,"t":148},{"x":68,"y":6,"t":153},{"x":75,"y":7,"t":159},{"x":80,"y":7,"t":166},{"x":85,"y":7,"t":172},{"x":91,"y":8,"t":178},{"x":98,"y":8,"t":185},{"x":101,"y":9,"t":190},{"x":109,"y":9,"t":196},{"x":116,"y":9,"t":202},{"x":122,"y":9,"t":208},{"x":131,"y":9,"t":215},{"x":135,"y":10,"t":220},{"x":141,"y":10,"t":226},{"x":147,"y":11,"t":233},{"x":151,"y":11,"t":239},{"x":154,"y":11,"t":245},{"x":157,"y":11,"t":250},{"x":160,"y":11,"t":257},{"x":163,"y":11,"t":263},{"x":165,"y":11,"t":269},{"x":169,"y":11,"t":276},{"x":171,"y":11,"t":281},{"x":175,"y":12,"t":287},{"x":179,"y":12,"t":293},{"x":184,"y":12,"t":299},{"x":189,"y":12,"t":305},{"x":194,"y":12,"t":311},{"x":197,"y":12,"t":317},{"x":203,"y":13,"t":324},{"x":206,"y":13,"t":329},{"x":210,"y":13,"t":336},{"x":213,"y":13,"t":341},{"x":215,"y":13,"t":347},{"x":217,"y":13,"t":354},{"x":217,"y":13,"t":360},{"x":218,"y":13,"t":366},{"x":219,"y":13,"t":372},{"x":219,"y":13,"t":543},{"x":220,"y":13,"t":548},{"x":221,"y":13,"t":555},{"x":222,"y":13,"t":560},{"x":223,"y":14,"t":566},{"x":225,"y":15,"t":572},{"x":225,"y":15,"t":578},{"x":227,"y":15,"t":584},{"x":227,"y":15,"t":590},{"x":228,"y":15,"t":597},{"x":229,"y":15,"t":608},{"x":229,"y":16,"t":614},{"x":230,"y":16,"t":626},{"x":231,"y":16,"t":651},{"x":231,"y":17,"t":656},{"x":231,"y":17,"t":663},{"x":232,"y":17,"t":669},{"x":232,"y":17,"t":688}],"id":"9e6c216f4ee74b6f8e6a239a38bd507d"}}} http://api.xyunjiasu.com/sendMessage/sendSms {"header":{"channelCode":"gw","channelName":"gw","proxyNetBarId":"","appId":3,"versionCode":1,"versionName":"1.0.0","apiVersion":"1.0","msgId":"11d82337-ecfb-485f-8c0d-08da1b86d9cc","token":"","dk":"ac2d9f0925b03b2fa47b934c8b4bd3b5","sendTime":1708345195496,"deviceType":3,"imei":"865304048714554","oaid":"ff3fcf86-b7ff-e639-e5fe-ffffeda7a281","uuid":"undefined","idfa":"","openudid":"","deviceModel":"","systemType":"","isConfirm":0,"webVersionName":"0.0.0","distinctId":""},"body":{"account":"17628818007","codeType":1,"sliderCaptchaId":"9e6c216f4ee74b6f8e6a239a38bd507d"}} http://api.xyunjiasu.com/user/login {"header":{"channelCode":"gw","channelName":"gw","proxyNetBarId":"","appId":3,"versionCode":1,"versionName":"1.0.0","apiVersion":"1.0","msgId":"4ec87158-0984-4976-a3f7-44819fc02cea","token":"","dk":"ac2d9f0925b03b2fa47b934c8b4bd3b5","sendTime":1708345283287,"deviceType":3,"imei":"865304048714554","oaid":"ff3fcf86-b7ff-e639-e5fe-ffffeda7a281","uuid":"undefined","idfa":"","openudid":"","deviceModel":"","systemType":"","isConfirm":0,"webVersionName":"0.0.0","distinctId":""},"body":{"account":"17628818007","yzm":"3005","loginType":1,"codeType":1,"autoLogin":true}}'><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="docs"><title>星云加速器 | Alex lan</title>
-<link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://localhost:1313/docs/code/new/%E6%98%9F%E4%BA%91%E5%8A%A0%E9%80%9F%E5%99%A8/><link rel=stylesheet href=/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.c290d52f387bc8e8a0bd57b2126cae6de6c478944752e1d9608ba90f1c1a9220.js integrity="sha256-wpDVLzh7yOigvVeyEmyubebEeJRHUuHZYIupDxwakiA=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Alex lan</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li><input type=checkbox id=section-867144600acf9658ad1e030dba887392 class=toggle checked>
-<label for=section-867144600acf9658ad1e030dba887392 class="flex justify-between"><a role=button>code</a></label><ul><li><input type=checkbox id=section-bad47914f28bea05b9a99cdd87cd69fb class=toggle>
-<label for=section-bad47914f28bea05b9a99cdd87cd69fb class="flex justify-between"><a role=button>Android</a></label><ul><li><a href=/docs/code/android/ui/>Android ui</a></li><li><a href=/docs/code/android/%E5%8D%8F%E7%A8%8B-retrofit/>Android 协程-retrofit</a></li><li><a href=/docs/code/android/%E6%AF%94%E8%B5%9B/>Android 比赛</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%A2%8E%E7%A2%8E%E5%BF%B5/>android 碎念</a></li><li><a href=/docs/code/android/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android 网络请求</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E9%80%82%E9%85%8D%E5%99%A8/>Android 适配器</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android-网络请求</a></li></ul></li><li><input type=checkbox id=section-4c67168a533057d7cb02259caca8884d class=toggle>
-<label for=section-4c67168a533057d7cb02259caca8884d class="flex justify-between"><a role=button>linux</a></label><ul><li><a href=/docs/code/linux/screen/>linux screen</a></li></ul></li><li><input type=checkbox id=section-227bbb535145acab9a03ddf223110bf7 class=toggle>
-<label for=section-227bbb535145acab9a03ddf223110bf7 class="flex justify-between"><a role=button>鸿蒙</a></label><ul><li><a href=/docs/code/harmony/tabbar/>鸿蒙开发-TbaBar</a></li><li><a href=/docs/code/harmony/%E5%85%A5%E9%97%A8/>鸿蒙开发-入门</a></li><li><a href=/docs/code/harmony/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/>鸿蒙开发-状态管理</a></li><li><a href=/docs/code/harmony/%E7%BD%91%E7%BB%9C/>鸿蒙开发-网络请求</a></li></ul></li><li><input type=checkbox id=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class=toggle checked>
-<label for=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class="flex justify-between"><a role=button>ee</a></label><ul><li><a href=/docs/code/new/autotakepic_flask/>Auto Take Pic Flask</a></li><li><a href=/docs/code/new/c_%E7%94%9C%E7%94%9C%E5%9C%88/>C 甜甜圈</a></li><li><a href=/docs/code/new/rust/%E6%9F%90%E5%9B%BE/>某图</a></li><li><a href=/docs/code/new/%E4%BD%9C%E4%B8%9A2023.10.10/>作业2023.10.10</a></li><li><a href=/docs/code/new/%E6%98%9F%E4%BA%91%E5%8A%A0%E9%80%9F%E5%99%A8/ class=active>星云加速器</a></li><li><a href=/docs/code/new/%E6%9C%A8%E9%A9%AC%E7%99%BB%E9%99%86/>木马登陆</a></li><li><a href=/docs/code/new/%E6%9F%90update/>某update</a></li><li><a href=/docs/code/new/%E6%9F%90%E5%88%B7%E8%AF%BE/>某刷课</a></li><li><a href=/docs/code/new/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/>某洗衣小程序</a></li><li><a href=/docs/code/new/%E9%82%A3%E4%BA%9B%E9%AA%9A%E6%93%8D%E4%BD%9C/>那些骚操作</a></li></ul></li><li><a href=/docs/code/arch-linux/>arch linux</a></li><li><a href=/docs/code/avaloniaui/>avaloniaui</a></li><li><a href=/docs/code/c%23/>c#</a></li><li><a href=/docs/code/java_mysql/>Java_mysql</a></li><li><a href=/docs/code/linux%E7%9F%A5%E8%AF%86/>linux知识</a></li><li><a href=/docs/code/mqtt--%E4%B8%B2%E5%8F%A3--4055/>MQTT && 串口</a></li><li><a href=/docs/code/python/>Python</a></li><li><a href=/docs/code/rust/>rust</a></li><li><a href=/docs/code/cmd/>Cmd</a></li><li><a href=/docs/code/dart/>Dart</a></li><li><a href=/docs/code/%E6%95%B0%E6%8D%AE%E5%BA%93/>数据库</a></li></ul></li><li><input type=checkbox id=section-a88931adc275b5db7ba2257eca8098f2 class=toggle>
-<label for=section-a88931adc275b5db7ba2257eca8098f2 class="flex justify-between"><a role=button>e .wp</a></label><ul><li><a href=/docs/wp/bili_22_1024/>bili_22_1024</a></li><li><a href=/docs/wp/love_math/>LOVE_math</a></li><li><a href=/docs/wp/webexercise/ruby_cookie/>ruby_cookie</a></li></ul></li><li><input type=checkbox id=section-d633b3f91ad6faec5e15f38ac64d5024 class=toggle>
-<label for=section-d633b3f91ad6faec5e15f38ac64d5024 class="flex justify-between"><a role=button>good good study</a></label><ul><li><input type=checkbox id=section-ad1d0d6744ceb9d7276a26afbd49c97f class=toggle>
-<label for=section-ad1d0d6744ceb9d7276a26afbd49c97f class="flex justify-between"><a role=button>class notes</a></label><ul><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/java/>java</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/linux/>linux</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/>信息安全</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E5%B1%80%E5%9F%9F%E7%BD%91-%E6%80%9D%E7%A7%91-pt/>局域网 思科 pt</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/>算法与数据结构笔记</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/>网页制作</a></li></ul></li><li><input type=checkbox id=section-297a8c491188fdc1e4d5049993bd118b class=toggle>
-<label for=section-297a8c491188fdc1e4d5049993bd118b class="flex justify-between"><a role=button>english</a></label><ul><li><a href=/docs/learm/english/%E4%B8%80%E8%88%AC%E7%8E%B0%E5%9C%A8%E6%97%B6/>一般现在时</a></li><li><a href=/docs/learm/english/%E7%8E%B0%E5%9C%A8%E8%BF%9B%E8%A1%8C%E6%97%B6/>现在进行时</a></li></ul></li><li><input type=checkbox id=section-d273ec3342c86bd09d8e0a595cc7603e class=toggle>
-<label for=section-d273ec3342c86bd09d8e0a595cc7603e class="flex justify-between"><a role=button>math</a></label><ul><li><a href=/docs/learm/math/%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>公式测试</a></li><li><a href=/docs/learm/math/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86/>基本积分</a></li><li><a href=/docs/learm/math/%E5%AF%BC%E6%95%B0/>导数</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%88%97/>数列</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>数学公式测试</a></li><li><a href=/docs/learm/math/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F/>泰勒公式</a></li><li><a href=/docs/learm/math/%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/>等价无穷小</a></li><li><a href=/docs/learm/math/%E9%B8%A1%E6%9D%82%E5%85%AC%E5%BC%8F/>鸡杂公式</a></li></ul></li></ul></li><li><input type=checkbox id=section-bc5bfc4ab3726cdac08770524fbd5e52 class=toggle>
-<label for=section-bc5bfc4ab3726cdac08770524fbd5e52 class="flex justify-between"><a role=button>hack</a></label><ul><li><a href=/docs/hack/msf/>msf</a></li><li><a href=/docs/hack/thefatrat/>TheFatRat</a></li></ul></li><li><input type=checkbox id=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class=toggle>
-<label for=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class="flex justify-between"><a href=/docs/re/>re</a></label><ul><li><input type=checkbox id=section-59835f29e02875febbf77853a8373c43 class=toggle>
-<label for=section-59835f29e02875febbf77853a8373c43 class="flex justify-between"><a href=/docs/re/new/>demo</a></label><ul><li><a href=/docs/re/new/%E6%9F%90h%E8%A7%86%E9%A2%91%E8%BD%AF%E4%BB%B6/>Android 比赛</a></li><li><a href=/docs/re/new/u%E5%87%80/>u净</a></li><li><a href=/docs/re/new/%E5%A4%A7%E5%AD%A6%E6%90%9C%E9%A2%98%E9%85%B1/>大学搜题</a></li><li><a href=/docs/re/new/%E5%B1%B1%E8%A5%BF%E6%81%92%E5%AE%89%E5%88%B7%E8%AF%BE%E4%BB%A5%E5%8F%8A%E8%80%83%E8%AF%95/>山西恒安刷课以及考试</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6/>某h软件</a></li><li><a href=/docs/re/new/bika/>某h软件 bika</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6-2/>某h软件-2</a></li><li><a href=/docs/re/new/%E6%B7%98%E9%87%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E9%99%86/>淘金社区登陆</a></li><li><a href=/docs/re/new/%E7%88%B1%E5%A4%9A%E5%A4%9A-%E5%88%86%E6%9E%90/>爱多多 分析</a></li><li><a href=/docs/re/new/%E7%A5%9E%E5%9B%BE%E5%A3%81%E7%BA%B8/>神图壁纸</a></li></ul></li><li><a href=/docs/re/arm%E6%B1%87%E7%BC%96/>arm 汇编</a></li><li><a href=/docs/re/flutter---blutter/>flutter - blutter</a></li><li><a href=/docs/re/flutter/>flutter 初探</a></li><li><a href=/docs/re/frida/>frida</a></li><li><a href=/docs/re/ida%E5%8A%A8%E8%B0%83so/>ida 动态调试so</a></li><li><a href=/docs/re/%E5%8F%8D%E7%BC%96%E8%AF%91/>反编译</a></li><li><a href=/docs/re/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91/>小程序 逆向</a></li></ul></li><li><input type=checkbox id=section-18930a98ed98865a0f74f8bc6e5f9129 class=toggle>
-<label for=section-18930a98ed98865a0f74f8bc6e5f9129 class="flex justify-between"><a role=button>网络安全</a></label><ul><li><input type=checkbox id=section-651b79d602e2b6fd9e11ffc5f6867235 class=toggle>
-<label for=section-651b79d602e2b6fd9e11ffc5f6867235 class="flex justify-between"><a role=button>java</a></label><ul><li><a href=/docs/network-security/java/sql%E6%B3%A8%E5%85%A5/>java sql 注入</a></li><li><a href=/docs/network-security/java/web-inf%E8%AF%BB%E5%8F%96/>WEB-INF 读取</a></li><li><a href=/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>反序列化</a></li></ul></li><li><input type=checkbox id=section-a44367811822bf6f468461f4b263fc52 class=toggle>
-<label for=section-a44367811822bf6f468461f4b263fc52 class="flex justify-between"><a role=button>node</a></label><ul><li><a href=/docs/network-security/node/%E5%8E%9F%E5%BD%A2%E9%93%BE%E6%B1%A1%E6%9F%93/>node 原型链污染</a></li></ul></li><li><input type=checkbox id=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class=toggle>
-<label for=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class="flex justify-between"><a role=button>other</a></label><ul><li><a href=/docs/network-security/other/linux/>linux 知识点</a></li><li><a href=/docs/network-security/other/xpath%E6%B3%A8%E5%85%A5/>xpath 注入</a></li><li><a href=/docs/network-security/other/xxe/>XXE</a></li><li><a href=/docs/network-security/other/%E5%8F%8D%E5%BC%B9shll/>反弹shell</a></li><li><a href=/docs/network-security/other/%E7%AB%AF%E5%8F%A3/>常见端口</a></li></ul></li><li><input type=checkbox id=section-40d2a42f189bda5f49dc4cec9d080122 class=toggle>
-<label for=section-40d2a42f189bda5f49dc4cec9d080122 class="flex justify-between"><a role=button>php</a></label><ul><li><a href=/docs/network-security/php/php/>php</a></li><li><a href=/docs/network-security/php/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>php</a></li><li><a href=/docs/network-security/php/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8Clinux%E7%BB%95%E8%BF%87/>php命令执行linux绕过</a></li><li><a href=/docs/network-security/php/readflag/>readflag</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/regexp%E7%9B%B2%E6%B3%A8/>regexp盲注</a></li><li><a href=/docs/network-security/php/session%E4%BC%AA%E9%80%A0/>session伪造</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/>堆叠注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5/>字符型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/>报错注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%95%B4%E5%9E%8B%E6%B3%A8%E5%85%A5/>整型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/>时间注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E7%9B%B2%E6%B3%A8/>盲注</a></li><li><a href=/docs/network-security/php/htaccess%E7%9A%84%E5%88%A9%E7%94%A8/>Htaccess的利用</a></li><li><a href=/docs/network-security/php/md5%E7%A2%B0%E6%92%9E/>Md5碰撞</a></li><li><a href=/docs/network-security/php/%E4%BC%AA%E5%8D%8F%E8%AE%AE/>伪协议</a></li><li><a href=/docs/network-security/php/%E5%87%BD%E6%95%B0%E6%BC%8F%E6%B4%9E/>函数漏洞</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/>文件上传</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/>文件包含</a></li></ul></li><li><input type=checkbox id=section-00e8dd07f7030a556feb24211f954773 class=toggle>
-<label for=section-00e8dd07f7030a556feb24211f954773 class="flex justify-between"><a role=button>python</a></label><ul><li><a href=/docs/network-security/python/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>pickle反序列化</a></li><li><a href=/docs/network-security/python/python-session%E4%BC%AA%E9%80%A0/>python session伪造</a></li><li><a href=/docs/network-security/python/ssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/>SSTI模板注入</a></li></ul></li><li><input type=checkbox id=section-e32c44d2f36aa533e1dcd6f636ecb361 class=toggle>
-<label for=section-e32c44d2f36aa533e1dcd6f636ecb361 class="flex justify-between"><a role=button>tools</a></label><ul><li><a href=/docs/network-security/tools/fake-mysql/>fake-mysql</a></li></ul></li></ul></li></ul><ul><li><a href=/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label><h3>星云加速器</h3><label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents></nav></aside></header><article class="markdown book-article"><p>一个加速器，新用户免费送1一个小时，注册有滑块，秒了，其他没啥,都是固定，或者uuid秒了，不用特地改</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> requests<span style=color:#f92672>,</span>time<span style=color:#f92672>,</span>base64
-</span></span><span style=display:flex><span><span style=color:#f92672>import</span> cv2
-</span></span><span style=display:flex><span><span style=color:#f92672>import</span> numpy <span style=color:#66d9ef>as</span> np
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>gen</span>():
-</span></span><span style=display:flex><span>    url<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;http://api.xyunjiasu.com/captchas/slider/gen&#39;</span>
-</span></span><span style=display:flex><span>    result<span style=color:#f92672>=</span>requests<span style=color:#f92672>.</span>get(url)<span style=color:#f92672>.</span>json()
-</span></span><span style=display:flex><span>    b_img<span style=color:#f92672>=</span>result[<span style=color:#e6db74>&#39;body&#39;</span>][<span style=color:#e6db74>&#39;captchaResponse&#39;</span>][<span style=color:#e6db74>&#39;captcha&#39;</span>][<span style=color:#e6db74>&#39;backgroundImage&#39;</span>]<span style=color:#f92672>.</span>split(<span style=color:#e6db74>&#39;,&#39;</span>)[<span style=color:#ae81ff>1</span>]
-</span></span><span style=display:flex><span>    s_img<span style=color:#f92672>=</span>result[<span style=color:#e6db74>&#39;body&#39;</span>][<span style=color:#e6db74>&#39;captchaResponse&#39;</span>][<span style=color:#e6db74>&#39;captcha&#39;</span>][<span style=color:#e6db74>&#39;sliderImage&#39;</span>]<span style=color:#f92672>.</span>split(<span style=color:#e6db74>&#39;,&#39;</span>)[<span style=color:#ae81ff>1</span>]
-</span></span><span style=display:flex><span>    sid<span style=color:#f92672>=</span>result[<span style=color:#e6db74>&#39;body&#39;</span>][<span style=color:#e6db74>&#39;captchaResponse&#39;</span>][<span style=color:#e6db74>&#39;id&#39;</span>]
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>with</span> open(<span style=color:#e6db74>&#39;./img/b_img.png&#39;</span>,<span style=color:#e6db74>&#39;wb&#39;</span>) <span style=color:#66d9ef>as</span> f:
-</span></span><span style=display:flex><span>        f<span style=color:#f92672>.</span>write(base64<span style=color:#f92672>.</span>b64decode(b_img))
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>with</span> open(<span style=color:#e6db74>&#39;./img/s_img.png&#39;</span>,<span style=color:#e6db74>&#39;wb&#39;</span>) <span style=color:#66d9ef>as</span> f:
-</span></span><span style=display:flex><span>        f<span style=color:#f92672>.</span>write(base64<span style=color:#f92672>.</span>b64decode(s_img))
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> sid
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>simulate_slider_trajectory</span>(start_pos, end_pos, steps, duration):
-</span></span><span style=display:flex><span>    <span style=color:#75715e># 起始和结束坐标</span>
-</span></span><span style=display:flex><span>    start_x, start_y <span style=color:#f92672>=</span> start_pos
-</span></span><span style=display:flex><span>    end_x, end_y <span style=color:#f92672>=</span> end_pos
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#75715e># 总步数和每一步对应的时间间隔</span>
-</span></span><span style=display:flex><span>    time_interval <span style=color:#f92672>=</span> duration <span style=color:#f92672>/</span> steps
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#75715e># 计算每次移动的距离</span>
-</span></span><span style=display:flex><span>    dx <span style=color:#f92672>=</span> (end_x <span style=color:#f92672>-</span> start_x) <span style=color:#f92672>/</span> steps
-</span></span><span style=display:flex><span>    dy <span style=color:#f92672>=</span> (end_y <span style=color:#f92672>-</span> start_y) <span style=color:#f92672>/</span> steps
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    trajectory <span style=color:#f92672>=</span> []
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(steps <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>):  <span style=color:#75715e># 包含起点和终点</span>
-</span></span><span style=display:flex><span>        x <span style=color:#f92672>=</span> start_x <span style=color:#f92672>+</span> i <span style=color:#f92672>*</span> dx
-</span></span><span style=display:flex><span>        y <span style=color:#f92672>=</span> start_y <span style=color:#f92672>+</span> i <span style=color:#f92672>*</span> dy
-</span></span><span style=display:flex><span>        t <span style=color:#f92672>=</span> i <span style=color:#f92672>*</span> time_interval
-</span></span><span style=display:flex><span>        trajectory<span style=color:#f92672>.</span>append({<span style=color:#e6db74>&#39;x&#39;</span>:round(x), <span style=color:#e6db74>&#39;y&#39;</span>:round(y),<span style=color:#e6db74>&#39;t&#39;</span>: round(t<span style=color:#f92672>*</span><span style=color:#ae81ff>1000</span>)})
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> trajectory
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>_tran_canny</span>(image):
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;消除噪声&#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>    image <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>GaussianBlur(image, (<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>3</span>), <span style=color:#ae81ff>0</span>)
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> cv2<span style=color:#f92672>.</span>Canny(image, <span style=color:#ae81ff>50</span>, <span style=color:#ae81ff>150</span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>detect_displacement</span>():
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;detect displacement&#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e># # 参数0是灰度模式</span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e># &#34;./img/b_img.png&#34;, &#34;./img/s_img.png&#34;</span>
-</span></span><span style=display:flex><span>    image <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>imread(<span style=color:#e6db74>&#34;./img/s_img.png&#34;</span>, <span style=color:#ae81ff>0</span>)
-</span></span><span style=display:flex><span>    template <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>imread(<span style=color:#e6db74>&#34;./img/b_img.png&#34;</span>, <span style=color:#ae81ff>0</span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e># 寻找最佳匹配</span>
-</span></span><span style=display:flex><span>    res <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>matchTemplate(_tran_canny(image), _tran_canny(template), cv2<span style=color:#f92672>.</span>TM_CCOEFF_NORMED)
-</span></span><span style=display:flex><span>    <span style=color:#75715e># 最小值，最大值，并得到最小值, 最大值的索引</span>
-</span></span><span style=display:flex><span>    min_val, max_val, min_loc, max_loc <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>minMaxLoc(res)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    top_left <span style=color:#f92672>=</span> max_loc[<span style=color:#ae81ff>0</span>]  <span style=color:#75715e># 横坐标</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> top_left
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>login</span>():
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>verify</span>(sid,x):
-</span></span><span style=display:flex><span>    track <span style=color:#f92672>=</span>track <span style=color:#f92672>=</span> simulate_slider_trajectory([<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>0</span>], [x,<span style=color:#ae81ff>20</span>], <span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>1</span>)
-</span></span><span style=display:flex><span>    url<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;http://api.xyunjiasu.com/captchas/slider/check&#39;</span>
-</span></span><span style=display:flex><span>    data<span style=color:#f92672>=</span>{<span style=color:#e6db74>&#34;header&#34;</span>:{<span style=color:#e6db74>&#34;channelCode&#34;</span>:<span style=color:#e6db74>&#34;gw&#34;</span>,<span style=color:#e6db74>&#34;channelName&#34;</span>:<span style=color:#e6db74>&#34;gw&#34;</span>,<span style=color:#e6db74>&#34;proxyNetBarId&#34;</span>:<span style=color:#e6db74>&#34;&#34;</span>,<span style=color:#e6db74>&#34;appId&#34;</span>:<span style=color:#ae81ff>3</span>,<span style=color:#e6db74>&#34;versionCode&#34;</span>:<span style=color:#ae81ff>1</span>,<span style=color:#e6db74>&#34;versionName&#34;</span>:<span style=color:#e6db74>&#34;1.0.0&#34;</span>,<span style=color:#e6db74>&#34;apiVersion&#34;</span>:<span style=color:#e6db74>&#34;1.0&#34;</span>,<span style=color:#e6db74>&#34;msgId&#34;</span>:<span style=color:#e6db74>&#34;a9a4ba53-1e31-48ba-8ebc-3108409e1f19&#34;</span>,<span style=color:#e6db74>&#34;token&#34;</span>:<span style=color:#e6db74>&#34;&#34;</span>,<span style=color:#e6db74>&#34;dk&#34;</span>:<span style=color:#e6db74>&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;</span>,<span style=color:#e6db74>&#34;sendTime&#34;</span>:int(time<span style=color:#f92672>.</span>time()<span style=color:#f92672>*</span><span style=color:#ae81ff>1000</span>),<span style=color:#e6db74>&#34;deviceType&#34;</span>:<span style=color:#ae81ff>3</span>,<span style=color:#e6db74>&#34;imei&#34;</span>:<span style=color:#e6db74>&#34;865304048714552&#34;</span>,<span style=color:#e6db74>&#34;oaid&#34;</span>:<span style=color:#e6db74>&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;</span>,<span style=color:#e6db74>&#34;uuid&#34;</span>:<span style=color:#e6db74>&#34;undefined&#34;</span>,<span style=color:#e6db74>&#34;idfa&#34;</span>:<span style=color:#e6db74>&#34;&#34;</span>,<span style=color:#e6db74>&#34;openudid&#34;</span>:<span style=color:#e6db74>&#34;&#34;</span>,<span style=color:#e6db74>&#34;deviceModel&#34;</span>:<span style=color:#e6db74>&#34;&#34;</span>,<span style=color:#e6db74>&#34;systemType&#34;</span>:<span style=color:#e6db74>&#34;&#34;</span>,<span style=color:#e6db74>&#34;isConfirm&#34;</span>:<span style=color:#ae81ff>0</span>,<span style=color:#e6db74>&#34;webVersionName&#34;</span>:<span style=color:#e6db74>&#34;0.0.0&#34;</span>,<span style=color:#e6db74>&#34;distinctId&#34;</span>:<span style=color:#e6db74>&#34;&#34;</span>},<span style=color:#e6db74>&#34;body&#34;</span>:{<span style=color:#e6db74>&#34;imageCaptchaTrack&#34;</span>:{<span style=color:#e6db74>&#34;bgImageWidth&#34;</span>:x<span style=color:#f92672>+</span><span style=color:#ae81ff>110</span>,<span style=color:#e6db74>&#34;bgImageHeight&#34;</span>:<span style=color:#ae81ff>205</span>,<span style=color:#e6db74>&#34;sliderImageWidth&#34;</span>:<span style=color:#ae81ff>63</span>,<span style=color:#e6db74>&#34;sliderImageHeight&#34;</span>:<span style=color:#ae81ff>205</span>,<span style=color:#e6db74>&#34;startSlidingTime&#34;</span>:<span style=color:#e6db74>&#34;2024-02-19T12:19:54.471Z&#34;</span>,<span style=color:#e6db74>&#34;entSlidingTime&#34;</span>:<span style=color:#e6db74>&#34;2024-02-19T12:19:55.395Z&#34;</span>,<span style=color:#e6db74>&#34;trackList&#34;</span>:track,<span style=color:#e6db74>&#34;id&#34;</span>:sid}}}
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    result<span style=color:#f92672>=</span>requests<span style=color:#f92672>.</span>post(url,params<span style=color:#f92672>=</span>{<span style=color:#e6db74>&#39;id&#39;</span>:sid},json<span style=color:#f92672>=</span>data)<span style=color:#f92672>.</span>json()
-</span></span><span style=display:flex><span>    print(result)
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>sms</span>(sid,phone):
-</span></span><span style=display:flex><span>    url<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;http://api.xyunjiasu.com/sendMessage/sendSms&#39;</span>
-</span></span><span style=display:flex><span>    data<span style=color:#f92672>=</span>{<span style=color:#e6db74>&#34;header&#34;</span>:{<span style=color:#e6db74>&#34;channelCode&#34;</span>:<span style=color:#e6db74>&#34;gw&#34;</span>,<span style=color:#e6db74>&#34;channelName&#34;</span>:<span style=color:#e6db74>&#34;gw&#34;</span>,<span style=color:#e6db74>&#34;proxyNetBarId&#34;</span>:<span style=color:#e6db74>&#34;&#34;</span>,<span style=color:#e6db74>&#34;appId&#34;</span>:<span style=color:#ae81ff>3</span>,<span style=color:#e6db74>&#34;versionCode&#34;</span>:<span style=color:#ae81ff>1</span>,<span style=color:#e6db74>&#34;versionName&#34;</span>:<span style=color:#e6db74>&#34;1.0.0&#34;</span>,<span style=color:#e6db74>&#34;apiVersion&#34;</span>:<span style=color:#e6db74>&#34;1.0&#34;</span>,<span style=color:#e6db74>&#34;msgId&#34;</span>:<span style=color:#e6db74>&#34;11d82337-ecfb-485f-8c0d-08da1b86d9cc&#34;</span>,<span style=color:#e6db74>&#34;token&#34;</span>:<span style=color:#e6db74>&#34;&#34;</span>,<span style=color:#e6db74>&#34;dk&#34;</span>:<span style=color:#e6db74>&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;</span>,<span style=color:#e6db74>&#34;sendTime&#34;</span>:int(time<span style=color:#f92672>.</span>time()<span style=color:#f92672>*</span><span style=color:#ae81ff>1000</span>),<span style=color:#e6db74>&#34;deviceType&#34;</span>:<span style=color:#ae81ff>3</span>,<span style=color:#e6db74>&#34;imei&#34;</span>:<span style=color:#e6db74>&#34;865304048714554&#34;</span>,<span style=color:#e6db74>&#34;oaid&#34;</span>:<span style=color:#e6db74>&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;</span>,<span style=color:#e6db74>&#34;uuid&#34;</span>:<span style=color:#e6db74>&#34;undefined&#34;</span>,<span style=color:#e6db74>&#34;idfa&#34;</span>:<span style=color:#e6db74>&#34;&#34;</span>,<span style=color:#e6db74>&#34;openudid&#34;</span>:<span style=color:#e6db74>&#34;&#34;</span>,<span style=color:#e6db74>&#34;deviceModel&#34;</span>:<span style=color:#e6db74>&#34;&#34;</span>,<span style=color:#e6db74>&#34;systemType&#34;</span>:<span style=color:#e6db74>&#34;&#34;</span>,<span style=color:#e6db74>&#34;isConfirm&#34;</span>:<span style=color:#ae81ff>0</span>,<span style=color:#e6db74>&#34;webVersionName&#34;</span>:<span style=color:#e6db74>&#34;0.0.0&#34;</span>,<span style=color:#e6db74>&#34;distinctId&#34;</span>:<span style=color:#e6db74>&#34;&#34;</span>},<span style=color:#e6db74>&#34;body&#34;</span>:{<span style=color:#e6db74>&#34;account&#34;</span>:phone,<span style=color:#e6db74>&#34;codeType&#34;</span>:<span style=color:#ae81ff>1</span>,<span style=color:#e6db74>&#34;sliderCaptchaId&#34;</span>:sid}}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    result<span style=color:#f92672>=</span>requests<span style=color:#f92672>.</span>post(url,json<span style=color:#f92672>=</span>data)<span style=color:#f92672>.</span>json()
-</span></span><span style=display:flex><span>    print(result)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
-</span></span><span style=display:flex><span>    sid<span style=color:#f92672>=</span>gen()
-</span></span><span style=display:flex><span>    x<span style=color:#f92672>=</span>detect_displacement()
-</span></span><span style=display:flex><span>    verify(sid,x)
-</span></span><span style=display:flex><span>    sms(sid,<span style=color:#e6db74>&#34;17628828009&#34;</span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>10</span>):
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    main()
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>
-</span></span><span style=display:flex><span>http://api.xyunjiasu.com/captchas/slider/gen
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>http://api.xyunjiasu.com/captchas/slider/check?id=9e6c216f4ee74b6f8e6a239a38bd507d
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>{&#34;header&#34;:{&#34;channelCode&#34;:&#34;gw&#34;,&#34;channelName&#34;:&#34;gw&#34;,&#34;proxyNetBarId&#34;:&#34;&#34;,&#34;appId&#34;:3,&#34;versionCode&#34;:1,&#34;versionName&#34;:&#34;1.0.0&#34;,&#34;apiVersion&#34;:&#34;1.0&#34;,&#34;msgId&#34;:&#34;a9a4ba53-1e31-48ba-8ebc-3108409e1f19&#34;,&#34;token&#34;:&#34;&#34;,&#34;dk&#34;:&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;,&#34;sendTime&#34;:1708345195396,&#34;deviceType&#34;:3,&#34;imei&#34;:&#34;865304048714554&#34;,&#34;oaid&#34;:&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;,&#34;uuid&#34;:&#34;undefined&#34;,&#34;idfa&#34;:&#34;&#34;,&#34;openudid&#34;:&#34;&#34;,&#34;deviceModel&#34;:&#34;&#34;,&#34;systemType&#34;:&#34;&#34;,&#34;isConfirm&#34;:0,&#34;webVersionName&#34;:&#34;0.0.0&#34;,&#34;distinctId&#34;:&#34;&#34;},&#34;body&#34;:{&#34;imageCaptchaTrack&#34;:{&#34;bgImageWidth&#34;:336,&#34;bgImageHeight&#34;:205,&#34;sliderImageWidth&#34;:63,&#34;sliderImageHeight&#34;:205,&#34;startSlidingTime&#34;:&#34;2024-02-19T12:19:54.471Z&#34;,&#34;entSlidingTime&#34;:&#34;2024-02-19T12:19:55.395Z&#34;,&#34;trackList&#34;:[{&#34;x&#34;:1,&#34;y&#34;:1,&#34;t&#34;:8},{&#34;x&#34;:2,&#34;y&#34;:1,&#34;t&#34;:14},{&#34;x&#34;:3,&#34;y&#34;:1,&#34;t&#34;:21},{&#34;x&#34;:4,&#34;y&#34;:1,&#34;t&#34;:27},{&#34;x&#34;:5,&#34;y&#34;:1,&#34;t&#34;:32},{&#34;x&#34;:7,&#34;y&#34;:1,&#34;t&#34;:38},{&#34;x&#34;:8,&#34;y&#34;:1,&#34;t&#34;:45},{&#34;x&#34;:9,&#34;y&#34;:2,&#34;t&#34;:51},{&#34;x&#34;:12,&#34;y&#34;:2,&#34;t&#34;:57},{&#34;x&#34;:13,&#34;y&#34;:3,&#34;t&#34;:63},{&#34;x&#34;:16,&#34;y&#34;:3,&#34;t&#34;:69},{&#34;x&#34;:19,&#34;y&#34;:3,&#34;t&#34;:75},{&#34;x&#34;:20,&#34;y&#34;:3,&#34;t&#34;:81},{&#34;x&#34;:24,&#34;y&#34;:3,&#34;t&#34;:88},{&#34;x&#34;:27,&#34;y&#34;:4,&#34;t&#34;:93},{&#34;x&#34;:29,&#34;y&#34;:4,&#34;t&#34;:99},{&#34;x&#34;:32,&#34;y&#34;:4,&#34;t&#34;:105},{&#34;x&#34;:35,&#34;y&#34;:4,&#34;t&#34;:112},{&#34;x&#34;:37,&#34;y&#34;:4,&#34;t&#34;:117},{&#34;x&#34;:42,&#34;y&#34;:5,&#34;t&#34;:124},{&#34;x&#34;:47,&#34;y&#34;:5,&#34;t&#34;:130},{&#34;x&#34;:52,&#34;y&#34;:5,&#34;t&#34;:136},{&#34;x&#34;:57,&#34;y&#34;:5,&#34;t&#34;:142},{&#34;x&#34;:63,&#34;y&#34;:5,&#34;t&#34;:148},{&#34;x&#34;:68,&#34;y&#34;:6,&#34;t&#34;:153},{&#34;x&#34;:75,&#34;y&#34;:7,&#34;t&#34;:159},{&#34;x&#34;:80,&#34;y&#34;:7,&#34;t&#34;:166},{&#34;x&#34;:85,&#34;y&#34;:7,&#34;t&#34;:172},{&#34;x&#34;:91,&#34;y&#34;:8,&#34;t&#34;:178},{&#34;x&#34;:98,&#34;y&#34;:8,&#34;t&#34;:185},{&#34;x&#34;:101,&#34;y&#34;:9,&#34;t&#34;:190},{&#34;x&#34;:109,&#34;y&#34;:9,&#34;t&#34;:196},{&#34;x&#34;:116,&#34;y&#34;:9,&#34;t&#34;:202},{&#34;x&#34;:122,&#34;y&#34;:9,&#34;t&#34;:208},{&#34;x&#34;:131,&#34;y&#34;:9,&#34;t&#34;:215},{&#34;x&#34;:135,&#34;y&#34;:10,&#34;t&#34;:220},{&#34;x&#34;:141,&#34;y&#34;:10,&#34;t&#34;:226},{&#34;x&#34;:147,&#34;y&#34;:11,&#34;t&#34;:233},{&#34;x&#34;:151,&#34;y&#34;:11,&#34;t&#34;:239},{&#34;x&#34;:154,&#34;y&#34;:11,&#34;t&#34;:245},{&#34;x&#34;:157,&#34;y&#34;:11,&#34;t&#34;:250},{&#34;x&#34;:160,&#34;y&#34;:11,&#34;t&#34;:257},{&#34;x&#34;:163,&#34;y&#34;:11,&#34;t&#34;:263},{&#34;x&#34;:165,&#34;y&#34;:11,&#34;t&#34;:269},{&#34;x&#34;:169,&#34;y&#34;:11,&#34;t&#34;:276},{&#34;x&#34;:171,&#34;y&#34;:11,&#34;t&#34;:281},{&#34;x&#34;:175,&#34;y&#34;:12,&#34;t&#34;:287},{&#34;x&#34;:179,&#34;y&#34;:12,&#34;t&#34;:293},{&#34;x&#34;:184,&#34;y&#34;:12,&#34;t&#34;:299},{&#34;x&#34;:189,&#34;y&#34;:12,&#34;t&#34;:305},{&#34;x&#34;:194,&#34;y&#34;:12,&#34;t&#34;:311},{&#34;x&#34;:197,&#34;y&#34;:12,&#34;t&#34;:317},{&#34;x&#34;:203,&#34;y&#34;:13,&#34;t&#34;:324},{&#34;x&#34;:206,&#34;y&#34;:13,&#34;t&#34;:329},{&#34;x&#34;:210,&#34;y&#34;:13,&#34;t&#34;:336},{&#34;x&#34;:213,&#34;y&#34;:13,&#34;t&#34;:341},{&#34;x&#34;:215,&#34;y&#34;:13,&#34;t&#34;:347},{&#34;x&#34;:217,&#34;y&#34;:13,&#34;t&#34;:354},{&#34;x&#34;:217,&#34;y&#34;:13,&#34;t&#34;:360},{&#34;x&#34;:218,&#34;y&#34;:13,&#34;t&#34;:366},{&#34;x&#34;:219,&#34;y&#34;:13,&#34;t&#34;:372},{&#34;x&#34;:219,&#34;y&#34;:13,&#34;t&#34;:543},{&#34;x&#34;:220,&#34;y&#34;:13,&#34;t&#34;:548},{&#34;x&#34;:221,&#34;y&#34;:13,&#34;t&#34;:555},{&#34;x&#34;:222,&#34;y&#34;:13,&#34;t&#34;:560},{&#34;x&#34;:223,&#34;y&#34;:14,&#34;t&#34;:566},{&#34;x&#34;:225,&#34;y&#34;:15,&#34;t&#34;:572},{&#34;x&#34;:225,&#34;y&#34;:15,&#34;t&#34;:578},{&#34;x&#34;:227,&#34;y&#34;:15,&#34;t&#34;:584},{&#34;x&#34;:227,&#34;y&#34;:15,&#34;t&#34;:590},{&#34;x&#34;:228,&#34;y&#34;:15,&#34;t&#34;:597},{&#34;x&#34;:229,&#34;y&#34;:15,&#34;t&#34;:608},{&#34;x&#34;:229,&#34;y&#34;:16,&#34;t&#34;:614},{&#34;x&#34;:230,&#34;y&#34;:16,&#34;t&#34;:626},{&#34;x&#34;:231,&#34;y&#34;:16,&#34;t&#34;:651},{&#34;x&#34;:231,&#34;y&#34;:17,&#34;t&#34;:656},{&#34;x&#34;:231,&#34;y&#34;:17,&#34;t&#34;:663},{&#34;x&#34;:232,&#34;y&#34;:17,&#34;t&#34;:669},{&#34;x&#34;:232,&#34;y&#34;:17,&#34;t&#34;:688}],&#34;id&#34;:&#34;9e6c216f4ee74b6f8e6a239a38bd507d&#34;}}}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>http://api.xyunjiasu.com/sendMessage/sendSms
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>{&#34;header&#34;:{&#34;channelCode&#34;:&#34;gw&#34;,&#34;channelName&#34;:&#34;gw&#34;,&#34;proxyNetBarId&#34;:&#34;&#34;,&#34;appId&#34;:3,&#34;versionCode&#34;:1,&#34;versionName&#34;:&#34;1.0.0&#34;,&#34;apiVersion&#34;:&#34;1.0&#34;,&#34;msgId&#34;:&#34;11d82337-ecfb-485f-8c0d-08da1b86d9cc&#34;,&#34;token&#34;:&#34;&#34;,&#34;dk&#34;:&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;,&#34;sendTime&#34;:1708345195496,&#34;deviceType&#34;:3,&#34;imei&#34;:&#34;865304048714554&#34;,&#34;oaid&#34;:&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;,&#34;uuid&#34;:&#34;undefined&#34;,&#34;idfa&#34;:&#34;&#34;,&#34;openudid&#34;:&#34;&#34;,&#34;deviceModel&#34;:&#34;&#34;,&#34;systemType&#34;:&#34;&#34;,&#34;isConfirm&#34;:0,&#34;webVersionName&#34;:&#34;0.0.0&#34;,&#34;distinctId&#34;:&#34;&#34;},&#34;body&#34;:{&#34;account&#34;:&#34;17628818007&#34;,&#34;codeType&#34;:1,&#34;sliderCaptchaId&#34;:&#34;9e6c216f4ee74b6f8e6a239a38bd507d&#34;}}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>http://api.xyunjiasu.com/user/login
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>{&#34;header&#34;:{&#34;channelCode&#34;:&#34;gw&#34;,&#34;channelName&#34;:&#34;gw&#34;,&#34;proxyNetBarId&#34;:&#34;&#34;,&#34;appId&#34;:3,&#34;versionCode&#34;:1,&#34;versionName&#34;:&#34;1.0.0&#34;,&#34;apiVersion&#34;:&#34;1.0&#34;,&#34;msgId&#34;:&#34;4ec87158-0984-4976-a3f7-44819fc02cea&#34;,&#34;token&#34;:&#34;&#34;,&#34;dk&#34;:&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;,&#34;sendTime&#34;:1708345283287,&#34;deviceType&#34;:3,&#34;imei&#34;:&#34;865304048714554&#34;,&#34;oaid&#34;:&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;,&#34;uuid&#34;:&#34;undefined&#34;,&#34;idfa&#34;:&#34;&#34;,&#34;openudid&#34;:&#34;&#34;,&#34;deviceModel&#34;:&#34;&#34;,&#34;systemType&#34;:&#34;&#34;,&#34;isConfirm&#34;:0,&#34;webVersionName&#34;:&#34;0.0.0&#34;,&#34;distinctId&#34;:&#34;&#34;},&#34;body&#34;:{&#34;account&#34;:&#34;17628818007&#34;,&#34;yzm&#34;:&#34;3005&#34;,&#34;loginType&#34;:1,&#34;codeType&#34;:1,&#34;autoLogin&#34;:true}}
-</span></span></code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents></nav></div></aside></main></body></html>
+{&#34;header&#34;:{&#34;channelCode&#34;:&#34;gw&#34;,&#34;channelName&#34;:&#34;gw&#34;,&#34;proxyNetBarId&#34;:&#34;&#34;,&#34;appId&#34;:3,&#34;versionCode&#34;:1,&#34;versionName&#34;:&#34;1.0.0&#34;,&#34;apiVersion&#34;:&#34;1.0&#34;,&#34;msgId&#34;:&#34;4ec87158-0984-4976-a3f7-44819fc02cea&#34;,&#34;token&#34;:&#34;&#34;,&#34;dk&#34;:&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;,&#34;sendTime&#34;:1708345283287,&#34;deviceType&#34;:3,&#34;imei&#34;:&#34;865304048714554&#34;,&#34;oaid&#34;:&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;,&#34;uuid&#34;:&#34;undefined&#34;,&#34;idfa&#34;:&#34;&#34;,&#34;openudid&#34;:&#34;&#34;,&#34;deviceModel&#34;:&#34;&#34;,&#34;systemType&#34;:&#34;&#34;,&#34;isConfirm&#34;:0,&#34;webVersionName&#34;:&#34;0.0.0&#34;,&#34;distinctId&#34;:&#34;&#34;},&#34;body&#34;:{&#34;account&#34;:&#34;17628818007&#34;,&#34;yzm&#34;:&#34;3005&#34;,&#34;loginType&#34;:1,&#34;codeType&#34;:1,&#34;autoLogin&#34;:true}}
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/code/new/%E6%98%9F%E4%BA%91%E5%8A%A0%E9%80%9F%E5%99%A8/">
+  <meta property="og:site_name" content="Alex lan">
+  <meta property="og:title" content="Alex lan">
+  <meta property="og:description" content="一个加速器，新用户免费送1一个小时，注册有滑块，秒了，其他没啥,都是固定，或者uuid秒了，不用特地改
+import requests,time,base64 import cv2 import numpy as np def gen(): url=&#39;http://api.xyunjiasu.com/captchas/slider/gen&#39; result=requests.get(url).json() b_img=result[&#39;body&#39;][&#39;captchaResponse&#39;][&#39;captcha&#39;][&#39;backgroundImage&#39;].split(&#39;,&#39;)[1] s_img=result[&#39;body&#39;][&#39;captchaResponse&#39;][&#39;captcha&#39;][&#39;sliderImage&#39;].split(&#39;,&#39;)[1] sid=result[&#39;body&#39;][&#39;captchaResponse&#39;][&#39;id&#39;] with open(&#39;./img/b_img.png&#39;,&#39;wb&#39;) as f: f.write(base64.b64decode(b_img)) with open(&#39;./img/s_img.png&#39;,&#39;wb&#39;) as f: f.write(base64.b64decode(s_img)) return sid def simulate_slider_trajectory(start_pos, end_pos, steps, duration): # 起始和结束坐标 start_x, start_y = start_pos end_x, end_y = end_pos # 总步数和每一步对应的时间间隔 time_interval = duration / steps # 计算每次移动的距离 dx = (end_x - start_x) / steps dy = (end_y - start_y) / steps trajectory = [] for i in range(steps &#43; 1): # 包含起点和终点 x = start_x &#43; i * dx y = start_y &#43; i * dy t = i * time_interval trajectory.append({&#39;x&#39;:round(x), &#39;y&#39;:round(y),&#39;t&#39;: round(t*1000)}) return trajectory def _tran_canny(image): &#34;&#34;&#34;消除噪声&#34;&#34;&#34; image = cv2.GaussianBlur(image, (3, 3), 0) return cv2.Canny(image, 50, 150) def detect_displacement(): &#34;&#34;&#34;detect displacement&#34;&#34;&#34; # # 参数0是灰度模式 # &#34;./img/b_img.png&#34;, &#34;./img/s_img.png&#34; image = cv2.imread(&#34;./img/s_img.png&#34;, 0) template = cv2.imread(&#34;./img/b_img.png&#34;, 0) # 寻找最佳匹配 res = cv2.matchTemplate(_tran_canny(image), _tran_canny(template), cv2.TM_CCOEFF_NORMED) # 最小值，最大值，并得到最小值, 最大值的索引 min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res) top_left = max_loc[0] # 横坐标 return top_left def login(): pass def verify(sid,x): track =track = simulate_slider_trajectory([0,0], [x,20], 80, 1) url=&#39;http://api.xyunjiasu.com/captchas/slider/check&#39; data={&#34;header&#34;:{&#34;channelCode&#34;:&#34;gw&#34;,&#34;channelName&#34;:&#34;gw&#34;,&#34;proxyNetBarId&#34;:&#34;&#34;,&#34;appId&#34;:3,&#34;versionCode&#34;:1,&#34;versionName&#34;:&#34;1.0.0&#34;,&#34;apiVersion&#34;:&#34;1.0&#34;,&#34;msgId&#34;:&#34;a9a4ba53-1e31-48ba-8ebc-3108409e1f19&#34;,&#34;token&#34;:&#34;&#34;,&#34;dk&#34;:&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;,&#34;sendTime&#34;:int(time.time()*1000),&#34;deviceType&#34;:3,&#34;imei&#34;:&#34;865304048714552&#34;,&#34;oaid&#34;:&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;,&#34;uuid&#34;:&#34;undefined&#34;,&#34;idfa&#34;:&#34;&#34;,&#34;openudid&#34;:&#34;&#34;,&#34;deviceModel&#34;:&#34;&#34;,&#34;systemType&#34;:&#34;&#34;,&#34;isConfirm&#34;:0,&#34;webVersionName&#34;:&#34;0.0.0&#34;,&#34;distinctId&#34;:&#34;&#34;},&#34;body&#34;:{&#34;imageCaptchaTrack&#34;:{&#34;bgImageWidth&#34;:x&#43;110,&#34;bgImageHeight&#34;:205,&#34;sliderImageWidth&#34;:63,&#34;sliderImageHeight&#34;:205,&#34;startSlidingTime&#34;:&#34;2024-02-19T12:19:54.471Z&#34;,&#34;entSlidingTime&#34;:&#34;2024-02-19T12:19:55.395Z&#34;,&#34;trackList&#34;:track,&#34;id&#34;:sid}}} result=requests.post(url,params={&#39;id&#39;:sid},json=data).json() print(result) def sms(sid,phone): url=&#39;http://api.xyunjiasu.com/sendMessage/sendSms&#39; data={&#34;header&#34;:{&#34;channelCode&#34;:&#34;gw&#34;,&#34;channelName&#34;:&#34;gw&#34;,&#34;proxyNetBarId&#34;:&#34;&#34;,&#34;appId&#34;:3,&#34;versionCode&#34;:1,&#34;versionName&#34;:&#34;1.0.0&#34;,&#34;apiVersion&#34;:&#34;1.0&#34;,&#34;msgId&#34;:&#34;11d82337-ecfb-485f-8c0d-08da1b86d9cc&#34;,&#34;token&#34;:&#34;&#34;,&#34;dk&#34;:&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;,&#34;sendTime&#34;:int(time.time()*1000),&#34;deviceType&#34;:3,&#34;imei&#34;:&#34;865304048714554&#34;,&#34;oaid&#34;:&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;,&#34;uuid&#34;:&#34;undefined&#34;,&#34;idfa&#34;:&#34;&#34;,&#34;openudid&#34;:&#34;&#34;,&#34;deviceModel&#34;:&#34;&#34;,&#34;systemType&#34;:&#34;&#34;,&#34;isConfirm&#34;:0,&#34;webVersionName&#34;:&#34;0.0.0&#34;,&#34;distinctId&#34;:&#34;&#34;},&#34;body&#34;:{&#34;account&#34;:phone,&#34;codeType&#34;:1,&#34;sliderCaptchaId&#34;:sid}} result=requests.post(url,json=data).json() print(result) def main(): sid=gen() x=detect_displacement() verify(sid,x) sms(sid,&#34;17628828009&#34;) for i in range(10): main() http://api.xyunjiasu.com/captchas/slider/gen http://api.xyunjiasu.com/captchas/slider/check?id=9e6c216f4ee74b6f8e6a239a38bd507d {&#34;header&#34;:{&#34;channelCode&#34;:&#34;gw&#34;,&#34;channelName&#34;:&#34;gw&#34;,&#34;proxyNetBarId&#34;:&#34;&#34;,&#34;appId&#34;:3,&#34;versionCode&#34;:1,&#34;versionName&#34;:&#34;1.0.0&#34;,&#34;apiVersion&#34;:&#34;1.0&#34;,&#34;msgId&#34;:&#34;a9a4ba53-1e31-48ba-8ebc-3108409e1f19&#34;,&#34;token&#34;:&#34;&#34;,&#34;dk&#34;:&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;,&#34;sendTime&#34;:1708345195396,&#34;deviceType&#34;:3,&#34;imei&#34;:&#34;865304048714554&#34;,&#34;oaid&#34;:&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;,&#34;uuid&#34;:&#34;undefined&#34;,&#34;idfa&#34;:&#34;&#34;,&#34;openudid&#34;:&#34;&#34;,&#34;deviceModel&#34;:&#34;&#34;,&#34;systemType&#34;:&#34;&#34;,&#34;isConfirm&#34;:0,&#34;webVersionName&#34;:&#34;0.0.0&#34;,&#34;distinctId&#34;:&#34;&#34;},&#34;body&#34;:{&#34;imageCaptchaTrack&#34;:{&#34;bgImageWidth&#34;:336,&#34;bgImageHeight&#34;:205,&#34;sliderImageWidth&#34;:63,&#34;sliderImageHeight&#34;:205,&#34;startSlidingTime&#34;:&#34;2024-02-19T12:19:54.471Z&#34;,&#34;entSlidingTime&#34;:&#34;2024-02-19T12:19:55.395Z&#34;,&#34;trackList&#34;:[{&#34;x&#34;:1,&#34;y&#34;:1,&#34;t&#34;:8},{&#34;x&#34;:2,&#34;y&#34;:1,&#34;t&#34;:14},{&#34;x&#34;:3,&#34;y&#34;:1,&#34;t&#34;:21},{&#34;x&#34;:4,&#34;y&#34;:1,&#34;t&#34;:27},{&#34;x&#34;:5,&#34;y&#34;:1,&#34;t&#34;:32},{&#34;x&#34;:7,&#34;y&#34;:1,&#34;t&#34;:38},{&#34;x&#34;:8,&#34;y&#34;:1,&#34;t&#34;:45},{&#34;x&#34;:9,&#34;y&#34;:2,&#34;t&#34;:51},{&#34;x&#34;:12,&#34;y&#34;:2,&#34;t&#34;:57},{&#34;x&#34;:13,&#34;y&#34;:3,&#34;t&#34;:63},{&#34;x&#34;:16,&#34;y&#34;:3,&#34;t&#34;:69},{&#34;x&#34;:19,&#34;y&#34;:3,&#34;t&#34;:75},{&#34;x&#34;:20,&#34;y&#34;:3,&#34;t&#34;:81},{&#34;x&#34;:24,&#34;y&#34;:3,&#34;t&#34;:88},{&#34;x&#34;:27,&#34;y&#34;:4,&#34;t&#34;:93},{&#34;x&#34;:29,&#34;y&#34;:4,&#34;t&#34;:99},{&#34;x&#34;:32,&#34;y&#34;:4,&#34;t&#34;:105},{&#34;x&#34;:35,&#34;y&#34;:4,&#34;t&#34;:112},{&#34;x&#34;:37,&#34;y&#34;:4,&#34;t&#34;:117},{&#34;x&#34;:42,&#34;y&#34;:5,&#34;t&#34;:124},{&#34;x&#34;:47,&#34;y&#34;:5,&#34;t&#34;:130},{&#34;x&#34;:52,&#34;y&#34;:5,&#34;t&#34;:136},{&#34;x&#34;:57,&#34;y&#34;:5,&#34;t&#34;:142},{&#34;x&#34;:63,&#34;y&#34;:5,&#34;t&#34;:148},{&#34;x&#34;:68,&#34;y&#34;:6,&#34;t&#34;:153},{&#34;x&#34;:75,&#34;y&#34;:7,&#34;t&#34;:159},{&#34;x&#34;:80,&#34;y&#34;:7,&#34;t&#34;:166},{&#34;x&#34;:85,&#34;y&#34;:7,&#34;t&#34;:172},{&#34;x&#34;:91,&#34;y&#34;:8,&#34;t&#34;:178},{&#34;x&#34;:98,&#34;y&#34;:8,&#34;t&#34;:185},{&#34;x&#34;:101,&#34;y&#34;:9,&#34;t&#34;:190},{&#34;x&#34;:109,&#34;y&#34;:9,&#34;t&#34;:196},{&#34;x&#34;:116,&#34;y&#34;:9,&#34;t&#34;:202},{&#34;x&#34;:122,&#34;y&#34;:9,&#34;t&#34;:208},{&#34;x&#34;:131,&#34;y&#34;:9,&#34;t&#34;:215},{&#34;x&#34;:135,&#34;y&#34;:10,&#34;t&#34;:220},{&#34;x&#34;:141,&#34;y&#34;:10,&#34;t&#34;:226},{&#34;x&#34;:147,&#34;y&#34;:11,&#34;t&#34;:233},{&#34;x&#34;:151,&#34;y&#34;:11,&#34;t&#34;:239},{&#34;x&#34;:154,&#34;y&#34;:11,&#34;t&#34;:245},{&#34;x&#34;:157,&#34;y&#34;:11,&#34;t&#34;:250},{&#34;x&#34;:160,&#34;y&#34;:11,&#34;t&#34;:257},{&#34;x&#34;:163,&#34;y&#34;:11,&#34;t&#34;:263},{&#34;x&#34;:165,&#34;y&#34;:11,&#34;t&#34;:269},{&#34;x&#34;:169,&#34;y&#34;:11,&#34;t&#34;:276},{&#34;x&#34;:171,&#34;y&#34;:11,&#34;t&#34;:281},{&#34;x&#34;:175,&#34;y&#34;:12,&#34;t&#34;:287},{&#34;x&#34;:179,&#34;y&#34;:12,&#34;t&#34;:293},{&#34;x&#34;:184,&#34;y&#34;:12,&#34;t&#34;:299},{&#34;x&#34;:189,&#34;y&#34;:12,&#34;t&#34;:305},{&#34;x&#34;:194,&#34;y&#34;:12,&#34;t&#34;:311},{&#34;x&#34;:197,&#34;y&#34;:12,&#34;t&#34;:317},{&#34;x&#34;:203,&#34;y&#34;:13,&#34;t&#34;:324},{&#34;x&#34;:206,&#34;y&#34;:13,&#34;t&#34;:329},{&#34;x&#34;:210,&#34;y&#34;:13,&#34;t&#34;:336},{&#34;x&#34;:213,&#34;y&#34;:13,&#34;t&#34;:341},{&#34;x&#34;:215,&#34;y&#34;:13,&#34;t&#34;:347},{&#34;x&#34;:217,&#34;y&#34;:13,&#34;t&#34;:354},{&#34;x&#34;:217,&#34;y&#34;:13,&#34;t&#34;:360},{&#34;x&#34;:218,&#34;y&#34;:13,&#34;t&#34;:366},{&#34;x&#34;:219,&#34;y&#34;:13,&#34;t&#34;:372},{&#34;x&#34;:219,&#34;y&#34;:13,&#34;t&#34;:543},{&#34;x&#34;:220,&#34;y&#34;:13,&#34;t&#34;:548},{&#34;x&#34;:221,&#34;y&#34;:13,&#34;t&#34;:555},{&#34;x&#34;:222,&#34;y&#34;:13,&#34;t&#34;:560},{&#34;x&#34;:223,&#34;y&#34;:14,&#34;t&#34;:566},{&#34;x&#34;:225,&#34;y&#34;:15,&#34;t&#34;:572},{&#34;x&#34;:225,&#34;y&#34;:15,&#34;t&#34;:578},{&#34;x&#34;:227,&#34;y&#34;:15,&#34;t&#34;:584},{&#34;x&#34;:227,&#34;y&#34;:15,&#34;t&#34;:590},{&#34;x&#34;:228,&#34;y&#34;:15,&#34;t&#34;:597},{&#34;x&#34;:229,&#34;y&#34;:15,&#34;t&#34;:608},{&#34;x&#34;:229,&#34;y&#34;:16,&#34;t&#34;:614},{&#34;x&#34;:230,&#34;y&#34;:16,&#34;t&#34;:626},{&#34;x&#34;:231,&#34;y&#34;:16,&#34;t&#34;:651},{&#34;x&#34;:231,&#34;y&#34;:17,&#34;t&#34;:656},{&#34;x&#34;:231,&#34;y&#34;:17,&#34;t&#34;:663},{&#34;x&#34;:232,&#34;y&#34;:17,&#34;t&#34;:669},{&#34;x&#34;:232,&#34;y&#34;:17,&#34;t&#34;:688}],&#34;id&#34;:&#34;9e6c216f4ee74b6f8e6a239a38bd507d&#34;}}} http://api.xyunjiasu.com/sendMessage/sendSms {&#34;header&#34;:{&#34;channelCode&#34;:&#34;gw&#34;,&#34;channelName&#34;:&#34;gw&#34;,&#34;proxyNetBarId&#34;:&#34;&#34;,&#34;appId&#34;:3,&#34;versionCode&#34;:1,&#34;versionName&#34;:&#34;1.0.0&#34;,&#34;apiVersion&#34;:&#34;1.0&#34;,&#34;msgId&#34;:&#34;11d82337-ecfb-485f-8c0d-08da1b86d9cc&#34;,&#34;token&#34;:&#34;&#34;,&#34;dk&#34;:&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;,&#34;sendTime&#34;:1708345195496,&#34;deviceType&#34;:3,&#34;imei&#34;:&#34;865304048714554&#34;,&#34;oaid&#34;:&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;,&#34;uuid&#34;:&#34;undefined&#34;,&#34;idfa&#34;:&#34;&#34;,&#34;openudid&#34;:&#34;&#34;,&#34;deviceModel&#34;:&#34;&#34;,&#34;systemType&#34;:&#34;&#34;,&#34;isConfirm&#34;:0,&#34;webVersionName&#34;:&#34;0.0.0&#34;,&#34;distinctId&#34;:&#34;&#34;},&#34;body&#34;:{&#34;account&#34;:&#34;17628818007&#34;,&#34;codeType&#34;:1,&#34;sliderCaptchaId&#34;:&#34;9e6c216f4ee74b6f8e6a239a38bd507d&#34;}} http://api.xyunjiasu.com/user/login {&#34;header&#34;:{&#34;channelCode&#34;:&#34;gw&#34;,&#34;channelName&#34;:&#34;gw&#34;,&#34;proxyNetBarId&#34;:&#34;&#34;,&#34;appId&#34;:3,&#34;versionCode&#34;:1,&#34;versionName&#34;:&#34;1.0.0&#34;,&#34;apiVersion&#34;:&#34;1.0&#34;,&#34;msgId&#34;:&#34;4ec87158-0984-4976-a3f7-44819fc02cea&#34;,&#34;token&#34;:&#34;&#34;,&#34;dk&#34;:&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;,&#34;sendTime&#34;:1708345283287,&#34;deviceType&#34;:3,&#34;imei&#34;:&#34;865304048714554&#34;,&#34;oaid&#34;:&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;,&#34;uuid&#34;:&#34;undefined&#34;,&#34;idfa&#34;:&#34;&#34;,&#34;openudid&#34;:&#34;&#34;,&#34;deviceModel&#34;:&#34;&#34;,&#34;systemType&#34;:&#34;&#34;,&#34;isConfirm&#34;:0,&#34;webVersionName&#34;:&#34;0.0.0&#34;,&#34;distinctId&#34;:&#34;&#34;},&#34;body&#34;:{&#34;account&#34;:&#34;17628818007&#34;,&#34;yzm&#34;:&#34;3005&#34;,&#34;loginType&#34;:1,&#34;codeType&#34;:1,&#34;autoLogin&#34;:true}}">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>星云加速器 | Alex lan</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/code/new/%E6%98%9F%E4%BA%91%E5%8A%A0%E9%80%9F%E5%99%A8/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.a389106ec8847d561d666791d134c44fe525dae19e4a1107009df60a9bb4c157.js" integrity="sha256-o4kQbsiEfVYdZmeR0TTET&#43;Ul2uGeShEHAJ32Cpu0wVc=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Alex lan</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-867144600acf9658ad1e030dba887392" class="toggle" checked />
+    <label for="section-867144600acf9658ad1e030dba887392" class="flex justify-between">
+      <a role="button" class="">code</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bad47914f28bea05b9a99cdd87cd69fb" class="toggle"  />
+    <label for="section-bad47914f28bea05b9a99cdd87cd69fb" class="flex justify-between">
+      <a role="button" class="">Android</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/ui/" class="">Android ui</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/%E5%8D%8F%E7%A8%8B-retrofit/" class="">Android 协程-retrofit</a>
+  
+
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/%E6%AF%94%E8%B5%9B/" class="">Android 比赛</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%A2%8E%E7%A2%8E%E5%BF%B5/" class="">android 碎念</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/" class="">Android 网络请求</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E9%80%82%E9%85%8D%E5%99%A8/" class="">Android 适配器</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/" class="">Android-网络请求</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4c67168a533057d7cb02259caca8884d" class="toggle"  />
+    <label for="section-4c67168a533057d7cb02259caca8884d" class="flex justify-between">
+      <a role="button" class="">linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/linux/screen/" class="">linux screen</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-227bbb535145acab9a03ddf223110bf7" class="toggle"  />
+    <label for="section-227bbb535145acab9a03ddf223110bf7" class="flex justify-between">
+      <a role="button" class="">鸿蒙</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/harmony/tabbar/" class="">鸿蒙开发-TbaBar</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/harmony/%E5%85%A5%E9%97%A8/" class="">鸿蒙开发-入门</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/harmony/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" class="">鸿蒙开发-状态管理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/harmony/%E7%BD%91%E7%BB%9C/" class="">鸿蒙开发-网络请求</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7" class="toggle" checked />
+    <label for="section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7" class="flex justify-between">
+      <a role="button" class="">ee</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/autotakepic_flask/" class="">Auto Take Pic Flask</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/c_%E7%94%9C%E7%94%9C%E5%9C%88/" class="">C 甜甜圈</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/rust/%E6%9F%90%E5%9B%BE/" class="">某图</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E4%BD%9C%E4%B8%9A2023.10.10/" class="">作业2023.10.10</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E6%98%9F%E4%BA%91%E5%8A%A0%E9%80%9F%E5%99%A8/" class="active">星云加速器</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E6%9C%A8%E9%A9%AC%E7%99%BB%E9%99%86/" class="">木马登陆</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E6%9F%90update/" class="">某update</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E6%9F%90%E5%88%B7%E8%AF%BE/" class="">某刷课</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="">某洗衣小程序</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E9%82%A3%E4%BA%9B%E9%AA%9A%E6%93%8D%E4%BD%9C/" class="">那些骚操作</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/arch-linux/" class="">arch linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/avaloniaui/" class="">avaloniaui</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/c-sharp/" class="">c#</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/java_mysql/" class="">Java_mysql</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/linux%E7%9F%A5%E8%AF%86/" class="">linux知识</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/mqtt--%E4%B8%B2%E5%8F%A3--4055/" class="">MQTT &amp;&amp; 串口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/python/" class="">Python</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/rust/" class="">rust</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/cmd/" class="">Cmd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/dart/" class="">Dart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="">数据库</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a88931adc275b5db7ba2257eca8098f2" class="toggle"  />
+    <label for="section-a88931adc275b5db7ba2257eca8098f2" class="flex justify-between">
+      <a role="button" class="">e .wp</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wp/bili_22_1024/" class="">bili_22_1024</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wp/love_math/" class="">LOVE_math</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wp/webexercise/ruby_cookie/" class="">ruby_cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bc5bfc4ab3726cdac08770524fbd5e52" class="toggle"  />
+    <label for="section-bc5bfc4ab3726cdac08770524fbd5e52" class="flex justify-between">
+      <a role="button" class="">hack</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/hack/msf/" class="">msf</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/hack/thefatrat/" class="">TheFatRat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c809dbac7a9b531c0deb3f94bb3a5eb9" class="toggle"  />
+    <label for="section-c809dbac7a9b531c0deb3f94bb3a5eb9" class="flex justify-between">
+      <a href="/docs/re/" class="">re</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-59835f29e02875febbf77853a8373c43" class="toggle"  />
+    <label for="section-59835f29e02875febbf77853a8373c43" class="flex justify-between">
+      <a href="/docs/re/new/" class="">demo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E6%9F%90h%E8%A7%86%E9%A2%91%E8%BD%AF%E4%BB%B6/" class="">Android 比赛</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/u%E5%87%80/" class="">u净</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E5%A4%A7%E5%AD%A6%E6%90%9C%E9%A2%98%E9%85%B1/" class="">大学搜题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E5%B1%B1%E8%A5%BF%E6%81%92%E5%AE%89%E5%88%B7%E8%AF%BE%E4%BB%A5%E5%8F%8A%E8%80%83%E8%AF%95/" class="">山西恒安刷课以及考试</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6/" class="">某h软件</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/bika/" class="">某h软件 bika</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6-2/" class="">某h软件-2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E6%B7%98%E9%87%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E9%99%86/" class="">淘金社区登陆</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E7%88%B1%E5%A4%9A%E5%A4%9A-%E5%88%86%E6%9E%90/" class="">爱多多 分析</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E7%A5%9E%E5%9B%BE%E5%A3%81%E7%BA%B8/" class="">神图壁纸</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/arm%E6%B1%87%E7%BC%96/" class="">arm 汇编</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/flutter---blutter/" class="">flutter - blutter</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/flutter/" class="">flutter 初探</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/frida/" class="">frida</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/ida%E5%8A%A8%E8%B0%83so/" class="">ida 动态调试so</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/%E5%8F%8D%E7%BC%96%E8%AF%91/" class="">反编译</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91/" class="">小程序 逆向</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d633b3f91ad6faec5e15f38ac64d5024" class="toggle"  />
+    <label for="section-d633b3f91ad6faec5e15f38ac64d5024" class="flex justify-between">
+      <a href="/docs/learm/" class="">学习</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-297a8c491188fdc1e4d5049993bd118b" class="toggle"  />
+    <label for="section-297a8c491188fdc1e4d5049993bd118b" class="flex justify-between">
+      <a role="button" class="">english</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/english/%E4%B8%80%E8%88%AC%E7%8E%B0%E5%9C%A8%E6%97%B6/" class="">一般现在时</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/english/%E7%8E%B0%E5%9C%A8%E8%BF%9B%E8%A1%8C%E6%97%B6/" class="">现在进行时</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d273ec3342c86bd09d8e0a595cc7603e" class="toggle"  />
+    <label for="section-d273ec3342c86bd09d8e0a595cc7603e" class="flex justify-between">
+      <a role="button" class="">math</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/" class="">公式测试</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86/" class="">基本积分</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E5%AF%BC%E6%95%B0/" class="">导数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E6%95%B0%E5%88%97/" class="">数列</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/" class="">数学公式测试</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F/" class="">泰勒公式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/" class="">等价无穷小</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E9%B8%A1%E6%9D%82%E5%85%AC%E5%BC%8F/" class="">鸡杂公式</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ea5b2994c4cca97c0834172637987408" class="toggle"  />
+    <label for="section-ea5b2994c4cca97c0834172637987408" class="flex justify-between">
+      <a role="button" class="">上课</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/java/" class="">java</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/linux/" class="">linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" class="">信息安全</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/%E5%B1%80%E5%9F%9F%E7%BD%91-%E6%80%9D%E7%A7%91-pt/" class="">局域网 思科 pt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/" class="">算法与数据结构笔记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/" class="">网页制作</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a9ce434c78e2b2b70812ee1671233fb4" class="toggle"  />
+    <label for="section-a9ce434c78e2b2b70812ee1671233fb4" class="flex justify-between">
+      <a role="button" class="">网络安全</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3bf12ad5664ebca7e9060559169913cd" class="toggle"  />
+    <label for="section-3bf12ad5664ebca7e9060559169913cd" class="flex justify-between">
+      <a role="button" class="">java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/java/sql%E6%B3%A8%E5%85%A5/" class="">java sql 注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/java/web-inf%E8%AF%BB%E5%8F%96/" class="">WEB-INF 读取</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="">反序列化</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c7fff2b0fc43407720940cd3bd5fa3fa" class="toggle"  />
+    <label for="section-c7fff2b0fc43407720940cd3bd5fa3fa" class="flex justify-between">
+      <a role="button" class="">node</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/node/%E5%8E%9F%E5%BD%A2%E9%93%BE%E6%B1%A1%E6%9F%93/" class="">node 原型链污染</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5385b8bcbe311a5d908dc263de46f07f" class="toggle"  />
+    <label for="section-5385b8bcbe311a5d908dc263de46f07f" class="flex justify-between">
+      <a role="button" class="">other</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/other/linux/" class="">linux 知识点</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/other/xpath%E6%B3%A8%E5%85%A5/" class="">xpath 注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/other/xxe/" class="">XXE</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/other/%E5%8F%8D%E5%BC%B9shll/" class="">反弹shell</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/other/%E7%AB%AF%E5%8F%A3/" class="">常见端口</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-46a6c3a4b470bf639b30aeb9a16a1257" class="toggle"  />
+    <label for="section-46a6c3a4b470bf639b30aeb9a16a1257" class="flex justify-between">
+      <a role="button" class="">php</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/php/" class="">php</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="">php</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8Clinux%E7%BB%95%E8%BF%87/" class="">php命令执行linux绕过</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/readflag/" class="">readflag</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/regexp%E7%9B%B2%E6%B3%A8/" class="">regexp盲注</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/session%E4%BC%AA%E9%80%A0/" class="">session伪造</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/" class="">堆叠注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5/" class="">字符型注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/" class="">报错注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%95%B4%E5%9E%8B%E6%B3%A8%E5%85%A5/" class="">整型注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/" class="">时间注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E7%9B%B2%E6%B3%A8/" class="">盲注</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/htaccess%E7%9A%84%E5%88%A9%E7%94%A8/" class="">Htaccess的利用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/md5%E7%A2%B0%E6%92%9E/" class="">Md5碰撞</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/%E4%BC%AA%E5%8D%8F%E8%AE%AE/" class="">伪协议</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/%E5%87%BD%E6%95%B0%E6%BC%8F%E6%B4%9E/" class="">函数漏洞</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="">文件上传</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" class="">文件包含</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dbfc22e2e7caa67fee4f381ec66fd790" class="toggle"  />
+    <label for="section-dbfc22e2e7caa67fee4f381ec66fd790" class="flex justify-between">
+      <a role="button" class="">python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/python/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="">pickle反序列化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/python/python-session%E4%BC%AA%E9%80%A0/" class="">python session伪造</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/python/ssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/" class="">SSTI模板注入</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-27bef856708365c3f954dc367d1bca66" class="toggle"  />
+    <label for="section-27bef856708365c3f954dc367d1bca66" class="flex justify-between">
+      <a role="button" class="">tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/tools/fake-mysql/" class="">fake-mysql</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-02af837b39c34c4496ee7c45850c4389" class="toggle"  />
+    <label for="section-02af837b39c34c4496ee7c45850c4389" class="flex justify-between">
+      <a role="button" class="">index</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>星云加速器</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents"></nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p>一个加速器，新用户免费送1一个小时，注册有滑块，秒了，其他没啥,都是固定，或者uuid秒了，不用特地改</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> requests<span style="color:#f92672">,</span>time<span style="color:#f92672">,</span>base64
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> cv2
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gen</span>():
+</span></span><span style="display:flex;"><span>    url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://api.xyunjiasu.com/captchas/slider/gen&#39;</span>
+</span></span><span style="display:flex;"><span>    result<span style="color:#f92672">=</span>requests<span style="color:#f92672">.</span>get(url)<span style="color:#f92672">.</span>json()
+</span></span><span style="display:flex;"><span>    b_img<span style="color:#f92672">=</span>result[<span style="color:#e6db74">&#39;body&#39;</span>][<span style="color:#e6db74">&#39;captchaResponse&#39;</span>][<span style="color:#e6db74">&#39;captcha&#39;</span>][<span style="color:#e6db74">&#39;backgroundImage&#39;</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;,&#39;</span>)[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    s_img<span style="color:#f92672">=</span>result[<span style="color:#e6db74">&#39;body&#39;</span>][<span style="color:#e6db74">&#39;captchaResponse&#39;</span>][<span style="color:#e6db74">&#39;captcha&#39;</span>][<span style="color:#e6db74">&#39;sliderImage&#39;</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;,&#39;</span>)[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    sid<span style="color:#f92672">=</span>result[<span style="color:#e6db74">&#39;body&#39;</span>][<span style="color:#e6db74">&#39;captchaResponse&#39;</span>][<span style="color:#e6db74">&#39;id&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;./img/b_img.png&#39;</span>,<span style="color:#e6db74">&#39;wb&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>        f<span style="color:#f92672">.</span>write(base64<span style="color:#f92672">.</span>b64decode(b_img))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;./img/s_img.png&#39;</span>,<span style="color:#e6db74">&#39;wb&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>        f<span style="color:#f92672">.</span>write(base64<span style="color:#f92672">.</span>b64decode(s_img))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> sid
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">simulate_slider_trajectory</span>(start_pos, end_pos, steps, duration):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 起始和结束坐标</span>
+</span></span><span style="display:flex;"><span>    start_x, start_y <span style="color:#f92672">=</span> start_pos
+</span></span><span style="display:flex;"><span>    end_x, end_y <span style="color:#f92672">=</span> end_pos
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 总步数和每一步对应的时间间隔</span>
+</span></span><span style="display:flex;"><span>    time_interval <span style="color:#f92672">=</span> duration <span style="color:#f92672">/</span> steps
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 计算每次移动的距离</span>
+</span></span><span style="display:flex;"><span>    dx <span style="color:#f92672">=</span> (end_x <span style="color:#f92672">-</span> start_x) <span style="color:#f92672">/</span> steps
+</span></span><span style="display:flex;"><span>    dy <span style="color:#f92672">=</span> (end_y <span style="color:#f92672">-</span> start_y) <span style="color:#f92672">/</span> steps
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    trajectory <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(steps <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):  <span style="color:#75715e"># 包含起点和终点</span>
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> start_x <span style="color:#f92672">+</span> i <span style="color:#f92672">*</span> dx
+</span></span><span style="display:flex;"><span>        y <span style="color:#f92672">=</span> start_y <span style="color:#f92672">+</span> i <span style="color:#f92672">*</span> dy
+</span></span><span style="display:flex;"><span>        t <span style="color:#f92672">=</span> i <span style="color:#f92672">*</span> time_interval
+</span></span><span style="display:flex;"><span>        trajectory<span style="color:#f92672">.</span>append({<span style="color:#e6db74">&#39;x&#39;</span>:round(x), <span style="color:#e6db74">&#39;y&#39;</span>:round(y),<span style="color:#e6db74">&#39;t&#39;</span>: round(t<span style="color:#f92672">*</span><span style="color:#ae81ff">1000</span>)})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> trajectory
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_tran_canny</span>(image):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;消除噪声&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>GaussianBlur(image, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> cv2<span style="color:#f92672">.</span>Canny(image, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">150</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">detect_displacement</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;detect displacement&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># # 参数0是灰度模式</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># &#34;./img/b_img.png&#34;, &#34;./img/s_img.png&#34;</span>
+</span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>imread(<span style="color:#e6db74">&#34;./img/s_img.png&#34;</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    template <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>imread(<span style="color:#e6db74">&#34;./img/b_img.png&#34;</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 寻找最佳匹配</span>
+</span></span><span style="display:flex;"><span>    res <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>matchTemplate(_tran_canny(image), _tran_canny(template), cv2<span style="color:#f92672">.</span>TM_CCOEFF_NORMED)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 最小值，最大值，并得到最小值, 最大值的索引</span>
+</span></span><span style="display:flex;"><span>    min_val, max_val, min_loc, max_loc <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>minMaxLoc(res)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    top_left <span style="color:#f92672">=</span> max_loc[<span style="color:#ae81ff">0</span>]  <span style="color:#75715e"># 横坐标</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> top_left
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">login</span>():
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">verify</span>(sid,x):
+</span></span><span style="display:flex;"><span>    track <span style="color:#f92672">=</span>track <span style="color:#f92672">=</span> simulate_slider_trajectory([<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>], [x,<span style="color:#ae81ff">20</span>], <span style="color:#ae81ff">80</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://api.xyunjiasu.com/captchas/slider/check&#39;</span>
+</span></span><span style="display:flex;"><span>    data<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;header&#34;</span>:{<span style="color:#e6db74">&#34;channelCode&#34;</span>:<span style="color:#e6db74">&#34;gw&#34;</span>,<span style="color:#e6db74">&#34;channelName&#34;</span>:<span style="color:#e6db74">&#34;gw&#34;</span>,<span style="color:#e6db74">&#34;proxyNetBarId&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#e6db74">&#34;appId&#34;</span>:<span style="color:#ae81ff">3</span>,<span style="color:#e6db74">&#34;versionCode&#34;</span>:<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;versionName&#34;</span>:<span style="color:#e6db74">&#34;1.0.0&#34;</span>,<span style="color:#e6db74">&#34;apiVersion&#34;</span>:<span style="color:#e6db74">&#34;1.0&#34;</span>,<span style="color:#e6db74">&#34;msgId&#34;</span>:<span style="color:#e6db74">&#34;a9a4ba53-1e31-48ba-8ebc-3108409e1f19&#34;</span>,<span style="color:#e6db74">&#34;token&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#e6db74">&#34;dk&#34;</span>:<span style="color:#e6db74">&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;</span>,<span style="color:#e6db74">&#34;sendTime&#34;</span>:int(time<span style="color:#f92672">.</span>time()<span style="color:#f92672">*</span><span style="color:#ae81ff">1000</span>),<span style="color:#e6db74">&#34;deviceType&#34;</span>:<span style="color:#ae81ff">3</span>,<span style="color:#e6db74">&#34;imei&#34;</span>:<span style="color:#e6db74">&#34;865304048714552&#34;</span>,<span style="color:#e6db74">&#34;oaid&#34;</span>:<span style="color:#e6db74">&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;</span>,<span style="color:#e6db74">&#34;uuid&#34;</span>:<span style="color:#e6db74">&#34;undefined&#34;</span>,<span style="color:#e6db74">&#34;idfa&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#e6db74">&#34;openudid&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#e6db74">&#34;deviceModel&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#e6db74">&#34;systemType&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#e6db74">&#34;isConfirm&#34;</span>:<span style="color:#ae81ff">0</span>,<span style="color:#e6db74">&#34;webVersionName&#34;</span>:<span style="color:#e6db74">&#34;0.0.0&#34;</span>,<span style="color:#e6db74">&#34;distinctId&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>},<span style="color:#e6db74">&#34;body&#34;</span>:{<span style="color:#e6db74">&#34;imageCaptchaTrack&#34;</span>:{<span style="color:#e6db74">&#34;bgImageWidth&#34;</span>:x<span style="color:#f92672">+</span><span style="color:#ae81ff">110</span>,<span style="color:#e6db74">&#34;bgImageHeight&#34;</span>:<span style="color:#ae81ff">205</span>,<span style="color:#e6db74">&#34;sliderImageWidth&#34;</span>:<span style="color:#ae81ff">63</span>,<span style="color:#e6db74">&#34;sliderImageHeight&#34;</span>:<span style="color:#ae81ff">205</span>,<span style="color:#e6db74">&#34;startSlidingTime&#34;</span>:<span style="color:#e6db74">&#34;2024-02-19T12:19:54.471Z&#34;</span>,<span style="color:#e6db74">&#34;entSlidingTime&#34;</span>:<span style="color:#e6db74">&#34;2024-02-19T12:19:55.395Z&#34;</span>,<span style="color:#e6db74">&#34;trackList&#34;</span>:track,<span style="color:#e6db74">&#34;id&#34;</span>:sid}}}
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    result<span style="color:#f92672">=</span>requests<span style="color:#f92672">.</span>post(url,params<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;id&#39;</span>:sid},json<span style="color:#f92672">=</span>data)<span style="color:#f92672">.</span>json()
+</span></span><span style="display:flex;"><span>    print(result)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sms</span>(sid,phone):
+</span></span><span style="display:flex;"><span>    url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://api.xyunjiasu.com/sendMessage/sendSms&#39;</span>
+</span></span><span style="display:flex;"><span>    data<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;header&#34;</span>:{<span style="color:#e6db74">&#34;channelCode&#34;</span>:<span style="color:#e6db74">&#34;gw&#34;</span>,<span style="color:#e6db74">&#34;channelName&#34;</span>:<span style="color:#e6db74">&#34;gw&#34;</span>,<span style="color:#e6db74">&#34;proxyNetBarId&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#e6db74">&#34;appId&#34;</span>:<span style="color:#ae81ff">3</span>,<span style="color:#e6db74">&#34;versionCode&#34;</span>:<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;versionName&#34;</span>:<span style="color:#e6db74">&#34;1.0.0&#34;</span>,<span style="color:#e6db74">&#34;apiVersion&#34;</span>:<span style="color:#e6db74">&#34;1.0&#34;</span>,<span style="color:#e6db74">&#34;msgId&#34;</span>:<span style="color:#e6db74">&#34;11d82337-ecfb-485f-8c0d-08da1b86d9cc&#34;</span>,<span style="color:#e6db74">&#34;token&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#e6db74">&#34;dk&#34;</span>:<span style="color:#e6db74">&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;</span>,<span style="color:#e6db74">&#34;sendTime&#34;</span>:int(time<span style="color:#f92672">.</span>time()<span style="color:#f92672">*</span><span style="color:#ae81ff">1000</span>),<span style="color:#e6db74">&#34;deviceType&#34;</span>:<span style="color:#ae81ff">3</span>,<span style="color:#e6db74">&#34;imei&#34;</span>:<span style="color:#e6db74">&#34;865304048714554&#34;</span>,<span style="color:#e6db74">&#34;oaid&#34;</span>:<span style="color:#e6db74">&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;</span>,<span style="color:#e6db74">&#34;uuid&#34;</span>:<span style="color:#e6db74">&#34;undefined&#34;</span>,<span style="color:#e6db74">&#34;idfa&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#e6db74">&#34;openudid&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#e6db74">&#34;deviceModel&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#e6db74">&#34;systemType&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#e6db74">&#34;isConfirm&#34;</span>:<span style="color:#ae81ff">0</span>,<span style="color:#e6db74">&#34;webVersionName&#34;</span>:<span style="color:#e6db74">&#34;0.0.0&#34;</span>,<span style="color:#e6db74">&#34;distinctId&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>},<span style="color:#e6db74">&#34;body&#34;</span>:{<span style="color:#e6db74">&#34;account&#34;</span>:phone,<span style="color:#e6db74">&#34;codeType&#34;</span>:<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;sliderCaptchaId&#34;</span>:sid}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    result<span style="color:#f92672">=</span>requests<span style="color:#f92672">.</span>post(url,json<span style="color:#f92672">=</span>data)<span style="color:#f92672">.</span>json()
+</span></span><span style="display:flex;"><span>    print(result)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    sid<span style="color:#f92672">=</span>gen()
+</span></span><span style="display:flex;"><span>    x<span style="color:#f92672">=</span>detect_displacement()
+</span></span><span style="display:flex;"><span>    verify(sid,x)
+</span></span><span style="display:flex;"><span>    sms(sid,<span style="color:#e6db74">&#34;17628828009&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>http://api.xyunjiasu.com/captchas/slider/gen
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>http://api.xyunjiasu.com/captchas/slider/check?id=9e6c216f4ee74b6f8e6a239a38bd507d
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{&#34;header&#34;:{&#34;channelCode&#34;:&#34;gw&#34;,&#34;channelName&#34;:&#34;gw&#34;,&#34;proxyNetBarId&#34;:&#34;&#34;,&#34;appId&#34;:3,&#34;versionCode&#34;:1,&#34;versionName&#34;:&#34;1.0.0&#34;,&#34;apiVersion&#34;:&#34;1.0&#34;,&#34;msgId&#34;:&#34;a9a4ba53-1e31-48ba-8ebc-3108409e1f19&#34;,&#34;token&#34;:&#34;&#34;,&#34;dk&#34;:&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;,&#34;sendTime&#34;:1708345195396,&#34;deviceType&#34;:3,&#34;imei&#34;:&#34;865304048714554&#34;,&#34;oaid&#34;:&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;,&#34;uuid&#34;:&#34;undefined&#34;,&#34;idfa&#34;:&#34;&#34;,&#34;openudid&#34;:&#34;&#34;,&#34;deviceModel&#34;:&#34;&#34;,&#34;systemType&#34;:&#34;&#34;,&#34;isConfirm&#34;:0,&#34;webVersionName&#34;:&#34;0.0.0&#34;,&#34;distinctId&#34;:&#34;&#34;},&#34;body&#34;:{&#34;imageCaptchaTrack&#34;:{&#34;bgImageWidth&#34;:336,&#34;bgImageHeight&#34;:205,&#34;sliderImageWidth&#34;:63,&#34;sliderImageHeight&#34;:205,&#34;startSlidingTime&#34;:&#34;2024-02-19T12:19:54.471Z&#34;,&#34;entSlidingTime&#34;:&#34;2024-02-19T12:19:55.395Z&#34;,&#34;trackList&#34;:[{&#34;x&#34;:1,&#34;y&#34;:1,&#34;t&#34;:8},{&#34;x&#34;:2,&#34;y&#34;:1,&#34;t&#34;:14},{&#34;x&#34;:3,&#34;y&#34;:1,&#34;t&#34;:21},{&#34;x&#34;:4,&#34;y&#34;:1,&#34;t&#34;:27},{&#34;x&#34;:5,&#34;y&#34;:1,&#34;t&#34;:32},{&#34;x&#34;:7,&#34;y&#34;:1,&#34;t&#34;:38},{&#34;x&#34;:8,&#34;y&#34;:1,&#34;t&#34;:45},{&#34;x&#34;:9,&#34;y&#34;:2,&#34;t&#34;:51},{&#34;x&#34;:12,&#34;y&#34;:2,&#34;t&#34;:57},{&#34;x&#34;:13,&#34;y&#34;:3,&#34;t&#34;:63},{&#34;x&#34;:16,&#34;y&#34;:3,&#34;t&#34;:69},{&#34;x&#34;:19,&#34;y&#34;:3,&#34;t&#34;:75},{&#34;x&#34;:20,&#34;y&#34;:3,&#34;t&#34;:81},{&#34;x&#34;:24,&#34;y&#34;:3,&#34;t&#34;:88},{&#34;x&#34;:27,&#34;y&#34;:4,&#34;t&#34;:93},{&#34;x&#34;:29,&#34;y&#34;:4,&#34;t&#34;:99},{&#34;x&#34;:32,&#34;y&#34;:4,&#34;t&#34;:105},{&#34;x&#34;:35,&#34;y&#34;:4,&#34;t&#34;:112},{&#34;x&#34;:37,&#34;y&#34;:4,&#34;t&#34;:117},{&#34;x&#34;:42,&#34;y&#34;:5,&#34;t&#34;:124},{&#34;x&#34;:47,&#34;y&#34;:5,&#34;t&#34;:130},{&#34;x&#34;:52,&#34;y&#34;:5,&#34;t&#34;:136},{&#34;x&#34;:57,&#34;y&#34;:5,&#34;t&#34;:142},{&#34;x&#34;:63,&#34;y&#34;:5,&#34;t&#34;:148},{&#34;x&#34;:68,&#34;y&#34;:6,&#34;t&#34;:153},{&#34;x&#34;:75,&#34;y&#34;:7,&#34;t&#34;:159},{&#34;x&#34;:80,&#34;y&#34;:7,&#34;t&#34;:166},{&#34;x&#34;:85,&#34;y&#34;:7,&#34;t&#34;:172},{&#34;x&#34;:91,&#34;y&#34;:8,&#34;t&#34;:178},{&#34;x&#34;:98,&#34;y&#34;:8,&#34;t&#34;:185},{&#34;x&#34;:101,&#34;y&#34;:9,&#34;t&#34;:190},{&#34;x&#34;:109,&#34;y&#34;:9,&#34;t&#34;:196},{&#34;x&#34;:116,&#34;y&#34;:9,&#34;t&#34;:202},{&#34;x&#34;:122,&#34;y&#34;:9,&#34;t&#34;:208},{&#34;x&#34;:131,&#34;y&#34;:9,&#34;t&#34;:215},{&#34;x&#34;:135,&#34;y&#34;:10,&#34;t&#34;:220},{&#34;x&#34;:141,&#34;y&#34;:10,&#34;t&#34;:226},{&#34;x&#34;:147,&#34;y&#34;:11,&#34;t&#34;:233},{&#34;x&#34;:151,&#34;y&#34;:11,&#34;t&#34;:239},{&#34;x&#34;:154,&#34;y&#34;:11,&#34;t&#34;:245},{&#34;x&#34;:157,&#34;y&#34;:11,&#34;t&#34;:250},{&#34;x&#34;:160,&#34;y&#34;:11,&#34;t&#34;:257},{&#34;x&#34;:163,&#34;y&#34;:11,&#34;t&#34;:263},{&#34;x&#34;:165,&#34;y&#34;:11,&#34;t&#34;:269},{&#34;x&#34;:169,&#34;y&#34;:11,&#34;t&#34;:276},{&#34;x&#34;:171,&#34;y&#34;:11,&#34;t&#34;:281},{&#34;x&#34;:175,&#34;y&#34;:12,&#34;t&#34;:287},{&#34;x&#34;:179,&#34;y&#34;:12,&#34;t&#34;:293},{&#34;x&#34;:184,&#34;y&#34;:12,&#34;t&#34;:299},{&#34;x&#34;:189,&#34;y&#34;:12,&#34;t&#34;:305},{&#34;x&#34;:194,&#34;y&#34;:12,&#34;t&#34;:311},{&#34;x&#34;:197,&#34;y&#34;:12,&#34;t&#34;:317},{&#34;x&#34;:203,&#34;y&#34;:13,&#34;t&#34;:324},{&#34;x&#34;:206,&#34;y&#34;:13,&#34;t&#34;:329},{&#34;x&#34;:210,&#34;y&#34;:13,&#34;t&#34;:336},{&#34;x&#34;:213,&#34;y&#34;:13,&#34;t&#34;:341},{&#34;x&#34;:215,&#34;y&#34;:13,&#34;t&#34;:347},{&#34;x&#34;:217,&#34;y&#34;:13,&#34;t&#34;:354},{&#34;x&#34;:217,&#34;y&#34;:13,&#34;t&#34;:360},{&#34;x&#34;:218,&#34;y&#34;:13,&#34;t&#34;:366},{&#34;x&#34;:219,&#34;y&#34;:13,&#34;t&#34;:372},{&#34;x&#34;:219,&#34;y&#34;:13,&#34;t&#34;:543},{&#34;x&#34;:220,&#34;y&#34;:13,&#34;t&#34;:548},{&#34;x&#34;:221,&#34;y&#34;:13,&#34;t&#34;:555},{&#34;x&#34;:222,&#34;y&#34;:13,&#34;t&#34;:560},{&#34;x&#34;:223,&#34;y&#34;:14,&#34;t&#34;:566},{&#34;x&#34;:225,&#34;y&#34;:15,&#34;t&#34;:572},{&#34;x&#34;:225,&#34;y&#34;:15,&#34;t&#34;:578},{&#34;x&#34;:227,&#34;y&#34;:15,&#34;t&#34;:584},{&#34;x&#34;:227,&#34;y&#34;:15,&#34;t&#34;:590},{&#34;x&#34;:228,&#34;y&#34;:15,&#34;t&#34;:597},{&#34;x&#34;:229,&#34;y&#34;:15,&#34;t&#34;:608},{&#34;x&#34;:229,&#34;y&#34;:16,&#34;t&#34;:614},{&#34;x&#34;:230,&#34;y&#34;:16,&#34;t&#34;:626},{&#34;x&#34;:231,&#34;y&#34;:16,&#34;t&#34;:651},{&#34;x&#34;:231,&#34;y&#34;:17,&#34;t&#34;:656},{&#34;x&#34;:231,&#34;y&#34;:17,&#34;t&#34;:663},{&#34;x&#34;:232,&#34;y&#34;:17,&#34;t&#34;:669},{&#34;x&#34;:232,&#34;y&#34;:17,&#34;t&#34;:688}],&#34;id&#34;:&#34;9e6c216f4ee74b6f8e6a239a38bd507d&#34;}}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>http://api.xyunjiasu.com/sendMessage/sendSms
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{&#34;header&#34;:{&#34;channelCode&#34;:&#34;gw&#34;,&#34;channelName&#34;:&#34;gw&#34;,&#34;proxyNetBarId&#34;:&#34;&#34;,&#34;appId&#34;:3,&#34;versionCode&#34;:1,&#34;versionName&#34;:&#34;1.0.0&#34;,&#34;apiVersion&#34;:&#34;1.0&#34;,&#34;msgId&#34;:&#34;11d82337-ecfb-485f-8c0d-08da1b86d9cc&#34;,&#34;token&#34;:&#34;&#34;,&#34;dk&#34;:&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;,&#34;sendTime&#34;:1708345195496,&#34;deviceType&#34;:3,&#34;imei&#34;:&#34;865304048714554&#34;,&#34;oaid&#34;:&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;,&#34;uuid&#34;:&#34;undefined&#34;,&#34;idfa&#34;:&#34;&#34;,&#34;openudid&#34;:&#34;&#34;,&#34;deviceModel&#34;:&#34;&#34;,&#34;systemType&#34;:&#34;&#34;,&#34;isConfirm&#34;:0,&#34;webVersionName&#34;:&#34;0.0.0&#34;,&#34;distinctId&#34;:&#34;&#34;},&#34;body&#34;:{&#34;account&#34;:&#34;17628818007&#34;,&#34;codeType&#34;:1,&#34;sliderCaptchaId&#34;:&#34;9e6c216f4ee74b6f8e6a239a38bd507d&#34;}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>http://api.xyunjiasu.com/user/login
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{&#34;header&#34;:{&#34;channelCode&#34;:&#34;gw&#34;,&#34;channelName&#34;:&#34;gw&#34;,&#34;proxyNetBarId&#34;:&#34;&#34;,&#34;appId&#34;:3,&#34;versionCode&#34;:1,&#34;versionName&#34;:&#34;1.0.0&#34;,&#34;apiVersion&#34;:&#34;1.0&#34;,&#34;msgId&#34;:&#34;4ec87158-0984-4976-a3f7-44819fc02cea&#34;,&#34;token&#34;:&#34;&#34;,&#34;dk&#34;:&#34;ac2d9f0925b03b2fa47b934c8b4bd3b5&#34;,&#34;sendTime&#34;:1708345283287,&#34;deviceType&#34;:3,&#34;imei&#34;:&#34;865304048714554&#34;,&#34;oaid&#34;:&#34;ff3fcf86-b7ff-e639-e5fe-ffffeda7a281&#34;,&#34;uuid&#34;:&#34;undefined&#34;,&#34;idfa&#34;:&#34;&#34;,&#34;openudid&#34;:&#34;&#34;,&#34;deviceModel&#34;:&#34;&#34;,&#34;systemType&#34;:&#34;&#34;,&#34;isConfirm&#34;:0,&#34;webVersionName&#34;:&#34;0.0.0&#34;,&#34;distinctId&#34;:&#34;&#34;},&#34;body&#34;:{&#34;account&#34;:&#34;17628818007&#34;,&#34;yzm&#34;:&#34;3005&#34;,&#34;loginType&#34;:1,&#34;codeType&#34;:1,&#34;autoLogin&#34;:true}}
+</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents"></nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

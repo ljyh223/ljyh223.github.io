@@ -1,87 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Alex lan</title><link>http://localhost:1313/tags/linux/</link><description>Recent content in Linux on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>arch linux</title><link>http://localhost:1313/docs/code/arch-linux/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/code/arch-linux/</guid><description>&lt;ul>
-&lt;li>向日葵启动服务&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo systemctl start runsunloginclient.service
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>解决VMWare - Could not connect ‘Ethernet0‘ to virtual network ‘/dev/vmnet0‘.&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo modprobe vmnet &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> sudo vmware-networks --start
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl start vmware-networks.service
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>mysql 启动&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo systemctl start mysqld
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>todesk启动服务&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo systemctl start todeskd
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>linux screen</title><link>http://localhost:1313/docs/code/linux/screen/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/code/linux/screen/</guid><description>&lt;p>&lt;code>screen&lt;/code> 是一个非常有用的终端管理工具，可以让你在断开连接后继续运行程序，并且支持多个会话和窗口。以下是一些常用的 &lt;code>screen&lt;/code> 操作和命令：&lt;/p>
-&lt;p>启动&lt;/p>
-&lt;pre tabindex="0">&lt;code>screen
-&lt;/code>&lt;/pre>&lt;p>指定会话&lt;/p>
-&lt;pre tabindex="0">&lt;code>screen -S my_session
-&lt;/code>&lt;/pre>&lt;p>&lt;strong>退出 &lt;code>screen&lt;/code> 会话但保持进程运行&lt;/strong>：使用 &lt;code>Ctrl+A&lt;/code> 然后按 &lt;code>D&lt;/code> 来&amp;quot;detach&amp;quot;（断开）会话。这样你的会话和进程仍然在后台运行，但你可以退出当前终端。&lt;/p>
-&lt;p>&lt;strong>恢复一个 &lt;code>screen&lt;/code> 会话：&lt;/strong> 当你重新连接到服务器时，可以通过以下命令恢复会话：&lt;/p>
-&lt;pre tabindex="0">&lt;code>screen -r
-&lt;/code>&lt;/pre>&lt;p>如果有多个会话在运行，可以通过 &lt;code>-r&lt;/code> 加会话 ID 或会话名称恢复特定会话：&lt;/p>
-&lt;pre tabindex="0">&lt;code>screen -r my_session
-&lt;/code>&lt;/pre>&lt;p>查看当前正在运行的会话&lt;/p>
-&lt;pre tabindex="0">&lt;code>screen -ls
-&lt;/code>&lt;/pre>&lt;p>这将列出所有正在运行的 &lt;code>screen&lt;/code> 会话以及它们的 ID 和名称。&lt;/p>
-&lt;p>&lt;strong>终止一个 &lt;code>screen&lt;/code> 会话：&lt;/strong> 在 &lt;code>screen&lt;/code> 内按下 &lt;code>Ctrl+D&lt;/code> 会结束当前会话。如果你只是想退出但不想结束会话，可以使用 &lt;code>Ctrl+A&lt;/code> 然后按 &lt;code>D&lt;/code>。&lt;/p>
-&lt;h3 id="多窗口操作">
- 多窗口操作
- &lt;a class="anchor" href="#%e5%a4%9a%e7%aa%97%e5%8f%a3%e6%93%8d%e4%bd%9c">#&lt;/a>
-&lt;/h3>
-&lt;p>&lt;code>screen&lt;/code> 支持在同一个会话中创建多个窗口，就像在一个虚拟终端中有多个标签页一样。&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>创建新窗口：&lt;/strong> 在 &lt;code>screen&lt;/code> 会话中按 &lt;code>Ctrl+A&lt;/code> 然后按 &lt;code>C&lt;/code>（Create）。这将创建一个新的窗口，并让你在新的终端中工作。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>切换窗口：&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>按 &lt;code>Ctrl+A&lt;/code> 然后按 &lt;code>N&lt;/code>，可以切换到下一个窗口。&lt;/li>
-&lt;li>按 &lt;code>Ctrl+A&lt;/code> 然后按 &lt;code>P&lt;/code>，可以切换到前一个窗口。&lt;/li>
-&lt;li>按 &lt;code>Ctrl+A&lt;/code> 然后按窗口号（如 &lt;code>0&lt;/code>，&lt;code>1&lt;/code>，&lt;code>2&lt;/code> 等）可以直接切换到该窗口。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>查看所有窗口：&lt;/strong> 按 &lt;code>Ctrl+A&lt;/code> 然后按 &lt;code>&amp;quot;&lt;/code>（双引号），你将看到一个窗口列表，使用上下箭头选择并回车切换。&lt;/p></description></item><item><title>linux知识</title><link>http://localhost:1313/docs/code/linux%E7%9F%A5%E8%AF%86/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/code/linux%E7%9F%A5%E8%AF%86/</guid><description>&lt;p>创建文件夹&lt;/p>
-&lt;pre tabindex="0">&lt;code>mkdir test
-&lt;/code>&lt;/pre>&lt;p>创建文件&lt;/p>
-&lt;pre tabindex="0">&lt;code>touch 1.txt
-&lt;/code>&lt;/pre>&lt;p>删除文件&lt;/p>
-&lt;pre tabindex="0">&lt;code>rm test
-&lt;/code>&lt;/pre>&lt;p>移动文件&lt;/p>
-&lt;pre tabindex="0">&lt;code>mv
-&lt;/code>&lt;/pre>&lt;p>zip&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># zip 压缩文件夹/文件&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>zip -r file_name file_name.zip
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 解压 zip&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> unzip file_name.zip
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>kali 换源&lt;/p>
-&lt;pre tabindex="0">&lt;code>/etc/apt/sources.list
-
-#中科大
-deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
-deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
-
-#阿里云
-#deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib
-#deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib
-
-#清华大学
-#deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free
-#deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling maincontrib non-free
-
-
-
-sudo apt update
-&lt;/code>&lt;/pre>&lt;h2 id="ssh-多终端">
- ssh 多终端
- &lt;a class="anchor" href="#ssh-%e5%a4%9a%e7%bb%88%e7%ab%af">#&lt;/a>
-&lt;/h2>
-&lt;p>安装&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Alex lan</title>
+    <link>http://localhost:1313/tags/linux/</link>
+    <description>Recent content in Linux on Alex lan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>arch linux</title>
+      <link>http://localhost:1313/docs/code/arch-linux/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/code/arch-linux/</guid>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;向日葵启动服务&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl start runsunloginclient.service&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;&#xA;&lt;li&gt;解决VMWare - Could not connect ‘Ethernet0‘ to virtual network ‘/dev/vmnet0‘.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo modprobe vmnet &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo vmware-networks --start&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl start vmware-networks.service&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;&#xA;&lt;li&gt;mysql 启动&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl start mysqld&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;&#xA;&lt;li&gt;todesk启动服务&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl start todeskd&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>linux screen</title>
+      <link>http://localhost:1313/docs/code/linux/screen/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/code/linux/screen/</guid>
+      <description>&lt;p&gt;&lt;code&gt;screen&lt;/code&gt; 是一个非常有用的终端管理工具，可以让你在断开连接后继续运行程序，并且支持多个会话和窗口。以下是一些常用的 &lt;code&gt;screen&lt;/code&gt; 操作和命令：&lt;/p&gt;&#xA;&lt;p&gt;启动&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;screen&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;指定会话&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;screen -S my_session&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;退出 &lt;code&gt;screen&lt;/code&gt; 会话但保持进程运行&lt;/strong&gt;：使用 &lt;code&gt;Ctrl+A&lt;/code&gt; 然后按 &lt;code&gt;D&lt;/code&gt; 来&amp;quot;detach&amp;quot;（断开）会话。这样你的会话和进程仍然在后台运行，但你可以退出当前终端。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;恢复一个 &lt;code&gt;screen&lt;/code&gt; 会话：&lt;/strong&gt; 当你重新连接到服务器时，可以通过以下命令恢复会话：&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;screen -r&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果有多个会话在运行，可以通过 &lt;code&gt;-r&lt;/code&gt; 加会话 ID 或会话名称恢复特定会话：&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;screen -r my_session&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;查看当前正在运行的会话&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;screen -ls&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这将列出所有正在运行的 &lt;code&gt;screen&lt;/code&gt; 会话以及它们的 ID 和名称。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;终止一个 &lt;code&gt;screen&lt;/code&gt; 会话：&lt;/strong&gt; 在 &lt;code&gt;screen&lt;/code&gt; 内按下 &lt;code&gt;Ctrl+D&lt;/code&gt; 会结束当前会话。如果你只是想退出但不想结束会话，可以使用 &lt;code&gt;Ctrl+A&lt;/code&gt; 然后按 &lt;code&gt;D&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;h3 id=&#34;多窗口操作&#34;&gt;&#xD;&#xA;  多窗口操作&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e5%a4%9a%e7%aa%97%e5%8f%a3%e6%93%8d%e4%bd%9c&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;&lt;code&gt;screen&lt;/code&gt; 支持在同一个会话中创建多个窗口，就像在一个虚拟终端中有多个标签页一样。&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;创建新窗口：&lt;/strong&gt; 在 &lt;code&gt;screen&lt;/code&gt; 会话中按 &lt;code&gt;Ctrl+A&lt;/code&gt; 然后按 &lt;code&gt;C&lt;/code&gt;（Create）。这将创建一个新的窗口，并让你在新的终端中工作。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;切换窗口：&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;按 &lt;code&gt;Ctrl+A&lt;/code&gt; 然后按 &lt;code&gt;N&lt;/code&gt;，可以切换到下一个窗口。&lt;/li&gt;&#xA;&lt;li&gt;按 &lt;code&gt;Ctrl+A&lt;/code&gt; 然后按 &lt;code&gt;P&lt;/code&gt;，可以切换到前一个窗口。&lt;/li&gt;&#xA;&lt;li&gt;按 &lt;code&gt;Ctrl+A&lt;/code&gt; 然后按窗口号（如 &lt;code&gt;0&lt;/code&gt;，&lt;code&gt;1&lt;/code&gt;，&lt;code&gt;2&lt;/code&gt; 等）可以直接切换到该窗口。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;查看所有窗口：&lt;/strong&gt; 按 &lt;code&gt;Ctrl+A&lt;/code&gt; 然后按 &lt;code&gt;&amp;quot;&lt;/code&gt;（双引号），你将看到一个窗口列表，使用上下箭头选择并回车切换。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>linux知识</title>
+      <link>http://localhost:1313/docs/code/linux%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/code/linux%E7%9F%A5%E8%AF%86/</guid>
+      <description>&lt;p&gt;创建文件夹&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mkdir test&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;创建文件&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;touch 1.txt&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;删除文件&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;rm test&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;移动文件&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mv&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;zip&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# zip 压缩文件夹/文件&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;zip -r file_name file_name.zip&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 解压 zip&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; unzip file_name.zip&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;kali 换源&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/etc/apt/sources.list&#xA;&#xA;#中科大&#xA;deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib&#xA;deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib&#xA;&#xA;#阿里云&#xA;#deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib&#xA;#deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib&#xA;&#xA;#清华大学&#xA;#deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free&#xA;#deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling maincontrib non-free&#xA;&#xA;&#xA;&#xA;sudo apt update&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;ssh-多终端&#34;&gt;&#xD;&#xA;  ssh 多终端&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#ssh-%e5%a4%9a%e7%bb%88%e7%ab%af&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;安装&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,181 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mqtt on Alex lan</title><link>http://localhost:1313/tags/mqtt/</link><description>Recent content in Mqtt on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/mqtt/index.xml" rel="self" type="application/rss+xml"/><item><title>MQTT &amp;&amp; 串口</title><link>http://localhost:1313/docs/code/mqtt--%E4%B8%B2%E5%8F%A3--4055/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/code/mqtt--%E4%B8%B2%E5%8F%A3--4055/</guid><description>&lt;h1 id="mqtt-服务">
- MQTT 服务
- &lt;a class="anchor" href="#mqtt-%e6%9c%8d%e5%8a%a1">#&lt;/a>
-&lt;/h1>
-&lt;h2 id="开启服务">
- 开启服务
- &lt;a class="anchor" href="#%e5%bc%80%e5%90%af%e6%9c%8d%e5%8a%a1">#&lt;/a>
-&lt;/h2>
-&lt;p>需要在页面中开启service 服务，确保开启。&lt;/p>
-&lt;h2 id="发送数据">
- 发送数据
- &lt;a class="anchor" href="#%e5%8f%91%e9%80%81%e6%95%b0%e6%8d%ae">#&lt;/a>
-&lt;/h2>
-&lt;p>MQTT 订阅主题默认是test，发送数据如下&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;library&amp;#34;&lt;/span>, &lt;span style="color:#f92672">&amp;#34;mode&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;write&amp;#34;&lt;/span>, &lt;span style="color:#f92672">&amp;#34;serial&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;lamp&amp;#34;&lt;/span>, &lt;span style="color:#f92672">&amp;#34;grip&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;off&amp;#34;&lt;/span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="name">
- name
- &lt;a class="anchor" href="#name">#&lt;/a>
-&lt;/h3>
-&lt;p>模块名字, 有4各模块分别为:&lt;/p>
-&lt;ul>
-&lt;li>library&lt;/li>
-&lt;li>library_ex&lt;/li>
-&lt;li>fan&lt;/li>
-&lt;li>wireless&lt;/li>
-&lt;/ul>
-&lt;h3 id="mode">
- mode
- &lt;a class="anchor" href="#mode">#&lt;/a>
-&lt;/h3>
-&lt;p>mode 为控制模式, 有2个控制模式分别为:&lt;/p>
-&lt;ul>
-&lt;li>write&lt;/li>
-&lt;li>read&lt;/li>
-&lt;/ul>
-&lt;h3 id="serial">
- serial
- &lt;a class="anchor" href="#serial">#&lt;/a>
-&lt;/h3>
-&lt;p>serial 为模块的下的组件，如报警器，风扇，二氧化碳，有4个模块分别为&lt;/p>
-&lt;table>
- &lt;thead>
- &lt;tr>
- &lt;th>组件名&lt;/th>
- &lt;th>说明&lt;/th>
- &lt;th>访问方式&lt;/th>
- &lt;th>&lt;/th>
- &lt;/tr>
- &lt;/thead>
- &lt;tbody>
- &lt;tr>
- &lt;td>lamp&lt;/td>
- &lt;td>报警灯&lt;/td>
- &lt;td>读写&lt;/td>
- &lt;td>&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>fan&lt;/td>
- &lt;td>风扇&lt;/td>
- &lt;td>读写&lt;/td>
- &lt;td>&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>co2&lt;/td>
- &lt;td>二氧化碳&lt;/td>
- &lt;td>只读&lt;/td>
- &lt;td>&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>photoelectric&lt;/td>
- &lt;td>光电烟雾检测器&lt;/td>
- &lt;td>读写&lt;/td>
- &lt;td>&lt;/td>
- &lt;/tr>
- &lt;/tbody>
-&lt;/table>
-&lt;h3 id="grip">
- grip
- &lt;a class="anchor" href="#grip">#&lt;/a>
-&lt;/h3>
-&lt;p>仅当mode为write时，grip用来控制开关&lt;/p>
-&lt;p>off 关，非0ff开&lt;/p>
-&lt;h2 id="接受数据">
- 接受数据
- &lt;a class="anchor" href="#%e6%8e%a5%e5%8f%97%e6%95%b0%e6%8d%ae">#&lt;/a>
-&lt;/h2>
-&lt;h3 id="提前串口发送数据">
- 提前串口发送数据
- &lt;a class="anchor" href="#%e6%8f%90%e5%89%8d%e4%b8%b2%e5%8f%a3%e5%8f%91%e9%80%81%e6%95%b0%e6%8d%ae">#&lt;/a>
-&lt;/h3>
-&lt;p>在设置界面中提前设置好预设的串口发送数据，不需要最后的两位crc，MQTT 服务会自动计算CRC校验。&lt;/p></description></item><item><title>MQTT &amp;&amp; 串口 &amp;&amp; 4055</title><link>http://localhost:1313/posts/mqtt--%E4%B8%B2%E5%8F%A3--4055/</link><pubDate>Thu, 28 Nov 2024 21:03:24 +0800</pubDate><guid>http://localhost:1313/posts/mqtt--%E4%B8%B2%E5%8F%A3--4055/</guid><description>&lt;h1 id="mqtt-服务">
- MQTT 服务
- &lt;a class="anchor" href="#mqtt-%e6%9c%8d%e5%8a%a1">#&lt;/a>
-&lt;/h1>
-&lt;h2 id="开启服务">
- 开启服务
- &lt;a class="anchor" href="#%e5%bc%80%e5%90%af%e6%9c%8d%e5%8a%a1">#&lt;/a>
-&lt;/h2>
-&lt;p>需要在页面中开启service 服务，确保开启。&lt;/p>
-&lt;h2 id="发送数据">
- 发送数据
- &lt;a class="anchor" href="#%e5%8f%91%e9%80%81%e6%95%b0%e6%8d%ae">#&lt;/a>
-&lt;/h2>
-&lt;p>MQTT 订阅主题默认是test，发送数据如下&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;library&amp;#34;&lt;/span>, &lt;span style="color:#f92672">&amp;#34;mode&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;write&amp;#34;&lt;/span>, &lt;span style="color:#f92672">&amp;#34;serial&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;lamp&amp;#34;&lt;/span>, &lt;span style="color:#f92672">&amp;#34;grip&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;off&amp;#34;&lt;/span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="name">
- name
- &lt;a class="anchor" href="#name">#&lt;/a>
-&lt;/h3>
-&lt;p>模块名字, 有4各模块分别为:&lt;/p>
-&lt;ul>
-&lt;li>library&lt;/li>
-&lt;li>library_ex&lt;/li>
-&lt;li>fan&lt;/li>
-&lt;li>wireless&lt;/li>
-&lt;/ul>
-&lt;h3 id="mode">
- mode
- &lt;a class="anchor" href="#mode">#&lt;/a>
-&lt;/h3>
-&lt;p>mode 为控制模式, 有2个控制模式分别为:&lt;/p>
-&lt;ul>
-&lt;li>write&lt;/li>
-&lt;li>read&lt;/li>
-&lt;/ul>
-&lt;h3 id="serial">
- serial
- &lt;a class="anchor" href="#serial">#&lt;/a>
-&lt;/h3>
-&lt;p>serial 为模块的下的组件，如报警器，风扇，二氧化碳，有4个模块分别为&lt;/p>
-&lt;table>
- &lt;thead>
- &lt;tr>
- &lt;th>组件名&lt;/th>
- &lt;th>说明&lt;/th>
- &lt;th>访问方式&lt;/th>
- &lt;th>&lt;/th>
- &lt;/tr>
- &lt;/thead>
- &lt;tbody>
- &lt;tr>
- &lt;td>lamp&lt;/td>
- &lt;td>报警灯&lt;/td>
- &lt;td>读写&lt;/td>
- &lt;td>&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>fan&lt;/td>
- &lt;td>风扇&lt;/td>
- &lt;td>读写&lt;/td>
- &lt;td>&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>co2&lt;/td>
- &lt;td>二氧化碳&lt;/td>
- &lt;td>只读&lt;/td>
- &lt;td>&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>photoelectric&lt;/td>
- &lt;td>光电烟雾检测器&lt;/td>
- &lt;td>读写&lt;/td>
- &lt;td>&lt;/td>
- &lt;/tr>
- &lt;/tbody>
-&lt;/table>
-&lt;h3 id="grip">
- grip
- &lt;a class="anchor" href="#grip">#&lt;/a>
-&lt;/h3>
-&lt;p>仅当mode为write时，grip用来控制开关&lt;/p>
-&lt;p>off 关，非0ff开&lt;/p>
-&lt;h2 id="接受数据">
- 接受数据
- &lt;a class="anchor" href="#%e6%8e%a5%e5%8f%97%e6%95%b0%e6%8d%ae">#&lt;/a>
-&lt;/h2>
-&lt;h3 id="提前串口发送数据">
- 提前串口发送数据
- &lt;a class="anchor" href="#%e6%8f%90%e5%89%8d%e4%b8%b2%e5%8f%a3%e5%8f%91%e9%80%81%e6%95%b0%e6%8d%ae">#&lt;/a>
-&lt;/h3>
-&lt;p>在设置界面中提前设置好预设的串口发送数据，不需要最后的两位crc，MQTT 服务会自动计算CRC校验。&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mqtt on Alex lan</title>
+    <link>http://localhost:1313/tags/mqtt/</link>
+    <description>Recent content in Mqtt on Alex lan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/mqtt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MQTT &amp;&amp; 串口</title>
+      <link>http://localhost:1313/docs/code/mqtt--%E4%B8%B2%E5%8F%A3--4055/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/code/mqtt--%E4%B8%B2%E5%8F%A3--4055/</guid>
+      <description>&lt;h1 id=&#34;mqtt-服务&#34;&gt;&#xD;&#xA;  MQTT 服务&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#mqtt-%e6%9c%8d%e5%8a%a1&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;h2 id=&#34;开启服务&#34;&gt;&#xD;&#xA;  开启服务&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e5%bc%80%e5%90%af%e6%9c%8d%e5%8a%a1&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;需要在页面中开启service 服务，确保开启。&lt;/p&gt;&#xA;&lt;h2 id=&#34;发送数据&#34;&gt;&#xD;&#xA;  发送数据&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e5%8f%91%e9%80%81%e6%95%b0%e6%8d%ae&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;MQTT 订阅主题默认是test，发送数据如下&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;library&amp;#34;&lt;/span&gt;,  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;mode&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;write&amp;#34;&lt;/span&gt;,  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;serial&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;lamp&amp;#34;&lt;/span&gt;,  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;grip&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;off&amp;#34;&lt;/span&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;name&#34;&gt;&#xD;&#xA;  name&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#name&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;模块名字, 有4各模块分别为:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;library&lt;/li&gt;&#xA;&lt;li&gt;library_ex&lt;/li&gt;&#xA;&lt;li&gt;fan&lt;/li&gt;&#xA;&lt;li&gt;wireless&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;mode&#34;&gt;&#xD;&#xA;  mode&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#mode&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;mode 为控制模式, 有2个控制模式分别为:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;write&lt;/li&gt;&#xA;&lt;li&gt;read&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;serial&#34;&gt;&#xD;&#xA;  serial&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#serial&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;serial 为模块的下的组件，如报警器，风扇，二氧化碳，有4个模块分别为&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;组件名&lt;/th&gt;&#xA;          &lt;th&gt;说明&lt;/th&gt;&#xA;          &lt;th&gt;访问方式&lt;/th&gt;&#xA;          &lt;th&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;lamp&lt;/td&gt;&#xA;          &lt;td&gt;报警灯&lt;/td&gt;&#xA;          &lt;td&gt;读写&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;fan&lt;/td&gt;&#xA;          &lt;td&gt;风扇&lt;/td&gt;&#xA;          &lt;td&gt;读写&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;co2&lt;/td&gt;&#xA;          &lt;td&gt;二氧化碳&lt;/td&gt;&#xA;          &lt;td&gt;只读&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;photoelectric&lt;/td&gt;&#xA;          &lt;td&gt;光电烟雾检测器&lt;/td&gt;&#xA;          &lt;td&gt;读写&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h3 id=&#34;grip&#34;&gt;&#xD;&#xA;  grip&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#grip&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;仅当mode为write时，grip用来控制开关&lt;/p&gt;&#xA;&lt;p&gt;off 关，非0ff开&lt;/p&gt;&#xA;&lt;h2 id=&#34;接受数据&#34;&gt;&#xD;&#xA;  接受数据&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e6%8e%a5%e5%8f%97%e6%95%b0%e6%8d%ae&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h3 id=&#34;提前串口发送数据&#34;&gt;&#xD;&#xA;  提前串口发送数据&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e6%8f%90%e5%89%8d%e4%b8%b2%e5%8f%a3%e5%8f%91%e9%80%81%e6%95%b0%e6%8d%ae&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;在设置界面中提前设置好预设的串口发送数据，不需要最后的两位crc，MQTT  服务会自动计算CRC校验。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>MQTT &amp;&amp; 串口 &amp;&amp; 4055</title>
+      <link>http://localhost:1313/posts/mqtt--%E4%B8%B2%E5%8F%A3--4055/</link>
+      <pubDate>Thu, 28 Nov 2024 21:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/posts/mqtt--%E4%B8%B2%E5%8F%A3--4055/</guid>
+      <description>&lt;h1 id=&#34;mqtt-服务&#34;&gt;&#xD;&#xA;  MQTT 服务&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#mqtt-%e6%9c%8d%e5%8a%a1&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;h2 id=&#34;开启服务&#34;&gt;&#xD;&#xA;  开启服务&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e5%bc%80%e5%90%af%e6%9c%8d%e5%8a%a1&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;需要在页面中开启service 服务，确保开启。&lt;/p&gt;&#xA;&lt;h2 id=&#34;发送数据&#34;&gt;&#xD;&#xA;  发送数据&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e5%8f%91%e9%80%81%e6%95%b0%e6%8d%ae&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;MQTT 订阅主题默认是test，发送数据如下&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;library&amp;#34;&lt;/span&gt;,  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;mode&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;write&amp;#34;&lt;/span&gt;,  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;serial&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;lamp&amp;#34;&lt;/span&gt;,  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;grip&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;off&amp;#34;&lt;/span&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;name&#34;&gt;&#xD;&#xA;  name&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#name&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;模块名字, 有4各模块分别为:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;library&lt;/li&gt;&#xA;&lt;li&gt;library_ex&lt;/li&gt;&#xA;&lt;li&gt;fan&lt;/li&gt;&#xA;&lt;li&gt;wireless&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;mode&#34;&gt;&#xD;&#xA;  mode&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#mode&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;mode 为控制模式, 有2个控制模式分别为:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;write&lt;/li&gt;&#xA;&lt;li&gt;read&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;serial&#34;&gt;&#xD;&#xA;  serial&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#serial&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;serial 为模块的下的组件，如报警器，风扇，二氧化碳，有4个模块分别为&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;组件名&lt;/th&gt;&#xA;          &lt;th&gt;说明&lt;/th&gt;&#xA;          &lt;th&gt;访问方式&lt;/th&gt;&#xA;          &lt;th&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;lamp&lt;/td&gt;&#xA;          &lt;td&gt;报警灯&lt;/td&gt;&#xA;          &lt;td&gt;读写&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;fan&lt;/td&gt;&#xA;          &lt;td&gt;风扇&lt;/td&gt;&#xA;          &lt;td&gt;读写&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;co2&lt;/td&gt;&#xA;          &lt;td&gt;二氧化碳&lt;/td&gt;&#xA;          &lt;td&gt;只读&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;photoelectric&lt;/td&gt;&#xA;          &lt;td&gt;光电烟雾检测器&lt;/td&gt;&#xA;          &lt;td&gt;读写&lt;/td&gt;&#xA;          &lt;td&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h3 id=&#34;grip&#34;&gt;&#xD;&#xA;  grip&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#grip&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;仅当mode为write时，grip用来控制开关&lt;/p&gt;&#xA;&lt;p&gt;off 关，非0ff开&lt;/p&gt;&#xA;&lt;h2 id=&#34;接受数据&#34;&gt;&#xD;&#xA;  接受数据&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e6%8e%a5%e5%8f%97%e6%95%b0%e6%8d%ae&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h3 id=&#34;提前串口发送数据&#34;&gt;&#xD;&#xA;  提前串口发送数据&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e6%8f%90%e5%89%8d%e4%b8%b2%e5%8f%a3%e5%8f%91%e9%80%81%e6%95%b0%e6%8d%ae&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;在设置界面中提前设置好预设的串口发送数据，不需要最后的两位crc，MQTT  服务会自动计算CRC校验。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

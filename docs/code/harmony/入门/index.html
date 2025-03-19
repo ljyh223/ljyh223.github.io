@@ -1,4 +1,9 @@
-<!doctype html><html lang=en dir=ltr><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
   参考
   #
 
@@ -15,7 +20,7 @@ struct Index {
   // 工程默认显示 `Index` 页面组件
   // build 是声明UI的位置
   build() {
-    Text('页面组件')
+    Text(&#39;页面组件&#39;)
   }
 }
 自定义组件
@@ -24,7 +29,7 @@ struct Index {
 @Component
 struct Footer {
   build() {
-    Text('自定义组件')
+    Text(&#39;自定义组件&#39;)
   }
 }
 
@@ -42,10 +47,10 @@ struct Index {
 @Component
 export default struct Footer {
   build() {
-    Text('自定义组件')
+    Text(&#39;自定义组件&#39;)
   }
 }
-import Footer from './components/Footer.ets'
+import Footer from &#39;./components/Footer.ets&#39;
 
 @Entry
 @Component
@@ -61,384 +66,2432 @@ struct Index {
   系统组件
   #
 
-参考基础组件"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://localhost:1313/docs/code/harmony/%E5%85%A5%E9%97%A8/"><meta property="og:site_name" content="Alex lan"><meta property="og:title" content="鸿蒙开发-入门"><meta property="og:description" content="参考#鸿蒙应用开发指南 官方开发说明
-页面组件#@Entry @Component struct Index { // 工程默认显示 `Index` 页面组件 // build 是声明UI的位置 build() { Text('页面组件') } } 自定义组件
-// 定义 `Footer` 组件 @Component struct Footer { build() { Text('自定义组件') } } @Entry @Component struct Index { build() { Column(){ // 使用 `Footer` 组件 Footer() } } } 导出使用
-@Component export default struct Footer { build() { Text('自定义组件') } } import Footer from './components/Footer.ets' @Entry @Component struct Index { build() { Column(){ // 使用 `Footer` 组件 Footer() } } } 系统组件#参考基础组件"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:published_time" content="2024-12-08T14:03:24+08:00"><meta property="article:modified_time" content="2024-12-08T14:03:24+08:00"><meta property="article:tag" content="鸿蒙"><title>鸿蒙开发-入门 | Alex lan</title>
-<link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://localhost:1313/docs/code/harmony/%E5%85%A5%E9%97%A8/><link rel=stylesheet href=/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.c290d52f387bc8e8a0bd57b2126cae6de6c478944752e1d9608ba90f1c1a9220.js integrity="sha256-wpDVLzh7yOigvVeyEmyubebEeJRHUuHZYIupDxwakiA=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Alex lan</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li><input type=checkbox id=section-867144600acf9658ad1e030dba887392 class=toggle checked>
-<label for=section-867144600acf9658ad1e030dba887392 class="flex justify-between"><a role=button>code</a></label><ul><li><input type=checkbox id=section-bad47914f28bea05b9a99cdd87cd69fb class=toggle>
-<label for=section-bad47914f28bea05b9a99cdd87cd69fb class="flex justify-between"><a role=button>Android</a></label><ul><li><a href=/docs/code/android/ui/>Android ui</a></li><li><a href=/docs/code/android/%E5%8D%8F%E7%A8%8B-retrofit/>Android 协程-retrofit</a></li><li><a href=/docs/code/android/%E6%AF%94%E8%B5%9B/>Android 比赛</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%A2%8E%E7%A2%8E%E5%BF%B5/>android 碎念</a></li><li><a href=/docs/code/android/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android 网络请求</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E9%80%82%E9%85%8D%E5%99%A8/>Android 适配器</a></li><li><a href=/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/>Android-网络请求</a></li></ul></li><li><input type=checkbox id=section-4c67168a533057d7cb02259caca8884d class=toggle>
-<label for=section-4c67168a533057d7cb02259caca8884d class="flex justify-between"><a role=button>linux</a></label><ul><li><a href=/docs/code/linux/screen/>linux screen</a></li></ul></li><li><input type=checkbox id=section-227bbb535145acab9a03ddf223110bf7 class=toggle checked>
-<label for=section-227bbb535145acab9a03ddf223110bf7 class="flex justify-between"><a role=button>鸿蒙</a></label><ul><li><a href=/docs/code/harmony/tabbar/>鸿蒙开发-TbaBar</a></li><li><a href=/docs/code/harmony/%E5%85%A5%E9%97%A8/ class=active>鸿蒙开发-入门</a></li><li><a href=/docs/code/harmony/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/>鸿蒙开发-状态管理</a></li><li><a href=/docs/code/harmony/%E7%BD%91%E7%BB%9C/>鸿蒙开发-网络请求</a></li></ul></li><li><input type=checkbox id=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class=toggle>
-<label for=section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7 class="flex justify-between"><a role=button>ee</a></label><ul><li><a href=/docs/code/new/autotakepic_flask/>Auto Take Pic Flask</a></li><li><a href=/docs/code/new/c_%E7%94%9C%E7%94%9C%E5%9C%88/>C 甜甜圈</a></li><li><a href=/docs/code/new/rust/%E6%9F%90%E5%9B%BE/>某图</a></li><li><a href=/docs/code/new/%E4%BD%9C%E4%B8%9A2023.10.10/>作业2023.10.10</a></li><li><a href=/docs/code/new/%E6%98%9F%E4%BA%91%E5%8A%A0%E9%80%9F%E5%99%A8/>星云加速器</a></li><li><a href=/docs/code/new/%E6%9C%A8%E9%A9%AC%E7%99%BB%E9%99%86/>木马登陆</a></li><li><a href=/docs/code/new/%E6%9F%90update/>某update</a></li><li><a href=/docs/code/new/%E6%9F%90%E5%88%B7%E8%AF%BE/>某刷课</a></li><li><a href=/docs/code/new/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/>某洗衣小程序</a></li><li><a href=/docs/code/new/%E9%82%A3%E4%BA%9B%E9%AA%9A%E6%93%8D%E4%BD%9C/>那些骚操作</a></li></ul></li><li><a href=/docs/code/arch-linux/>arch linux</a></li><li><a href=/docs/code/avaloniaui/>avaloniaui</a></li><li><a href=/docs/code/c%23/>c#</a></li><li><a href=/docs/code/java_mysql/>Java_mysql</a></li><li><a href=/docs/code/linux%E7%9F%A5%E8%AF%86/>linux知识</a></li><li><a href=/docs/code/mqtt--%E4%B8%B2%E5%8F%A3--4055/>MQTT && 串口</a></li><li><a href=/docs/code/python/>Python</a></li><li><a href=/docs/code/rust/>rust</a></li><li><a href=/docs/code/cmd/>Cmd</a></li><li><a href=/docs/code/dart/>Dart</a></li><li><a href=/docs/code/%E6%95%B0%E6%8D%AE%E5%BA%93/>数据库</a></li></ul></li><li><input type=checkbox id=section-a88931adc275b5db7ba2257eca8098f2 class=toggle>
-<label for=section-a88931adc275b5db7ba2257eca8098f2 class="flex justify-between"><a role=button>e .wp</a></label><ul><li><a href=/docs/wp/bili_22_1024/>bili_22_1024</a></li><li><a href=/docs/wp/love_math/>LOVE_math</a></li><li><a href=/docs/wp/webexercise/ruby_cookie/>ruby_cookie</a></li></ul></li><li><input type=checkbox id=section-d633b3f91ad6faec5e15f38ac64d5024 class=toggle>
-<label for=section-d633b3f91ad6faec5e15f38ac64d5024 class="flex justify-between"><a role=button>good good study</a></label><ul><li><input type=checkbox id=section-ad1d0d6744ceb9d7276a26afbd49c97f class=toggle>
-<label for=section-ad1d0d6744ceb9d7276a26afbd49c97f class="flex justify-between"><a role=button>class notes</a></label><ul><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/java/>java</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/linux/>linux</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/>信息安全</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E5%B1%80%E5%9F%9F%E7%BD%91-%E6%80%9D%E7%A7%91-pt/>局域网 思科 pt</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/>算法与数据结构笔记</a></li><li><a href=/docs/learm/%E4%B8%8A%E8%AF%BE/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/>网页制作</a></li></ul></li><li><input type=checkbox id=section-297a8c491188fdc1e4d5049993bd118b class=toggle>
-<label for=section-297a8c491188fdc1e4d5049993bd118b class="flex justify-between"><a role=button>english</a></label><ul><li><a href=/docs/learm/english/%E4%B8%80%E8%88%AC%E7%8E%B0%E5%9C%A8%E6%97%B6/>一般现在时</a></li><li><a href=/docs/learm/english/%E7%8E%B0%E5%9C%A8%E8%BF%9B%E8%A1%8C%E6%97%B6/>现在进行时</a></li></ul></li><li><input type=checkbox id=section-d273ec3342c86bd09d8e0a595cc7603e class=toggle>
-<label for=section-d273ec3342c86bd09d8e0a595cc7603e class="flex justify-between"><a role=button>math</a></label><ul><li><a href=/docs/learm/math/%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>公式测试</a></li><li><a href=/docs/learm/math/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86/>基本积分</a></li><li><a href=/docs/learm/math/%E5%AF%BC%E6%95%B0/>导数</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%88%97/>数列</a></li><li><a href=/docs/learm/math/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/>数学公式测试</a></li><li><a href=/docs/learm/math/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F/>泰勒公式</a></li><li><a href=/docs/learm/math/%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/>等价无穷小</a></li><li><a href=/docs/learm/math/%E9%B8%A1%E6%9D%82%E5%85%AC%E5%BC%8F/>鸡杂公式</a></li></ul></li></ul></li><li><input type=checkbox id=section-bc5bfc4ab3726cdac08770524fbd5e52 class=toggle>
-<label for=section-bc5bfc4ab3726cdac08770524fbd5e52 class="flex justify-between"><a role=button>hack</a></label><ul><li><a href=/docs/hack/msf/>msf</a></li><li><a href=/docs/hack/thefatrat/>TheFatRat</a></li></ul></li><li><input type=checkbox id=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class=toggle>
-<label for=section-c809dbac7a9b531c0deb3f94bb3a5eb9 class="flex justify-between"><a href=/docs/re/>re</a></label><ul><li><input type=checkbox id=section-59835f29e02875febbf77853a8373c43 class=toggle>
-<label for=section-59835f29e02875febbf77853a8373c43 class="flex justify-between"><a href=/docs/re/new/>demo</a></label><ul><li><a href=/docs/re/new/%E6%9F%90h%E8%A7%86%E9%A2%91%E8%BD%AF%E4%BB%B6/>Android 比赛</a></li><li><a href=/docs/re/new/u%E5%87%80/>u净</a></li><li><a href=/docs/re/new/%E5%A4%A7%E5%AD%A6%E6%90%9C%E9%A2%98%E9%85%B1/>大学搜题</a></li><li><a href=/docs/re/new/%E5%B1%B1%E8%A5%BF%E6%81%92%E5%AE%89%E5%88%B7%E8%AF%BE%E4%BB%A5%E5%8F%8A%E8%80%83%E8%AF%95/>山西恒安刷课以及考试</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6/>某h软件</a></li><li><a href=/docs/re/new/bika/>某h软件 bika</a></li><li><a href=/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6-2/>某h软件-2</a></li><li><a href=/docs/re/new/%E6%B7%98%E9%87%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E9%99%86/>淘金社区登陆</a></li><li><a href=/docs/re/new/%E7%88%B1%E5%A4%9A%E5%A4%9A-%E5%88%86%E6%9E%90/>爱多多 分析</a></li><li><a href=/docs/re/new/%E7%A5%9E%E5%9B%BE%E5%A3%81%E7%BA%B8/>神图壁纸</a></li></ul></li><li><a href=/docs/re/arm%E6%B1%87%E7%BC%96/>arm 汇编</a></li><li><a href=/docs/re/flutter---blutter/>flutter - blutter</a></li><li><a href=/docs/re/flutter/>flutter 初探</a></li><li><a href=/docs/re/frida/>frida</a></li><li><a href=/docs/re/ida%E5%8A%A8%E8%B0%83so/>ida 动态调试so</a></li><li><a href=/docs/re/%E5%8F%8D%E7%BC%96%E8%AF%91/>反编译</a></li><li><a href=/docs/re/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91/>小程序 逆向</a></li></ul></li><li><input type=checkbox id=section-18930a98ed98865a0f74f8bc6e5f9129 class=toggle>
-<label for=section-18930a98ed98865a0f74f8bc6e5f9129 class="flex justify-between"><a role=button>网络安全</a></label><ul><li><input type=checkbox id=section-651b79d602e2b6fd9e11ffc5f6867235 class=toggle>
-<label for=section-651b79d602e2b6fd9e11ffc5f6867235 class="flex justify-between"><a role=button>java</a></label><ul><li><a href=/docs/network-security/java/sql%E6%B3%A8%E5%85%A5/>java sql 注入</a></li><li><a href=/docs/network-security/java/web-inf%E8%AF%BB%E5%8F%96/>WEB-INF 读取</a></li><li><a href=/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>反序列化</a></li></ul></li><li><input type=checkbox id=section-a44367811822bf6f468461f4b263fc52 class=toggle>
-<label for=section-a44367811822bf6f468461f4b263fc52 class="flex justify-between"><a role=button>node</a></label><ul><li><a href=/docs/network-security/node/%E5%8E%9F%E5%BD%A2%E9%93%BE%E6%B1%A1%E6%9F%93/>node 原型链污染</a></li></ul></li><li><input type=checkbox id=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class=toggle>
-<label for=section-5570b5f99c5f18ce1f4fb2ef69fe9001 class="flex justify-between"><a role=button>other</a></label><ul><li><a href=/docs/network-security/other/linux/>linux 知识点</a></li><li><a href=/docs/network-security/other/xpath%E6%B3%A8%E5%85%A5/>xpath 注入</a></li><li><a href=/docs/network-security/other/xxe/>XXE</a></li><li><a href=/docs/network-security/other/%E5%8F%8D%E5%BC%B9shll/>反弹shell</a></li><li><a href=/docs/network-security/other/%E7%AB%AF%E5%8F%A3/>常见端口</a></li></ul></li><li><input type=checkbox id=section-40d2a42f189bda5f49dc4cec9d080122 class=toggle>
-<label for=section-40d2a42f189bda5f49dc4cec9d080122 class="flex justify-between"><a role=button>php</a></label><ul><li><a href=/docs/network-security/php/php/>php</a></li><li><a href=/docs/network-security/php/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>php</a></li><li><a href=/docs/network-security/php/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8Clinux%E7%BB%95%E8%BF%87/>php命令执行linux绕过</a></li><li><a href=/docs/network-security/php/readflag/>readflag</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/regexp%E7%9B%B2%E6%B3%A8/>regexp盲注</a></li><li><a href=/docs/network-security/php/session%E4%BC%AA%E9%80%A0/>session伪造</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/>堆叠注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5/>字符型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/>报错注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%95%B4%E5%9E%8B%E6%B3%A8%E5%85%A5/>整型注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/>时间注入</a></li><li><a href=/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E7%9B%B2%E6%B3%A8/>盲注</a></li><li><a href=/docs/network-security/php/htaccess%E7%9A%84%E5%88%A9%E7%94%A8/>Htaccess的利用</a></li><li><a href=/docs/network-security/php/md5%E7%A2%B0%E6%92%9E/>Md5碰撞</a></li><li><a href=/docs/network-security/php/%E4%BC%AA%E5%8D%8F%E8%AE%AE/>伪协议</a></li><li><a href=/docs/network-security/php/%E5%87%BD%E6%95%B0%E6%BC%8F%E6%B4%9E/>函数漏洞</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/>文件上传</a></li><li><a href=/docs/network-security/php/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/>文件包含</a></li></ul></li><li><input type=checkbox id=section-00e8dd07f7030a556feb24211f954773 class=toggle>
-<label for=section-00e8dd07f7030a556feb24211f954773 class="flex justify-between"><a role=button>python</a></label><ul><li><a href=/docs/network-security/python/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/>pickle反序列化</a></li><li><a href=/docs/network-security/python/python-session%E4%BC%AA%E9%80%A0/>python session伪造</a></li><li><a href=/docs/network-security/python/ssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/>SSTI模板注入</a></li></ul></li><li><input type=checkbox id=section-e32c44d2f36aa533e1dcd6f636ecb361 class=toggle>
-<label for=section-e32c44d2f36aa533e1dcd6f636ecb361 class="flex justify-between"><a role=button>tools</a></label><ul><li><a href=/docs/network-security/tools/fake-mysql/>fake-mysql</a></li></ul></li></ul></li></ul><ul><li><a href=/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label><h3>鸿蒙开发-入门</h3><label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><ul><li><a href=#参考>参考</a></li><li><a href=#页面组件>页面组件</a></li><li><a href=#系统组件>系统组件</a></li><li><a href=#样式处理>样式处理</a></li><li><a href=#组件状态>组件状态</a></li><li><a href=#界面渲染>界面渲染</a></li></ul></li></ul></nav></aside></header><article class="markdown book-article"><h3 id=参考>参考
-<a class=anchor href=#%e5%8f%82%e8%80%83>#</a></h3><p><a href=https://harmonyos-next.github.io/interview-handbook-project/>鸿蒙应用开发指南</a>
-<a href=https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V2/development-intro-0000001478061813-V2>官方开发说明</a></p><h3 id=页面组件>页面组件
-<a class=anchor href=#%e9%a1%b5%e9%9d%a2%e7%bb%84%e4%bb%b6>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// 工程默认显示 `Index` 页面组件
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// build 是声明UI的位置
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>build() {</span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;页面组件&#39;</span>)
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>自定义组件</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>// 定义 `Footer` 组件
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>@Component</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Footer</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;自定义组件&#39;</span>)
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>(){
-</span></span><span style=display:flex><span>      <span style=color:#75715e>// 使用 `Footer` 组件
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      <span style=color:#a6e22e>Footer</span>()
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>导出使用</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Footer</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;自定义组件&#39;</span>)
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>Footer</span> <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#39;./components/Footer.ets&#39;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>(){
-</span></span><span style=display:flex><span>      <span style=color:#75715e>// 使用 `Footer` 组件
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      <span style=color:#a6e22e>Footer</span>()
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=系统组件>系统组件
-<a class=anchor href=#%e7%b3%bb%e7%bb%9f%e7%bb%84%e4%bb%b6>#</a></h3><p>参考<a href=https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V2/2_3_u57fa_u7840_u7ec4_u4ef6-0000001427902448-V2>基础组件</a></p><h3 id=样式处理>样式处理
-<a class=anchor href=#%e6%a0%b7%e5%bc%8f%e5%a4%84%e7%90%86>#</a></h3><h4 id=链式>链式
-<a class=anchor href=#%e9%93%be%e5%bc%8f>#</a></h4><ol><li>样式属性</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;演示&#39;</span>)
-</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>backgroundColor</span>(<span style=color:#e6db74>&#39;red&#39;</span>)
-</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>fontSize</span>(<span style=color:#ae81ff>50</span>)
-</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
-</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>height</span>(<span style=color:#ae81ff>100</span>)
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><ol start=2><li>枚举值</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;演示&#39;</span>)
-</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>fontSize</span>(<span style=color:#ae81ff>50</span>)
-</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
-</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>height</span>(<span style=color:#ae81ff>100</span>)
-</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>backgroundColor</span>(<span style=color:#a6e22e>Color</span>.<span style=color:#a6e22e>Blue</span>)
-</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>textAlign</span>(<span style=color:#a6e22e>TextAlign</span>.<span style=color:#a6e22e>Center</span>)
-</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>fontColor</span>(<span style=color:#a6e22e>Color</span>.<span style=color:#a6e22e>White</span>)
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h4 id=常用>常用
-<a class=anchor href=#%e5%b8%b8%e7%94%a8>#</a></h4><p>伸缩 <code>layoutWeight(flex: number)</code> 占剩余空间多少份，可以理解成CSS的 <code>flex: 1</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Row</span>(){
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;left&#39;</span>)
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>layoutWeight</span>(<span style=color:#ae81ff>1</span>)
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>backgroundColor</span>(<span style=color:#e6db74>&#39;red&#39;</span>)
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;right&#39;</span>)
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>layoutWeight</span>(<span style=color:#ae81ff>2</span>)
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>backgroundColor</span>(<span style=color:#e6db74>&#39;green&#39;</span>)
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>等比例，设置元素宽高比 <code>aspectRatio(ratio: number)</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;left&#39;</span>)
-</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;50%&#39;</span>)
-</span></span><span style=display:flex><span>        <span style=color:#75715e>// 宽高比例
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      .<span style=color:#a6e22e>aspectRatio</span>(<span style=color:#ae81ff>1</span>)
-</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>backgroundColor</span>(<span style=color:#e6db74>&#39;red&#39;</span>)
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h4 id=样式复用style>样式复用@Style
-<a class=anchor href=#%e6%a0%b7%e5%bc%8f%e5%a4%8d%e7%94%a8style>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#75715e>// 全局
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>@Styles</span> 
-</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>functionName() {</span> ... }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>sturt</span> <span style=color:#a6e22e>Index</span>{
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// 组件内
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>@Styles</span> 
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>functionName() {</span> ... }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;Text&#39;</span>)
-</span></span><span style=display:flex><span>      .<span style=color:#a6e22e>functionName</span>()
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>例如，简单吧.</p><p>我似乎懂了,@Style只能用于公共样式，没法为空间设置单独的样式，所以还是用@Extends</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@State</span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>count</span>: <span style=color:#66d9ef>number</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>10</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// 不需要 `function` 关键字，覆盖全局
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>@Styles</span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sameStyle</span> (){
-</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>backgroundColor</span>(<span style=color:#a6e22e>Color</span>.<span style=color:#a6e22e>Pink</span>)
-</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>count</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>10</span>
-</span></span><span style=display:flex><span>    })
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column() {</span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>count</span>.<span style=color:#a6e22e>toString</span>())
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>width</span>(<span style=color:#ae81ff>100</span>)
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>height</span>(<span style=color:#ae81ff>50</span>)
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>margin</span>({ <span style=color:#a6e22e>bottom</span>: <span style=color:#66d9ef>10</span> })
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>textAlign</span>(<span style=color:#a6e22e>TextAlign</span>.<span style=color:#a6e22e>Center</span>)
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>sameStyle</span>()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Button</span>(<span style=color:#e6db74>&#39;+1&#39;</span>)
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>sameStyle</span>()
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>height</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
-</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
-</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>justifyContent</span>(<span style=color:#a6e22e>FlexAlign</span>.<span style=color:#a6e22e>Center</span>)
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h4 id=样式复用extends>样式复用@Extends
-<a class=anchor href=#%e6%a0%b7%e5%bc%8f%e5%a4%8d%e7%94%a8extends>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#75715e>// 全局  原生组件                     参数
-</span></span></span><span style=display:flex><span><span style=color:#75715e>//  ↓     ↓                          ↓ 
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>@Extend</span>(<span style=color:#a6e22e>Text</span>) <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>functionName</span>(<span style=color:#a6e22e>w</span>: <span style=color:#66d9ef>number</span>) { 
-</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>width</span>(<span style=color:#a6e22e>w</span>)
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>例如</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>promptAction</span> <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#39;@ohos.promptAction&#39;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Extend</span>(<span style=color:#a6e22e>Text</span>) <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>myClick</span>(<span style=color:#a6e22e>color</span>: <span style=color:#66d9ef>string</span>, <span style=color:#a6e22e>cb</span><span style=color:#f92672>:</span> () <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>void</span>) {
-</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>backgroundColor</span>(<span style=color:#a6e22e>color</span>)
-</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>width</span>(<span style=color:#ae81ff>100</span>)
-</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>height</span>(<span style=color:#ae81ff>50</span>)
-</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>textAlign</span>(<span style=color:#a6e22e>TextAlign</span>.<span style=color:#a6e22e>Center</span>)
-</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>borderRadius</span>(<span style=color:#ae81ff>25</span>)
-</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> <span style=color:#a6e22e>cb</span>())
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Other</span> {
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@State</span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>color</span>: <span style=color:#66d9ef>string</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;#ccc&#39;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column</span>({ <span style=color:#a6e22e>space</span>: <span style=color:#66d9ef>20</span> }) {
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;Text1&#39;</span>)
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>myClick</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>color</span>, () <span style=color:#f92672>=&gt;</span> {
-</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>color</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;#069&#39;</span>
-</span></span><span style=display:flex><span>        })
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;Text2&#39;</span>)
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>myClick</span>(<span style=color:#e6db74>&#39;green&#39;</span>, () <span style=color:#f92672>=&gt;</span> {
-</span></span><span style=display:flex><span>          <span style=color:#a6e22e>promptAction</span>.<span style=color:#a6e22e>showToast</span>({ <span style=color:#a6e22e>message</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;做其他事~&#39;</span> })
-</span></span><span style=display:flex><span>        })
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
-</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>height</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
-</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>justifyContent</span>(<span style=color:#a6e22e>FlexAlign</span>.<span style=color:#a6e22e>Center</span>)
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h4 id=样式多态>样式多态
-<a class=anchor href=#%e6%a0%b7%e5%bc%8f%e5%a4%9a%e6%80%81>#</a></h4><p><code>stateStyles</code> 是属性方法，可以根据UI内部状态来设置样式，类似于 css 伪类，但语法不同。</p><ul><li>focused：获焦态。</li><li>normal：正常态。</li><li>pressed：按压态。</li><li>disabled：不可用态。</li></ul><p>normal和pressel这两用的比较多</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>promptAction</span> <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#39;@ohos.promptAction&#39;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>// 胶囊按钮
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>@Extend</span>(<span style=color:#a6e22e>Text</span>)
-</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>capsule</span>(){
-</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>height</span>(<span style=color:#ae81ff>40</span>)
-</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>borderRadius</span>(<span style=color:#ae81ff>20</span>)
-</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>backgroundColor</span>(<span style=color:#a6e22e>Color</span>.<span style=color:#a6e22e>Gray</span>)
-</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>padding</span>({ <span style=color:#a6e22e>left</span>: <span style=color:#66d9ef>15</span>, <span style=color:#a6e22e>right</span>: <span style=color:#66d9ef>15</span> })
-</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>margin</span>({ <span style=color:#a6e22e>bottom</span>: <span style=color:#66d9ef>15</span> })
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@State</span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>disabled</span>: <span style=color:#66d9ef>boolean</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@State</span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>focused</span>: <span style=color:#66d9ef>boolean</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Column() {</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>      <span style=color:#75715e>// Button TextInput 默认开启获取焦点，页面中默认第一个这样的元素获取焦点
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      <span style=color:#75715e>// Button 比较多限制，一个是默认开启获取焦点能看，二是禁用状态下样式无法修改
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      <span style=color:#75715e>// Button(&#39;Button&#39;).focusable(false)
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;toggle disabled：&#39;</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>disabled</span>)
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>capsule</span>()
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(()<span style=color:#f92672>=&gt;</span>{
-</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>disabled</span> <span style=color:#f92672>=</span> <span style=color:#f92672>!</span><span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>disabled</span>
-</span></span><span style=display:flex><span>        })
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;toggle focused：&#39;</span> <span style=color:#f92672>+</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>focused</span>)
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>capsule</span>()
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(()<span style=color:#f92672>=&gt;</span>{
-</span></span><span style=display:flex><span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>focused</span> <span style=color:#f92672>=</span> <span style=color:#f92672>!</span><span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>focused</span>
-</span></span><span style=display:flex><span>        })
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>&#39;clickMe&#39;</span>)
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>capsule</span>()
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>enabled</span>(<span style=color:#f92672>!</span><span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>disabled</span>)
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>focusable</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>focused</span>)
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
-</span></span><span style=display:flex><span>          <span style=color:#a6e22e>promptAction</span>.<span style=color:#a6e22e>showToast</span>({ <span style=color:#a6e22e>message</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;click&#39;</span> })
-</span></span><span style=display:flex><span>        })
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>fontColor</span>(<span style=color:#e6db74>&#39;#fff&#39;</span>)
-</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>stateStyles</span>({
-</span></span><span style=display:flex><span>          <span style=color:#a6e22e>normal</span><span style=color:#f92672>:</span> {
-</span></span><span style=display:flex><span>            .<span style=color:#a6e22e>backgroundColor</span>(<span style=color:#a6e22e>Color</span>.<span style=color:#a6e22e>Blue</span>)
-</span></span><span style=display:flex><span>          },
-</span></span><span style=display:flex><span>          <span style=color:#a6e22e>focused</span><span style=color:#f92672>:</span> {
-</span></span><span style=display:flex><span>            .<span style=color:#a6e22e>backgroundColor</span>(<span style=color:#a6e22e>Color</span>.<span style=color:#a6e22e>Red</span>)
-</span></span><span style=display:flex><span>          },
-</span></span><span style=display:flex><span>          <span style=color:#a6e22e>disabled</span><span style=color:#f92672>:</span> {
-</span></span><span style=display:flex><span>            .<span style=color:#a6e22e>backgroundColor</span>(<span style=color:#a6e22e>Color</span>.<span style=color:#a6e22e>Black</span>)
-</span></span><span style=display:flex><span>          },
-</span></span><span style=display:flex><span>          <span style=color:#a6e22e>pressed</span><span style=color:#f92672>:</span> {
-</span></span><span style=display:flex><span>            .<span style=color:#a6e22e>backgroundColor</span>(<span style=color:#a6e22e>Color</span>.<span style=color:#a6e22e>Orange</span>)
-</span></span><span style=display:flex><span>          }
-</span></span><span style=display:flex><span>        })
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=组件状态>组件状态
-<a class=anchor href=#%e7%bb%84%e4%bb%b6%e7%8a%b6%e6%80%81>#</a></h3><h4 id=class-语法>class 语法
-<a class=anchor href=#class-%e8%af%ad%e6%b3%95>#</a></h4><p>这个简单。首先，<code>class</code> 创建对象和 <code>class</code> 类型</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Person</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>number</span>;
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span>: <span style=color:#66d9ef>string</span>;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>constructor</span>(<span style=color:#a6e22e>name</span>: <span style=color:#66d9ef>string</span>, <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>number</span>) {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>name</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>name</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>age</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>age</span>
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>// 当类型使用和构当造函数使用
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>p</span>: <span style=color:#66d9ef>Person</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Person</span>(<span style=color:#e6db74>&#39;jack&#39;</span>, <span style=color:#ae81ff>18</span>)
-</span></span><span style=display:flex><span><span style=color:#75715e>// 当类型使用这种使用后续居多，我们使用字面量对象居多，可以省略 constructor
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>p1</span>: <span style=color:#66d9ef>Person</span> <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;tom&#39;</span>,
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>20</span>
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p><code>implements</code> 实现 <code>interface</code> 接口</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>IPerson</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span>: <span style=color:#66d9ef>string</span>,
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>number</span>,
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>say</span><span style=color:#f92672>:</span> () <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>void</span>
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>// 实现 IPerson 接口，需要符合接口约定
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Person</span> <span style=color:#66d9ef>implements</span> <span style=color:#a6e22e>IPerson</span>{
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>number</span>;
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span>: <span style=color:#66d9ef>string</span>;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>constructor</span>(<span style=color:#a6e22e>name</span>: <span style=color:#66d9ef>string</span>, <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>number</span>) {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>name</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>name</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>age</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>age</span>
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>say</span> () {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>promptAction</span>.<span style=color:#a6e22e>showToast</span>({ <span style=color:#a6e22e>message</span>: <span style=color:#66d9ef>this.name</span> })
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>继承</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>HmPerson</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>Person</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>github</span>: <span style=color:#66d9ef>string</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;https://github.com/zhousg&#39;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>coding</span> () {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>promptAction</span>.<span style=color:#a6e22e>showToast</span>({ <span style=color:#a6e22e>message</span>: <span style=color:#66d9ef>this.name</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;: coding&#39;</span> })
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=界面渲染>界面渲染
-<a class=anchor href=#%e7%95%8c%e9%9d%a2%e6%b8%b2%e6%9f%93>#</a></h3><h4 id=条件渲染>条件渲染
-<a class=anchor href=#%e6%9d%a1%e4%bb%b6%e6%b8%b2%e6%9f%93>#</a></h4><p>这个就不用多说了吧，Vue和React都有学过</p><h4 id=循环渲染>循环渲染
-<a class=anchor href=#%e5%be%aa%e7%8e%af%e6%b8%b2%e6%9f%93>#</a></h4><p>语法 ，其实很多都是差不多的</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#a6e22e>ForEach</span>(
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// 数据源
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>arr</span>: <span style=color:#66d9ef>Array</span>,
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// 组件生成函数
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>itemGenerator</span><span style=color:#f92672>:</span> (<span style=color:#a6e22e>item</span>: <span style=color:#66d9ef>Array</span>, <span style=color:#a6e22e>index?</span>: <span style=color:#66d9ef>number</span>) <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>void</span>,
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// 键值生成函数
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>keyGenerator</span><span style=color:#f92672>?:</span> (<span style=color:#a6e22e>item</span>: <span style=color:#66d9ef>Array</span>, <span style=color:#a6e22e>index?</span>: <span style=color:#66d9ef>number</span>)<span style=color:#f92672>:</span> <span style=color:#66d9ef>string</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>string</span>
-</span></span><span style=display:flex><span>)
-</span></span></code></pre></div><p>来个实例</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>User</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>id</span>: <span style=color:#66d9ef>string</span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span>: <span style=color:#66d9ef>string</span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>number</span>
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Entry</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>@Component</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>struct</span> <span style=color:#a6e22e>Index</span> {
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>@State</span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>userList</span>: <span style=color:#66d9ef>User</span>[] <span style=color:#f92672>=</span> []
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>build() {</span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Scroll() {</span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Column</span>({ <span style=color:#a6e22e>space</span>: <span style=color:#66d9ef>20</span> }) {
-</span></span><span style=display:flex><span>        <span style=color:#75715e>// 循环渲染
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#a6e22e>ForEach</span>(
-</span></span><span style=display:flex><span>          <span style=color:#75715e>// 1. 数据源
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>          <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>userList</span>,
-</span></span><span style=display:flex><span>          <span style=color:#75715e>// 2. 组件生成函数
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>          (<span style=color:#a6e22e>item</span>: <span style=color:#66d9ef>User</span>) <span style=color:#f92672>=&gt;</span> {
-</span></span><span style=display:flex><span>            <span style=color:#75715e>// 内容
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            <span style=color:#a6e22e>Text</span>(<span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>name</span><span style=color:#e6db74>}</span><span style=color:#e6db74> 今年 </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>age</span><span style=color:#e6db74>}</span><span style=color:#e6db74> 岁`</span>)
-</span></span><span style=display:flex><span>          },
-</span></span><span style=display:flex><span>          <span style=color:#75715e>// 3. 键值生成函数
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>          <span style=color:#a6e22e>item</span> <span style=color:#f92672>=&gt;</span> <span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>id</span>
-</span></span><span style=display:flex><span>        )
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>Button</span>(<span style=color:#e6db74>&#39;加载更多&#39;</span>)
-</span></span><span style=display:flex><span>          .<span style=color:#a6e22e>onClick</span>(() <span style=color:#f92672>=&gt;</span> {
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>arr</span>: <span style=color:#66d9ef>User</span>[] <span style=color:#f92672>=</span> []
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>index</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>index</span> <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>10</span>; <span style=color:#a6e22e>index</span><span style=color:#f92672>++</span>) {
-</span></span><span style=display:flex><span>              <span style=color:#a6e22e>arr</span>.<span style=color:#a6e22e>push</span>({ <span style=color:#a6e22e>id</span>: <span style=color:#66d9ef>Math.random</span>().<span style=color:#a6e22e>toString</span>(), <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;jack&#39;</span>, <span style=color:#a6e22e>age</span>: <span style=color:#66d9ef>Math.ceil</span>(Math.<span style=color:#a6e22e>random</span>() <span style=color:#f92672>*</span> <span style=color:#ae81ff>100</span>) })
-</span></span><span style=display:flex><span>            }
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>userList</span>.<span style=color:#a6e22e>push</span>(...<span style=color:#a6e22e>arr</span>)
-</span></span><span style=display:flex><span>          })
-</span></span><span style=display:flex><span>      }
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>width</span>(<span style=color:#e6db74>&#39;100%&#39;</span>)
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>注意:</p><p>其中的key尽量别缺，也尽量不要使用index，使用唯一的id之类的</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><ul><li><a href=#参考>参考</a></li><li><a href=#页面组件>页面组件</a></li><li><a href=#系统组件>系统组件</a></li><li><a href=#样式处理>样式处理</a></li><li><a href=#组件状态>组件状态</a></li><li><a href=#界面渲染>界面渲染</a></li></ul></li></ul></nav></div></aside></main></body></html>
+参考基础组件">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/code/harmony/%E5%85%A5%E9%97%A8/">
+  <meta property="og:site_name" content="Alex lan">
+  <meta property="og:title" content="鸿蒙开发-入门">
+  <meta property="og:description" content="参考#鸿蒙应用开发指南 官方开发说明
+页面组件#@Entry @Component struct Index { // 工程默认显示 `Index` 页面组件 // build 是声明UI的位置 build() { Text(&#39;页面组件&#39;) } } 自定义组件
+// 定义 `Footer` 组件 @Component struct Footer { build() { Text(&#39;自定义组件&#39;) } } @Entry @Component struct Index { build() { Column(){ // 使用 `Footer` 组件 Footer() } } } 导出使用
+@Component export default struct Footer { build() { Text(&#39;自定义组件&#39;) } } import Footer from &#39;./components/Footer.ets&#39; @Entry @Component struct Index { build() { Column(){ // 使用 `Footer` 组件 Footer() } } } 系统组件#参考基础组件">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-12-08T14:03:24+08:00">
+    <meta property="article:modified_time" content="2024-12-08T14:03:24+08:00">
+    <meta property="article:tag" content="鸿蒙">
+<title>鸿蒙开发-入门 | Alex lan</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/code/harmony/%E5%85%A5%E9%97%A8/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.a389106ec8847d561d666791d134c44fe525dae19e4a1107009df60a9bb4c157.js" integrity="sha256-o4kQbsiEfVYdZmeR0TTET&#43;Ul2uGeShEHAJ32Cpu0wVc=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Alex lan</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-867144600acf9658ad1e030dba887392" class="toggle" checked />
+    <label for="section-867144600acf9658ad1e030dba887392" class="flex justify-between">
+      <a role="button" class="">code</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bad47914f28bea05b9a99cdd87cd69fb" class="toggle"  />
+    <label for="section-bad47914f28bea05b9a99cdd87cd69fb" class="flex justify-between">
+      <a role="button" class="">Android</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/ui/" class="">Android ui</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/%E5%8D%8F%E7%A8%8B-retrofit/" class="">Android 协程-retrofit</a>
+  
+
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/%E6%AF%94%E8%B5%9B/" class="">Android 比赛</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%A2%8E%E7%A2%8E%E5%BF%B5/" class="">android 碎念</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/" class="">Android 网络请求</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E9%80%82%E9%85%8D%E5%99%A8/" class="">Android 适配器</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/android/2024%E5%B9%B4-%E6%96%B0/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/" class="">Android-网络请求</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4c67168a533057d7cb02259caca8884d" class="toggle"  />
+    <label for="section-4c67168a533057d7cb02259caca8884d" class="flex justify-between">
+      <a role="button" class="">linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/linux/screen/" class="">linux screen</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-227bbb535145acab9a03ddf223110bf7" class="toggle" checked />
+    <label for="section-227bbb535145acab9a03ddf223110bf7" class="flex justify-between">
+      <a role="button" class="">鸿蒙</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/harmony/tabbar/" class="">鸿蒙开发-TbaBar</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/harmony/%E5%85%A5%E9%97%A8/" class="active">鸿蒙开发-入门</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/harmony/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" class="">鸿蒙开发-状态管理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/harmony/%E7%BD%91%E7%BB%9C/" class="">鸿蒙开发-网络请求</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7" class="toggle"  />
+    <label for="section-2fdeba3d7ff97db6bc8b47fcb3b9c1c7" class="flex justify-between">
+      <a role="button" class="">ee</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/autotakepic_flask/" class="">Auto Take Pic Flask</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/c_%E7%94%9C%E7%94%9C%E5%9C%88/" class="">C 甜甜圈</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/rust/%E6%9F%90%E5%9B%BE/" class="">某图</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E4%BD%9C%E4%B8%9A2023.10.10/" class="">作业2023.10.10</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E6%98%9F%E4%BA%91%E5%8A%A0%E9%80%9F%E5%99%A8/" class="">星云加速器</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E6%9C%A8%E9%A9%AC%E7%99%BB%E9%99%86/" class="">木马登陆</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E6%9F%90update/" class="">某update</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E6%9F%90%E5%88%B7%E8%AF%BE/" class="">某刷课</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E6%9F%90%E6%B4%97%E8%A1%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="">某洗衣小程序</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/new/%E9%82%A3%E4%BA%9B%E9%AA%9A%E6%93%8D%E4%BD%9C/" class="">那些骚操作</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/arch-linux/" class="">arch linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/avaloniaui/" class="">avaloniaui</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/c-sharp/" class="">c#</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/java_mysql/" class="">Java_mysql</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/linux%E7%9F%A5%E8%AF%86/" class="">linux知识</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/mqtt--%E4%B8%B2%E5%8F%A3--4055/" class="">MQTT &amp;&amp; 串口</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/python/" class="">Python</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/rust/" class="">rust</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/cmd/" class="">Cmd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/dart/" class="">Dart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/code/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="">数据库</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a88931adc275b5db7ba2257eca8098f2" class="toggle"  />
+    <label for="section-a88931adc275b5db7ba2257eca8098f2" class="flex justify-between">
+      <a role="button" class="">e .wp</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wp/bili_22_1024/" class="">bili_22_1024</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wp/love_math/" class="">LOVE_math</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wp/webexercise/ruby_cookie/" class="">ruby_cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bc5bfc4ab3726cdac08770524fbd5e52" class="toggle"  />
+    <label for="section-bc5bfc4ab3726cdac08770524fbd5e52" class="flex justify-between">
+      <a role="button" class="">hack</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/hack/msf/" class="">msf</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/hack/thefatrat/" class="">TheFatRat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c809dbac7a9b531c0deb3f94bb3a5eb9" class="toggle"  />
+    <label for="section-c809dbac7a9b531c0deb3f94bb3a5eb9" class="flex justify-between">
+      <a href="/docs/re/" class="">re</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-59835f29e02875febbf77853a8373c43" class="toggle"  />
+    <label for="section-59835f29e02875febbf77853a8373c43" class="flex justify-between">
+      <a href="/docs/re/new/" class="">demo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E6%9F%90h%E8%A7%86%E9%A2%91%E8%BD%AF%E4%BB%B6/" class="">Android 比赛</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/u%E5%87%80/" class="">u净</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E5%A4%A7%E5%AD%A6%E6%90%9C%E9%A2%98%E9%85%B1/" class="">大学搜题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E5%B1%B1%E8%A5%BF%E6%81%92%E5%AE%89%E5%88%B7%E8%AF%BE%E4%BB%A5%E5%8F%8A%E8%80%83%E8%AF%95/" class="">山西恒安刷课以及考试</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6/" class="">某h软件</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/bika/" class="">某h软件 bika</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E6%9F%90h%E8%BD%AF%E4%BB%B6-2/" class="">某h软件-2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E6%B7%98%E9%87%91%E7%A4%BE%E5%8C%BA%E7%99%BB%E9%99%86/" class="">淘金社区登陆</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E7%88%B1%E5%A4%9A%E5%A4%9A-%E5%88%86%E6%9E%90/" class="">爱多多 分析</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/new/%E7%A5%9E%E5%9B%BE%E5%A3%81%E7%BA%B8/" class="">神图壁纸</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/arm%E6%B1%87%E7%BC%96/" class="">arm 汇编</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/flutter---blutter/" class="">flutter - blutter</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/flutter/" class="">flutter 初探</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/frida/" class="">frida</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/ida%E5%8A%A8%E8%B0%83so/" class="">ida 动态调试so</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/%E5%8F%8D%E7%BC%96%E8%AF%91/" class="">反编译</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/re/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91/" class="">小程序 逆向</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d633b3f91ad6faec5e15f38ac64d5024" class="toggle"  />
+    <label for="section-d633b3f91ad6faec5e15f38ac64d5024" class="flex justify-between">
+      <a href="/docs/learm/" class="">学习</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-297a8c491188fdc1e4d5049993bd118b" class="toggle"  />
+    <label for="section-297a8c491188fdc1e4d5049993bd118b" class="flex justify-between">
+      <a role="button" class="">english</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/english/%E4%B8%80%E8%88%AC%E7%8E%B0%E5%9C%A8%E6%97%B6/" class="">一般现在时</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/english/%E7%8E%B0%E5%9C%A8%E8%BF%9B%E8%A1%8C%E6%97%B6/" class="">现在进行时</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d273ec3342c86bd09d8e0a595cc7603e" class="toggle"  />
+    <label for="section-d273ec3342c86bd09d8e0a595cc7603e" class="flex justify-between">
+      <a role="button" class="">math</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/" class="">公式测试</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E5%9F%BA%E6%9C%AC%E7%A7%AF%E5%88%86/" class="">基本积分</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E5%AF%BC%E6%95%B0/" class="">导数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E6%95%B0%E5%88%97/" class="">数列</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B5%8B%E8%AF%95/" class="">数学公式测试</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F/" class="">泰勒公式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/" class="">等价无穷小</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/math/%E9%B8%A1%E6%9D%82%E5%85%AC%E5%BC%8F/" class="">鸡杂公式</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ea5b2994c4cca97c0834172637987408" class="toggle"  />
+    <label for="section-ea5b2994c4cca97c0834172637987408" class="flex justify-between">
+      <a role="button" class="">上课</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/java/" class="">java</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/linux/" class="">linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" class="">信息安全</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/%E5%B1%80%E5%9F%9F%E7%BD%91-%E6%80%9D%E7%A7%91-pt/" class="">局域网 思科 pt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/" class="">算法与数据结构笔记</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/learm/go-to-class/%E7%BD%91%E9%A1%B5%E5%88%B6%E4%BD%9C/" class="">网页制作</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a9ce434c78e2b2b70812ee1671233fb4" class="toggle"  />
+    <label for="section-a9ce434c78e2b2b70812ee1671233fb4" class="flex justify-between">
+      <a role="button" class="">网络安全</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3bf12ad5664ebca7e9060559169913cd" class="toggle"  />
+    <label for="section-3bf12ad5664ebca7e9060559169913cd" class="flex justify-between">
+      <a role="button" class="">java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/java/sql%E6%B3%A8%E5%85%A5/" class="">java sql 注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/java/web-inf%E8%AF%BB%E5%8F%96/" class="">WEB-INF 读取</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/java/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="">反序列化</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c7fff2b0fc43407720940cd3bd5fa3fa" class="toggle"  />
+    <label for="section-c7fff2b0fc43407720940cd3bd5fa3fa" class="flex justify-between">
+      <a role="button" class="">node</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/node/%E5%8E%9F%E5%BD%A2%E9%93%BE%E6%B1%A1%E6%9F%93/" class="">node 原型链污染</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5385b8bcbe311a5d908dc263de46f07f" class="toggle"  />
+    <label for="section-5385b8bcbe311a5d908dc263de46f07f" class="flex justify-between">
+      <a role="button" class="">other</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/other/linux/" class="">linux 知识点</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/other/xpath%E6%B3%A8%E5%85%A5/" class="">xpath 注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/other/xxe/" class="">XXE</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/other/%E5%8F%8D%E5%BC%B9shll/" class="">反弹shell</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/other/%E7%AB%AF%E5%8F%A3/" class="">常见端口</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-46a6c3a4b470bf639b30aeb9a16a1257" class="toggle"  />
+    <label for="section-46a6c3a4b470bf639b30aeb9a16a1257" class="flex justify-between">
+      <a role="button" class="">php</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/php/" class="">php</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="">php</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8Clinux%E7%BB%95%E8%BF%87/" class="">php命令执行linux绕过</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/readflag/" class="">readflag</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/regexp%E7%9B%B2%E6%B3%A8/" class="">regexp盲注</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/session%E4%BC%AA%E9%80%A0/" class="">session伪造</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/" class="">堆叠注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5/" class="">字符型注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/" class="">报错注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%95%B4%E5%9E%8B%E6%B3%A8%E5%85%A5/" class="">整型注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/" class="">时间注入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/sql%E6%B3%A8%E5%85%A5/%E7%9B%B2%E6%B3%A8/" class="">盲注</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/htaccess%E7%9A%84%E5%88%A9%E7%94%A8/" class="">Htaccess的利用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/md5%E7%A2%B0%E6%92%9E/" class="">Md5碰撞</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/%E4%BC%AA%E5%8D%8F%E8%AE%AE/" class="">伪协议</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/%E5%87%BD%E6%95%B0%E6%BC%8F%E6%B4%9E/" class="">函数漏洞</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="">文件上传</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/php/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" class="">文件包含</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dbfc22e2e7caa67fee4f381ec66fd790" class="toggle"  />
+    <label for="section-dbfc22e2e7caa67fee4f381ec66fd790" class="flex justify-between">
+      <a role="button" class="">python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/python/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="">pickle反序列化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/python/python-session%E4%BC%AA%E9%80%A0/" class="">python session伪造</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/python/ssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/" class="">SSTI模板注入</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-27bef856708365c3f954dc367d1bca66" class="toggle"  />
+    <label for="section-27bef856708365c3f954dc367d1bca66" class="flex justify-between">
+      <a role="button" class="">tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/network-security/tools/fake-mysql/" class="">fake-mysql</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-02af837b39c34c4496ee7c45850c4389" class="toggle"  />
+    <label for="section-02af837b39c34c4496ee7c45850c4389" class="flex justify-between">
+      <a role="button" class="">index</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>鸿蒙开发-入门</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#参考">参考</a></li>
+        <li><a href="#页面组件">页面组件</a></li>
+        <li><a href="#系统组件">系统组件</a></li>
+        <li><a href="#样式处理">样式处理</a></li>
+        <li><a href="#组件状态">组件状态</a></li>
+        <li><a href="#界面渲染">界面渲染</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h3 id="参考">
+  参考
+  <a class="anchor" href="#%e5%8f%82%e8%80%83">#</a>
+</h3>
+<p><a href="https://harmonyos-next.github.io/interview-handbook-project/">鸿蒙应用开发指南</a>
+<a href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V2/development-intro-0000001478061813-V2">官方开发说明</a></p>
+<h3 id="页面组件">
+  页面组件
+  <a class="anchor" href="#%e9%a1%b5%e9%9d%a2%e7%bb%84%e4%bb%b6">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Entry</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">struct</span> <span style="color:#a6e22e">Index</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 工程默认显示 `Index` 页面组件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// build 是声明UI的位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">build() {</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Text</span>(<span style="color:#e6db74">&#39;页面组件&#39;</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>自定义组件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 定义 `Footer` 组件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">@Component</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">struct</span> <span style="color:#a6e22e">Footer</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">build() {</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Text</span>(<span style="color:#e6db74">&#39;自定义组件&#39;</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Entry</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">struct</span> <span style="color:#a6e22e">Index</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">build() {</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Column</span>(){
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 使用 `Footer` 组件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">Footer</span>()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>导出使用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">struct</span> <span style="color:#a6e22e">Footer</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">build() {</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Text</span>(<span style="color:#e6db74">&#39;自定义组件&#39;</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Footer</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./components/Footer.ets&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Entry</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">struct</span> <span style="color:#a6e22e">Index</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">build() {</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Column</span>(){
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 使用 `Footer` 组件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">Footer</span>()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="系统组件">
+  系统组件
+  <a class="anchor" href="#%e7%b3%bb%e7%bb%9f%e7%bb%84%e4%bb%b6">#</a>
+</h3>
+<p>参考<a href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V2/2_3_u57fa_u7840_u7ec4_u4ef6-0000001427902448-V2">基础组件</a></p>
+<h3 id="样式处理">
+  样式处理
+  <a class="anchor" href="#%e6%a0%b7%e5%bc%8f%e5%a4%84%e7%90%86">#</a>
+</h3>
+<h4 id="链式">
+  链式
+  <a class="anchor" href="#%e9%93%be%e5%bc%8f">#</a>
+</h4>
+<ol>
+<li>样式属性</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Entry</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">struct</span> <span style="color:#a6e22e">Index</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">build() {</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Text</span>(<span style="color:#e6db74">&#39;演示&#39;</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">backgroundColor</span>(<span style="color:#e6db74">&#39;red&#39;</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">fontSize</span>(<span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">width</span>(<span style="color:#e6db74">&#39;100%&#39;</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">height</span>(<span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="2">
+<li>枚举值</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Entry</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">struct</span> <span style="color:#a6e22e">Index</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">build() {</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Text</span>(<span style="color:#e6db74">&#39;演示&#39;</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">fontSize</span>(<span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">width</span>(<span style="color:#e6db74">&#39;100%&#39;</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">height</span>(<span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">backgroundColor</span>(<span style="color:#a6e22e">Color</span>.<span style="color:#a6e22e">Blue</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">textAlign</span>(<span style="color:#a6e22e">TextAlign</span>.<span style="color:#a6e22e">Center</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">fontColor</span>(<span style="color:#a6e22e">Color</span>.<span style="color:#a6e22e">White</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="常用">
+  常用
+  <a class="anchor" href="#%e5%b8%b8%e7%94%a8">#</a>
+</h4>
+<p>伸缩 <code>layoutWeight(flex: number)</code> 占剩余空间多少份，可以理解成CSS的 <code>flex: 1</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Entry</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">struct</span> <span style="color:#a6e22e">Index</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">build() {</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Row</span>(){
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Text</span>(<span style="color:#e6db74">&#39;left&#39;</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">layoutWeight</span>(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">backgroundColor</span>(<span style="color:#e6db74">&#39;red&#39;</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Text</span>(<span style="color:#e6db74">&#39;right&#39;</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">layoutWeight</span>(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">backgroundColor</span>(<span style="color:#e6db74">&#39;green&#39;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">width</span>(<span style="color:#e6db74">&#39;100%&#39;</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>等比例，设置元素宽高比 <code>aspectRatio(ratio: number)</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Entry</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">struct</span> <span style="color:#a6e22e">Index</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">build() {</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Text</span>(<span style="color:#e6db74">&#39;left&#39;</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">width</span>(<span style="color:#e6db74">&#39;50%&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 宽高比例
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      .<span style="color:#a6e22e">aspectRatio</span>(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">backgroundColor</span>(<span style="color:#e6db74">&#39;red&#39;</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="样式复用style">
+  样式复用@Style
+  <a class="anchor" href="#%e6%a0%b7%e5%bc%8f%e5%a4%8d%e7%94%a8style">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#75715e">// 全局
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">@Styles</span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">functionName() {</span> ... }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Entry</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sturt</span> <span style="color:#a6e22e">Index</span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 组件内
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">@Styles</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">functionName() {</span> ... }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">build() {</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Text</span>(<span style="color:#e6db74">&#39;Text&#39;</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">functionName</span>()
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>例如，简单吧.</p>
+<p>我似乎懂了,@Style只能用于公共样式，没法为空间设置单独的样式，所以还是用@Extends</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Entry</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">struct</span> <span style="color:#a6e22e">Index</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@State</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">count</span>: <span style="color:#66d9ef">number</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 不需要 `function` 关键字，覆盖全局
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">@Styles</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sameStyle</span> (){
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">backgroundColor</span>(<span style="color:#a6e22e">Color</span>.<span style="color:#a6e22e">Pink</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">onClick</span>(() <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">count</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">build() {</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Column() {</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Text</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">count</span>.<span style="color:#a6e22e">toString</span>())
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">width</span>(<span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">height</span>(<span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">margin</span>({ <span style="color:#a6e22e">bottom</span>: <span style="color:#66d9ef">10</span> })
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">textAlign</span>(<span style="color:#a6e22e">TextAlign</span>.<span style="color:#a6e22e">Center</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">sameStyle</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Button</span>(<span style="color:#e6db74">&#39;+1&#39;</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">sameStyle</span>()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">height</span>(<span style="color:#e6db74">&#39;100%&#39;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">width</span>(<span style="color:#e6db74">&#39;100%&#39;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">justifyContent</span>(<span style="color:#a6e22e">FlexAlign</span>.<span style="color:#a6e22e">Center</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="样式复用extends">
+  样式复用@Extends
+  <a class="anchor" href="#%e6%a0%b7%e5%bc%8f%e5%a4%8d%e7%94%a8extends">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#75715e">// 全局  原生组件                     参数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//  ↓     ↓                          ↓ 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">@Extend</span>(<span style="color:#a6e22e">Text</span>) <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">functionName</span>(<span style="color:#a6e22e">w</span>: <span style="color:#66d9ef">number</span>) { 
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">width</span>(<span style="color:#a6e22e">w</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>例如</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">promptAction</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@ohos.promptAction&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Extend</span>(<span style="color:#a6e22e">Text</span>) <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">myClick</span>(<span style="color:#a6e22e">color</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">cb</span><span style="color:#f92672">:</span> () <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">backgroundColor</span>(<span style="color:#a6e22e">color</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">width</span>(<span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">height</span>(<span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">textAlign</span>(<span style="color:#a6e22e">TextAlign</span>.<span style="color:#a6e22e">Center</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">borderRadius</span>(<span style="color:#ae81ff">25</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">onClick</span>(() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">cb</span>())
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Entry</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">struct</span> <span style="color:#a6e22e">Other</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@State</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">color</span>: <span style="color:#66d9ef">string</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#ccc&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">build() {</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Column</span>({ <span style="color:#a6e22e">space</span>: <span style="color:#66d9ef">20</span> }) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Text</span>(<span style="color:#e6db74">&#39;Text1&#39;</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">myClick</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">color</span>, () <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#069&#39;</span>
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Text</span>(<span style="color:#e6db74">&#39;Text2&#39;</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">myClick</span>(<span style="color:#e6db74">&#39;green&#39;</span>, () <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">promptAction</span>.<span style="color:#a6e22e">showToast</span>({ <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;做其他事~&#39;</span> })
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">width</span>(<span style="color:#e6db74">&#39;100%&#39;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">height</span>(<span style="color:#e6db74">&#39;100%&#39;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">justifyContent</span>(<span style="color:#a6e22e">FlexAlign</span>.<span style="color:#a6e22e">Center</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="样式多态">
+  样式多态
+  <a class="anchor" href="#%e6%a0%b7%e5%bc%8f%e5%a4%9a%e6%80%81">#</a>
+</h4>
+<p><code>stateStyles</code> 是属性方法，可以根据UI内部状态来设置样式，类似于 css 伪类，但语法不同。</p>
+<ul>
+<li>focused：获焦态。</li>
+<li>normal：正常态。</li>
+<li>pressed：按压态。</li>
+<li>disabled：不可用态。</li>
+</ul>
+<p>normal和pressel这两用的比较多</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">promptAction</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@ohos.promptAction&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 胶囊按钮
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">@Extend</span>(<span style="color:#a6e22e">Text</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">capsule</span>(){
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">height</span>(<span style="color:#ae81ff">40</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">borderRadius</span>(<span style="color:#ae81ff">20</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">backgroundColor</span>(<span style="color:#a6e22e">Color</span>.<span style="color:#a6e22e">Gray</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">padding</span>({ <span style="color:#a6e22e">left</span>: <span style="color:#66d9ef">15</span>, <span style="color:#a6e22e">right</span>: <span style="color:#66d9ef">15</span> })
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">margin</span>({ <span style="color:#a6e22e">bottom</span>: <span style="color:#66d9ef">15</span> })
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Entry</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">struct</span> <span style="color:#a6e22e">Index</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@State</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">disabled</span>: <span style="color:#66d9ef">boolean</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@State</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">focused</span>: <span style="color:#66d9ef">boolean</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">build() {</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Column() {</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Button TextInput 默认开启获取焦点，页面中默认第一个这样的元素获取焦点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// Button 比较多限制，一个是默认开启获取焦点能看，二是禁用状态下样式无法修改
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// Button(&#39;Button&#39;).focusable(false)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Text</span>(<span style="color:#e6db74">&#39;toggle disabled：&#39;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">disabled</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">capsule</span>()
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">onClick</span>(()<span style="color:#f92672">=&gt;</span>{
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">disabled</span> <span style="color:#f92672">=</span> <span style="color:#f92672">!</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">disabled</span>
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Text</span>(<span style="color:#e6db74">&#39;toggle focused：&#39;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">focused</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">capsule</span>()
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">onClick</span>(()<span style="color:#f92672">=&gt;</span>{
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">focused</span> <span style="color:#f92672">=</span> <span style="color:#f92672">!</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">focused</span>
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Text</span>(<span style="color:#e6db74">&#39;clickMe&#39;</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">capsule</span>()
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">enabled</span>(<span style="color:#f92672">!</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">disabled</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">focusable</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">focused</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">onClick</span>(() <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">promptAction</span>.<span style="color:#a6e22e">showToast</span>({ <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;click&#39;</span> })
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">fontColor</span>(<span style="color:#e6db74">&#39;#fff&#39;</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">stateStyles</span>({
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">normal</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">backgroundColor</span>(<span style="color:#a6e22e">Color</span>.<span style="color:#a6e22e">Blue</span>)
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">focused</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">backgroundColor</span>(<span style="color:#a6e22e">Color</span>.<span style="color:#a6e22e">Red</span>)
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">disabled</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">backgroundColor</span>(<span style="color:#a6e22e">Color</span>.<span style="color:#a6e22e">Black</span>)
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">pressed</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">backgroundColor</span>(<span style="color:#a6e22e">Color</span>.<span style="color:#a6e22e">Orange</span>)
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="组件状态">
+  组件状态
+  <a class="anchor" href="#%e7%bb%84%e4%bb%b6%e7%8a%b6%e6%80%81">#</a>
+</h3>
+<h4 id="class-语法">
+  class 语法
+  <a class="anchor" href="#class-%e8%af%ad%e6%b3%95">#</a>
+</h4>
+<p>这个简单。首先，<code>class</code> 创建对象和 <code>class</code> 类型</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">age</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>(<span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">age</span>: <span style="color:#66d9ef">number</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">age</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 当类型使用和构当造函数使用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">p</span>: <span style="color:#66d9ef">Person</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Person</span>(<span style="color:#e6db74">&#39;jack&#39;</span>, <span style="color:#ae81ff">18</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 当类型使用这种使用后续居多，我们使用字面量对象居多，可以省略 constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">p1</span>: <span style="color:#66d9ef">Person</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tom&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">age</span>: <span style="color:#66d9ef">20</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>implements</code> 实现 <code>interface</code> 接口</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IPerson</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">age</span>: <span style="color:#66d9ef">number</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">say</span><span style="color:#f92672">:</span> () <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">void</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 实现 IPerson 接口，需要符合接口约定
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">IPerson</span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">age</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>(<span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">age</span>: <span style="color:#66d9ef">number</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">age</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">say</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">promptAction</span>.<span style="color:#a6e22e">showToast</span>({ <span style="color:#a6e22e">message</span>: <span style="color:#66d9ef">this.name</span> })
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>继承</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HmPerson</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Person</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">github</span>: <span style="color:#66d9ef">string</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://github.com/zhousg&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">coding</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">promptAction</span>.<span style="color:#a6e22e">showToast</span>({ <span style="color:#a6e22e">message</span>: <span style="color:#66d9ef">this.name</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;: coding&#39;</span> })
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="界面渲染">
+  界面渲染
+  <a class="anchor" href="#%e7%95%8c%e9%9d%a2%e6%b8%b2%e6%9f%93">#</a>
+</h3>
+<h4 id="条件渲染">
+  条件渲染
+  <a class="anchor" href="#%e6%9d%a1%e4%bb%b6%e6%b8%b2%e6%9f%93">#</a>
+</h4>
+<p>这个就不用多说了吧，Vue和React都有学过</p>
+<h4 id="循环渲染">
+  循环渲染
+  <a class="anchor" href="#%e5%be%aa%e7%8e%af%e6%b8%b2%e6%9f%93">#</a>
+</h4>
+<p>语法 ，其实很多都是差不多的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#a6e22e">ForEach</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 数据源
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">arr</span>: <span style="color:#66d9ef">Array</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 组件生成函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">itemGenerator</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">item</span>: <span style="color:#66d9ef">Array</span>, <span style="color:#a6e22e">index?</span>: <span style="color:#66d9ef">number</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">void</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 键值生成函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">keyGenerator</span><span style="color:#f92672">?:</span> (<span style="color:#a6e22e">item</span>: <span style="color:#66d9ef">Array</span>, <span style="color:#a6e22e">index?</span>: <span style="color:#66d9ef">number</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span> <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>来个实例</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">age</span>: <span style="color:#66d9ef">number</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Entry</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Component</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">struct</span> <span style="color:#a6e22e">Index</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@State</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userList</span>: <span style="color:#66d9ef">User</span>[] <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">build() {</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Scroll() {</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Column</span>({ <span style="color:#a6e22e">space</span>: <span style="color:#66d9ef">20</span> }) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 循环渲染
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">ForEach</span>(
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">// 1. 数据源
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userList</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">// 2. 组件生成函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          (<span style="color:#a6e22e">item</span>: <span style="color:#66d9ef">User</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 内容
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">Text</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> 今年 </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">age</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> 岁`</span>)
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">// 3. 键值生成函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#a6e22e">item</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">id</span>
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Button</span>(<span style="color:#e6db74">&#39;加载更多&#39;</span>)
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">onClick</span>(() <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span>: <span style="color:#66d9ef">User</span>[] <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">index</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; <span style="color:#a6e22e">index</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">push</span>({ <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">Math.random</span>().<span style="color:#a6e22e">toString</span>(), <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;jack&#39;</span>, <span style="color:#a6e22e">age</span>: <span style="color:#66d9ef">Math.ceil</span>(Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>) })
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userList</span>.<span style="color:#a6e22e">push</span>(...<span style="color:#a6e22e">arr</span>)
+</span></span><span style="display:flex;"><span>          })
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">width</span>(<span style="color:#e6db74">&#39;100%&#39;</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>注意:</p>
+<p>其中的key尽量别缺，也尽量不要使用index，使用唯一的id之类的</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#参考">参考</a></li>
+        <li><a href="#页面组件">页面组件</a></li>
+        <li><a href="#系统组件">系统组件</a></li>
+        <li><a href="#样式处理">样式处理</a></li>
+        <li><a href="#组件状态">组件状态</a></li>
+        <li><a href="#界面渲染">界面渲染</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

