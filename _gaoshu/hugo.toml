@@ -1,0 +1,28 @@
+baseURL = 'https://ljyh223.github.io/gaoshu/'
+title = '四川专升本高等数学'
+theme = 'hugo-book'
+defaultContentLanguage = 'zh'
+hasCJKLanguage = true
+disableKinds = ['taxonomy', 'term', 'RSS']
+
+[params]
+  BookTheme = 'auto'
+  BookSection = '*'
+  BookPortableLinks = true
+  BookComments = false
+
+[[menu.after]]
+  name = '返回 Alex lan'
+  url = 'https://ljyh223.github.io/'
+  weight = 1
+
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel = 3
+
+[markup.goldmark.extensions.passthrough]
+  enable = true
+
+[markup.goldmark.extensions.passthrough.delimiters]
+  block = [['$$', '$$']]
+  inline = [['$', '$']]

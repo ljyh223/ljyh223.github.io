@@ -1,0 +1,10 @@
+.markdown .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: .25rem;
+}
+
+.markdown .katex-display > .katex {
+  width: max-content;
+  min-width: 100%;
+}
